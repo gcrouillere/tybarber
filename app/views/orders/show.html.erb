@@ -1,0 +1,84 @@
+<% content_for(:title_tag) do %>
+  Panier
+<% end %>
+
+<div class="page-top">
+  <h1>Panier</h1>
+  <%= link_to ceramiques_path, class: "hidden-xs" do %>
+    <span><i class="fa fa-arrow-right"></i> Liste des céramiques</span>
+  <% end %>
+</div>
+
+<div class="container">
+  <div class="row">
+    <!-- LAPTOP -->
+    <div class="hidden-xs col-sm-12">
+      <% @order.basketlines.each do |basketline| %>
+        <div class="basket-item">
+          <%= cl_image_tag basketline.ceramique.photos[0].path, class: "basket-article-img" %>
+          <h4><%= basketline.ceramique.name.capitalize %></h4>
+          <h5>Quantité: <%= basketline.quantity %></h5>
+          <h5>Total: <%= humanized_money(basketline.ceramique.price * basketline.quantity) %> <%= currency_symbol %></h5>
+          <%= link_to  order_path(:id => @order.id, :basketline_id => basketline.id), :confirm => 'Are you sure?', :method => :delete, class: "delete-article" do %>
+            <i class="fa fa-trash"></i>
+          <% end %>
+        </div>
+      <% end %>
+
+      <div class="total">
+        <div class="empty"></div>
+        <div class="hidden-sm">
+          <h3>Montant total: <%= humanized_money(@amount) %> <%= currency_symbol %></h3>
+        </div>
+        <div class="hidden-md hidden-lg">
+          <h4>Montant total: <%= humanized_money(@amount) %> <%= currency_symbol %></h4>
+        </div>
+        <form action="/orders/<%= @order.id%>/payments/new" method="get">
+          <input type="hidden" name="order_id" value="<%= @order.id%>">
+          <button type="submit" class="pull-right btn btn-primary order">
+            Valider ma commande
+          </button>
+        </form>
+      </div>
+    </div>
+
+    <!-- MOBILE -->
+    <div class="col-xs-12 hidden-sm hidden-md hidden-lg">
+
+      <% @order.basketlines.each do |basketline| %>
+        <div class="basket-item mobile">
+          <%= cl_image_tag basketline.ceramique.photos[0].path, class: "basket-article-img" %>
+          <div class="order-detail">
+            <h4><%= basketline.ceramique.name.capitalize %></h4>
+            <div class="detail-text">
+              <h5>Quantité: <%= basketline.quantity %></h5>
+              <h5>Total: <%= humanized_money(basketline.ceramique.price * basketline.quantity) %> <%= currency_symbol %></h5>
+            </div>
+              <%= link_to  order_path(:id => @order.id, :basketline_id => basketline.id), :confirm => 'Are you sure?', :method => :delete, class: "delete-article" do %>
+                <i class="fa fa-trash"></i>
+              <% end %>
+          </div>
+        </div>
+      <% end %>
+
+      <h3 class="h3mobile">Montant total: <%= humanized_money(@amount) %> <%= currency_symbol %></h3>
+      <div class="total mobile">
+        <form action="/orders/<%= @order.id%>/payments/new" method="get">
+          <input type="hidden" name="order_id" value="<%= @order.id%>">
+          <button type="submit" class="pull-right btn btn-primary order">
+            Valider ma commande
+          </button>
+        </form>
+      </div>
+      <div class="mobile-back">
+        <%= link_to ceramiques_path do %>
+          <span><i class="fa fa-arrow-right"></i> Liste des céramiques</span>
+        <% end %>
+      </div>
+
+    </div>
+
+  </div>
+</div>
+
+

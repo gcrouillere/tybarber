@@ -1,0 +1,127 @@
+<% content_for(:description) do %>
+Confectionnez vos poteries pendant un stage de poterie. Apprenez les techniques suivantes: travail dans la masse, travail des surfaces. Vous travaillez un grés biscuité et cuit à 1200°
+<% end %>
+<% content_for(:title_tag) do %>
+  Céramiques Nugier - Réserver un stage de poterie
+<% end %>
+
+<div class="container">
+  <div class="row">
+
+    <!-- LAPTOP -->
+    <div class="hidden-xs col-sm-offset-2 col-sm-8">
+      <div class="stage">
+        <%= simple_form_for @lesson do |f| %>
+          <%= f.input :student, collection: ENV['MINBOOKING'].to_i..ENV['CAPACITY'].to_i, label: "Nombre de participants", selected: ENV['MINBOOKING'].to_i %>
+          <label class="control-label select required" for="lesson_student"><abbr title="required">*</abbr> 1er jour de stage</label>
+          <div class="form-group">
+            <div class='input-group date' id='datetimepicker1'>
+              <span class="input-group-addon">
+                <span class="fa fa-calendar-o"></span>
+              </span>
+              <input type='text' class="form-control" name="lesson[start]" placeholder="Cliquez sur l'icône calendrier pour sélectionner une date"/>
+            </div>
+          </div>
+          <%= f.input :duration, collection: [ENV['MINDURATION'],ENV['MAXDURATION']], label: "Durée en jours", selected: ENV['MINDURATION'] %>
+          <% if user_signed_in? %>
+            <%= f.hidden_field :user_id, value: current_user.id %>
+          <% end %>
+          <div class="submit-div-stage">
+            <%= f.submit "Demande de réservation", class: "btn btn-primary stage-btn" %>
+          </div>
+        <% end %>
+        <div class="wrapper">
+          <div class="texte">
+            <p><strong>Stage de poterie: </strong>Dans un cadre privilégié, au coeur du vignoble Gaillacois, je vous propose de confectionner vos objets culinaires : du bol à l’assiette, en passant par l’écuelle, la louche, le pichet... Nous pourrons aller jusqu’à la cassolette, le mug, la chope...</p>
+            <p><strong>Pendant le stage, vous apprenez ou perfectionnez les techniques suivantes: </strong>travail dans la masse (assemblage de plaques, mélanges d’estampage et de colombin), travail des surfaces (texture, empreintes engobe et décor aux oxydes et colorants). Vous travaillez un grés biscuité et cuit à 1200°.</p>
+            <p> <strong>Hébergements et repas:</strong> Possibles sur place. Dans la plus grande convivialité, repas pris en commun sous la tonnelle.</p>
+            <p><strong>Prix: </strong>Les stages se déroulent sur 2 ou 5 jours, pour 2 à 6 personnes maximum. 2 jours: 150€/pers, 5 jours : 380€/pers. Ces prix ne comprennent pas l'hébergement ni les repas.</p>
+            <p><strong>Confirmation: </strong> Quand votre demande de stage sera traitée, vous recevrez une confirmation par mail. Vous devrez ensuite payer les arrhes pour valider définitivement votre participation.</p>
+          </div>
+        </div>
+        </div>
+    </div>
+
+    <!-- MOBILE -->
+    <div class="hidden-sm hidden-md hidden-lg col-xs-12">
+      <div class="stage">
+        <%= simple_form_for @lesson do |f| %>
+          <%= f.input :student, collection: ENV['MINBOOKING'].to_i..ENV['CAPACITY'].to_i, label: "Nombre de participants", selected: ENV['MINBOOKING'].to_i %>
+          <label class="control-label select required" for="lesson_student"><abbr title="required">*</abbr> 1er jour de stage</label>
+          <div class="form-group">
+            <div class='input-group date' id='datetimepicker1'>
+              <span class="input-group-addon">
+                <span class="fa fa-calendar-o"></span>
+              </span>
+              <input type='text' class="form-control" name="lesson[start]" placeholder="JJ.MM.AAAA"/>
+            </div>
+          </div>
+          <%= f.input :duration, collection: [ENV['MINDURATION'],ENV['MAXDURATION']], label: "Durée en jours", selected: ENV['MINDURATION'] %>
+          <% if user_signed_in? %>
+            <%= f.hidden_field :user_id, value: current_user.id %>
+          <% end %>
+          <div class="submit-div-stage">
+            <%= f.submit "Demande de réservation", class: "btn btn-primary stage-btn" %>
+          </div>
+        <% end %>
+        <div class="wrapper">
+          <div class="texte">
+            <p><strong>Stage de poterie: </strong>Dans un cadre privilégié, au coeur du vignoble Gaillacois, je vous propose de confectionner vos objets culinaires : du bol à l’assiette, en passant par l’écuelle, la louche, le pichet... Nous pourrons aller jusqu’à la cassolette, le mug, la chope...</p>
+            <p><strong>Vous apprenez ou perfectionnez les techniques suivantes: </strong>travail dans la masse (assemblage de plaques, mélanges d’estampage et de colombin), travail des surfaces (texture, empreintes engobe et décor aux oxydes et colorants). Vous travaillez un grés biscuité et cuit à 1200°.</p>
+            <p> <strong>Hébergements et repas:</strong> Possibles sur place. Dans la plus grande convivialité, repas pris en commun sous la tonnelle.</p>
+            <p><strong>Prix: </strong>Les stages se déroulent sur 2 ou 5 jours, pour 2 à 6 personnes maximum. 2 jours: 150€/pers, 5 jours : 380€/pers. Ces prix ne comprennent pas l'hébergement ni les repas.</p>
+            <p><strong>Confirmation: </strong> Quand votre demande de réservation sera traitée, vous recevrez une confirmation par mail. Vous devrez ensuite payer les arrhes pour valider définitivement votre participation.</p>
+          </div>
+        </div>
+        </div>
+    </div>
+
+  </div>
+</div>
+
+<% content_for(:after_js) do %>
+  <script>
+    $(document).on('ready', function() {
+
+      $('body').on('click', function(event) {
+      $('.tooltip-inner').remove();
+      $('.tooltip-arrow').remove();
+      });
+
+      var confirmed_course_js_format = <%= raw @confirmed_course_js_format%>
+
+      $('#datetimepicker1').datetimepicker({
+        disabledDates: <%= raw @disabled_dates%>,
+        format: 'DD.MM.YYYY',
+        minDate: Date.now(),
+        locale: moment.locale('fr')
+        }).on('dp.show dp.change dp.update', function () {
+
+          $('[data-day]').each(function(){
+            $(this).addClass('current-data-day');
+            var currentdate = $(this).data('day');
+
+            confirmed_course_js_format.forEach(function(course) {
+              if (currentdate == course) {
+                $('.current-data-day').addClass('available-course')
+                $('.current-data-day').attr("title", "Cours confirmé, places disponibles");
+                $('.current-data-day').data("container", "body");
+                $('.current-data-day').tooltip()
+              }
+            });
+
+            $('.current-data-day').removeClass('current-data-day')
+          });
+        });
+    });
+  </script>
+  <script type="application/ld+json">
+  {
+    "@context": "http://schema.org",
+    "@type": "TouristAttraction",
+    "name": "Stage de poterie",
+    "description": "Fabriquez vos poteries",
+    "url": "https://<%= ENV['APPNAME']%>.herokuapp.com/lessons/new"
+  }
+  </script>
+<% end %>

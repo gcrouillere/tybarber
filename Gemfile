@@ -1,0 +1,65 @@
+source 'https://rubygems.org'
+ruby '2.3.3'
+
+gem 'devise'
+gem 'figaro'
+gem 'jbuilder', '~> 2.0'
+gem 'pg'
+gem 'puma'
+gem 'rails', '5.0.3'
+gem 'redis'
+
+gem 'autoprefixer-rails'
+gem 'bootstrap-sass'
+gem 'font-awesome-sass'
+gem 'jquery-rails'
+gem 'sass-rails'
+gem 'simple_form'
+gem 'uglifier'
+
+# pictures
+gem 'cloudinary', '1.1.7'
+gem 'attachinary', github: 'assembler/attachinary'
+gem 'jquery-fileupload-rails'
+gem 'coffee-rails'
+
+# seed
+gem 'faker'
+
+#payment
+gem 'money-rails', '~>1'
+gem 'stripe'
+
+#map
+gem "gmaps4rails"
+source 'https://rails-assets.org' do
+  gem "rails-assets-underscore"
+end
+
+#image-zoom
+gem 'elevatezoom-rails'
+
+#mail
+gem "letter_opener", group: :development
+
+#admin
+gem 'activeadmin', github: 'activeadmin/activeadmin'
+gem 'inherited_resources', github: 'activeadmin/inherited_resources'
+gem 'activeadmin-index_as_calendar', github: 'bys-control/activeadmin-index_as_calendar'
+
+#keepawake on heroku
+gem 'dynopoker'
+
+#date bootstrap
+gem 'momentjs-rails', '>= 2.9.0'
+gem 'bootstrap3-datetimepicker-rails', '~> 4.17.47'
+
+group :development, :test do
+  gem 'better_errors'
+  gem 'binding_of_caller'
+  gem 'listen', '~> 3.0.5'
+  gem 'pry-byebug'
+  gem 'pry-rails'
+  gem 'spring'
+  gem 'spring-watcher-listen', '~> 2.0.0'
+end

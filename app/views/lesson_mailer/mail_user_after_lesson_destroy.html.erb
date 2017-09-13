@@ -1,0 +1,18 @@
+<p>Bonjour <%= @lesson.user.first_name %> <%= @lesson.user.last_name %>,</p>
+<% if @lesson.confirmed %>
+  <p>Votre stage de poterie chez Françoise Nugier est annulé suite à un problème de capacité. Veuillez nous en excuser.</p>
+  <p>Si vous aviez déjà payé les arrhes, ils vous seront remboursés.</p>
+<% else %>
+  <p>Nous sommes désolés, mais nous ne pouvons accepter votre demande de stage de poterie, pour des raisons de capacité.</p>
+  <p> Vous pourriez commencer votre stage à cette (ces) date(s) : <%="#{@closest_start}"%>. Veuillez effectuer une nouvelle demande sur le <%= link_to 'site', new_lesson_url %>.</p>
+<% end %>
+<p>Cordialement</p>
+<p>Françoise Nugier</p>
+<p>email : nugierfrancoise@yahoo.fr</p>
+<p>téléphone : 05.63.56.12.00</p>
+
+
+
+
+
+

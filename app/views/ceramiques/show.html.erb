@@ -1,0 +1,152 @@
+<% content_for(:description) do %>
+<%= @ceramique.name.capitalize %> en grès rouge. Décor avec un émail mat et satiné. Prix : <%= humanized_money(@ceramique.price)%> €. Livraison sous 3 semaines.
+<% end %>
+<% content_for(:title_tag) do %>
+  Céramiques Nugier - <%= @ceramique.name.capitalize %>
+<% end %>
+
+<div class="container">
+
+<!-- LAPTOP -->
+  <div class="hidden-xs hidden-sm">
+
+    <div class="row">
+      <div class="col-md-12">
+        <div class="product-show text center">
+
+          <img class="img-front" id="zoom01" src="<%= cl_image_path @ceramique.photos[0].path %>" data-zoom-image="<%= cl_image_path @ceramique.photos[0].path %>">
+
+          <div class="info-add-basket">
+            <div class="description">
+              <h3> <%= @ceramique.name.capitalize%> </h4>
+              <h4 class="description"> <%= @ceramique.description%> </h4>
+              <hr>
+            </div>
+            <div class="prix-form">
+              <h4 class="prix"> <%= humanized_money(@ceramique.price)%> <%= currency_symbol %> </h4>
+              <% if  @ceramique.stock > 0 %>
+                <form action="/orders" method="post" authenticity_token="true" class="form">
+                  <%= hidden_field_tag :authenticity_token, form_authenticity_token %>
+                  <div class="qte">
+                    <label for="quantity">Quantité </label>
+                    <select name="quantity">
+                      <% for i in 1..@ceramique.stock %>
+                        <option value="<%= i %>"><%= i %></option>
+                      <% end %>
+                    </select>
+                  </div>
+                  <input type="hidden" name="ceramique" value="<%= @ceramique.id%>">
+                  <button type="submit" class="pull-right btn btn-primary order">
+                    <i class="fa fa-plus""></i> Ajouter au panier
+                  </button>
+                </form>
+              <% else %>
+                  <h4 class="stock0">Stock épuisé</h4>
+              <% end %>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="col-sm-12">
+        <div class="other-imgs">
+          <div class="images">
+            <% @ceramique.photos.each_with_index do |photo, index| %>
+              <% if index < 4 %>
+                <img class="thumbnail" src="<%= cl_image_path @ceramique.photos[index].path %>">
+              <% end %>
+            <% end %>
+          </div>
+          <%= link_to ceramiques_path do %>
+            <span><i class="fa fa-arrow-right"></i> Liste des céramiques</span>
+          <% end %>
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+<!-- MOBILE -->
+  <div class="hidden-md hidden-lg">
+    <div class="row">
+      <div class="col-xs-12">
+
+        <div class="head">
+          <h3> <%= @ceramique.name.capitalize%> </h4>
+          <div class="image-xs-sm">
+            <img class="img-front" src="<%= cl_image_path @ceramique.photos[0].path %>">
+          </div>
+        </div>
+        <div class="other-imgs other-mobile">
+          <div class="images images-mobile">
+            <% @ceramique.photos.each_with_index do |photo, index| %>
+              <% if index < 4 %>
+                <img class="thumbnail" src="<%= cl_image_path @ceramique.photos[index].path %>">
+              <% end %>
+            <% end %>
+          </div>
+        </div>
+
+        <div class="product-show-mobile text center">
+          <div class="info-add-basket">
+            <div class="description">
+              <h4 class="description"> <%= @ceramique.description%> </h4>
+              <hr>
+            </div>
+            <div class="prix-form">
+              <h4 class="prix"> <%= humanized_money(@ceramique.price)%> <%= currency_symbol %> </h4>
+              <% if  @ceramique.stock > 0 %>
+                <form action="/orders" method="post" authenticity_token="true" class="form">
+                  <%= hidden_field_tag :authenticity_token, form_authenticity_token %>
+                  <div class="qte">
+                    <label for="quantity">Qté </label>
+                    <select name="quantity">
+                      <% for i in 1..@ceramique.stock %>
+                        <option value="<%= i %>"><%= i %></option>
+                      <% end %>
+                    </select>
+                  </div>
+                  <input type="hidden" name="ceramique" value="<%= @ceramique.id%>">
+                  <button type="submit" class="pull-right btn btn-primary order">
+                    <i class="fa fa-plus""></i> <i class="fa fa-shopping-cart"></i>
+                  </button>
+                </form>
+              <% else %>
+                  <h4 class="stock0">Stock épuisé</h4>
+              <% end %>
+            </div>
+          </div>
+        </div>
+
+        <div class="mobile-link">
+          <%= link_to ceramiques_path do %>
+            <span><i class="fa fa-arrow-right"></i> Liste des céramiques</span>
+          <% end %>
+        </div>
+
+      </div>
+    </div>
+  </div>
+
+</div>
+
+<% content_for(:after_js) do %>
+  <script type="application/ld+json">
+  {
+    "@context": "http://schema.org",
+    "@type": "Product",
+    "name": "<%=@ceramique.name.capitalize%>",
+    "description": "<%=@ceramique.description%>",
+    "offers": {
+      "@type": "Offer",
+      "price": "<%= humanized_money(@ceramique.price)%>",
+      "priceCurrency": "€"
+    },
+    "url": "https://<%= ENV['APPNAME']%>.herokuapp.com/ceramiques/<%=@ceramique.id%>",
+    "image": "<%=cl_image_path @ceramique.photos[0].path%>"
+  }
+  </script>
+<% end %>

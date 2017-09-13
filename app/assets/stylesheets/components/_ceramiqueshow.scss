@@ -1,0 +1,143 @@
+.container {
+  margin-top: 20px;
+
+  .col-xs-12 {
+    padding: 0px;
+  }
+
+// LAPTOP
+  .product-show {
+    display: flex;
+    .img-front {
+      border-radius: $project-border-radius;
+      width: 50%;
+      height: 50%;
+    }
+    .info-add-basket {
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      margin-left: 20px;
+      background: $card-background;
+      padding: $padding-large;
+      border-radius: $project-border-radius;
+      border: $card-border;
+      width: 100%;
+      h4.description {
+        margin-top: 20px;
+        margin-bottom: 35px;
+        margin-left: 10px;
+        font-weight: $font-weight-h4;
+      }
+      .prix-form {
+        h4 {
+          margin-bottom: 20px;
+          margin-left: 10px;
+        }
+        .form {
+          display: flex;
+          align-items: center;
+          justify-content: space-between;
+          margin-left: 10px;
+        }
+      }
+    }
+  }
+
+  .other-imgs {
+    margin-top: 30px;
+    position: relative;
+    margin-bottom: 30px;
+    .images {
+      display: flex;
+      align-items: center;
+      .thumbnail {
+        border-radius: $project-border-radius;
+        width: 20%;
+        height: 20%;
+        margin-right: 10px;
+      }
+      .thumbnail:hover {
+          transform: scale(1.01);
+          box-shadow: 2px 2px 3px 1px rgba(0, 0, 0, 0.1);
+          transition: ease 0.2s;
+      }
+    }
+    a {
+      position: absolute;
+      bottom: 20px;
+      right: 10px;
+      flex: 1 0 auto;
+      max-width: 200px;
+      text-decoration: none;
+      color: $link-laptop
+    }
+    a:hover {
+      color: $primary;
+    }
+  }
+
+// MOBILE
+  .head {
+    .image-xs-sm {
+      margin-left: 10px;
+      margin-right: 10px;
+      img {
+        border-radius: $project-border-radius;
+        width: 100%;
+      }
+    }
+    h3 {
+      margin-left: 15px;
+    }
+  }
+  .other-imgs.other-mobile {
+    margin-top: 10px;
+    .images {
+      margin-left: 10px;
+      display: flex;
+      justify-content: space-around;
+    }
+    .thumbnail {
+      margin-bottom: 10px;
+    }
+  }
+  .product-show-mobile {
+    display: flex;
+    .info-add-basket {
+      margin-top: -30px;
+      margin-right: 10px;
+      margin-left: 10px;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      background: $card-background;
+      padding: $padding-small;
+      border-radius: $project-border-radius;
+      border: $card-border;
+      width: 100%;
+      h4.description {
+        margin-top: 20px;
+        margin-bottom: 20px;
+        margin-left: 10px;
+      }
+      .prix-form {
+        h4 {
+          margin-top: 0px;
+          margin-bottom: 10px;
+          margin-left: 10px;
+        }
+        .form {
+          display: flex;
+          align-items: center;
+          justify-content: space-between;
+          margin-left: 10px;
+        }
+      }
+    }
+  }
+
+  .mobile-link{
+    margin: 20px;
+  }
+}

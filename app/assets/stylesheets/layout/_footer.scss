@@ -1,0 +1,77 @@
+.footer {
+  height: 107px;
+  background-color: $footer;
+  display: flex;
+  align-items: center;
+
+  .contact {
+    background-color: $footer;
+    display: flex;
+    align-items: center;
+    color: $primary;
+    font-size: $font-size-footer-icone;
+    a {
+      margin-left: 30px;
+    }
+    i {
+      margin-right: 20px;
+      &:hover {
+      font-size: larger;
+    }
+    }
+    .info-text {
+      margin-right: 0px !important;
+      width: 0px;
+      transition: width ease 0.2s;
+      visibility: hidden;
+    }
+
+    .info-text.visible {
+      width: 200px;
+      outline: none;
+      visibility: visible;
+      margin-right: 20px;
+    }
+  }
+}
+
+.footer-mobile {
+  background-color: $footer;
+  display: flex;
+  align-items: flex-start;
+
+  .contact {
+    background-color: $footer;
+    color: $primary;
+    font-size: $font-size-footer-icone;
+    .link {
+      margin-top: 10px;
+      margin-left: 20px;
+    }
+    .phone, .envelope {
+      display: flex;
+      align-items: center;
+
+      .info-text {
+        margin-right: 0px !important;
+        width: 0px;
+        width: 0px;
+        transition: width ease 0.2s;
+        visibility: hidden;
+        margin: 0px;
+      }
+
+      .info-text.visible {
+        margin-left: 10px;
+        outline: none;
+        visibility: visible;
+      }
+    }
+    .envelope {
+      margin: 10px 10px 10px 20px;
+    }
+    .phone {
+      margin: 0px 10px 10px 20px
+    }
+  }
+}

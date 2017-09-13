@@ -1,0 +1,27 @@
+Bonjour <%= @user.first_name %> <%= @user.last_name %>,
+
+Merci pour votre commande, elle va être expédiée. Voici le détail de cette commande :
+
+Référence de commande: <%= "#{@order.id}-#{Time.now.hour}#{Time.now.min}#{Time.now.day}#{Time.now.month}#{Time.now.year}" %>
+
+<% @order.basketlines.each do |basketline| %>
+  Céramique: <%= basketline.ceramique.name.capitalize %>
+  Quantité: <%= basketline.quantity %>
+  Total pour cet article: <%= humanized_money(basketline.ceramique.price * basketline.quantity) %> €
+  <% if  %>
+    <% @order.basketlines.size > 1 %>
+  ---------------------------------
+  <% end %>
+<% end %>
+
+Montant total: <%= humanized_money(@amount) %> €
+
+Adresse de livraison : <%= @user.adress %> - <%= @user.zip_code %> - <%= @user.city %>
+
+Cordialement
+
+Françoise Nugier
+
+email : nugierfrancoise@yahoo.fr
+téléphone : 05.63.56.12.00
+

@@ -1,0 +1,78 @@
+<!-- Right Navigation LAPTOP -->
+<div class="navbar-laptop hidden-xs hidden-sm">
+  <!-- Logo -->
+  <%= link_to root_path, class: "navbar-brand" do %>
+    <%= image_tag "logositefrancoise.png" %>
+  <% end %>
+
+  <!-- Different navigation if login or not -->
+  <% if user_signed_in? %>
+
+    <!-- Navbar right when connected -->
+    <div class="navbar-item">
+      <div class="nav-bar-list">
+        <% if current_user.admin %>
+          <%= link_to admin_root_path do %>
+            <span><i class="fa fa-unlock-alt"></i> Administration</span>
+          <% end %>
+        <% end %>
+        <%= link_to info_path do %>
+          <span><i class="fa fa-female"></i> Bio</span>
+        <% end %>
+        <%= link_to new_lesson_path do %>
+          <span><i class="fa fa-calendar-o"></i> Réserver un stage de poterie</span>
+        <% end %>
+        <% if session[:order].present? %>
+          <%= link_to order_path(Order.find(session[:order])) do %>
+            <span><i class="fa fa-shopping-cart"></i> Panier</span>
+          <% end %>
+        <% end %>
+        <%= link_to destroy_user_session_path, method: :delete do %>
+          <span><i class="fa fa-sign-out"></i> Se déconnecter</span>
+        <% end %>
+      </div>
+    </div>
+
+  <% else %>
+    <div class="navbar-item">
+      <div class="nav-bar-list">
+        <%= link_to info_path do %>
+            <span><i class="fa fa-female"></i> Bio</span>
+        <% end %>
+        <%= link_to new_lesson_path do %>
+          <span><i class="fa fa-calendar-o"></i> Réserver un stage de poterie</span>
+        <% end %>
+        <%= link_to new_user_session_path, class: "navbar-item navbar-link" do %>
+          <span><i class="fa fa-sign-in"></i> Se connecter</span>
+        <% end %>
+      </div>
+    </div>
+  <% end %>
+  </div>
+
+<!-- Right Navigation MOBILE -->
+<div class="navbar-mobile hidden-md hidden-lg">
+ <!-- Logo -->
+  <%= link_to root_path, class: "navbar-brand-mobile" do %>
+    <%= image_tag "logositefrancoise.png" %>
+  <% end %>
+
+  <div class="navbar-item">
+    <div class="list-mobile">
+      <%= link_to info_path do %>
+        <li><span><i class="fa fa-female"></i> Bio</span></li>
+      <% end %>
+      <%= link_to new_lesson_path do %>
+        <span><i class="fa fa-calendar-o"></i> Stage </span>
+      <% end %>
+      <% if user_signed_in? %>
+        <% if session[:order].present? %>
+          <%= link_to order_path(Order.find(session[:order])) do %>
+            <span><i class="fa fa-shopping-cart"></i> Panier</span>
+          <% end %>
+        <% end %>
+      <% end %>
+    </div>
+  </div>
+
+</div>

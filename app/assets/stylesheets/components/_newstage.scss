@@ -1,0 +1,43 @@
+.body-stage {
+  background-image: url('http://res.cloudinary.com/dbhsa0hgf/image/upload/v1504872064/stage_neq4cy.jpg');
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  background-size: 100%;
+  label {
+    color: $stage-color-label
+  }
+  .submit-div-stage {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  p {
+    font-weight: $font-weight-p;
+      strong {
+        font-weight: $font-weight-p-strong;
+    }
+  }
+}
+
+.available-course {
+  background-color: $available-stage-background-color;
+}
+
+.body-stage-mobile {
+  background: #e6dada;
+  background: linear-gradient(to right, #f0f2f0, #000c40);
+  .stage {
+    margin: 10px;
+    .submit-div-stage {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    p {
+      font-weight: $font-weight-p;
+      strong {
+        font-weight: $font-weight-p-strong;
+      }
+    }
+  }
+}

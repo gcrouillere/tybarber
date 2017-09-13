@@ -1,0 +1,82 @@
+/* Navbar laptop */
+.navbar-laptop {
+  box-shadow: 0 1px 5px 0 rgba(0,0,0,0.07),0 1px 0 0 rgba(0,0,0,0.03);
+  background: $navbar;
+  transition: all 0.3s ease;
+  height: 70px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+    /* Navbar logo */
+  .navbar-brand {
+    display: flex;
+    padding: 0px;
+    img {
+      display: flex;
+      flex: 1 0 auto;
+      margin-left: 30px;
+      height: 55px;
+    }
+  }
+}
+
+/* Navbar mobile */
+.navbar-mobile {
+  box-shadow: 0 1px 5px 0 rgba(0,0,0,0.07),0 1px 0 0 rgba(0,0,0,0.03);
+  background: $navbar;
+  transition: all 0.3s ease;
+  height: 70px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  /* Navbar logo */
+  .navbar-brand-mobile {
+    display: flex;
+    padding: 0px;
+    img {
+      display: flex;
+      flex: 1 0 auto;
+      margin-left: 15px;
+      height: 55px;
+    }
+  }
+
+}
+
+/* Navbar right items */
+.navbar-item {
+  cursor: pointer;
+
+  /* laptop */
+  .nav-bar-list {
+    display: flex;
+    list-style: none;
+    a {
+        text-decoration: none !important;
+        color: black !important;
+        margin-right: 20px;
+      i {
+        color: black !important;
+      }
+    }
+  }
+  /* mobile */
+  .list-mobile {
+    display: flex;
+    list-style: none;
+    a {
+      text-decoration: none !important;
+      color: black !important;
+      margin-right: 15px;
+    }
+  }
+}
+
+/* Optional class to fix the navbar on top */
+.navbar-fixed {
+  position: fixed;
+  left: 0px;
+  top: 0px;
+  z-index: 1;
+  width: 100%;
+}

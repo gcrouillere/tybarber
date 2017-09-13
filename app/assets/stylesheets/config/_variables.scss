@@ -1,0 +1,72 @@
+/* -------------------------------------
+ * Fonts type
+ * ------------------------------------- */
+@import url("https://fonts.googleapis.com/css?family=Open+Sans:400,300,700|Raleway:400,100,300,700,500");
+$base-font: "Open Sans", "Helvetica", "sans-serif";
+$header-font: "Raleway", "Helvetica", "sans-serif";
+
+/* -------------------------------------
+ * Colors
+ * ------------------------------------- */
+ //Main :
+$primary: #FFA240;
+$body: #fbfbfb;
+$navbar: #FFC487;
+$footer: #141E30;
+$home-text-shadow: #333333;
+$home-font-color: white;
+
+//Ceramiques :
+$filter-title: #666;
+$link-laptop: black;
+$card-text: black;
+
+//Stages :
+$stage-color-label: white;
+$available-stage-background-color: #A6F7B0;
+
+//Bootstrap :
+$red: #EE5F5B;
+$blue: #469AE0;
+$yellow: #FDB631;
+$orange: #E67E22;
+$green: #32B796;
+$gray: #000000;
+
+/* -------------------------------------
+ * Fonts sizes and weights
+ * ------------------------------------- */
+//Base :
+$base-size: 16px;
+$base-height: 1.4;
+
+//Size :
+$font-size-h3: 30px;
+$font-size-h3-laptop: 19px;
+$font-size-h4: 20px;
+$font-size-h5: 18px;
+$font-size-p: 18px;
+$font-size-p-devise: 14px;
+$font-size-i: 16px;
+$font-size-a: 16px;
+$font-size-footer-icone: 17px;
+
+//Weight :
+$font-weight-p: 100;
+$font-weight-p-strong: 400;
+$font-weight-h3-laptop: 300;
+$font-weight-h3-mobile: 400;
+$font-weight-h4: 300;
+$font-weight-h4-search: 600;
+$font-weight-h5-search: 500;
+$font-weight-h5: 100;
+$font-weight-label: 100;
+
+/* -------------------------------------
+ * Cards
+ * ------------------------------------- */
+$card-background: white;
+$project-border-radius: 3px;
+$card-border: 1px solid rgba(0, 0, 0, 0.1);
+$padding-large: 20px;
+$padding-small: 10px;

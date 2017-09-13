@@ -1,0 +1,13 @@
+# See http://www.robotstxt.org/robotstxt.html for documentation on how to use the robots.txt file
+#
+# To ban all spiders from the entire site uncomment the next two lines:
+User-agent: *
+# Private pages :
+Disallow: /confirmation
+Disallow: /stage_confirmation
+Disallow: /stage_payment_confirmation
+Disallow: /orders
+Disallow: /admin
+Disallow: /users
+Sitemap: https://<%= ENV['APPNAME']%>.herokuapp.com/sitemap.xml
+

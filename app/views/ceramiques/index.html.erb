@@ -1,0 +1,93 @@
+<% content_for(:description) do %>
+Mes céramiques sont en grès rouge. Décor composé de couleurs variées avec un émail mat et satiné. A la surface, j‘alterne des espaces de terre brute et de parties engobées-émaillées. Ma production se compose de poteries utilitaires et de pièces uniques décoratives.
+<% end %>
+<% content_for(:title_tag) do %>
+  Céramiques Nugier - les céramiques et poteries en vente
+<% end %>
+
+<div class="container">
+  <div class="row">
+
+<!-- LAPTOP -->
+    <div class="hidden-xs hidden-sm col-md-3">
+      <div class="ceramique-filters-content">
+        <h4>Rechercher</h4>
+        <form action="/ceramiques" method='get'>
+          <div class="category-filter filter">
+            <h5>Categories</h5>
+            <div class="filter-category">
+              <ul>
+                <% @categories.each do |category| %>
+                  <li><label class="label-search"><input type="checkbox" name="categories[]" value="<%= category %>"><%= category %></label></li>
+                <% end %>
+              </ul>
+              <h5>Prix max €</h5>
+              <label class="label-search"><input type="number" name="prix_max" min="0" class="prix"></label>
+            </div>
+            <% if  params[:categories].present? || params[:prix_max].present? %>
+              <label class="label-search all"><input type="checkbox" name="all[]" value="all">Tout afficher</label>
+            <% end %>
+            <input type="submit" class="btn btn-primary recherche" value="OK">
+          </div>
+        </form>
+      </div>
+    </div>
+
+    <div class="hidden-xs hidden-sm col-md-9 ceramique-list">
+      <% @ceramiques.each do |ceramique| %>
+          <div class="col-xs-6">
+            <%= link_to ceramique_path(ceramique), class: "cardlink" do %>
+              <div class="ceramiquecard">
+                <div class="img-container">
+                  <% if ceramique.photos[0].height > ceramique.photos[0].width %>
+                    <%= cl_image_tag(cl_image_path(ceramique.photos[0].path, :width => 285, :height => 285, :crop => :fit), class: "img-resized") %>
+                  <% else %>
+                    <img class="img" src="<%= cl_image_path ceramique.photos[0].path %>">
+                  <% end %>
+                  <h4 class="prix-index"><%= humanized_money(ceramique.price)%> <%= currency_symbol %></h4>
+                </div>
+                <h4> <%= ceramique.name.capitalize%> </h4>
+                <h5> <%= ceramique.description%> </h5>
+              </div>
+            <% end %>
+          </div>
+      <% end %>
+    </div>
+
+<!-- MOBILE -->
+<div class="hidden-md hidden-lg col-xs-12 col-md-12 ceramique-list">
+      <% @ceramiques.each do |ceramique| %>
+          <div class="col-xs-12">
+            <%= link_to ceramique_path(ceramique), class: "cardlink" do %>
+              <div class="ceramiquecard mobile">
+                <div class="img-container">
+                  <img class="img" src="<%= cl_image_path ceramique.photos[0].path %>">
+                  <h4 class="prix-index"><%= humanized_money(ceramique.price)%> <%= currency_symbol %></h4>
+                </div>
+                <h4> <%= ceramique.name.capitalize%> </h4>
+                <h5> <%= ceramique.description%> </h5>
+              </div>
+            <% end %>
+          </div>
+      <% end %>
+    </div>
+
+  </div>
+</div>
+
+<% content_for(:after_js) do %>
+  <script type="application/ld+json">
+  {
+    "@context": "http://schema.org",
+    "@type": "ArtGallery",
+    "name": "<%= ENV['NAME']%>",
+    "description": "Vente de céramiques et poteries artisanales. Liste des poteries et céramiques à vendre",
+    "openingHours": "Mo-Fr 09:00-18:00",
+    "telephone": "<%= ENV['TELEPHONE']%>",
+    "url": "https://<%= ENV['APPNAME']%>.herokuapp.com/",
+    "image":"https://<%= ENV['APPNAME']%>.herokuapp.com/assets/<%= ENV['HOMEPIC']%>",
+    "address":"<%= ENV['ADDRESS']%>",
+    "priceRange":"20€ à 800€"
+  }
+  </script>
+<% end %>

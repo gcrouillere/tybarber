@@ -1,0 +1,103 @@
+<% content_for(:description) do %>
+Potière autodidacte depuis 1996, j'ai fait évoluer mes productions depuis 2012 après un an de formation à La Maison de la Céramique de Dieulefit. Mon travail actuel est composé de grandes pièces de grès rouge avec un décor en émail coloré, mat et satiné.
+<% end %>
+<% content_for(:title_tag) do %>
+  Francoise Nugier Céramiste Potière - Artisanat
+<% end %>
+
+<div class="container">
+  <div class="row">
+
+  <!-- LAPTOP -->
+    <div class="hidden-xs hidden-sm col-sm-12">
+      <div class="wrapper">
+        <%= image_tag "francoise.jpg", class: "img-francoise"%>
+        <div class="texte">
+          <h4>Françoise NUGIER</h4>
+          <p>Mon travail actuel est composé de grandes pièces, montées à la plaque, repoussées de l’intérieur jusqu’à la faille. Je conserve les ruptures et tente de les exploiter. Je peux également tourner une partie, puis poursuivre aux colombins. Je tente de laisser mes mains courir sur la terre et limiter l’intervention du « vouloir ».</p>
+          <p>Je travaille un grès rouge allemand  dit «  Klinketerre  » cuit dans un four à gaz à 1200° en réduction, j’engobe les pièces, les décore soit avec des tampons aux couleurs variées ou bien aux pinceaux. Pendant le décor, la gestuelle est naturellement libre. L’émail de ma composition est mat, satiné. A la surface de mes pièces, j‘alterne des espaces  de  terre brute, et de parties engobées-émaillées.</p>
+          <p>Ma production est variée, faite de grandes pièces uniques (boites, vases, coupes, grands plats ...) ainsi qu’un utilitaire de toute petite série très personnel.</p>
+        </div>
+      </div>
+
+      <div class="localisation">
+        <%= image_tag "cordes.jpg", class: "img-cordes"%>
+        <div id="map"></div>
+      </div>
+
+      <%= link_to ceramiques_path, class: "back-in-home" do %>
+        <span><i class="fa fa-arrow-right"></i> Liste des céramiques</span>
+      <% end %>
+    </div>
+
+  <!-- MOBILE -->
+   <div class="col-xs-12 hidden-md hidden-lg mobile-info">
+      <div class="wrapper-mobile">
+        <%= cl_image_tag("francoise_mfem88", width: 120, height: 120, crop: :thumb, gravity: :face, class: "img-francoise-mobile")%>
+        <h4>Françoise NUGIER</h4>
+        <p>Mon travail actuel est composé de grandes pièces, montées à la plaque, repoussées de l’intérieur jusqu’à la faille. Je conserve les ruptures et tente de les exploiter. Je peux également tourner une partie, puis poursuivre aux colombins. Je tente de laisser mes mains courir sur la terre et limiter l’intervention du « vouloir ».</p>
+        <p>Je travaille un grès rouge allemand  dit «  Klinketerre  » cuit dans un four à gaz à 1200°   en réduction, j’engobe les pièces, les décore soit avec des tampons aux couleurs variées ou bien aux pinceaux. Pendant le décor, la gestuelle est naturellement libre. L’émail de ma composition est mat, satiné. A la surface de mes pièces, j‘alterne des espaces  de  terre brute, et de parties engobées-émaillées.</p>
+        <p>Ma production est variée, faite de grandes pièces uniques (boites, vases, coupes, grands plats ...) ainsi qu’un utilitaire de toute petite série très personnel.</p>
+      </div>
+
+      <div class="localisation-mobile">
+        <div id="map-mobile"></div>
+        <%= image_tag "cordes.jpg", class: "img-cordes-mobile"%>
+      </div>
+
+      <%= link_to ceramiques_path, class: "back-in-home-mobile" do %>
+        <span><i class="fa fa-arrow-right"></i> Liste des céramiques</span>
+      <% end %>
+    </div>
+
+  </div>
+</div>
+
+<% content_for(:after_js) do %>
+  <%= javascript_tag do %>
+    $(document).ready(function() {
+      var handler1 = Gmaps.build('Google');
+      handler1.buildMap({ provider: {}, internal: {id: 'map'}}, function(){
+        markers = handler1.addMarkers([
+          {
+            "lat": 44.031792,
+            "lng": 1.94926,
+            "infowindow": "Poterie de Souel - Françoise Nugier"
+          }
+        ]);
+        handler1.bounds.extendWith(markers);
+        handler1.getMap().setCenter({lat: 44.031792, lng: 1.94926});
+        <!-- handler1.fitMapToBounds(); -->
+        handler1.getMap().setZoom(6);
+      });
+
+      var handler = Gmaps.build('Google');
+      handler.buildMap({ provider: {}, internal: {id: 'map-mobile'}}, function(){
+        markers = handler.addMarkers([
+          {
+            "lat": 44.031792,
+            "lng": 1.94926,
+          }
+        ]);
+        handler.bounds.extendWith(markers);
+        handler.getMap().setCenter({lat: 44.031792, lng: 1.94926});
+        <!-- handler1.fitMapToBounds(); -->
+        handler.getMap().setZoom(6);
+      });
+    });
+  <% end %>
+  <script type="application/ld+json">
+    {
+      "@context": "http://schema.org",
+      "@type": "ArtGallery",
+      "name": "Céramiques Nugier",
+      "description": "Potière autodidacte depuis 1996, j'ai fait évoluer mes productions depuis 2012 après un an de formation à La Maison de la Céramique de Dieulefit. Mon travail actuel est composé de grandes pièces de grès rouge avec un décor en émail coloré, mat et satiné.",
+      "openingHours": "Mo-Fr 09:00-18:00",
+      "telephone": "<%= ENV['TELEPHONE']%>",
+      "url": "https://<%= ENV['APPNAME']%>.herokuapp.com/info",
+      "image":"https://<%= ENV['APPNAME']%>.herokuapp.com/assets/<%= ENV['HOMEPIC']%>"
+      "address":"<%= ENV['ADDRESS']%>",
+      "priceRange":"20€ à 800€"
+    }
+  </script>
+<% end %>

@@ -1,0 +1,47 @@
+<% content_for(:description) do %>
+Vente de céramiques et poteries artisanales. Grandes pièces de grès rouge avec un décor en émail coloré, mat et satiné. Potière autodidacte puis formation à La Maison de la Céramique de Dieulefit en 2012. Ma production se compose de poteries utilitaires et de pièces uniques décoratives.
+<% end %>
+
+
+<div class="jumbotron">
+
+<!-- LAPTOP -->
+  <div class="hidden-xs">
+    <div class="banner">
+      <div class="banner-content">
+        <h1>Céramiques</h1>
+        <p>Françoise Nugier</p>
+        <%= link_to 'Voir les céramiques', ceramiques_path, class: "btn btn-primary btn-lg" %>
+      </div>
+    </div>
+  </div>
+
+<!-- MOBILE -->
+  <div class="hidden-sm hidden-md hidden-lg">
+    <div class="banner-xs">
+      <div class="banner-content-xs">
+        <h1>Céramiques</h1>
+        <p>Françoise Nugier</p>
+        <%= link_to 'Voir les céramiques', ceramiques_path, class: "btn btn-primary" %>
+      </div>
+    </div>
+  </div>
+
+</div>
+
+<% content_for(:after_js) do %>
+  <script type="application/ld+json">
+  {
+    "@context": "http://schema.org",
+    "@type": "ArtGallery",
+    "name": "<%= ENV['NAME']%>",
+    "description": "Vente de céramiques et poteries artisanales. Liste des poteries et céramiques à vendre",
+    "openingHours": "Mo-Fr 09:00-18:00",
+    "telephone": "<%= ENV['TELEPHONE']%>",
+    "url": "https://<%= ENV['APPNAME']%>.herokuapp.com/",
+    "image":"https://<%= ENV['APPNAME']%>.herokuapp.com/assets/<%= ENV['HOMEPIC']%>",
+    "address":"<%= ENV['ADDRESS']%>",
+    "priceRange":"20€ à 800€"
+  }
+  </script>
+<% end %>

@@ -1,0 +1,86 @@
+.cardlink {
+  text-decoration: none !important;
+}
+
+.ceramiquecard {
+  margin-top: 20px;
+  margin-bottom: 10px;
+  padding: $padding-large;
+  background: $card-background;
+  border-radius: $project-border-radius;
+  border: $card-border;
+  text-decoration: none;
+  min-height: 450px;
+
+  .img-container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    margin: 10px;
+
+    .img {
+      border-radius: $project-border-radius;
+      width: 95%;
+    }
+    .img-resized {
+      border-radius: $project-border-radius;
+    }
+    .prix-index {
+      position: absolute;
+      bottom: -63px;
+      right: -14px;
+    }
+  }
+
+  h4 {
+    margin-top: 30px;
+    font-size: $font-size-h4;
+  }
+
+  h4, h5 {
+    margin-left: 30px;
+    margin-right: 30px;
+    text-decoration: none;
+    h4:hover, h4:hover {
+      text-decoration: none;
+    }
+  }
+  h5 {
+    color: $card-text;
+    font-weight: $font-weight-h5;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    display: -webkit-box;
+    -webkit-line-clamp: 2; /* number of lines to show */
+    -webkit-box-orient: vertical;
+  }
+}
+
+.ceramiquecard.mobile {
+  margin: 0px 10px 10px 10px;
+  padding: 7px 0px 0px 0px;
+  min-height: 0px;
+  h5 {
+    margin-bottom: 20px;
+    color: $card-text;
+    font-weight: $font-weight-h5;
+  }
+  .prix-index {
+      position: absolute;
+      bottom: -63px;
+      right: -14px;
+  }
+  h4 {
+    margin-left: 24px;
+    font-size: $font-size-h4;
+  }
+}
+
+.ceramiquecard:hover {
+  box-shadow: 1px 1px 7px rgba(0, 0, 0, 0.1);
+}
+
+.ceramique-list {
+  margin-bottom: 60px;
+}

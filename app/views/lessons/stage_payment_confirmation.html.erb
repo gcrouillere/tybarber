@@ -1,0 +1,40 @@
+<% content_for(:title_tag) do %>
+  Paiement demande de stage
+<% end %>
+
+<div class="container">
+  <div class="row">
+    <div class="col-xs-12">
+
+      <!-- LAPTOP -->
+      <div class="hidden-xs hidden-sm">
+        <div class="text-center-stage">
+            <h4>Merci pour votre paiement, votre stage est validé.</h4>
+            <h4>Un mail de confirmation vous a été envoyé. Vérifiez dans vos emails indésirables.</h4>
+        </div>
+
+        <div class="back-stage">
+          <%= link_to ceramiques_path do %>
+            <span><i class="fa fa-arrow-right"></i> Liste des céramiques</span>
+          <% end %>
+        </div>
+      </div>
+
+      <!-- MOBILE -->
+      <div class="hidden-md hidden-lg">
+        <div class="text-center-stage-mobile">
+          <h3>Merci pour votre paiement, votre stage est validé.</h3>
+          <h3>Un mail de confirmation vous a été envoyé. Vérifiez dans vos emails indésirables.</h3>
+        </div>
+
+        <div class="back-stage-mobile">
+          <%= link_to ceramiques_path do %>
+            <span><i class="fa fa-arrow-right"></i> Liste des céramiques</span>
+          <% end %>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</div>
+

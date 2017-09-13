@@ -1,0 +1,83 @@
+.text-center-stage {
+  margin-top: 190px;
+  background: $card-background;
+  padding: $padding-large;
+  border-radius: $project-border-radius;
+  border: $card-border;
+
+  h3 {
+    color: $card-text;
+    font-weight: $font-weight-h3-laptop;
+    font-size: $font-size-h3;
+    margin-top: 10px;
+    margin-bottom: 10px;
+    text-align: center;
+  }
+
+  h4 {
+    text-align: center;
+    font-weight: $font-weight-h4;
+    font-size: $font-size-h4;
+  }
+}
+
+.stage-payment {
+  margin-top: 100px;
+  text-align: center;
+  h3 {
+    font-weight: $font-weight-h3-laptop;
+    font-size: $font-size-h3;
+    margin-bottom: 20px;
+  }
+  h4 {
+    text-align: center;
+    font-weight: $font-weight-h4;
+    font-size: $font-size-h4;
+  }
+  p {
+    font-size: $font-size-p;
+  }
+  .order-stage {
+    margin-top: 20px;
+  }
+
+}
+
+.back-stage > a {
+  text-decoration: none;
+  float: right;
+  margin-top: 100px;
+}
+
+.back-stage:hover > a {
+  color: #FFB97A;
+  text-decoration: none;
+}
+
+.text-center-stage-mobile {
+  margin: 20px 10px 20px 10px;
+  background: $card-background;
+  padding: $padding-large;
+  border-radius: $project-border-radius;
+  border: $card-border;
+  text-align: center;
+
+  h3 {
+    color: #black;
+    font-weight: $font-weight-h3-mobile;
+    font-size: $font-size-h3-laptop;
+    margin-top: 10px;
+    margin-bottom: 10px;
+
+  }
+  p {
+    font-weight: $font-weight-p;
+  }
+}
+
+.back-stage-mobile > a {
+  text-decoration: none;
+  float: right;
+  margin-top: 10px;
+  margin-right: 10px;
+}

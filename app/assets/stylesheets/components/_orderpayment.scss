@@ -1,0 +1,62 @@
+h1 {
+  margin-left: 30px;
+}
+
+.pay-form {
+  margin-top: 20px;
+  margin-bottom: 10px;
+  background: $card-background;
+  padding: $padding-large;
+  border-radius: $project-border-radius;
+  border: $card-border;
+  text-decoration: none;
+  margin-bottom: 100px;
+
+  form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    .amount {
+      margin-bottom: 10px;
+    }
+    h4 {
+      margin-bottom: 15px;
+    }
+    .adress h4 {
+      font-weight: $font-weight-h4;
+    }
+    .stripe-button-el span{
+      font-size: $font-size-a;
+    }
+    a {
+      margin-top: 10px;
+    }
+  }
+}
+
+.secure {
+  margin-left: 10px;
+  display: flex;
+  align-items: center;
+  h5 {
+    margin-right: 3px;
+  }
+  .stripe {
+    height: 20px;
+  }
+}
+
+// MOBILE
+.pay-form.mobile {
+  margin: 0px 10px 10px 10px;
+}
+
+.mobile-link-coord {
+  text-align: center;
+  margin-top: 10px;
+}
+
+.laptop-link-coord {
+ margin-top: 10px;
+}
