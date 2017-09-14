@@ -5,6 +5,8 @@ class Ceramique < ApplicationRecord
 
   monetize :price_cents
 
+  validates :photos, presence: true
+  validates :category, presence: true
   validates :name, presence: true
   validates :stock, presence: true, numericality: { only_integer: true }
   validates :price_cents, presence: true, numericality: { greater_than: 0 }

@@ -1,6 +1,5 @@
 ActiveAdmin.register Ceramique do
   permit_params :name, :description, :stock, :category_id, :price_cents, photos: []
-  menu :label => ENV['MODEL'].capitalize + 's'
   menu priority: 1
 
   index do

@@ -1,7 +1,6 @@
 ActiveAdmin.register Calendarupdate do
   permit_params :period_start, :period_end
   actions  :index, :new, :create, :destroy, :show
-  menu :label => "Bloquer des périodes dans le calendrier"
   menu priority: 3
   config.filters = false
 

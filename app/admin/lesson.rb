@@ -2,7 +2,6 @@ ActiveAdmin.register Lesson do
   permit_params :confirmed
   actions  :index, :destroy, :update, :edit, :show
   config.sort_order = 'start_asc'
-  menu :label => "Réservations"
   menu priority: 3
   config.filters = false
 

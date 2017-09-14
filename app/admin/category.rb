@@ -2,7 +2,6 @@ ActiveAdmin.register Category do
   permit_params :name
   config.filters = false
   actions  :index, :new, :create, :destroy, :update, :edit
-  menu :label => "Catégories"
   menu priority: 2
 
   index do
