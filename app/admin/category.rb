@@ -3,6 +3,7 @@ ActiveAdmin.register Category do
   config.filters = false
   actions  :index, :new, :create, :destroy, :update, :edit
   menu :label => "Catégories"
+  menu priority: 2
 
   index do
     column :name

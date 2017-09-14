@@ -2,7 +2,8 @@ ActiveAdmin.register Lesson do
   permit_params :confirmed
   actions  :index, :destroy, :update, :edit, :show
   config.sort_order = 'start_asc'
-  menu :label => "Stages"
+  menu :label => "Réservations"
+  menu priority: 3
   config.filters = false
 
   index_as_calendar ({:ajax => false}) do |lesson|
@@ -70,7 +71,7 @@ ActiveAdmin.register Lesson do
           create_order_for_lesson(lesson)
           LessonMailer.mail_user_after_confirmation(lesson).deliver_now
         else
-          flash[:alert] = "Chevauchement de stages ou capacité insuffisante, confirmation impossible. Il faut : soit supprimer cette demande, soit annuler une réservation déjà confirmée."
+          flash[:alert] = "Chevauchement de réservations ou capacité insuffisante, confirmation impossible. Il faut : soit supprimer cette demande, soit annuler une réservation déjà confirmée."
           redirect_to admin_lessons_path and return
         end
         lesson.update(confirmed: true)

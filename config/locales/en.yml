@@ -28,10 +28,10 @@ en:
         category:
           one: "Catégories"
           other: "Catégorie"
-        calendarupdate: "Bloquage de dates de stages"
+        calendarupdate: "Bloquage de périodes dans le calendrier"
         lesson:
-          one: "Stage"
-          other: "Stages"
+          one: "Réservation"
+          other: "Réservations"
       attributes:
         ceramique:
           name: "Nom"
@@ -41,7 +41,7 @@ en:
         category:
           name: "Nom"
         lesson:
-          start: "Début du stage"
+          start: "Début de la réservation"
           duration: "Durée en jours"
           user: "Client"
           confirmed: "Confirmé ?"
@@ -52,8 +52,8 @@ en:
   active_admin:
     models:
       calendarupdate:
-        one: "Bloquer des dates de stages"
-        other: "Bloquer des dates de stages"
+        one: "Bloquer des périodes dans le calendrier"
+        other: "Bloquer des périodes dans le calendrier"
     dashboard: Tableau de bord
     dashboard_welcome:
       welcome: "Welcome to Active Admin. This is the default dashboard page."
