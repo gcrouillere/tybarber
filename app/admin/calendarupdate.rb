@@ -1,7 +1,7 @@
 ActiveAdmin.register Calendarupdate do
   permit_params :period_start, :period_end
   actions  :index, :new, :create, :destroy, :show
-  menu :label => "Bloquer des périodes aux stages"
+  menu priority: 3
   config.filters = false
 
   form do |f|
@@ -46,7 +46,7 @@ ActiveAdmin.register Calendarupdate do
             day_checked += 1.day
           end
         else
-          flash[:alert] = "Impossible de bloquer la période : certains jours étaient déjà occupés par des stages confirmés"
+          flash[:alert] = "Impossible de bloquer la période : certains jours étaient déjà occupés par des réservations confirmées"
           redirect_to admin_calendarupdates_path and return
         end
       else

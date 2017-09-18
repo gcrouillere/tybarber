@@ -1,8 +1,8 @@
 <% content_for(:description) do %>
-Mes céramiques sont en grès rouge. Décor composé de couleurs variées avec un émail mat et satiné. A la surface, j‘alterne des espaces de terre brute et de parties engobées-émaillées. Ma production se compose de poteries utilitaires et de pièces uniques décoratives.
+Site de e-commerce configurable. Créez votre compte et visualisez votre futur site de vente en ligne de vos produits.
 <% end %>
 <% content_for(:title_tag) do %>
-  Céramiques Nugier - les céramiques et poteries en vente
+  Liste des produits à vendre
 <% end %>
 
 <div class="container">
@@ -80,8 +80,8 @@ Mes céramiques sont en grès rouge. Décor composé de couleurs variées avec u
   {
     "@context": "http://schema.org",
     "@type": "ArtGallery",
-    "name": "<%= ENV['NAME']%>",
-    "description": "Vente de céramiques et poteries artisanales. Liste des poteries et céramiques à vendre",
+    "name": "Les <%="#{ENV['MODEL']} de #{ENV['FIRSTNAME'].capitalize} #{ENV['LASTNAME'].capitalize}"%>",
+    "description": "Online craft store",
     "openingHours": "Mo-Fr 09:00-18:00",
     "telephone": "<%= ENV['TELEPHONE']%>",
     "url": "https://<%= ENV['APPNAME']%>.herokuapp.com/",

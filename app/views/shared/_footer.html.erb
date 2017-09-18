@@ -2,11 +2,11 @@
 <div class="hidden-xs">
   <div class="footer">
     <div class="contact">
-      <a href="https://www.google.fr/maps/place/Nugier+Ou%C3%A9l%C3%A9+Fran%C3%A7oise/@44.0317129,1.9493188,17z/data=!3m1!4b1!4m12!1m6!3m5!1s0x12adc8e2d56656af:0x1f5dba9c5af617a!2zTnVnaWVyIE91w6lsw6kgRnJhbsOnb2lzZQ!8m2!3d44.0317091!4d1.9515075!3m4!1s0x12adc8e2d56656af:0x1f5dba9c5af617a!8m2!3d44.0317091!4d1.9515075" target="blank"><i class="fa fa-map"></i></a>
+      <a href="https://www.google.fr/maps/place/<%=ENV['ADDRESS']%>" target="blank"><i class="fa fa-map"></i></a>
       <i class="fa fa-envelope-o"></i>
-      <h6 class="info-text">nugierfrancoise@yahoo.fr</h5>
+      <h6 class="info-text middle-text"><%=ENV['EMAIL']%></h5>
       <i class="fa fa-phone"></i>
-      <h6 class="info-text">05.63.56.12.00</h5>
+      <h6 class="info-text"><%=ENV['TELEPHONE']%></h5>
     </div>
   </div>
 </div>
@@ -16,15 +16,15 @@
   <div class="footer-mobile">
     <div class="contact">
       <div class="link">
-        <a href="https://www.google.fr/maps/place/Nugier+Ou%C3%A9l%C3%A9+Fran%C3%A7oise/@44.0317129,1.9493188,17z/data=!3m1!4b1!4m12!1m6!3m5!1s0x12adc8e2d56656af:0x1f5dba9c5af617a!2zTnVnaWVyIE91w6lsw6kgRnJhbsOnb2lzZQ!8m2!3d44.0317091!4d1.9515075!3m4!1s0x12adc8e2d56656af:0x1f5dba9c5af617a!8m2!3d44.0317091!4d1.9515075" target="blank"><i class="fa fa-map"></i></a>
+        <a href="https://www.google.fr/maps/place/<%=ENV['ADDRESS']%>" target="blank"><i class="fa fa-map"></i></a>
       </div>
       <div class="envelope">
         <i class="fa fa-envelope-o"></i>
-        <h6 class="info-text">nugierfrancoise@yahoo.fr</h5>
+        <h6 class="info-text"><%=ENV['EMAIL']%></h5>
       </div>
       <div class="phone">
         <i class="fa fa-phone"></i>
-        <h6 class="info-text">05.63.56.12.00</h5>
+        <h6 class="info-text"><%=ENV['TELEPHONE']%></h5>
       </div>
     </div>
   </div>

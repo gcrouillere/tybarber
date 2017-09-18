@@ -1,12 +1,14 @@
 ActiveAdmin.register Ceramique do
   permit_params :name, :description, :stock, :category_id, :price_cents, photos: []
-  menu :label => "Céramiques"
+  menu priority: 1
 
   index do
     column :name
     column :description
     column :stock
-    column :category_id
+    column "Categorie" do |ceramique|
+      ceramique.category.name
+    end
     column :price_cents
     actions
   end

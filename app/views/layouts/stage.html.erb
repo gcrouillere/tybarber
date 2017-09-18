@@ -32,6 +32,11 @@
   <body>
     <div class="body">
       <div class="hidden-xs body-stage">
+        <style>
+          .body-stage {
+            background-image: url("/assets/<%= ENV['STAGEPIC']%>");
+          }
+        </style>
         <%= render 'shared/navbar' %>
         <%= render 'shared/flashes' %>
         <div class="content">

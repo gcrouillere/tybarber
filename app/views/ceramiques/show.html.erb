@@ -1,8 +1,8 @@
 <% content_for(:description) do %>
-<%= @ceramique.name.capitalize %> en grès rouge. Décor avec un émail mat et satiné. Prix : <%= humanized_money(@ceramique.price)%> €. Livraison sous 3 semaines.
+<%= @ceramique.name.capitalize %>. Prix : <%= humanized_money(@ceramique.price)%> €. Livraison sous 3 semaines.
 <% end %>
 <% content_for(:title_tag) do %>
-  Céramiques Nugier - <%= @ceramique.name.capitalize %>
+Les <%="#{ENV['MODEL']} de #{ENV['FIRSTNAME'].capitalize} #{ENV['LASTNAME'].capitalize}"%> - <%= @ceramique.name.capitalize %>
 <% end %>
 
 <div class="container">
@@ -61,7 +61,7 @@
             <% end %>
           </div>
           <%= link_to ceramiques_path do %>
-            <span><i class="fa fa-arrow-right"></i> Liste des céramiques</span>
+            <span><i class="fa fa-arrow-right"></i> Liste des <%= ENV['MODEL'].capitalize%></span>
           <% end %>
         </div>
       </div>
@@ -123,7 +123,7 @@
 
         <div class="mobile-link">
           <%= link_to ceramiques_path do %>
-            <span><i class="fa fa-arrow-right"></i> Liste des céramiques</span>
+            <span><i class="fa fa-arrow-right"></i> Liste des <%= ENV['MODEL'].capitalize%></span>
           <% end %>
         </div>
 

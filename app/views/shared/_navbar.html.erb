@@ -2,7 +2,7 @@
 <div class="navbar-laptop hidden-xs hidden-sm">
   <!-- Logo -->
   <%= link_to root_path, class: "navbar-brand" do %>
-    <%= image_tag "logositefrancoise.png" %>
+    <%= image_tag ENV['LOGOSITE']%>
   <% end %>
 
   <!-- Different navigation if login or not -->
@@ -20,7 +20,7 @@
           <span><i class="fa fa-female"></i> Bio</span>
         <% end %>
         <%= link_to new_lesson_path do %>
-          <span><i class="fa fa-calendar-o"></i> Réserver un stage de poterie</span>
+          <span><i class="fa fa-calendar-o"></i> Réserver un stage</span>
         <% end %>
         <% if session[:order].present? %>
           <%= link_to order_path(Order.find(session[:order])) do %>
@@ -40,7 +40,7 @@
             <span><i class="fa fa-female"></i> Bio</span>
         <% end %>
         <%= link_to new_lesson_path do %>
-          <span><i class="fa fa-calendar-o"></i> Réserver un stage de poterie</span>
+          <span><i class="fa fa-calendar-o"></i> Réserver un stage</span>
         <% end %>
         <%= link_to new_user_session_path, class: "navbar-item navbar-link" do %>
           <span><i class="fa fa-sign-in"></i> Se connecter</span>
@@ -54,7 +54,7 @@
 <div class="navbar-mobile hidden-md hidden-lg">
  <!-- Logo -->
   <%= link_to root_path, class: "navbar-brand-mobile" do %>
-    <%= image_tag "logositefrancoise.png" %>
+    <%= image_tag ENV['LOGOSITE']%>
   <% end %>
 
   <div class="navbar-item">
@@ -63,7 +63,7 @@
         <li><span><i class="fa fa-female"></i> Bio</span></li>
       <% end %>
       <%= link_to new_lesson_path do %>
-        <span><i class="fa fa-calendar-o"></i> Stage </span>
+        <span><i class="fa fa-calendar-o"></i> Stage</span>
       <% end %>
       <% if user_signed_in? %>
         <% if session[:order].present? %>
