@@ -1,19 +1,18 @@
 Bonjour <%= @lesson.user.first_name %> <%= @lesson.user.last_name %>,
 
 <% if @lesson.confirmed %>
-<%= "Votre stage de poterie chez Françoise Nugier est annulé suite à un problème de capacité. Veuillez nous en excuser."%>
+<%= "Votre stage est annulé suite à un problème de capacité. Veuillez nous en excuser."%>
 
 <%= "Si vous aviez déjà payé les arrhes, ils vous seront remboursés."%>
 <% else %>
-<%= "Nous sommes désolés, mais nous ne pouvons accepter votre demande de stage de poterie, pour des raisons de capacité."%>
+<%= "Nous sommes désolés, mais nous ne pouvons accepter votre demande de stage, pour des raisons de capacité."%>
 
-<%= "Vous pourriez commencer votre stage à cette (ces) date(s) : #{@closest_start}. Veuillez effectuer une nouvelle demande sur le site : https://ceramiquesnuger.herokuapp.com/lesson/new"%>
+<%= "Vous pourriez commencer votre stage à cette (ces) date(s) : #{@closest_start}. Veuillez effectuer une nouvelle demande sur le site : https://#{ENV['APPNAME']}.herokuapp.com/lesson/new"%>
 
 <% end %>
 
 Cordialement
 
-Françoise Nugier
-
-email : nugierfrancoise@yahoo.fr
-téléphone : 05.63.56.12.00
+<%= "#{ENV['FIRSTNAME'].capitalize} #{ENV['LASTNAME'].capitalize}" %>
+email : <%= "#{ENV['EMAIL']}" %>
+téléphone : <%= "#{ENV['TELEPHONE']}" %>

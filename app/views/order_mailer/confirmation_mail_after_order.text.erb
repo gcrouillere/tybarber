@@ -5,7 +5,7 @@ Merci pour votre commande, elle va être expédiée. Voici le détail de cette c
 Référence de commande: <%= "#{@order.id}-#{Time.now.hour}#{Time.now.min}#{Time.now.day}#{Time.now.month}#{Time.now.year}" %>
 
 <% @order.basketlines.each do |basketline| %>
-  Céramique: <%= basketline.ceramique.name.capitalize %>
+  <%=ENV['MODEL'][0...-1]%>: <%= basketline.ceramique.name.capitalize %>
   Quantité: <%= basketline.quantity %>
   Total pour cet article: <%= humanized_money(basketline.ceramique.price * basketline.quantity) %> €
   <% if  %>
@@ -20,8 +20,6 @@ Adresse de livraison : <%= @user.adress %> - <%= @user.zip_code %> - <%= @user.c
 
 Cordialement
 
-Françoise Nugier
-
-email : nugierfrancoise@yahoo.fr
-téléphone : 05.63.56.12.00
-
+<%= "#{ENV['FIRSTNAME'].capitalize} #{ENV['LASTNAME'].capitalize}" %>
+email : <%= "#{ENV['EMAIL']}" %>
+téléphone : <%= "#{ENV['TELEPHONE']}" %>

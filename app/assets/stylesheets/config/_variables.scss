@@ -9,9 +9,9 @@ $header-font: "Raleway", "Helvetica", "sans-serif";
  * Colors
  * ------------------------------------- */
  //Main :
-$primary: #FFA240;
+$primary: #007B66;
+$navbar: #0FB79B;
 $body: #fbfbfb;
-$navbar: #FFC487;
 $footer: #141E30;
 $home-text-shadow: #333333;
 $home-font-color: white;
@@ -22,7 +22,10 @@ $link-laptop: black;
 $card-text: black;
 
 //Stages :
+$mobile-stage-background-gradient: linear-gradient(to right, #f0f2f0, #000c40);
 $stage-color-label: white;
+$backstagelink: #0FB79B;
+$backstagelinkhover: #FFB97A;
 $available-stage-background-color: #A6F7B0;
 
 //Bootstrap :

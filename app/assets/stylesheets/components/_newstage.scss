@@ -1,5 +1,4 @@
 .body-stage {
-  background-image: url('http://res.cloudinary.com/dbhsa0hgf/image/upload/v1504872064/stage_neq4cy.jpg');
   background-repeat: no-repeat;
   background-attachment: fixed;
   background-size: 100%;
@@ -25,7 +24,7 @@
 
 .body-stage-mobile {
   background: #e6dada;
-  background: linear-gradient(to right, #f0f2f0, #000c40);
+  background: $mobile-stage-background-gradient;
   .stage {
     margin: 10px;
     .submit-div-stage {

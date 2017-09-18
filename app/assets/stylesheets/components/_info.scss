@@ -3,8 +3,9 @@
   display: flex;
   margin-bottom: 30px;
 
-  .img-francoise {
-    // width: 100%;
+  .img-avatar {
+    width: 40%;
+    height: 40%;
     flex: 0 0 25%;
     border-radius: $project-border-radius;
     margin-right: 10px;
@@ -26,7 +27,7 @@
   border: $card-border;
   display: flex;
   margin-bottom: 30px;
-  .img-cordes {
+  .img-city {
     height: 200px;
   }
   #map {
@@ -50,13 +51,12 @@
   padding: $padding-small;
   border-radius: $project-border-radius;
   border: $card-border;
-  .img-francoise-mobile {
+  .img-avatar-mobile {
     position: absolute;
     border-radius: 50%;
-    top: 10px;
+    top: 12px;
     right: 12px;
-    height: 80px;
-    width: 80px;
+    height: 10%;
   }
   h4 {
     margin-top: 21px;
@@ -68,7 +68,7 @@
   border-radius: $project-border-radius;
   border: $card-border;
   margin-bottom: 20px;
-  .img-cordes-mobile {
+  .img-city-mobile {
     width: 100%;
   }
   #map-mobile {

@@ -15,7 +15,7 @@
 
         <div class="back-stage">
           <%= link_to ceramiques_path do %>
-            <span><i class="fa fa-arrow-right"></i> Liste des céramiques</span>
+            <span><i class="fa fa-arrow-right"></i> Liste des <%= ENV['MODEL'].capitalize%></span>
           <% end %>
         </div>
       </div>
@@ -29,7 +29,7 @@
 
         <div class="back-stage-mobile">
           <%= link_to ceramiques_path do %>
-            <span><i class="fa fa-arrow-right"></i> Liste des céramiques</span>
+            <span><i class="fa fa-arrow-right"></i> Liste des <%= ENV['MODEL'].capitalize%></span>
           <% end %>
         </div>
       </div>

@@ -1,17 +1,24 @@
 <% content_for(:description) do %>
-Vente de céramiques et poteries artisanales. Grandes pièces de grès rouge avec un décor en émail coloré, mat et satiné. Potière autodidacte puis formation à La Maison de la Céramique de Dieulefit en 2012. Ma production se compose de poteries utilitaires et de pièces uniques décoratives.
+Vendez vos produits en ligne ! Site de e-commerce configurable. Créez votre compte et visualisez votre futur site de vente en ligne de vos produits.
 <% end %>
 
-
 <div class="jumbotron">
+  <style>
+  .jumbotron .banner {
+  background-image: linear-gradient(135deg, rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url("/assets/<%= ENV['HOMEPIC']%>");
+  }
+  .jumbotron .banner-xs {
+  background-image: linear-gradient(135deg, rgba(0,0,0,0.7) 0%, rgba(0,0,0,0.4) 50%), url("/assets/<%= ENV['HOMEPICMOBILE']%>");
+  }
+  </style>
 
 <!-- LAPTOP -->
   <div class="hidden-xs">
     <div class="banner">
       <div class="banner-content">
-        <h1>Céramiques</h1>
-        <p>Françoise Nugier</p>
-        <%= link_to 'Voir les céramiques', ceramiques_path, class: "btn btn-primary btn-lg" %>
+        <h1><%= ENV['MODEL'].capitalize%></h1>
+        <p><%= "#{ENV['FIRSTNAME'].capitalize} #{ENV['LASTNAME'].capitalize}" %></p>
+        <%= link_to "Voir les #{ENV['MODEL']}", ceramiques_path, class: "btn btn-primary btn-lg" %>
       </div>
     </div>
   </div>
@@ -20,9 +27,9 @@ Vente de céramiques et poteries artisanales. Grandes pièces de grès rouge ave
   <div class="hidden-sm hidden-md hidden-lg">
     <div class="banner-xs">
       <div class="banner-content-xs">
-        <h1>Céramiques</h1>
-        <p>Françoise Nugier</p>
-        <%= link_to 'Voir les céramiques', ceramiques_path, class: "btn btn-primary" %>
+        <h1><%= ENV['MODEL'].capitalize%></h1>
+        <p><%= "#{ENV['FIRSTNAME'].capitalize} #{ENV['LASTNAME'].capitalize}" %></p>
+        <%= link_to "Voir les #{ENV['MODEL']}", ceramiques_path, class: "btn btn-primary" %>
       </div>
     </div>
   </div>
@@ -34,8 +41,8 @@ Vente de céramiques et poteries artisanales. Grandes pièces de grès rouge ave
   {
     "@context": "http://schema.org",
     "@type": "ArtGallery",
-    "name": "<%= ENV['NAME']%>",
-    "description": "Vente de céramiques et poteries artisanales. Liste des poteries et céramiques à vendre",
+    "name": "Les <%="#{ENV['MODEL']} de #{ENV['FIRSTNAME'].capitalize} #{ENV['LASTNAME'].capitalize}"%>",
+    "description": "Online craft store",
     "openingHours": "Mo-Fr 09:00-18:00",
     "telephone": "<%= ENV['TELEPHONE']%>",
     "url": "https://<%= ENV['APPNAME']%>.herokuapp.com/",

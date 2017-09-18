@@ -6,7 +6,9 @@ ActiveAdmin.register Ceramique do
     column :name
     column :description
     column :stock
-    column :category_id
+    column "Categorie" do |ceramique|
+      ceramique.category.name
+    end
     column :price_cents
     actions
   end

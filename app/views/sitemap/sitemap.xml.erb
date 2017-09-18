@@ -22,7 +22,7 @@
   <url>
     <loc>https://<%=ENV['APPNAME']%>.herokuapp.com/info</loc>
     <image:image>
-      <image:loc>https://<%=ENV['APPNAME']%>.herokuapp.com/assets/<%=ENV['HOMEPIC']%></image:loc>
+      <image:loc>https://<%=ENV['APPNAME']%>.herokuapp.com/assets/<%=ENV['AVATAR']%></image:loc>
     </image:image>
     <lastmod><%= Time.now %></lastmod>
     <changefreq>yearly</changefreq>
@@ -30,6 +30,9 @@
   </url>
     <url>
       <loc>https://<%=ENV['APPNAME']%>.herokuapp.com/lessons/new</loc>
+      <image:image>
+        <image:loc>https://<%=ENV['APPNAME']%>.herokuapp.com/assets/<%=ENV['STAGEPIC']%></image:loc>
+      </image:image>
       <lastmod><%= Time.now %></lastmod>
       <changefreq>monthly</changefreq>
       <priority>0.9</priority>

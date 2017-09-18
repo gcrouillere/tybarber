@@ -8,26 +8,33 @@
     background-color: $footer;
     display: flex;
     align-items: center;
-    color: $primary;
+    color: $navbar;
     font-size: $font-size-footer-icone;
     a {
       margin-left: 30px;
+      color: $navbar;
     }
     i {
+      color: $navbar;
       margin-right: 20px;
       &:hover {
       font-size: larger;
+      }
     }
+    h6 {
+      color: $navbar;
+      .middle-text {
+        margin-right: 10px !important;
+      }
     }
     .info-text {
-      margin-right: 0px !important;
       width: 0px;
       transition: width ease 0.2s;
       visibility: hidden;
     }
 
     .info-text.visible {
-      width: 200px;
+      width: 100%;
       outline: none;
       visibility: visible;
       margin-right: 20px;
@@ -42,8 +49,11 @@
 
   .contact {
     background-color: $footer;
-    color: $primary;
+    color: $navbar;
     font-size: $font-size-footer-icone;
+    i {
+    color: $navbar;
+    }
     .link {
       margin-top: 10px;
       margin-left: 20px;
@@ -53,12 +63,10 @@
       align-items: center;
 
       .info-text {
-        margin-right: 0px !important;
         width: 0px;
-        width: 0px;
+        margin: 0px;
         transition: width ease 0.2s;
         visibility: hidden;
-        margin: 0px;
       }
 
       .info-text.visible {
