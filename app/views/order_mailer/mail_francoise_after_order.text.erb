@@ -7,7 +7,7 @@ Référence de commande: <%= "#{@order.id}-#{Time.now.hour}#{Time.now.min}#{Time
 Client: <%= @user.first_name %> <%= @user.last_name %> - <%= @user.email %>
 
 <% @order.basketlines.each do |basketline| %>
-  <%=ENV['MODEL'][0...-1]%>: <%= basketline.ceramique.name.capitalize %>
+  <%=ENV['MODEL'][0...-1].capitalize%>: <%= basketline.ceramique.name.capitalize %>
   Quantité: <%= basketline.quantity %>
   Total pour cet article: <%= humanized_money(basketline.ceramique.price * basketline.quantity) %> €
   <% if  %>
