@@ -32,9 +32,9 @@ Moduel de prise de réservations. Offrez la possibilité à vos clients d'effect
         <% end %>
         <div class="wrapper">
           <div class="texte">
-            <p><strong>Stage de poterie: </strong>Dans un cadre privilégié, au coeur du vignoble Gaillacois, je vous propose de confectionner vos objets culinaires : du bol à l’assiette, en passant par l’écuelle, la louche, le pichet... Nous pourrons aller jusqu’à la cassolette, le mug, la chope...</p>
-            <p><strong>Pendant le stage, vous apprenez ou perfectionnez les techniques suivantes: </strong>travail dans la masse (assemblage de plaques, mélanges d’estampage et de colombin), travail des surfaces (texture, empreintes engobe et décor aux oxydes et colorants). Vous travaillez un grés biscuité et cuit à 1200°.</p>
-            <p> <strong>Hébergements et repas:</strong> Possibles sur place. Dans la plus grande convivialité, repas pris en commun sous la tonnelle.</p>
+            <p><strong>Programme du stage : </strong>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam condimentum dolor ut vulputate tincidunt. Integer et purus et nisl eleifend semper eu sed turpis. Proin dignissim rutrum turpis. Sed quis volutpat dolor, a blandit risus. Phasellus vestibulum sit amet quam vitae tristique. Morbi rutrum leo ut porttitor gravida. Maecenas id vulputate nunc. Pellentesque quis auctor mi.</p>
+            <p><strong>Pendant le stage, vous apprenez ou perfectionnez les techniques suivantes: </strong>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam condimentum dolor ut vulputate tincidunt. Integer et purus et nisl eleifend semper eu sed turpis. Proin dignissim rutrum turpis.</p>
+            <p> <strong>Hébergements et repas:</strong> Sed quis volutpat dolor, a blandit risus. Phasellus vestibulum sit amet quam vitae tristique. Morbi rutrum leo ut porttitor gravida. Maecenas id vulputate nunc. Pellentesque quis auctor mi.</p>
             <p><strong>Prix: </strong>Les stages se déroulent sur 2 ou 5 jours, pour 2 à 6 personnes maximum. 2 jours: 150€/pers, 5 jours : 380€/pers. Ces prix ne comprennent pas l'hébergement ni les repas.</p>
             <p><strong>Confirmation: </strong> Quand votre demande de stage sera traitée, vous recevrez une confirmation par mail. Vous devrez ensuite payer les arrhes pour valider définitivement votre participation.</p>
           </div>
@@ -66,11 +66,11 @@ Moduel de prise de réservations. Offrez la possibilité à vos clients d'effect
         <% end %>
         <div class="wrapper">
           <div class="texte">
-            <p><strong>Stage de poterie: </strong>Dans un cadre privilégié, au coeur du vignoble Gaillacois, je vous propose de confectionner vos objets culinaires : du bol à l’assiette, en passant par l’écuelle, la louche, le pichet... Nous pourrons aller jusqu’à la cassolette, le mug, la chope...</p>
-            <p><strong>Vous apprenez ou perfectionnez les techniques suivantes: </strong>travail dans la masse (assemblage de plaques, mélanges d’estampage et de colombin), travail des surfaces (texture, empreintes engobe et décor aux oxydes et colorants). Vous travaillez un grés biscuité et cuit à 1200°.</p>
-            <p> <strong>Hébergements et repas:</strong> Possibles sur place. Dans la plus grande convivialité, repas pris en commun sous la tonnelle.</p>
+            <p><strong>Programme du stage : </strong>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam condimentum dolor ut vulputate tincidunt. Integer et purus et nisl eleifend semper eu sed turpis. Proin dignissim rutrum turpis. Sed quis volutpat dolor, a blandit risus. Phasellus vestibulum sit amet quam vitae tristique. Morbi rutrum leo ut porttitor gravida. Maecenas id vulputate nunc. Pellentesque quis auctor mi.</p>
+            <p><strong>Pendant le stage, vous apprenez ou perfectionnez les techniques suivantes: </strong>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam condimentum dolor ut vulputate tincidunt. Integer et purus et nisl eleifend semper eu sed turpis. Proin dignissim rutrum turpis.</p>
+            <p> <strong>Hébergements et repas:</strong> Sed quis volutpat dolor, a blandit risus. Phasellus vestibulum sit amet quam vitae tristique. Morbi rutrum leo ut porttitor gravida. Maecenas id vulputate nunc. Pellentesque quis auctor mi.</p>
             <p><strong>Prix: </strong>Les stages se déroulent sur 2 ou 5 jours, pour 2 à 6 personnes maximum. 2 jours: 150€/pers, 5 jours : 380€/pers. Ces prix ne comprennent pas l'hébergement ni les repas.</p>
-            <p><strong>Confirmation: </strong> Quand votre demande de réservation sera traitée, vous recevrez une confirmation par mail. Vous devrez ensuite payer les arrhes pour valider définitivement votre participation.</p>
+            <p><strong>Confirmation: </strong> Quand votre demande de stage sera traitée, vous recevrez une confirmation par mail. Vous devrez ensuite payer les arrhes pour valider définitivement votre participation.</p>
           </div>
         </div>
         </div>
@@ -83,11 +83,6 @@ Moduel de prise de réservations. Offrez la possibilité à vos clients d'effect
   <script>
     $(document).on('ready', function() {
 
-      $('body').on('click', function(event) {
-      $('.tooltip-inner').remove();
-      $('.tooltip-arrow').remove();
-      });
-
       var confirmed_course_js_format = <%= raw @confirmed_course_js_format%>
 
       $('#datetimepicker1').datetimepicker({
@@ -96,6 +91,8 @@ Moduel de prise de réservations. Offrez la possibilité à vos clients d'effect
         minDate: Date.now(),
         locale: moment.locale('fr')
         }).on('dp.show dp.change dp.update', function () {
+          $('.tooltip-inner').remove();
+          $('.tooltip-arrow').remove();
 
           $('[data-day]').each(function(){
             $(this).addClass('current-data-day');
