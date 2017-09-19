@@ -85,7 +85,7 @@ Rails.application.configure do
   # Do not dump schema after migrations.
   config.active_record.dump_schema_after_migration = false
 
-  config.action_mailer.default_url_options = { host: ENV['APPNAME']+'.herokuapp.com' }
+  config.action_mailer.default_url_options = { host: 'ecommercebase.herokuapp.com' }
 
   ActionMailer::Base.smtp_settings = {
     :address        => 'smtp.sendgrid.net',
@@ -93,12 +93,12 @@ Rails.application.configure do
     :authentication => :plain,
     :user_name      => ENV['SENDGRID_USERNAME'],
     :password       => ENV['SENDGRID_PASSWORD'],
-    :domain         => ENV['APPNAME']+'.herokuapp.com',
+    :domain         => 'ecommercebase.herokuapp.com',
     :enable_starttls_auto => true
   }
 
   Dynopoker.configure do |config|
-    config.address = 'https://'+ENV['APPNAME']+'.herokuapp.com'
+    config.address = 'https://ecommercebase.herokuapp.com'
     config.poke_frequency = 600 # default is 1800s (30min)
   #  config.enable = false # default is true
   end
