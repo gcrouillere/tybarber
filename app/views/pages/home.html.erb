@@ -5,10 +5,10 @@ Vendez vos produits en ligne ! Site de e-commerce configurable. Créez votre com
 <div class="jumbotron">
   <style>
   .jumbotron .banner {
-  background-image: linear-gradient(135deg, rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url("/assets/<%= ENV['HOMEPIC']%>");
+  background-image: linear-gradient(135deg, rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url(<%= image_path ENV['HOMEPIC']%>);
   }
   .jumbotron .banner-xs {
-  background-image: linear-gradient(135deg, rgba(0,0,0,0.7) 0%, rgba(0,0,0,0.4) 50%), url("/assets/<%= ENV['HOMEPICMOBILE']%>");
+  background-image: linear-gradient(135deg, rgba(0,0,0,0.7) 0%, rgba(0,0,0,0.4) 50%), url(<%= image_path ENV['HOMEPICMOBILE']%>);
   }
   </style>
 
