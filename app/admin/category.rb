@@ -13,19 +13,19 @@ ActiveAdmin.register Category do
   controller do
     def create
       super do |format|
-        redirect_to admin_ceramiques_path and return if resource.valid?
+        redirect_to admin_produits_path and return if resource.valid?
       end
     end
 
     def update
       super do |format|
-        redirect_to admin_ceramiques_path and return if resource.valid?
+        redirect_to admin_produits_path and return if resource.valid?
       end
     end
 
     def destroy
       super do |format|
-        redirect_to admin_ceramiques_path and return if resource.valid?
+        redirect_to admin_produits_path and return if resource.valid?
       end
     end
   end

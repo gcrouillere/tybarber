@@ -3,7 +3,11 @@ Rails.application.routes.draw do
   devise_for :users, :controllers => {:registrations => "app_specific_registration/registrations"}
   mount Attachinary::Engine => "/attachinary"
 
-  resources :ceramiques, only: [:create, :index, :destroy, :show]
+  # resources :ceramiques, only: [:create, :index, :destroy, :show]
+  scope do
+    resources :ceramiques, path: 'produits', only: [:create, :index, :destroy, :show]
+  end
+
   resources :orders, only: [:show, :create, :destroy] do
     resources :payments, only: [:new, :create]
   end
