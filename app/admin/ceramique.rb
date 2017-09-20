@@ -46,16 +46,23 @@ show do |ceramique|
  controller do
 
     def create
-      super do |format|
-        redirect_to admin_produits_path and return if resource.valid?
-      end
+    super do |format|
+      redirect_to admin_guns_path and return if resource.valid?
     end
+  end
 
-    def update
-      super do |format|
-        redirect_to admin_produits_path and return if resource.valid?
-      end
+  def destroy
+    flash[:notice] = "#{ENV['MODEL'][0...-1].capitalize} supprimé"
+    super do |format|
+      redirect_to admin_guns_path and return
     end
+  end
+
+  def update
+    super do |format|
+      redirect_to admin_guns_path and return if resource.valid?
+    end
+  end
 
   end
 

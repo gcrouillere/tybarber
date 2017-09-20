@@ -11,6 +11,12 @@ ActiveAdmin.register Category do
 
   controller do
 
+   def create
+      super do |format|
+        redirect_to admin_categories_path and return if resource.valid?
+      end
+    end
+
     def destroy
       category = Category.find(params[:id].to_i)
       ceramiques = category.ceramiques.size
@@ -28,6 +34,7 @@ ActiveAdmin.register Category do
         redirect_to admin_categories_path and return if resource.valid?
       end
     end
+
   end
 
 end
