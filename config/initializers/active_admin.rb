@@ -116,7 +116,7 @@ ActiveAdmin.setup do |config|
   # roots for each namespace.
   #
   # Default:
-  config.root_to = 'ceramiques#index'
+  config.root_to = ENV['MODEL']+'#index'
 
   # == Admin Comments
   #
