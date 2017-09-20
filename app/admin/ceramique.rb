@@ -42,6 +42,7 @@ show do |ceramique|
  end
 
  controller do
+
     def create
       super do |format|
         redirect_to admin_produits_path and return if resource.valid?
@@ -54,11 +55,6 @@ show do |ceramique|
       end
     end
 
-     def destroy
-      super do |format|
-        redirect_to admin_produits_path and return if resource.valid?
-      end
-    end
   end
 
 end
