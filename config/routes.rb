@@ -5,7 +5,7 @@ Rails.application.routes.draw do
 
   # resources :ceramiques, only: [:create, :index, :destroy, :show]
   scope do
-    resources :ceramiques, path: 'produits', only: [:create, :index, :destroy, :show]
+    resources :ceramiques, path: ENV['MODEL'], only: [:create, :index, :destroy, :show]
   end
 
   resources :orders, only: [:show, :create, :destroy] do
