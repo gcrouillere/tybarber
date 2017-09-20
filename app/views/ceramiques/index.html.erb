@@ -12,7 +12,7 @@ Site de e-commerce configurable. Créez votre compte et visualisez votre futur s
     <div class="hidden-xs hidden-sm col-md-3">
       <div class="ceramique-filters-content">
         <h4>Rechercher</h4>
-        <form action="/ceramiques" method='get'>
+        <form action="/<%=ENV['MODEL']%>" method='get'>
           <div class="category-filter filter">
             <h5>Categories</h5>
             <div class="filter-category">

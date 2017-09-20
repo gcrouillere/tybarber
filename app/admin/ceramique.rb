@@ -31,7 +31,9 @@ show do |ceramique|
     row :name
     row :description
     row :stock
-    row :category
+    row "Categorie" do |ceramique|
+      ceramique.category.name
+    end
     row :price_cents
     row :images do |ceramique|
       ceramique.photos.each do |photo|
