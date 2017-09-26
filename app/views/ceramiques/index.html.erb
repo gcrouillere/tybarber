@@ -39,7 +39,7 @@ Site de e-commerce configurable. Créez votre compte et visualisez votre futur s
             <%= link_to ceramique_path(ceramique), class: "cardlink" do %>
               <div class="ceramiquecard">
                 <div class="img-container">
-                  <% if ceramique.photos[0].height > ceramique.photos[0].width %>
+                  <% if ceramique.photos[0].height >= ceramique.photos[0].width %>
                     <%= cl_image_tag(cl_image_path(ceramique.photos[0].path, :width => 285, :height => 285, :crop => :fit), class: "img-resized") %>
                   <% else %>
                     <img class="img" src="<%= cl_image_path ceramique.photos[0].path %>">

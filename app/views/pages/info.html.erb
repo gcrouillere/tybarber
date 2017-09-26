@@ -54,35 +54,61 @@ Vendez vos produits en ligne ! Site de e-commerce configurable. Affichez sur cet
 <% content_for(:after_js) do %>
   <script>
     $(document).ready(function() {
-      var handler1 = Gmaps.build('Google');
-      var infowindowtext = "<%= "Les #{ENV['MODEL']} de #{ENV['FIRSTNAME'].capitalize} #{ENV['LASTNAME'].capitalize}" %>"
-      lat = <%= ENV['LAT'].to_f%>;
-      lng = <%= ENV['LNG'].to_f%>;
-      handler1.buildMap({ provider: {}, internal: {id: 'map'}}, function(){
-        markers = handler1.addMarkers([
-          {
-            "lat": lat,
-            "lng": lng,
-            "infowindow": infowindowtext
-          }
-        ]);
-        handler1.bounds.extendWith(markers);
-        handler1.getMap().setCenter({lat: lat, lng: lng});
-        handler1.getMap().setZoom(6);
-      });
+      // LAPTOP GEOLOC - be aware chrome >= 50 requires https for geolocation to work
+      if (navigator.geolocation) {
+        var handler1 = Gmaps.build('Google');
+        handler1.buildMap({ internal: {id: 'map'} }, function(){
+          navigator.geolocation.getCurrentPosition(displayOnMapShared);
+        });
+      } else {
+        geolocByIp('map');
+      }
 
-      var handler = Gmaps.build('Google');
-      handler.buildMap({ provider: {}, internal: {id: 'map-mobile'}}, function(){
-        markers = handler.addMarkers([
-          {
-            "lat": <%= ENV['LAT'].to_f%>,
-            "lng": <%= ENV['LNG'].to_f%>
+      // MOBILE GEOLOC - be aware chrome >= 50 requires https for geolocation to work
+      var handler2 = Gmaps.build('Google');
+      if (navigator.geolocation) {
+        handler2.buildMap({ internal: {id: 'map-mobile'} }, function(){
+          navigator.geolocation.getCurrentPosition(displayOnMapShared);
+        });
+      } else {
+        geolocByIp('map-mobile')
+      }
+
+      // if user shares location
+      function displayOnMapShared(position){
+        var marker1 = handler1.addMarker({
+          lat: position.coords.latitude,
+          lng: position.coords.longitude
+        });
+        handler1.map.centerOn(marker1);
+
+        var marker2 = handler2.addMarker({
+          lat: position.coords.latitude,
+          lng: position.coords.longitude
+        });
+        handler2.map.centerOn(marker2);
+      };
+
+      // if not
+      function geolocByIp(mapid){
+        $.ajax({
+          type: 'GET',
+          url: 'http://freegeoip.net/json/',
+          success: function(response) {
+            var map = new google.maps.Map(document.getElementById(mapid), {
+              zoom: 7,
+              center: {lat: response.latitude, lng: response.longitude}
+            });
+            marker = new google.maps.Marker({
+            position: new google.maps.LatLng(response.latitude,response.longitude),
+            map: map
+            });
+          },
+          error: function() {
+            console.log('error');
           }
-        ]);
-        handler.bounds.extendWith(markers);
-        handler.getMap().setCenter({lat: lat, lng: lng});
-        handler.getMap().setZoom(6);
-      });
+        });
+      };
     });
   </script>
   <script type="application/ld+json">
