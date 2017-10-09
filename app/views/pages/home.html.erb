@@ -1,6 +1,9 @@
 <% content_for(:description) do %>
 Vendez vos produits en ligne ! Site de e-commerce configurable. Créez votre compte et visualisez votre futur site de vente en ligne de vos produits.
 <% end %>
+<% content_for(:title_tag) do %>
+  Vente de <%=ENV['MODEL']%> - <%=ENV['FIRSTNAME']%> <%=ENV['LASTNAME'] %>
+<% end %>
 
 <div class="jumbotron">
   <style>
@@ -34,6 +37,27 @@ Vendez vos produits en ligne ! Site de e-commerce configurable. Créez votre com
     </div>
   </div>
 
+</div>
+
+<div class="home-text hidden-xs hidden-sm">
+  <div class="text">
+    <div class="text-left">
+      <div class="title-text-left">
+      <%= image_tag ENV['LOGOSITE'], alt: "Logo pour #{ENV['FIRSTNAME'].capitalize} #{ENV['LASTNAME'].capitalize} - #{ENV['MODEL']}" %>
+      <h2> <%= ENV['FIRSTNAME'].capitalize%> <%= ENV['LASTNAME'].capitalize %>, créateur de <%= ENV['MODEL']%></h2>
+      </div>
+      <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam condimentum dolor ut vulputate tincidunt. Integer et purus et nisl eleifend semper eu sed turpis. Proin dignissim rutrum turpis. Sed quis volutpat dolor, a blandit risus. Maecenas in semper purus, semper hendrerit est. Proin vel ante ac ex iaculis condimentum. Nunc elementum ac tellus non consequat</p>
+    </div>
+    <div class="text-right">
+      <h2>Création de <%=ENV['MODEL']%></h2>
+      <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam condimentum dolor ut vulputate tincidunt. Integer et purus et nisl eleifend semper eu sed turpis. Proin dignissim rutrum turpis. Sed quis volutpat dolor, a blandit risus. Maecenas in semper purus, semper hendrerit est. Proin vel ante ac ex iaculis condimentum. Nunc elementum ac tellus non consequat</p>
+      <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam condimentum dolor ut vulputate tincidunt. Integer et purus et nisl eleifend semper eu sed turpis. Proin dignissim rutrum turpis. Sed quis volutpat dolor, a blandit risus. Maecenas in semper purus, semper hendrerit est. Proin vel ante ac ex iaculis condimentum. Nunc elementum ac tellus non consequat</p>
+      <h2>De la pièce unique à l'objet du quotidien</h2>
+      <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam condimentum dolor ut vulputate tincidunt. Integer et purus et nisl eleifend semper eu sed turpis. Proin dignissim rutrum turpis. Sed quis volutpat dolor, a blandit risus. Maecenas in semper purus, semper hendrerit est. Proin vel ante ac ex iaculis condimentum. Nunc elementum ac tellus non consequat</p>
+      <h2>Stages de <%=ENV['MODEL']%></h2>
+      <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam condimentum dolor ut vulputate tincidunt. Integer et purus et nisl eleifend semper eu sed turpis. Proin dignissim rutrum turpis. Sed quis volutpat dolor, a blandit risus. Maecenas in semper purus, semper hendrerit est. Proin vel ante ac ex iaculis condimentum. Nunc elementum ac tellus non consequat</p>
+      </div>
+    </div>
 </div>
 
 <% content_for(:after_js) do %>

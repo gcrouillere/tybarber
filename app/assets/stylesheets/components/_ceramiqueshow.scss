@@ -23,16 +23,23 @@
       border-radius: $project-border-radius;
       border: $card-border;
       width: 100%;
-      h4.description {
+      h1 {
+        margin: 10px 0px 20px 0px;
+        font-size: $font-size-h3;
+        font-weight: 500;
+      }
+      p.description {
         margin-top: 20px;
         margin-bottom: 35px;
         margin-left: 10px;
         font-weight: $font-weight-h4;
+        font-size: $font-size-h4;
       }
       .prix-form {
-        h4 {
+        h2 {
           margin-bottom: 20px;
           margin-left: 10px;
+          font-size: $font-size-h4;
         }
         .form {
           display: flex;
@@ -87,8 +94,10 @@
         width: 100%;
       }
     }
-    h3 {
+    h1 {
       margin-left: 15px;
+      font-size:$font-size-h3;
+      margin: 10px 0px 20px 15px;
     }
   }
   .other-imgs.other-mobile {
@@ -116,16 +125,19 @@
       border-radius: $project-border-radius;
       border: $card-border;
       width: 100%;
-      h4.description {
+       p.description {
         margin-top: 20px;
         margin-bottom: 20px;
         margin-left: 10px;
+        font-size: $font-size-h4;
+        font-weight: $font-weight-p;
       }
       .prix-form {
-        h4 {
+        h2 {
           margin-top: 0px;
           margin-bottom: 10px;
           margin-left: 10px;
+          font-size: $font-size-h4;
         }
         .form {
           display: flex;

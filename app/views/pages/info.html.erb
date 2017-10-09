@@ -11,16 +11,20 @@ Vendez vos produits en ligne ! Site de e-commerce configurable. Affichez sur cet
   <!-- LAPTOP -->
     <div class="hidden-xs hidden-sm col-sm-12">
       <div class="wrapper">
-        <%= image_tag ENV['AVATAR'], class: "img-avatar"%>
+        <%= image_tag ENV['AVATAR'], alt: "#{ENV['FIRSTNAME'].capitalize} #{ENV['LASTNAME'].capitalize} créateur de #{ENV['MODEL']}" ,class: "img-avatar"%>
         <div class="texte">
-          <h4><%= "#{ENV['FIRSTNAME'].capitalize} #{ENV['LASTNAME'].capitalize}"%></h4>
-          <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam condimentum dolor ut vulputate tincidunt. Integer et purus et nisl eleifend semper eu sed turpis. Proin dignissim rutrum turpis. Sed quis volutpat dolor, a blandit risus. Maecenas in semper purus, semper hendrerit est. Proin vel ante ac ex iaculis condimentum. Nunc elementum ac tellus non consequat. In tempor est quis arcu hendrerit ultricies. Ut accumsan lacus a nunc mattis, a congue magna eleifend. Phasellus vestibulum sit amet quam vitae tristique. Morbi rutrum leo ut porttitor gravida. Maecenas id vulputate nunc. Pellentesque quis auctor mi.</p>
-          <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam condimentum dolor ut vulputate tincidunt. Integer et purus et nisl eleifend semper eu sed turpis. Proin dignissim rutrum turpis. Sed quis volutpat dolor, a blandit risus. Phasellus vestibulum sit amet quam vitae tristique. Morbi rutrum leo ut porttitor gravida. Maecenas id vulputate nunc. Pellentesque quis auctor mi.</p>
+          <h1><%= "#{ENV['FIRSTNAME'].capitalize} #{ENV['LASTNAME'].capitalize} créateur de #{ENV['MODEL']}"%></h1>
+          <h2>Ma technique de fabrication des <%= ENV['MODEL']%></h2>
+          <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam condimentum dolor ut vulputate tincidunt. Integer et purus et nisl eleifend semper eu sed turpis.</p>
+          <h2>Le décor des <%=ENV['MODEL']%></h2>
+          <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam condimentum dolor ut vulputate tincidunt. Integer et purus et nisl eleifend semper eu sed turpis. Proin dignissim rutrum turpis. Sed quis volutpat dolor, a blandit risus.</p>
+          <h2>Mes créations</h2>
+          <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam condimentum dolor ut vulputate tincidunt. Integer et purus et nisl eleifend semper eu sed turpis. Proin dignissim rutrum turpis. Sed quis volutpat dolor, a blandit risus.</p>
         </div>
       </div>
 
       <div class="localisation">
-        <%= image_tag ENV['CITY'], class: "img-city"%>
+        <%= image_tag ENV['CITY'], alt: "#{ENV['ADDRESS']}, localisation de l'atelier de #{ENV['FIRSTNAME'].capitalize} #{ENV['LASTNAME'].capitalize}", class: "img-city"%>
         <div id="map"></div>
       </div>
 
@@ -32,7 +36,7 @@ Vendez vos produits en ligne ! Site de e-commerce configurable. Affichez sur cet
   <!-- MOBILE -->
    <div class="col-xs-12 hidden-md hidden-lg mobile-info">
       <div class="wrapper-mobile">
-        <%= image_tag ENV['AVATAR'], class: "img-avatar-mobile"%>
+        <%= image_tag ENV['AVATAR'], alt: "#{ENV['FIRSTNAME'].capitalize} #{ENV['LASTNAME'].capitalize} créateur de #{ENV['MODEL']}", class: "img-avatar-mobile"%>
         <h4><%= "#{ENV['FIRSTNAME'].capitalize} #{ENV['LASTNAME'].capitalize}"%></h4>
         <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam condimentum dolor ut vulputate tincidunt. Integer et purus et nisl eleifend semper eu sed turpis. Proin dignissim rutrum turpis. Sed quis volutpat dolor, a blandit risus. Maecenas in semper purus, semper hendrerit est. Proin vel ante ac ex iaculis condimentum. Nunc elementum ac tellus non consequat. In tempor est quis arcu hendrerit ultricies. Ut accumsan lacus a nunc mattis, a congue magna eleifend. Phasellus vestibulum sit amet quam vitae tristique. Morbi rutrum leo ut porttitor gravida. Maecenas id vulputate nunc. Pellentesque quis auctor mi.</p>
         <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam condimentum dolor ut vulputate tincidunt. Integer et purus et nisl eleifend semper eu sed turpis. Proin dignissim rutrum turpis. Sed quis volutpat dolor, a blandit risus. Phasellus vestibulum sit amet quam vitae tristique. Morbi rutrum leo ut porttitor gravida. Maecenas id vulputate nunc. Pellentesque quis auctor mi.</p>
@@ -40,7 +44,7 @@ Vendez vos produits en ligne ! Site de e-commerce configurable. Affichez sur cet
 
       <div class="localisation-mobile">
         <div id="map-mobile"></div>
-        <%= image_tag ENV['CITY'], class: "img-city-mobile"%>
+        <%= image_tag ENV['CITY'], alt: "#{ENV['ADDRESS']}, localisation de l'atelier de #{ENV['FIRSTNAME'].capitalize} #{ENV['LASTNAME'].capitalize}", class: "img-city-mobile"%>
       </div>
 
       <%= link_to ceramiques_path, class: "back-in-home-mobile" do %>
@@ -53,62 +57,33 @@ Vendez vos produits en ligne ! Site de e-commerce configurable. Affichez sur cet
 
 <% content_for(:after_js) do %>
   <script>
-    $(document).ready(function() {
-      // LAPTOP GEOLOC - be aware chrome >= 50 requires https for geolocation to work
-      if (navigator.geolocation) {
-        var handler1 = Gmaps.build('Google');
-        handler1.buildMap({ internal: {id: 'map'} }, function(){
-          navigator.geolocation.getCurrentPosition(displayOnMapShared);
-        });
-      } else {
-        geolocByIp('map');
-      }
-
-      // MOBILE GEOLOC - be aware chrome >= 50 requires https for geolocation to work
-      var handler2 = Gmaps.build('Google');
-      if (navigator.geolocation) {
-        handler2.buildMap({ internal: {id: 'map-mobile'} }, function(){
-          navigator.geolocation.getCurrentPosition(displayOnMapShared);
-        });
-      } else {
-        geolocByIp('map-mobile')
-      }
-
-      // if user shares location
-      function displayOnMapShared(position){
-        var marker1 = handler1.addMarker({
-          lat: position.coords.latitude,
-          lng: position.coords.longitude
-        });
-        handler1.map.centerOn(marker1);
-
-        var marker2 = handler2.addMarker({
-          lat: position.coords.latitude,
-          lng: position.coords.longitude
-        });
-        handler2.map.centerOn(marker2);
-      };
-
-      // if not
-      function geolocByIp(mapid){
-        $.ajax({
-          type: 'GET',
-          url: 'http://freegeoip.net/json/',
-          success: function(response) {
-            var map = new google.maps.Map(document.getElementById(mapid), {
-              zoom: 7,
-              center: {lat: response.latitude, lng: response.longitude}
-            });
-            marker = new google.maps.Marker({
-            position: new google.maps.LatLng(response.latitude,response.longitude),
-            map: map
-            });
-          },
-          error: function() {
-            console.log('error');
+   $(document).ready(function() {
+      var handler1 = Gmaps.build('Google');
+      handler1.buildMap({internal: {id: 'map'}}, function(){
+        markers1 = handler1.addMarkers([
+          {
+            lat: <%= ENV['LAT'].to_f %>,
+            lng: <%= ENV['LNG'].to_f %>,
+            infowindow: "<%= "Les #{ENV['MODEL']} de #{ENV['FIRSTNAME'].capitalize} #{ENV['LASTNAME'].capitalize}"%>"
           }
-        });
-      };
+        ]);
+        handler1.bounds.extendWith(markers1);
+        handler1.getMap().setCenter({lat: <%= ENV['LAT'].to_f %>, lng: <%= ENV['LNG'].to_f %>});
+        handler1.getMap().setZoom(6);
+      });
+
+      var handler = Gmaps.build('Google');
+      handler.buildMap({internal: {id: 'map-mobile'}}, function(){
+        marker = handler.addMarkers([
+          {
+            lat: <%= ENV['LAT'].to_f %>,
+            lng: <%= ENV['LNG'].to_f %>
+          }
+        ]);
+        handler.bounds.extendWith(marker);
+        handler.getMap().setCenter({lat: <%= ENV['LAT'].to_f %>, lng: <%= ENV['LNG'].to_f %>});
+        handler.getMap().setZoom(6);
+      });
     });
   </script>
   <script type="application/ld+json">

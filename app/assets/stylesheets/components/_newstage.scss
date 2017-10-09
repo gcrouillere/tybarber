@@ -10,10 +10,22 @@
     align-items: center;
     justify-content: center;
   }
-  p {
-    font-weight: $font-weight-p;
-      strong {
-        font-weight: $font-weight-p-strong;
+  .texte-stage {
+    margin-top: 20px;
+    margin-bottom: 10px;
+    background: $card-background;
+    padding: $padding-large;
+    border-radius: $project-border-radius;
+    border: $card-border;
+    h1 {
+      font-size: $font-size-h4;
+      margin: 11px 0px 20px 0px !important;
+    }
+    p {
+      font-weight: $font-weight-p;
+        strong {
+          font-weight: $font-weight-p-strong;
+      }
     }
   }
 }
@@ -32,10 +44,22 @@
       align-items: center;
       justify-content: center;
     }
-    p {
-      font-weight: $font-weight-p;
-      strong {
-        font-weight: $font-weight-p-strong;
+    .texte-stage {
+      margin-top: 20px;
+      margin-bottom: 10px;
+      background: $card-background;
+      padding: $padding-large;
+      border-radius: $project-border-radius;
+      border: $card-border;
+      h1 {
+        font-size: $font-size-h4;
+        margin: 11px 0px 20px 0px !important;
+      }
+      p {
+        font-weight: $font-weight-p;
+        strong {
+          font-weight: $font-weight-p-strong;
+        }
       }
     }
   }

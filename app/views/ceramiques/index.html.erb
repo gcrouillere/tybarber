@@ -7,21 +7,29 @@ Site de e-commerce configurable. Créez votre compte et visualisez votre futur s
 
 <div class="container">
   <div class="row">
+    <div class="h1-index hidden-xs hidden-sm">
+      <h1>Les créations uniques : <%= ENV['MODEL']%></h1>
+      <hr>
+    </div>
+    <div class="h1-index mobile hidden-md hidden-lg">
+      <h1>Les créations uniques</h1>
+      <hr>
+    </div>
 
 <!-- LAPTOP -->
     <div class="hidden-xs hidden-sm col-md-3">
       <div class="ceramique-filters-content">
-        <h4>Rechercher</h4>
+        <h2>Rechercher</h2>
         <form action="/<%=ENV['MODEL']%>" method='get'>
           <div class="category-filter filter">
-            <h5>Categories</h5>
+            <h3>Categories</h3>
             <div class="filter-category">
               <ul>
                 <% @categories.each do |category| %>
                   <li><label class="label-search"><input type="checkbox" name="categories[]" value="<%= category %>"><%= category %></label></li>
                 <% end %>
               </ul>
-              <h5>Prix max €</h5>
+              <h3>Prix max €</h3>
               <label class="label-search"><input type="number" name="prix_max" min="0" class="prix"></label>
             </div>
             <% if  params[:categories].present? || params[:prix_max].present? %>
@@ -40,14 +48,14 @@ Site de e-commerce configurable. Créez votre compte et visualisez votre futur s
               <div class="ceramiquecard">
                 <div class="img-container">
                   <% if ceramique.photos[0].height >= ceramique.photos[0].width %>
-                    <%= cl_image_tag(cl_image_path(ceramique.photos[0].path, :width => 285, :height => 285, :crop => :fit), class: "img-resized") %>
+                    <%= cl_image_tag(cl_image_path(ceramique.photos[0].path, :width => 285, :height => 285, :crop => :fit), alt: "#{ceramique.name}", class: "img-resized") %>
                   <% else %>
-                    <img class="img" src="<%= cl_image_path ceramique.photos[0].path %>">
+                    <img class="img" src="<%= cl_image_path ceramique.photos[0].path %>" alt="<%=ceramique.name%>">
                   <% end %>
-                  <h4 class="prix-index"><%= humanized_money(ceramique.price)%> <%= currency_symbol %></h4>
+                  <h2 class="prix-index"><%= humanized_money(ceramique.price)%> <%= currency_symbol %></h2>
                 </div>
-                <h4> <%= ceramique.name.capitalize%> </h4>
-                <h5> <%= ceramique.description%> </h5>
+                <h2> <%= ceramique.name.capitalize%> </h2>
+                <h3> <%= ceramique.description%> </h3>
               </div>
             <% end %>
           </div>
@@ -61,11 +69,11 @@ Site de e-commerce configurable. Créez votre compte et visualisez votre futur s
             <%= link_to ceramique_path(ceramique), class: "cardlink" do %>
               <div class="ceramiquecard mobile">
                 <div class="img-container">
-                  <img class="img" src="<%= cl_image_path ceramique.photos[0].path %>">
-                  <h4 class="prix-index"><%= humanized_money(ceramique.price)%> <%= currency_symbol %></h4>
+                  <img class="img" src="<%= cl_image_path ceramique.photos[0].path %>" alt="<%=ceramique.name%>">
+                  <h2 class="prix-index"><%= humanized_money(ceramique.price)%> <%= currency_symbol %></h2>
                 </div>
-                <h4> <%= ceramique.name.capitalize%> </h4>
-                <h5> <%= ceramique.description%> </h5>
+                <h2> <%= ceramique.name.capitalize%> </h2>
+                <h3> <%= ceramique.description%> </h3>
               </div>
             <% end %>
           </div>
