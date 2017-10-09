@@ -1,4 +1,7 @@
 class Ceramique < ApplicationRecord
+  extend FriendlyId
+  friendly_id :name, use: [:slugged, :finders]
+
   belongs_to :category
   has_attachments :photos, maximum: 2, dependent: :destroy
   has_many :basketlines, dependent: :destroy

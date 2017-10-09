@@ -3,7 +3,6 @@ Rails.application.routes.draw do
   devise_for :users, :controllers => {:registrations => "app_specific_registration/registrations"}
   mount Attachinary::Engine => "/attachinary"
 
-  # resources :ceramiques, only: [:create, :index, :destroy, :show]
   scope do
     resources :ceramiques, path: ENV['MODEL'], only: [:create, :index, :destroy, :show]
   end
