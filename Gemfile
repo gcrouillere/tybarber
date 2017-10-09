@@ -54,6 +54,9 @@ gem 'dynopoker'
 gem 'momentjs-rails', '>= 2.9.0'
 gem 'bootstrap3-datetimepicker-rails', '~> 4.17.47'
 
+#friendlyid
+gem 'friendly_id', '~> 5.1.0'
+
 group :development, :test do
   gem 'better_errors'
   gem 'binding_of_caller'

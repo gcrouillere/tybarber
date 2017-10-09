@@ -15,7 +15,7 @@ class CeramiquesController < ApplicationController
 
   def show
     clean_orders
-    @ceramique = Ceramique.find(params[:id])
+    @ceramique = Ceramique.friendly.find(params[:id])
   end
 
   private
