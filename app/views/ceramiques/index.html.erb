@@ -55,7 +55,8 @@ Site de e-commerce configurable. Créez votre compte et visualisez votre futur s
                   <h2 class="prix-index"><%= humanized_money(ceramique.price)%> <%= currency_symbol %></h2>
                 </div>
                 <h2> <%= ceramique.name.capitalize%> </h2>
-                <h3> <%= ceramique.description%> </h3>
+                <% ratio = ceramique.photos[0].width.to_f / ceramique.photos[0].height > 1.35 ? "large" : "small" %>
+                <p class="<%= ratio %>"> <%= ceramique.description%> </p>
               </div>
             <% end %>
           </div>

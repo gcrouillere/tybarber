@@ -2,6 +2,7 @@ class CeramiquesController < ApplicationController
   skip_before_action :authenticate_user!, only: [:index, :show]
 
   def index
+    @dev_redirection = "https://creermonecommerce.herokuapp.com/"
     @ceramiques = Ceramique.all
     clean_orders
     uniq_categories
@@ -14,6 +15,7 @@ class CeramiquesController < ApplicationController
   end
 
   def show
+    @dev_redirection = "https://creermonecommerce.herokuapp.com/produits"
     clean_orders
     @ceramique = Ceramique.friendly.find(params[:id])
   end

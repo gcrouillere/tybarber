@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20171009093334) do
+ActiveRecord::Schema.define(version: 20171009123602) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -62,6 +62,8 @@ ActiveRecord::Schema.define(version: 20171009093334) do
     t.datetime "updated_at",                 null: false
     t.integer  "course"
     t.integer  "duration"
+    t.integer  "user_id"
+    t.index ["user_id"], name: "index_bookings_on_user_id", using: :btree
   end
 
   create_table "calendarupdates", force: :cascade do |t|
@@ -70,13 +72,17 @@ ActiveRecord::Schema.define(version: 20171009093334) do
     t.datetime "created_at",   null: false
     t.datetime "updated_at",   null: false
     t.integer  "lesson_id"
+    t.integer  "user_id"
     t.index ["lesson_id"], name: "index_calendarupdates_on_lesson_id", using: :btree
+    t.index ["user_id"], name: "index_calendarupdates_on_user_id", using: :btree
   end
 
   create_table "categories", force: :cascade do |t|
     t.string   "name",       null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.integer  "user_id"
+    t.index ["user_id"], name: "index_categories_on_user_id", using: :btree
   end
 
   create_table "ceramiques", force: :cascade do |t|
@@ -87,8 +93,10 @@ ActiveRecord::Schema.define(version: 20171009093334) do
     t.datetime "created_at",              null: false
     t.datetime "updated_at",              null: false
     t.integer  "price_cents", default: 0, null: false
+    t.integer  "user_id"
     t.string   "slug"
     t.index ["category_id"], name: "index_ceramiques_on_category_id", using: :btree
+    t.index ["user_id"], name: "index_ceramiques_on_user_id", using: :btree
   end
 
   create_table "friendly_id_slugs", force: :cascade do |t|
@@ -141,19 +149,24 @@ ActiveRecord::Schema.define(version: 20171009093334) do
     t.datetime "created_at",                             null: false
     t.datetime "updated_at",                             null: false
     t.boolean  "admin",                  default: false, null: false
+    t.float    "latitude"
+    t.float    "longitude"
     t.string   "first_name"
     t.string   "last_name"
-    t.string   "adress"
-    t.string   "zip_code"
-    t.string   "city"
+    t.string   "produit"
+    t.string   "phone"
     t.index ["email"], name: "index_users_on_email", unique: true, using: :btree
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true, using: :btree
   end
 
   add_foreign_key "basketlines", "ceramiques"
   add_foreign_key "basketlines", "orders"
+  add_foreign_key "bookings", "users"
   add_foreign_key "calendarupdates", "lessons"
+  add_foreign_key "calendarupdates", "users"
+  add_foreign_key "categories", "users"
   add_foreign_key "ceramiques", "categories"
+  add_foreign_key "ceramiques", "users"
   add_foreign_key "lessons", "users"
   add_foreign_key "orders", "lessons"
   add_foreign_key "orders", "users"

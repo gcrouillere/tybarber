@@ -99,7 +99,7 @@ en:
       "yes": "Yes"
       "no": "No"
     main_content: "Please implement %{model}#main_content to display content."
-    logout: "--> Retourner sur la page d'accueil"
+    logout: "--> Retourner à la liste des produits"
     powered_by: "Powered by %{active_admin} %{version}"
     sidebars:
       filters: "Filtres"

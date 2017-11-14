@@ -8,8 +8,8 @@
       <i class="fa fa-phone"></i>
       <h6 class="info-text"><%=ENV['TELEPHONE']%></h5>
     </div>
-    <%= link_to 'https://github.com/gcrouillere' do %>
-      <%= image_tag  'lego.svg'%>
+    <%= link_to @dev_redirection || session[:dev_redirection_default], title: "Créez votre boutique en ligne avec l'agence de Guillaume Crouillere" do %>
+      <%= image_tag  'lego.svg', alt: "Guillaume Crouillere - Developpeur WEB indépendant"%>
     <% end %>
   </div>
 </div>
