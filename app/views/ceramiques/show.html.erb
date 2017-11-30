@@ -8,7 +8,7 @@ Les <%="#{ENV['MODEL']} de #{ENV['FIRSTNAME'].capitalize} #{ENV['LASTNAME'].capi
   <%= cl_image_path @ceramique.photos[0].path %>
 <% end %>
 <% content_for(:meta_description) do %>
-  <%= @ceramique.name + ":" + @ceramique.description %>
+  <%= @ceramique.name + ": " + @ceramique.description %>
 <% end %>
 
 
@@ -26,7 +26,7 @@ Les <%="#{ENV['MODEL']} de #{ENV['FIRSTNAME'].capitalize} #{ENV['LASTNAME'].capi
           <div class="info-add-basket">
             <div class="description">
               <h1> <%= @ceramique.name.capitalize%> </h1>
-              <%= social_share_button_tag() %>
+              <%= social_share_button_tag("My site") %>
               <p class="description"> <%= @ceramique.description%> </p>
               <hr>
             </div>
