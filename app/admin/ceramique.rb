@@ -1,11 +1,12 @@
 ActiveAdmin.register Ceramique, as: 'Produits' do
-  permit_params :name, :description, :stock, :category_id, :price_cents, photos: []
+  permit_params :name, :description, :stock, :weight, :category_id, :price_cents, photos: []
   menu priority: 1
 
   index do
     column :name
     column :description
     column :stock
+    column :weight
     column "Categorie" do |ceramique|
       ceramique.category.name
     end
@@ -18,8 +19,9 @@ ActiveAdmin.register Ceramique, as: 'Produits' do
     f.input :name
     f.input :description
     f.input :stock
+    f.input :weight, :hint => "Poids en grammes"
     f.input :category
-    f.input :price_cents
+    f.input :price_cents, :hint => "Prix en centimes d'euros. Ex: 1200 = 12 €"
     f.input :photos, :as => :formtastic_attachinary
     # , :hint => image_tag(f.object.photos[0].path)
   end
@@ -31,6 +33,7 @@ show do |ceramique|
     row :name
     row :description
     row :stock
+    row :weight
     row "Categorie" do |ceramique|
       ceramique.category.name
     end

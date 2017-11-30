@@ -11,6 +11,7 @@ class Ceramique < ApplicationRecord
   validates :photos, presence: true
   validates :category, presence: true
   validates :name, presence: true
+  validates :weight, presence: true, numericality: { greater_than: 0, only_integer: true}
   validates :stock, presence: true, numericality: { only_integer: true }
   validates :price_cents, presence: true, numericality: { greater_than: 0 }
   validates :description, presence: true

@@ -2,7 +2,7 @@ class CeramiquesController < ApplicationController
   skip_before_action :authenticate_user!, only: [:index, :show]
 
   def index
-    @dev_redirection = "https://creermonecommerce.herokuapp.com/"
+    @dev_redirection = "https://creermonecommerce.fr"
     @ceramiques = Ceramique.all
     clean_orders
     uniq_categories
@@ -15,7 +15,7 @@ class CeramiquesController < ApplicationController
   end
 
   def show
-    @dev_redirection = "https://creermonecommerce.herokuapp.com/produits"
+    @dev_redirection = "https://creermonecommerce.fr/produits"
     clean_orders
     @ceramique = Ceramique.friendly.find(params[:id])
   end
@@ -28,9 +28,8 @@ class CeramiquesController < ApplicationController
         order.basketlines.each do |basketline|
           ceramique = basketline.ceramique
           ceramique.update(stock: ceramique.stock + basketline.quantity)
-          basketline.destroy
         end
-        order.destroy
+        order.update(state: "lost")
         session[:order] = nil
       end
     end
