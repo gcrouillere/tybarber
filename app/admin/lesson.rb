@@ -2,7 +2,7 @@ ActiveAdmin.register Lesson do
   permit_params :confirmed
   actions  :index, :destroy, :update, :edit, :show
   config.sort_order = 'start_asc'
-  menu priority: 3
+  menu priority: 4
   config.filters = false
 
   index_as_calendar ({:ajax => false}) do |lesson|

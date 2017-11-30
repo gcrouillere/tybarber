@@ -31,7 +31,7 @@ class PaymentsController < ApplicationController
     unless @lesson.present?
       # SEND EMAILS
       @user = current_user
-      @amount = Amountcalculation.new(@order).calculate_amount(@order)
+      @amount = @order.amount
       OrderMailer.confirmation_mail_after_order(@user, @order, @amount).deliver_now
       OrderMailer.mail_francoise_after_order(@user, @order, @amount).deliver_now
       # CLEAR SESSION AND REDIRECT TO CONFIRMATION

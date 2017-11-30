@@ -35,6 +35,14 @@
         font-weight: $font-weight-h4;
         font-size: $font-size-h4;
       }
+      .description {
+        position: relative;
+        .social-share-button {
+          position: absolute;
+          top: 0px;
+          right: 0px;
+        }
+      }
       .prix-form {
         h2 {
           margin-bottom: 20px;

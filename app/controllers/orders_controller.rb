@@ -6,6 +6,7 @@ class OrdersController < ApplicationController
       @order = Order.find(session[:order])
     else
       @order  = Order.create!(
+        ceramique: @ceramique.name,
         state: 'pending',
         user: current_user
       )
@@ -14,7 +15,8 @@ class OrdersController < ApplicationController
     if params[:quantity].to_i <= @ceramique.stock
       @basketline = Basketline.create(ceramique: @ceramique, quantity: params[:quantity].to_i, order: @order)
       @ceramique.update(stock: @ceramique.stock - @basketline.quantity)
-      @order.update(amount: Amountcalculation.new(@order).calculate_amount(@order))
+      costs = Amountcalculation.new(@order).calculate_amount(@order)
+      @order.update(amount: costs[:total], port: costs[:port], ceramique: "#{@order.ceramique},#{@ceramique.name}")
       flash[:notice] = "Votre panier sera conservé pendant #{(ENV['BASKETDURATION'].to_f * 60).to_i } min"
       redirect_to order_path(@order)
     else
@@ -25,7 +27,8 @@ class OrdersController < ApplicationController
 
   def show
     @order = Order.where(state: 'pending').find(params[:id])
-    @amount = Amountcalculation.new(@order).calculate_amount(@order)
+    @amount = @order.amount
+    @port = @order.port
   end
 
   def destroy
@@ -34,11 +37,12 @@ class OrdersController < ApplicationController
     @ceramique = @basketline.ceramique
     @ceramique.update(stock: @ceramique.stock + @basketline.quantity)
     @basketline.destroy
-    @order.update(amount: Amountcalculation.new(@order).calculate_amount(@order))
+    costs = Amountcalculation.new(@order).calculate_amount(@order)
+    @order.update(amount: costs[:total], port: costs[:port])
     if @order.basketlines.present?
       redirect_to order_path(@order)
     else
-      @order.destroy
+      @order.update(state: "lost")
       session[:order] = nil
       redirect_to ceramiques_path
     end

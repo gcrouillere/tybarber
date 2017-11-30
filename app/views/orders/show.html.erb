@@ -18,7 +18,7 @@
           <%= cl_image_tag basketline.ceramique.photos[0].path, class: "basket-article-img" %>
           <h4><%= basketline.ceramique.name.capitalize %></h4>
           <h5>Quantité: <%= basketline.quantity %></h5>
-          <h5>Total: <%= humanized_money(basketline.ceramique.price * basketline.quantity) %> <%= currency_symbol %></h5>
+          <h5>Prix: <%= humanized_money(basketline.ceramique.price * basketline.quantity) %> <%= currency_symbol %></h5>
           <%= link_to  order_path(:id => @order.id, :basketline_id => basketline.id), :confirm => 'Are you sure?', :method => :delete, class: "delete-article" do %>
             <i class="fa fa-trash"></i>
           <% end %>
@@ -28,6 +28,7 @@
       <div class="total">
         <div class="empty"></div>
         <div class="hidden-sm">
+          <h5>Frais de port: <%= humanized_money(@port) %> <%= currency_symbol %></h3>
           <h3>Montant total: <%= humanized_money(@amount) %> <%= currency_symbol %></h3>
         </div>
         <div class="hidden-md hidden-lg">
@@ -36,7 +37,7 @@
         <form action="/orders/<%= @order.id%>/payments/new" method="get">
           <input type="hidden" name="order_id" value="<%= @order.id%>">
           <button type="submit" class="pull-right btn btn-primary order">
-            Valider ma commande
+            Finaliser ma commande
           </button>
         </form>
       </div>

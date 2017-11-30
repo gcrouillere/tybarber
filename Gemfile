@@ -1,5 +1,5 @@
 source 'https://rubygems.org'
-ruby '2.3.3'
+ruby '2.3.5'
 
 gem 'devise'
 gem 'figaro'
@@ -56,6 +56,12 @@ gem 'bootstrap3-datetimepicker-rails', '~> 4.17.47'
 
 #friendlyid
 gem 'friendly_id', '~> 5.1.0'
+
+# JSON request in controller
+gem 'httparty'
+
+#social share
+gem 'social-share-button'
 
 group :development, :test do
   gem 'better_errors'
