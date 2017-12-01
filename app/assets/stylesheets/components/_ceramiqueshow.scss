@@ -82,6 +82,7 @@
         width: 20%;
         height: 20%;
         margin-right: 10px;
+        transition: all ease 0.2s;
       }
       .thumbnail:hover {
           transform: scale(1.01);

@@ -1,5 +1,5 @@
 class PagesController < ApplicationController
-  skip_before_action :authenticate_user!, only: [:home, :confirmation, :info, :google906057532e2dbb7e]
+  skip_before_action :authenticate_user!, only: [:home, :confirmation, :info, :google906057532e2dbb7e, :robots]
 
   def home
     @dev_redirection = "https://creermonecommerce.fr/"
