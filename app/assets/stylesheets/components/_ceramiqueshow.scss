@@ -37,10 +37,21 @@
       }
       .description {
         position: relative;
-        .social-share-button {
+        .social-buttons {
           position: absolute;
           top: 0px;
           right: 0px;
+          font-size: 20px;
+          .fa-facebook-square {
+            color: #3b5998;
+          }
+          .fa-pinterest-square {
+            color: #bd081c;
+            cursor: pointer;
+          }
+          .fa-twitter-square{
+            color: #1da1f2;
+          }
         }
       }
       .prix-form {

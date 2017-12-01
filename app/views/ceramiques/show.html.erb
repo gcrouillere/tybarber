@@ -26,7 +26,17 @@ Les <%="#{ENV['MODEL']} de #{ENV['FIRSTNAME'].capitalize} #{ENV['LASTNAME'].capi
           <div class="info-add-basket">
             <div class="description">
               <h1> <%= @ceramique.name.capitalize%> </h1>
-              <%= social_share_button_tag("My site") %>
+              <div class="social-buttons">
+                <a class="twitter-share-button" href="https://twitter.com/intent/tweet?text=http%3A%2F%<%=ENV["HOST"] || "localhost:3000"=%>%2Fproduits%2F<%=@ceramique.name%>">
+                  <i class="fa fa-twitter-square" aria-hidden="true"></i>
+                </a>
+                <a href="https://www.pinterest.com/pin/create/button/" data-pin-do="buttonPin" data-pin-custom="true">
+                  <i class="fa fa-pinterest-square" aria-hidden="true"></i>
+                </a>
+                <a href="https://www.facebook.com/sharer/sharer.php">
+                  <i class="fa fa-facebook-square" aria-hidden="true"></i>
+                </a>
+              </div>
               <p class="description"> <%= @ceramique.description%> </p>
               <hr>
             </div>
@@ -157,4 +167,11 @@ Les <%="#{ENV['MODEL']} de #{ENV['FIRSTNAME'].capitalize} #{ENV['LASTNAME'].capi
     "image": "<%=cl_image_path @ceramique.photos[0].path%>"
   }
   </script>
+  <script
+    type="text/javascript"
+    async defer
+    src="//assets.pinterest.com/js/pinit.js"
+    data-pin-round="true"
+    data-pin-tall="15px"
+></script>
 <% end %>
