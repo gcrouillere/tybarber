@@ -18,6 +18,7 @@ class CeramiquesController < ApplicationController
     @dev_redirection = "https://creermonecommerce.fr/produits"
     clean_orders
     @ceramique = Ceramique.friendly.find(params[:id])
+    @twitter_url = "https://#{ENV['APPNAME'] + ".herokuapp.com" + request.fullpath}".to_query('url')
   end
 
   private

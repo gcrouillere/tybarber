@@ -27,7 +27,7 @@ Les <%="#{ENV['MODEL']} de #{ENV['FIRSTNAME'].capitalize} #{ENV['LASTNAME'].capi
             <div class="description">
               <h1> <%= @ceramique.name.capitalize%> </h1>
               <div class="social-buttons">
-                <a class="twitter-share-button" href="https://twitter.com/intent/tweet?text=http%3A%2F%<%=ENV["HOST"] || "localhost:3000"=%>%2Fproduits%2F<%=@ceramique.name%>">
+                <a class="twitter-share-button" href="https://twitter.com/intent/tweet?<%=@twitter_url%>">
                   <i class="fa fa-twitter-square" aria-hidden="true"></i>
                 </a>
                 <a href="https://www.pinterest.com/pin/create/button/" data-pin-do="buttonPin" data-pin-custom="true">
