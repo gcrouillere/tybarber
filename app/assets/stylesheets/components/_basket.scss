@@ -49,8 +49,14 @@
   .empty{
     width: 300px;
   }
-  h3 {
-    margin-top: 11px;
+  .hidden-sm {
+    margin: 11px 0px 20px 0px;
+    h3 {
+      margin: 20px 0px 0px 0px
+    }
+    h5 {
+      margin: 10px 0px 0px 0px
+    }
   }
 }
 

@@ -3,6 +3,7 @@ class Ceramique < ApplicationRecord
   friendly_id :name, use: [:slugged, :finders]
 
   belongs_to :category
+  belongs_to :offer
   has_attachments :photos, maximum: 2, dependent: :destroy
   has_many :basketlines, dependent: :destroy
 

@@ -7,6 +7,22 @@ Site de e-commerce configurable. Créez votre compte et visualisez votre futur s
 
 <div class="container">
   <div class="row">
+
+<!-- INDEX H1 :  EITHER A DISCOUNT OFFER DIV, OR A SIMPLE H1 -->
+  <% if @front_offer && params[:offer] == nil %>
+    <div class="hidden-xs hidden-sm col-md-12 info-top">
+      <%= render 'shared/general_info_bubble' %>
+    </div>
+    <div class="h1-index mobile hidden-md hidden-lg">
+      <h1>Les créations uniques</h1>
+      <hr>
+    </div>
+  <% elsif params[:offer].present? %>
+    <div class="h1-index hidden-xs hidden-sm">
+      <h1> <%= @front_offer.title %> : les produits</h1>
+      <hr>
+    </div>
+  <% else %>
     <div class="h1-index hidden-xs hidden-sm">
       <h1>Les créations uniques : <%= ENV['MODEL']%></h1>
       <hr>
@@ -15,10 +31,11 @@ Site de e-commerce configurable. Créez votre compte et visualisez votre futur s
       <h1>Les créations uniques</h1>
       <hr>
     </div>
+  <% end %>
 
 <!-- LAPTOP -->
     <div class="hidden-xs hidden-sm col-md-3">
-      <div class="ceramique-filters-content">
+      <div id="ceramique-filters-content">
         <h2>Rechercher</h2>
         <form action="/<%=ENV['MODEL']%>" method='get'>
           <div class="category-filter filter">
@@ -32,7 +49,7 @@ Site de e-commerce configurable. Créez votre compte et visualisez votre futur s
               <h3>Prix max €</h3>
               <label class="label-search"><input type="number" name="prix_max" min="0" class="prix"></label>
             </div>
-            <% if  params[:categories].present? || params[:prix_max].present? %>
+            <% if  params[:categories].present? || params[:prix_max].present? || params[:offer].present? %>
               <label class="label-search all"><input type="checkbox" name="all[]" value="all">Tout afficher</label>
             <% end %>
             <input type="submit" class="btn btn-primary recherche" value="OK">
@@ -46,13 +63,25 @@ Site de e-commerce configurable. Créez votre compte et visualisez votre futur s
           <div class="col-xs-6">
             <%= link_to ceramique_path(ceramique), class: "cardlink" do %>
               <div class="ceramiquecard">
+                <% if ceramique.offer%>
+                  <% if ceramique.offer.discount > 0 %>
+                    <p class="discount-offer">-<%= (ceramique.offer.discount * 100).to_i %>%</p>
+                    <div class="ribbon"></div>
+                  <% end %>
+                <% end %>
                 <div class="img-container">
                   <% if ceramique.photos[0].height >= ceramique.photos[0].width %>
                     <%= cl_image_tag(cl_image_path(ceramique.photos[0].path, :width => 285, :height => 285, :crop => :fit), alt: "#{ceramique.name}", class: "img-resized") %>
                   <% else %>
                     <img class="img" src="<%= cl_image_path ceramique.photos[0].path %>" alt="<%=ceramique.name%>">
                   <% end %>
-                  <h2 class="prix-index"><%= humanized_money(ceramique.price)%> <%= currency_symbol %></h2>
+                  <% ceramique.offer ? discount =  ceramique.offer.discount : discount = 0 %>
+                  <h2 class="prix-index"><%= humanized_money(ceramique.price * (1 - discount))%> <%= currency_symbol %></h2>
+                  <% if ceramique.offer %>
+                    <% if ceramique.offer.discount > 0 %>
+                      <h3 class="previous-price"><%= humanized_money(ceramique.price)%> <%= currency_symbol %></h3>
+                    <% end %>
+                  <% end %>
                 </div>
                 <h2> <%= ceramique.name.capitalize%> </h2>
                 <% ratio = ceramique.photos[0].width.to_f / ceramique.photos[0].height > 1.35 ? "large" : "small" %>

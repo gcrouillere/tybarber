@@ -9,7 +9,8 @@ class Amountcalculation
     amount_ceramique = 0
     total_weight = 0
     order.basketlines.each do |basketline|
-      amount_ceramique += (basketline.ceramique.price) * basketline.quantity
+      basketline.ceramique.offer ? ceramique_discount = basketline.ceramique.offer.discount : ceramique_discount = 0
+      amount_ceramique += (basketline.ceramique.price * (1 - ceramique_discount)) * basketline.quantity
       total_weight += basketline.ceramique.weight
     end
     if total_weight > 0

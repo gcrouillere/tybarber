@@ -32,6 +32,9 @@ en:
         lesson:
           one: "Réservation"
           other: "Réservations"
+        offer:
+          one: "Offre"
+          other: "Offres"
       attributes:
         ceramique:
           name: "Nom"
@@ -49,6 +52,10 @@ en:
         calendarupdate:
           period_start: "Début de la période"
           period_end: "Fin de la période"
+        offer:
+          title: "Titre"
+          description: "Description"
+          showcased: "En première page ?"
   active_admin:
     models:
       calendarupdate:

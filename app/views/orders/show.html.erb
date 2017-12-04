@@ -18,7 +18,8 @@
           <%= cl_image_tag basketline.ceramique.photos[0].path, class: "basket-article-img" %>
           <h4><%= basketline.ceramique.name.capitalize %></h4>
           <h5>Quantité: <%= basketline.quantity %></h5>
-          <h5>Prix: <%= humanized_money(basketline.ceramique.price * basketline.quantity) %> <%= currency_symbol %></h5>
+          <% basketline.ceramique.offer ? discount =  basketline.ceramique.offer.discount : discount = 0 %>
+          <h5>Prix: <%= humanized_money(basketline.ceramique.price * (1 - discount) * basketline.quantity) %> <%= currency_symbol %></h5>
           <%= link_to  order_path(:id => @order.id, :basketline_id => basketline.id), :confirm => 'Are you sure?', :method => :delete, class: "delete-article" do %>
             <i class="fa fa-trash"></i>
           <% end %>

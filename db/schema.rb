@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20171129140403) do
+ActiveRecord::Schema.define(version: 20171202150157) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -89,7 +89,9 @@ ActiveRecord::Schema.define(version: 20171129140403) do
     t.integer  "price_cents", default: 0, null: false
     t.string   "slug"
     t.integer  "weight"
+    t.integer  "offer_id"
     t.index ["category_id"], name: "index_ceramiques_on_category_id", using: :btree
+    t.index ["offer_id"], name: "index_ceramiques_on_offer_id", using: :btree
   end
 
   create_table "friendly_id_slugs", force: :cascade do |t|
@@ -113,6 +115,15 @@ ActiveRecord::Schema.define(version: 20171129140403) do
     t.datetime "created_at",                 null: false
     t.datetime "updated_at",                 null: false
     t.index ["user_id"], name: "index_lessons_on_user_id", using: :btree
+  end
+
+  create_table "offers", force: :cascade do |t|
+    t.string   "title",                       null: false
+    t.string   "description",                 null: false
+    t.boolean  "showcased",   default: false, null: false
+    t.float    "discount"
+    t.datetime "created_at",                  null: false
+    t.datetime "updated_at",                  null: false
   end
 
   create_table "orders", force: :cascade do |t|
@@ -156,6 +167,7 @@ ActiveRecord::Schema.define(version: 20171129140403) do
   add_foreign_key "basketlines", "orders"
   add_foreign_key "calendarupdates", "lessons"
   add_foreign_key "ceramiques", "categories"
+  add_foreign_key "ceramiques", "offers"
   add_foreign_key "lessons", "users"
   add_foreign_key "orders", "lessons"
   add_foreign_key "orders", "users"

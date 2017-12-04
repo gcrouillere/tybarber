@@ -4,6 +4,8 @@ class CeramiquesController < ApplicationController
   def index
     @dev_redirection = "https://creermonecommerce.fr"
     @ceramiques = Ceramique.all
+    Offer.where(showcased: true).first.ceramiques.present? ? @front_offer = Offer.all.where(showcased: true).first : nil
+    @front_offer ? @ceramiques_to_display_in_offer = Ceramique.all.where(offer: @front_offer) : nil
     clean_orders
     uniq_categories
     if params[:all].present?
@@ -11,6 +13,7 @@ class CeramiquesController < ApplicationController
     else
       filter_by_category if params[:categories].present?
       filter_by_price if params[:prix_max].present?
+      filter_by_offer if params[:offer].present?
     end
   end
 
@@ -53,6 +56,10 @@ class CeramiquesController < ApplicationController
 
   def filter_by_price
     @ceramiques = @ceramiques.select {|ceramique| ceramique.price_cents <= params[:prix_max].to_i * 100 }
+  end
+
+  def filter_by_offer
+    @ceramiques = @ceramiques.select {|ceramique| ceramique.offer == @front_offer}
   end
 end
 

@@ -1,4 +1,4 @@
-ActiveAdmin.register User do
+ActiveAdmin.register User, as: 'Clients' do
   actions  :index, :show
   menu priority: 5
   config.filters = false
