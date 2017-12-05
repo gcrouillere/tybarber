@@ -25,6 +25,7 @@
           <div class="price-strip">
             <% ceramique.offer ? discount =  ceramique.offer.discount : discount = 0 %>
             <p class="price-offer"><%= humanized_money(ceramique.price * (1 - discount))%> <%= currency_symbol %></p>
+            <p class="previous price"><%= humanized_money(ceramique.price)%> <%= currency_symbol %></p>
           </div>
           <% end %>
         <% end %>

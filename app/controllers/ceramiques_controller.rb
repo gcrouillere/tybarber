@@ -4,7 +4,7 @@ class CeramiquesController < ApplicationController
   def index
     @dev_redirection = "https://creermonecommerce.fr"
     @ceramiques = Ceramique.all
-    Offer.where(showcased: true).first.ceramiques.present? ? @front_offer = Offer.all.where(showcased: true).first : nil
+    Offer.where(showcased: true).first ? (Offer.where(showcased: true).first.ceramiques.present? ? @front_offer = Offer.all.where(showcased: true).first : nil) : nil
     @front_offer ? @ceramiques_to_display_in_offer = Ceramique.all.where(offer: @front_offer) : nil
     clean_orders
     uniq_categories
