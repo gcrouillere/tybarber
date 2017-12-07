@@ -46,7 +46,7 @@ ActiveAdmin.register Offer, as: 'Offres' do
         ceramiques_offer_assignment
         multi_showcased_flash_alert
         showcase_unicity_application
-        redirect_to admin_offres and return
+        redirect_to admin_offres_path and return
       end
     end
 
@@ -55,7 +55,7 @@ ActiveAdmin.register Offer, as: 'Offres' do
         ceramiques_offer_assignment
         multi_showcased_flash_alert
         showcase_unicity_application
-        redirect_to admin_offres and return
+        redirect_to admin_offres_path and return
       end
     end
 
