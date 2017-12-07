@@ -59,6 +59,14 @@ ActiveAdmin.register Offer, as: 'Offres' do
       end
     end
 
+    def destroy
+      @offer = Offer.find(params[:id].to_i)
+      @offer.ceramiques.each {|ceramique| ceramique.update(offer: nil)}
+      super do |format|
+        redirect_to admin_offres_path and return
+      end
+    end
+
     # Helper methods
     def ceramiques_offer_assignment
       params["action"] == "create" ? current_offer = Offer.last : current_offer = Offer.find(params[:id])
