@@ -58,14 +58,23 @@
       margin: 10px 0px 0px 0px
     }
   }
+  .hidden-md {
+    min-width: 250px;
+  }
 }
 
 // MOBILE
+
+.h5mobile {
+  margin-left: 30px;
+  margin-top: 20px;
+}
 
 .h3mobile {
   margin-left: 20px;
   margin-top: 20px;
   font-weight: $font-weight-h3-mobile;
+  font-size: 25px;
 }
 
 .basket-item.mobile {

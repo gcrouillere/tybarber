@@ -29,10 +29,11 @@
       <div class="total">
         <div class="empty"></div>
         <div class="hidden-sm">
-          <h5>Frais de port: <%= humanized_money(@port) %> <%= currency_symbol %></h3>
+          <h5>Frais de port: <%= humanized_money(@port) %> <%= currency_symbol %></h5>
           <h3>Montant total: <%= humanized_money(@amount) %> <%= currency_symbol %></h3>
         </div>
         <div class="hidden-md hidden-lg">
+          <h5>Frais de port: <%= humanized_money(@port) %> <%= currency_symbol %></h5>
           <h4>Montant total: <%= humanized_money(@amount) %> <%= currency_symbol %></h4>
         </div>
         <form action="/orders/<%= @order.id%>/payments/new" method="get">
@@ -54,7 +55,8 @@
             <h4><%= basketline.ceramique.name.capitalize %></h4>
             <div class="detail-text">
               <h5>Quantité: <%= basketline.quantity %></h5>
-              <h5>Total: <%= humanized_money(basketline.ceramique.price * basketline.quantity) %> <%= currency_symbol %></h5>
+              <% basketline.ceramique.offer ? discount =  basketline.ceramique.offer.discount : discount = 0 %>
+              <h5>Prix: <%= humanized_money(basketline.ceramique.price * (1 - discount) * basketline.quantity) %> <%= currency_symbol %></h5>
             </div>
               <%= link_to  order_path(:id => @order.id, :basketline_id => basketline.id), :confirm => 'Are you sure?', :method => :delete, class: "delete-article" do %>
                 <i class="fa fa-trash"></i>
@@ -63,6 +65,7 @@
         </div>
       <% end %>
 
+      <h5 class="h5mobile">Frais de port: <%= humanized_money(@port) %> <%= currency_symbol %></h5>
       <h3 class="h3mobile">Montant total: <%= humanized_money(@amount) %> <%= currency_symbol %></h3>
       <div class="total mobile">
         <form action="/orders/<%= @order.id%>/payments/new" method="get">

@@ -79,15 +79,15 @@
 
   .other-imgs {
     margin-top: 30px;
+    margin-bottom: 0px;
     position: relative;
-    margin-bottom: 30px;
     .images {
       display: flex;
       align-items: center;
       .thumbnail {
         border-radius: $project-border-radius;
-        width: 20%;
-        height: 20%;
+        width: 15%;
+        height: 15%;
         margin-right: 10px;
         transition: all ease 0.2s;
       }
@@ -108,6 +108,74 @@
     }
     a:hover {
       color: $primary;
+    }
+  }
+
+  .product-show-separator {
+        border-top: 1px solid #ccc;
+  }
+
+  .same-category-products {
+    margin-bottom: 50px;
+    h2 {
+      font-size: 28px;
+      font-weight: 500;
+      margin-bottom: 20px;
+    }
+    .same-category-products-cards {
+      .card-separator {
+        display: flex;
+        justify-content: center;
+        .same-category-product-card {
+          display: flex;
+          margin: 12px 15px;
+          background-color: $card-background;
+          border-radius: $project-border-radius;
+          border: $card-border;
+          padding: $padding-small;
+          transition: ease 0.2s;
+          .same-category-product-card-link {
+            display: flex;
+            width:100%;
+            height: 100%;
+            color: black;
+            .same-product-photo {
+              height: 100px;
+              border-radius: $project-border-radius;
+            }
+            .same-category-product-card-text {
+              margin-left: 10px;
+              width: 100%;
+              text-align: center;
+              .ceramique-name {
+                font-size: 18px;
+
+                margin-top: 5px;
+              }
+              .prix-index {
+                font-size: 16px;
+                font-weight: 100;
+                margin-bottom: 5px;
+              }
+              .prix-index-wo-discount {
+                font-size: 16px;
+                font-weight: 100;
+                margin-bottom: 5px;
+                margin-top: 18px;
+              }
+              .previous-price {
+                margin-bottom: 0px;
+                font-size: 10px;
+                text-decoration: line-through;
+              }
+            }
+          }
+        }
+        .same-category-product-card:hover {
+          box-shadow: 1px 1px 7px rgba(0, 0, 0, 0.1);
+          transition: ease 0.2s
+        }
+      }
     }
   }
 
@@ -160,11 +228,17 @@
         font-weight: $font-weight-p;
       }
       .prix-form {
-        h2 {
+        h2.prix {
           margin-top: 0px;
           margin-bottom: 10px;
           margin-left: 10px;
           font-size: $font-size-h4;
+        }
+       h3.previous-price {
+          margin-bottom: 10px;
+          font-size: 13px;
+          margin-left: 10px;
+          text-decoration: line-through;
         }
         .form {
           display: flex;

@@ -7,10 +7,21 @@ ActiveAdmin.register Ceramique, as: 'Produits' do
     column :description
     column :stock
     column :weight
-    column "Categorie" do |ceramique|
+    column "Catégorie" do |ceramique|
       ceramique.category.name
     end
     column :price_cents
+    column "Nb de ventes - CA" do |ceramique|
+      total = 0
+      sum = 0
+      ceramique.basketlines.each do |basketline|
+        if basketline.order.state == "paid"
+          total += basketline.quantity
+        end
+      end
+      sum = total * ceramique.price
+      "#{total} - #{sum} €"
+    end
     actions
   end
 
@@ -44,6 +55,28 @@ show do |ceramique|
       end
     end
   end
+ end
+
+ csv do
+    column :name
+    column :description
+    column :stock
+    column :weight
+    column "Catégorie" do |ceramique|
+      ceramique.category.name
+    end
+    column :price_cents
+    column "Nb de ventes - CA" do |ceramique|
+      total = 0
+      sum = 0
+      ceramique.basketlines.each do |basketline|
+        if basketline.order.state == "paid"
+          total += basketline.quantity
+        end
+      end
+      sum = total * ceramique.price
+      "#{total} - #{sum} €"
+    end
  end
 
  controller do

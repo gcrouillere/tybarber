@@ -40,7 +40,7 @@ en:
           name: "Nom"
           description: "Description"
           category: "Catégorie"
-          price_cents: "Prix en centimes d'euro"
+          price_cents: "Prix en cents d'€"
         category:
           name: "Nom"
         lesson:

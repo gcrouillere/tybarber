@@ -81,10 +81,12 @@
     }
     .previous-price {
       font-size: 13px;
+      font-weight: 100;
       position: absolute;
       bottom: -83px;
-      right: -4px;
+      right: -9px;
       text-decoration: line-through;
+      color: black;
     }
   }
 
@@ -146,8 +148,8 @@
   }
   .prix-index {
       position: absolute;
-      bottom: -63px;
-      right: -14px;
+      bottom: -57px;
+      right: -12px;
   }
   h2 {
     margin-left: 24px;

@@ -16,6 +16,9 @@
             <span><i class="fa fa-unlock-alt"></i> Administration</span>
           <% end %>
         <% end %>
+        <%= link_to ceramiques_path do %>
+          <span><i class="fa fa-bars"></i> Liste des <%=ENV['MODEL']%></span>
+        <% end %>
         <%= link_to info_path do %>
           <span><i class="fa fa-female"></i> Bio</span>
         <% end %>
@@ -36,6 +39,9 @@
   <% else %>
     <div class="navbar-item">
       <div class="nav-bar-list">
+        <%= link_to ceramiques_path do %>
+          <span><i class="fa fa-bars"></i> Liste des <%=ENV['MODEL']%></span>
+        <% end %>
         <%= link_to info_path do %>
             <span><i class="fa fa-female"></i> Bio</span>
         <% end %>

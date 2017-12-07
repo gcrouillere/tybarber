@@ -43,8 +43,11 @@ ActiveAdmin.register User, as: 'Clients' do
   end
 
   csv do
-    column "Prénom - Nom" do |user|
-      user.first_name + " " + user.last_name
+    column "Prénom" do |user|
+      user.first_name
+    end
+    column "Nom" do |user|
+      user.last_name
     end
     column :email
     column "Dernier achat" do |user|

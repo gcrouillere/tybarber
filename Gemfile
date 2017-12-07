@@ -32,7 +32,7 @@ gem 'stripe'
 
 #map
 gem "gmaps4rails"
-source 'http://insecure.rails-assets.org' do
+source 'https://rails-assets.org' do
   # https://rails-assets.org
   gem "rails-assets-underscore"
 end

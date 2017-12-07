@@ -20,12 +20,12 @@
       <% @ceramiques_to_display_in_offer.size < 5 ? (@ceramiques_to_display_in_offer.size < 4 ? margin_right = "100px" : margin_right = "60px") : (margin_right = "30px") %>
       <% @ceramiques_to_display_in_offer.each_with_index do |ceramique, index|%>
         <% if index < 5 %>
-          <%= link_to ceramique_path(ceramique), class: "offer-card", style: "margin-right: #{margin_right}" do %>
+          <%= link_to ceramique_path(ceramique), class: "offer-card", style: "margin-right: #{margin_right}", title: "#{ceramique.name}" do %>
           <img class="thumbnail-offer" src="<%= cl_image_path ceramique.photos[0].path %>" alt="<%=ceramique.name%>">
           <div class="price-strip">
             <% ceramique.offer ? discount =  ceramique.offer.discount : discount = 0 %>
             <p class="price-offer"><%= humanized_money(ceramique.price * (1 - discount))%> <%= currency_symbol %></p>
-            <p class="previous price"><%= humanized_money(ceramique.price)%> <%= currency_symbol %></p>
+            <p class="previous-price"> <%= humanized_money(ceramique.price)%> <%= currency_symbol %> </p>
           </div>
           <% end %>
         <% end %>

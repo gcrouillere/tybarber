@@ -64,8 +64,8 @@
     position: relative;
     .pecentage-image {
       margin: 0px 30px -55px 27px;
-      height:100px;
-      width: 100px;
+      height: 110px;
+      width: 110px;
       border: 1px solid;
       border-radius: 50%;
       display: flex;
@@ -96,6 +96,7 @@
         .thumbnail-offer {
           border-radius: $project-border-radius;
           height: 110px;
+          border: 1px solid white;
         }
         .price-strip {
           transition: none;
@@ -104,20 +105,27 @@
           background-color: white;
           position: absolute;
           bottom: 8px;
-          display: flex;
-          justify-content: center;
+          text-align: center;
           p.price-offer {
             font-weight: 400;
             opacity: 1 !important;
             margin: 0px;
             color: black;
-            font-size: 13px;
+            font-size: 14px;
+          }
+          p.previous-price {
+            font-weight: 400;
+            text-decoration: line-through;
+            opacity: 1 !important;
+            margin: 0px;
+            color: black;
+            font-size: 10px;
           }
         }
       }
     }
     a:hover {
-      transform: scale(1.01);
+      transform: scale(1.03);
       box-shadow: 2px 2px 3px 1px rgba(0, 0, 0, 0.1);
       transition: ease 0.2s;
     }
