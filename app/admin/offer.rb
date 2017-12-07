@@ -46,7 +46,7 @@ ActiveAdmin.register Offer, as: 'Offres' do
         ceramiques_offer_assignment
         multi_showcased_flash_alert
         showcase_unicity_application
-        redirect_to admin_offres_path and return
+        redirect_to admin_offres_path and return if resource.valid?
       end
     end
 
@@ -55,7 +55,7 @@ ActiveAdmin.register Offer, as: 'Offres' do
         ceramiques_offer_assignment
         multi_showcased_flash_alert
         showcase_unicity_application
-        redirect_to admin_offres_path and return
+        redirect_to admin_offres_path and return if resource.valid?
       end
     end
 
@@ -63,7 +63,7 @@ ActiveAdmin.register Offer, as: 'Offres' do
       @offer = Offer.find(params[:id].to_i)
       @offer.ceramiques.each {|ceramique| ceramique.update(offer: nil)}
       super do |format|
-        redirect_to admin_offres_path and return
+        redirect_to admin_offres_path and return if resource.valid?
       end
     end
 
