@@ -1,4 +1,13 @@
-<h2>Se connecter</h2>
+<%- if devise_mapping.omniauthable? %>
+  <%- resource_class.omniauth_providers.each do |provider| %>
+    <div class="facebook-block">
+      <%= link_to "Connexion avec #{OmniAuth::Utils.camelize(provider)}", omniauth_authorize_path(resource_name, provider), class: "facebook-button" %>
+    </div>
+  <% end -%>
+<% end -%>
+
+<hr>
+<h4 class="facebook-separator">Ou connexion avec votre email :</h4>
 
 <%= simple_form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
   <div class="form-inputs">

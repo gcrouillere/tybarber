@@ -36,6 +36,29 @@
     padding: $padding-large;
     border-radius: $project-border-radius;
     border: $card-border;
+    .facebook-block {
+      text-align: center;
+      margin: 20px 0 40px 0;
+      .facebook-button {
+        padding: 10px;
+        border: 1px solid #365899;
+        color: white;
+        background-color: #4267b2;
+        border-radius: $project-border-radius;
+      }
+      .facebook-button:hover {
+        background-color: #365899;
+      }
+    }
+    .facebook-separator {
+      text-align: center;
+      margin-bottom: 20px;
+    }
+    hr {
+      text-align: center;
+      border-top: 1px solid #ccc;
+      width: 70%;
+    }
     h2 {
       text-align: center;
     }
@@ -46,6 +69,9 @@
     .form-actions {
      text-align: center;
      margin-bottom: 20px;
+    }
+    .devise-bottom-link:hover {
+      color: darken($primary, 8%);
     }
   }
 }

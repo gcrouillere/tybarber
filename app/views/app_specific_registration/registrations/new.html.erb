@@ -1,4 +1,13 @@
-<h2>Créer un compte</h2>
+<%- if devise_mapping.omniauthable? %>
+  <%- resource_class.omniauth_providers.each do |provider| %>
+    <div class="facebook-block">
+      <%= link_to "Créer un compte avec #{OmniAuth::Utils.camelize(provider)}", omniauth_authorize_path(resource_name, provider), class: "facebook-button" %>
+    </div>
+  <% end -%>
+<% end -%>
+
+<hr>
+<h4 class="facebook-separator">Ou créer un compte :</h4>
 
 <%= simple_form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
   <%= f.error_notification %>
