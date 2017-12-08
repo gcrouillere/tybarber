@@ -35,7 +35,7 @@ class ApplicationController < ActionController::Base
   # 2 - Permitted parameters for sign_in/up
   def configure_permitted_parameters
     # For additional fields in app/views/devise/registrations/new.html.erb
-    devise_parameter_sanitizer.permit(:sign_up, keys: [:first_name, :last_name, :adress, :zip_code, :city])
+    devise_parameter_sanitizer.permit(:sign_up, keys: [:first_name, :last_name, :adress, :zip_code, :city, :provider, :uid, :facebook_picture_url, :token, :token_expiry])
 
     # For additional in app/views/devise/registrations/edit.html.erb
     devise_parameter_sanitizer.permit(:account_update, keys: [:first_name, :last_name, :adress, :zip_code, :city])

@@ -61,9 +61,6 @@ gem 'friendly_id', '~> 5.1.0'
 # JSON request in controller
 gem 'httparty'
 
-#social share
-gem 'social-share-button'
-
 # Facebook omniauth
 gem 'omniauth-facebook'
 
