@@ -1,6 +1,6 @@
 Rails.application.routes.draw do
   ActiveAdmin.routes(self)
-  devise_for :users, :controllers => {:registrations => "app_specific_registration/registrations"}
+  devise_for :users, :controllers => {:registrations => "app_specific_registration/registrations", omniauth_callbacks: 'users/omniauth_callbacks'}
   mount Attachinary::Engine => "/attachinary"
 
   scope do
