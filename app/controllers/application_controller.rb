@@ -4,7 +4,7 @@ class ApplicationController < ActionController::Base
   before_action :authenticate_user!
   before_action :configure_permitted_parameters, if: :devise_controller?
   layout :layout_by_resource
-  after_filter :store_location
+  after_action :store_location
 
   def default_url_options
   { host: ENV["HOST"] || "localhost:3000" }
