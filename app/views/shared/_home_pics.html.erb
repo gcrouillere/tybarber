@@ -1,10 +1,10 @@
 <% @homepicpath = image_path ENV['HOMEPIC'] %>
 <% @homepicpathmobile = image_path ENV['HOMEPICMOBILE'] %>
-<% if User.where(admin: true).present? %>
-  <% if  User.where(admin: true).first.productphoto.present? %>
-    <% @homepicpath = cl_image_path current_user.productphoto.path %>
+<% if @user %>
+  <% if  @user.productphoto.present? %>
+    <% @homepicpath = cl_image_path @user.productphoto.path %>
   <% end %>
-  <% if  current_user.productphotomobile.present? %>
-    <% @homepicpathmobile = cl_image_path current_user.productphotomobile.path %>
+  <% if  @user.productphotomobile.present? %>
+    <% @homepicpathmobile = cl_image_path @user.productphotomobile.path %>
   <% end %>
 <% end %>

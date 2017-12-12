@@ -48,7 +48,8 @@ Vendez vos produits en ligne ! Site de e-commerce configurable. Créez votre com
   <div class="text">
     <div class="text-left">
       <div class="title-text-left">
-      <%= image_tag ENV['LOGOSITE'], alt: "Logo pour #{ENV['FIRSTNAME'].capitalize} #{ENV['LASTNAME'].capitalize} - #{ENV['MODEL']}" %>
+      <%= render 'shared/logo_pic' %>
+      <%= @logositepictag %>
       <h2> <%= ENV['FIRSTNAME'].capitalize%> <%= ENV['LASTNAME'].capitalize %>, créateur de <%= ENV['MODEL']%></h2>
       </div>
       <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam condimentum dolor ut vulputate tincidunt. Integer et purus et nisl eleifend semper eu sed turpis. Proin dignissim rutrum turpis. Sed quis volutpat dolor, a blandit risus. Maecenas in semper purus, semper hendrerit est. Proin vel ante ac ex iaculis condimentum. Nunc elementum ac tellus non consequat</p>
