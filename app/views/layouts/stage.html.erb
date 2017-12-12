@@ -32,9 +32,10 @@
   <body>
     <div class="body">
       <div class="hidden-xs body-stage">
+        <%= render 'shared/stage_pic'%>
         <style>
           .body-stage {
-            background-image: url(<%= image_path ENV['STAGEPIC']%>);
+            background-image: url(<%= @stagepicpath %>);
           }
         </style>
         <%= render 'shared/navbar' %>

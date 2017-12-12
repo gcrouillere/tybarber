@@ -1,8 +1,9 @@
 <!-- Right Navigation LAPTOP -->
 <div class="navbar-laptop hidden-xs hidden-sm">
   <!-- Logo -->
-  <%= link_to root_path, class: "navbar-brand" do %>
-    <%= image_tag ENV['LOGOSITE']%>
+  <%= link_to root_path, class: "navbar-brand", title: "Retour à l'accueil de notre offre de boutique ligne" do %>
+    <%= render 'shared/logo_pic' %>
+    <%= @logositepictag %>
   <% end %>
 
   <!-- Different navigation if login or not -->

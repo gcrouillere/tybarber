@@ -1,0 +1,20 @@
+<style>
+   <%= @classe %> {
+    top: <%= @top%>px;
+    right: <%= @right%>px;
+    bottom: <%= @bottom%>px;
+    left: <%=@left%>px;
+  }
+</style>
+<% if user_signed_in? %>
+  <% if current_user.admin  %>
+    <div class="photo-update-box <%=@classe[1..-1]%>">
+      <p><%= @texte %></p>
+      <%= simple_form_for current_user do |f| %>
+        <%= f.error_notification %>
+        <%= f.input @variable, as: :attachinary, label: false %>
+        <%= f.button :submit, "Enregistrer le changement", class: "btn btn-primary photo-button hidden", name: "button" %>
+      <% end %>
+    </div>
+  <% end %>
+ <% end %>

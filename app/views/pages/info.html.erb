@@ -5,13 +5,16 @@ Vendez vos produits en ligne ! Site de e-commerce configurable. Affichez sur cet
   Page bio de votre site de e-commerce
 <% end %>
 
+<%= render 'shared/info_pics' %>
+
 <div class="container">
   <div class="row">
 
   <!-- LAPTOP -->
     <div class="hidden-xs hidden-sm col-sm-12">
       <div class="wrapper">
-        <%= image_tag ENV['AVATAR'], alt: "#{ENV['FIRSTNAME'].capitalize} #{ENV['LASTNAME'].capitalize} créateur de #{ENV['MODEL']}" ,class: "img-avatar"%>
+        <%= photo_update('avatarphoto', '', '', 25, 15, '.avatarpic', "Mise à jour photo perso")%>
+        <%= @avatarpictag %>
         <div class="texte">
           <h1><%= "#{ENV['FIRSTNAME'].capitalize} #{ENV['LASTNAME'].capitalize} créateur de #{ENV['MODEL']}"%></h1>
           <h2>Ma technique de fabrication des <%= ENV['MODEL']%></h2>
@@ -24,7 +27,8 @@ Vendez vos produits en ligne ! Site de e-commerce configurable. Affichez sur cet
       </div>
 
       <div class="localisation">
-        <%= image_tag ENV['CITY'], alt: "#{ENV['ADDRESS']}, localisation de l'atelier de #{ENV['FIRSTNAME'].capitalize} #{ENV['LASTNAME'].capitalize}", class: "img-city"%>
+        <%= photo_update('cityphoto', 15, '', '', 15, '.citypic', "Mise à jour photo ville")%>
+        <div class="img-city"><%= @citypictag%></div>
         <div id="map"></div>
       </div>
 
@@ -36,15 +40,15 @@ Vendez vos produits en ligne ! Site de e-commerce configurable. Affichez sur cet
   <!-- MOBILE -->
    <div class="col-xs-12 hidden-md hidden-lg mobile-info">
       <div class="wrapper-mobile">
-        <%= image_tag ENV['AVATAR'], alt: "#{ENV['FIRSTNAME'].capitalize} #{ENV['LASTNAME'].capitalize} créateur de #{ENV['MODEL']}", class: "img-avatar-mobile"%>
+        <div class="img-avatar-mobile"><%= @avatarpictagmobile %></div>
         <h4><%= "#{ENV['FIRSTNAME'].capitalize} #{ENV['LASTNAME'].capitalize}"%></h4>
         <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam condimentum dolor ut vulputate tincidunt. Integer et purus et nisl eleifend semper eu sed turpis. Proin dignissim rutrum turpis. Sed quis volutpat dolor, a blandit risus. Maecenas in semper purus, semper hendrerit est. Proin vel ante ac ex iaculis condimentum. Nunc elementum ac tellus non consequat. In tempor est quis arcu hendrerit ultricies. Ut accumsan lacus a nunc mattis, a congue magna eleifend. Phasellus vestibulum sit amet quam vitae tristique. Morbi rutrum leo ut porttitor gravida. Maecenas id vulputate nunc. Pellentesque quis auctor mi.</p>
         <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam condimentum dolor ut vulputate tincidunt. Integer et purus et nisl eleifend semper eu sed turpis. Proin dignissim rutrum turpis. Sed quis volutpat dolor, a blandit risus. Phasellus vestibulum sit amet quam vitae tristique. Morbi rutrum leo ut porttitor gravida. Maecenas id vulputate nunc. Pellentesque quis auctor mi.</p>
       </div>
 
       <div class="localisation-mobile">
+        <div class="img-city-mobile"><%= @citypictag%></div>
         <div id="map-mobile"></div>
-        <%= image_tag ENV['CITY'], alt: "#{ENV['ADDRESS']}, localisation de l'atelier de #{ENV['FIRSTNAME'].capitalize} #{ENV['LASTNAME'].capitalize}", class: "img-city-mobile"%>
       </div>
 
       <%= link_to ceramiques_path, class: "back-in-home-mobile" do %>
@@ -96,7 +100,7 @@ Vendez vos produits en ligne ! Site de e-commerce configurable. Affichez sur cet
       "telephone": "<%= ENV['TELEPHONE']%>",
       "url": "https://<%= ENV['APPNAME']%>.herokuapp.com/info",
       "image":"https://<%= ENV['APPNAME']%>.herokuapp.com<%= image_path ENV['HOMEPIC']%>"
-      "address":"<%= ENV['ADDRESS']%>",
+      "address":"<%= ENV['ADDRESS'].gsub(/[+]/, ' ') %>",
       "priceRange":"20€ à 800€"
     }
   </script>

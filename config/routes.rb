@@ -10,7 +10,12 @@ Rails.application.routes.draw do
   resources :orders, only: [:show, :create, :destroy] do
     resources :payments, only: [:new, :create]
   end
+
   resources :lessons, only: [:new, :create, :destroy, :show]
+
+  resources :users, only: [:show, :update, :create]
+
+  #Stages
   get '/stage_confirmation', to: 'lessons#stage_confirmation'
   get '/stage_payment_confirmation', to: 'lessons#stage_payment_confirmation'
 

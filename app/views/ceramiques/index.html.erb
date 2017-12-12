@@ -136,7 +136,7 @@ Site de e-commerce configurable. Créez votre compte et visualisez votre futur s
     "telephone": "<%= ENV['TELEPHONE']%>",
     "url": "https://<%= ENV['APPNAME']%>.herokuapp.com/",
     "image":"https://<%= ENV['APPNAME']%>.herokuapp.com<%= image_path ENV['HOMEPIC']%>",
-    "address":"<%= ENV['ADDRESS']%>",
+    "address":"<%= ENV['ADDRESS'].gsub(/[+]/, ' ')%>",
     "priceRange":"20€ à 800€"
   }
   </script>

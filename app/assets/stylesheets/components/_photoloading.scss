@@ -1,0 +1,24 @@
+.photo-update-box {
+  background: $card-background;
+  border-radius: $project-border-radius;
+  border: 5px solid grey;
+  padding: $padding-small;
+  position: absolute;
+  text-align: center;
+  min-width: 325px;
+  z-index: 3;
+  ul {
+    list-style: none;
+    padding: 0px;
+    margin: 10px 0;
+  }
+  input {
+    font-size: 12px;
+  }
+  p {
+    font-size: 16px;
+  }
+  .attachinary.optional.attachinary-input {
+    display: inline-block;
+  }
+}

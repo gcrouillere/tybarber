@@ -5,13 +5,15 @@ Vendez vos produits en ligne ! Site de e-commerce configurable. Créez votre com
   Vente de <%=ENV['MODEL']%> - <%=ENV['FIRSTNAME']%> <%=ENV['LASTNAME'] %>
 <% end %>
 
+<%= render 'shared/home_pics' %>
+
 <div class="jumbotron">
   <style>
   .jumbotron .banner {
-  background-image: linear-gradient(135deg, rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url(<%= image_path ENV['HOMEPIC']%>);
+  background-image: linear-gradient(135deg, rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url(<%= @homepicpath %>);
   }
   .jumbotron .banner-xs {
-  background-image: linear-gradient(135deg, rgba(0,0,0,0.7) 0%, rgba(0,0,0,0.4) 50%), url(<%= image_path ENV['HOMEPICMOBILE']%>);
+  background-image: linear-gradient(135deg, rgba(0,0,0,0.7) 0%, rgba(0,0,0,0.4) 50%), url(<%= @homepicpathmobile %>);
   }
   </style>
 
@@ -23,6 +25,9 @@ Vendez vos produits en ligne ! Site de e-commerce configurable. Créez votre com
         <p><%= "#{ENV['FIRSTNAME'].capitalize} #{ENV['LASTNAME'].capitalize}" %></p>
         <%= link_to "Voir les #{ENV['MODEL']}", ceramiques_path, class: "btn btn-primary btn-lg" %>
       </div>
+        <%= photo_update('productphoto', 30, '', '', 30, '.homepic', "Mise à jour photo d'accueil")%>
+        <%= photo_update('productphotomobile', 30, '', '', 412, '.homepicmobile', "Mise à jour photo d'accueil pour mobiles")%>
+        <%= photo_update('logophoto', 30, '', '', 785, '.logopic', "Mise à jour logo")%>
     </div>
   </div>
 
@@ -71,7 +76,7 @@ Vendez vos produits en ligne ! Site de e-commerce configurable. Créez votre com
     "telephone": "<%= ENV['TELEPHONE']%>",
     "url": "https://<%= ENV['APPNAME']%>.herokuapp.com/",
     "image":"https://<%= ENV['APPNAME']%>.herokuapp.com<%= image_path ENV['HOMEPIC']%>",
-    "address":"<%= ENV['ADDRESS']%>",
+    "address":"<%= ENV['ADDRESS'].gsub(/[+]/, ' ')%>",
     "priceRange":"20€ à 800€"
   }
   </script>

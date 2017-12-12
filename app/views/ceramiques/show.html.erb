@@ -91,6 +91,8 @@ Les <%="#{ENV['MODEL']} de #{ENV['FIRSTNAME'].capitalize} #{ENV['LASTNAME'].capi
       </div>
     </div>
 
+    <% if @same_category_products != [] %>
+
     <hr class="product-show-separator">
 
     <div class="row">
@@ -123,6 +125,8 @@ Les <%="#{ENV['MODEL']} de #{ENV['FIRSTNAME'].capitalize} #{ENV['LASTNAME'].capi
           </div>
       </div>
     </div>
+
+    <% end %>
 
   </div>
 

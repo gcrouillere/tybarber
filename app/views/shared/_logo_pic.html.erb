@@ -1,0 +1,6 @@
+<% @logositepictag = image_tag ENV['LOGOSITE'] , alt: "Accueil de la boutique en ligne" %>
+<% if user_signed_in? %>
+  <% if  current_user.logophoto.present? %>
+    <% @logositepictag = cl_image_tag current_user.logophoto.path, alt: "Accueil de la boutique en ligne" %>
+  <% end %>
+<% end %>
