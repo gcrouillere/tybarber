@@ -1,6 +1,6 @@
 ActiveAdmin.register User, as: 'Clients' do
   actions  :index, :show
-  menu priority: 5
+  menu priority: 7
   config.filters = false
 
   index do

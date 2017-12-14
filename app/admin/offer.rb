@@ -1,7 +1,7 @@
 ActiveAdmin.register Offer, as: 'Offres' do
   permit_params :title, :description, :showcased, :discount, :ceramique_id
   actions  :index, :destroy, :update, :edit, :show, :new, :create
-  menu priority: 6
+  menu priority: 3
   config.filters = false
 
   index do
@@ -22,7 +22,7 @@ ActiveAdmin.register Offer, as: 'Offres' do
       row :description
       row :showcased
       row :discount
-      row "Produits contenues dans l'offre" do |offer|
+      row "Produits contenus dans l'offre" do |offer|
         Ceramique.all.where(offer: offer).map {|ceramique| ceramique.name}.join(", ")
       end
     end
@@ -34,7 +34,7 @@ ActiveAdmin.register Offer, as: 'Offres' do
       f.input :description
       f.input :showcased
       f.input :discount, :hint => "Nombre à virgule entre 0 et 1. Correspond à une réduction de 0 à 100%."
-      f.input :ceramiques, :hint => "Sélectionnez les produits auxquels l'offre s'applique. Maintenez Ctrl appuyé pour en sélectionner plusieurs"
+      f.input :ceramiques, :hint => "Sélectionnez les produits auxquels l'offre s'applique. Maintenez Ctrl appuyé pour en sélectionner plusieurs."
     end
     f.actions
   end
