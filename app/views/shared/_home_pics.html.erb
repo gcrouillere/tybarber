@@ -1,8 +1,11 @@
 <% @homepicpath = image_path ENV['HOMEPIC'] %>
 <% @homepicpathmobile = image_path ENV['HOMEPICMOBILE'] %>
 <% if @user %>
+<% puts "@user exists" %>
   <% if  @user.productphoto.present? %>
+  <% puts "@user productphoto exists" %>
     <% @homepicpath = cl_image_path @user.productphoto.path %>
+    <% puts @homepicpath %>
   <% end %>
   <% if  @user.productphotomobile.present? %>
     <% @homepicpathmobile = cl_image_path @user.productphotomobile.path %>
