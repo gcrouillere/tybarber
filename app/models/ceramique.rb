@@ -12,7 +12,7 @@ class Ceramique < ApplicationRecord
   validates :photos, presence: true
   validates :category, presence: true
   validates :name, presence: true
-  validates :weight, presence: true, numericality: { greater_than: 0, only_integer: true}
+  validates :weight, presence: true, numericality: { greater_than: 0, less_than: 30001 , only_integer: true, message: 'Le poids doit être compris entre 1 et 30 000 grammes. Pas d\'expédition Colissimo possible en dehors de cette plage.' }
   validates :stock, presence: true, numericality: { only_integer: true }
   validates :price_cents, presence: true, numericality: { greater_than: 0 }
   validates :description, presence: true
