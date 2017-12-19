@@ -2,12 +2,12 @@ class ArticlesController < ApplicationController
 
   def create
     @article = Article.create(article_params)
-    redirect_to root_path
+    redirect_to request.referrer
   end
 
   def update
     @article = Article.find(params[:article][:id]).update(article_params)
-    redirect_to root_path
+    redirect_to request.referrer
   end
 
   private
