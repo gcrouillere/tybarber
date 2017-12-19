@@ -64,6 +64,9 @@ gem 'httparty'
 # Facebook omniauth
 gem 'omniauth-facebook'
 
+# Blogging
+gem 'redcarpet'
+
 group :development, :test do
   gem 'better_errors'
   gem 'binding_of_caller'

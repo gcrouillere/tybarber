@@ -33,7 +33,7 @@
         margin-bottom: 35px;
         margin-left: 10px;
         font-weight: $font-weight-h4;
-        font-size: $font-size-h4;
+        font-size: $font-size-h5;
       }
       .description {
         position: relative;
@@ -198,6 +198,7 @@
   }
   .other-imgs.other-mobile {
     margin-top: 10px;
+    margin-bottom: 30px;
     .images {
       margin-left: 10px;
       display: flex;

@@ -37,17 +37,17 @@ Les <%="#{ENV['MODEL']} de #{ENV['FIRSTNAME'].capitalize} #{ENV['LASTNAME'].capi
                   <i class="fa fa-facebook-square" aria-hidden="true"></i>
                 </a>
               </div>
-              <p class="description"> <%= @ceramique.description%> </p>
+              <p class="description"> <%= @ceramique.description.gsub(/\n/, '<br>').html_safe%> </p>
               <hr>
             </div>
             <div class="prix-form">
               <% @ceramique.offer ? discount =  @ceramique.offer.discount : discount = 0 %>
               <h2 class="prix"> <%= humanized_money(@ceramique.price * (1 - discount))%> <%= currency_symbol %> </h2>
               <% if @ceramique.offer %>
-                    <% if @ceramique.offer.discount > 0 %>
-                      <h3 class="previous-price"><%= humanized_money(@ceramique.price)%> <%= currency_symbol %></h3>
-                    <% end %>
-                  <% end %>
+                <% if @ceramique.offer.discount > 0 %>
+                  <h3 class="previous-price"><%= humanized_money(@ceramique.price)%> <%= currency_symbol %></h3>
+                <% end %>
+              <% end %>
               <% if  @ceramique.stock > 0 %>
                 <form action="/orders" method="post" authenticity_token="true" class="form">
                   <%= hidden_field_tag :authenticity_token, form_authenticity_token %>
@@ -118,7 +118,7 @@ Les <%="#{ENV['MODEL']} de #{ENV['FIRSTNAME'].capitalize} #{ENV['LASTNAME'].capi
                   </div>
                   <% end %>
                 </div>
-              <% if index == 2 || (index + 1)%3 == 0 %>
+              <% if ceramique == @same_category_products.last || index == 2 || (index + 1)%3 == 0 %>
                 </div>
               <% end %>
             <% end %>
@@ -131,9 +131,9 @@ Les <%="#{ENV['MODEL']} de #{ENV['FIRSTNAME'].capitalize} #{ENV['LASTNAME'].capi
   </div>
 
 <!-- MOBILE -->
-  <div class="hidden-md hidden-lg">
+  <!-- <div class="hidden-md hidden-lg"> -->
     <div class="row">
-      <div class="col-xs-12">
+      <div class="col-xs-12 hidden-md hidden-lg">
 
         <div class="head">
           <h1> <%= @ceramique.name.capitalize%> </h1>
@@ -154,7 +154,7 @@ Les <%="#{ENV['MODEL']} de #{ENV['FIRSTNAME'].capitalize} #{ENV['LASTNAME'].capi
         <div class="product-show-mobile text center">
           <div class="info-add-basket">
             <div class="description">
-              <p class="description"> <%= @ceramique.description%> </p>
+              <p class="description"> <%= @ceramique.description.gsub(/\n/, '<br>').html_safe %> </p>
               <hr>
             </div>
             <div class="prix-form">
@@ -196,7 +196,7 @@ Les <%="#{ENV['MODEL']} de #{ENV['FIRSTNAME'].capitalize} #{ENV['LASTNAME'].capi
 
       </div>
     </div>
-  </div>
+  <!-- </div> -->
 
 </div>
 

@@ -38,14 +38,16 @@ Module de prise de réservations. Offrez la possibilité à vos clients d'effect
             <%= f.submit "Demande de réservation", class: "btn btn-primary stage-btn" %>
           </div>
         <% end %>
-        <div class="wrapper">
+        <div class="text-container">
           <div class="texte-stage">
-            <h1>Stage de <%=ENV['MODEL'][0..-1]%></h1>
-            <p><strong>Programme du stage : </strong>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam condimentum dolor ut vulputate tincidunt. Integer et purus et nisl eleifend semper eu sed turpis. Proin dignissim rutrum turpis. Sed quis volutpat dolor, a blandit risus. Phasellus vestibulum sit amet quam vitae tristique. Morbi rutrum leo ut porttitor gravida. Maecenas id vulputate nunc. Pellentesque quis auctor mi.</p>
-            <p><strong>Pendant le stage, vous apprenez ou perfectionnez les techniques suivantes: </strong>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam condimentum dolor ut vulputate tincidunt. Integer et purus et nisl eleifend semper eu sed turpis. Proin dignissim rutrum turpis.</p>
-            <p> <strong>Hébergements et repas:</strong> Sed quis volutpat dolor, a blandit risus. Phasellus vestibulum sit amet quam vitae tristique. Morbi rutrum leo ut porttitor gravida. Maecenas id vulputate nunc. Pellentesque quis auctor mi.</p>
-            <p><strong>Prix: </strong>Les stages se déroulent sur 2 ou 5 jours, pour 2 à 6 personnes maximum. 2 jours: 150€/pers, 5 jours : 380€/pers. Ces prix ne comprennent pas l'hébergement ni les repas.</p>
-            <p><strong>Confirmation: </strong> Quand votre demande de stage sera traitée, vous recevrez une confirmation par mail. Vous devrez ensuite payer les arrhes pour valider définitivement votre participation.</p>
+            <% if user_signed_in? && current_user.admin %>
+              <% article_typing("stage", "horizontal", "markdown1", "live-text3", "input3") %>
+              <% @markdown = @markdown1 %>
+              <%= render 'shared/articletyping' %>
+          <% else %>
+            <% article_display("stage", "horizontal") %>
+            <%= @markdown.html_safe %>
+          <% end %>
           </div>
         </div>
         </div>
@@ -75,12 +77,8 @@ Module de prise de réservations. Offrez la possibilité à vos clients d'effect
         <% end %>
         <div class="wrapper">
           <div class="texte-stage">
-            <h1>Stage de <%=ENV['MODEL'][0..-1]%></h1>
-            <p><strong>Programme du stage : </strong>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam condimentum dolor ut vulputate tincidunt. Integer et purus et nisl eleifend semper eu sed turpis. Proin dignissim rutrum turpis. Sed quis volutpat dolor, a blandit risus. Phasellus vestibulum sit amet quam vitae tristique. Morbi rutrum leo ut porttitor gravida. Maecenas id vulputate nunc. Pellentesque quis auctor mi.</p>
-            <p><strong>Pendant le stage, vous apprenez ou perfectionnez les techniques suivantes: </strong>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam condimentum dolor ut vulputate tincidunt. Integer et purus et nisl eleifend semper eu sed turpis. Proin dignissim rutrum turpis.</p>
-            <p> <strong>Hébergements et repas:</strong> Sed quis volutpat dolor, a blandit risus. Phasellus vestibulum sit amet quam vitae tristique. Morbi rutrum leo ut porttitor gravida. Maecenas id vulputate nunc. Pellentesque quis auctor mi.</p>
-            <p><strong>Prix: </strong>Les stages se déroulent sur 2 ou 5 jours, pour 2 à 6 personnes maximum. 2 jours: 150€/pers, 5 jours : 380€/pers. Ces prix ne comprennent pas l'hébergement ni les repas.</p>
-            <p><strong>Confirmation: </strong> Quand votre demande de stage sera traitée, vous recevrez une confirmation par mail. Vous devrez ensuite payer les arrhes pour valider définitivement votre participation.</p>
+            <% article_display("stage", "horizontal") %>
+            <%= @markdown.html_safe %>
           </div>
         </div>
         </div>

@@ -10,24 +10,38 @@
     align-items: center;
     justify-content: center;
   }
-  .texte-stage {
-    margin-top: 20px;
-    margin-bottom: 10px;
-    background: $card-background;
-    padding: $padding-large;
-    border-radius: $project-border-radius;
-    border: $card-border;
-    h1 {
-      font-size: $font-size-h4;
-      margin: 11px 0px 20px 0px !important;
-    }
-    p {
-      font-weight: $font-weight-p;
-        strong {
-          font-weight: $font-weight-p-strong;
+  .text-container {
+    display: flex;
+    .texte-stage {
+      width: 100%;
+      margin-top: 20px;
+      margin-bottom: 30px;
+      background: $card-background;
+      padding: $padding-large;
+      border-radius: $project-border-radius;
+      border: $card-border;
+      h1 {
+        font-size: $font-size-h4;
+        margin: 11px 0px 20px 0px !important;
+      }
+      h2 {
+        font-size: $font-size-h5;
+      }
+      p {
+        font-weight: $font-weight-p;
+          strong {
+            font-weight: $font-weight-p-strong;
+        }
+      }
+      #input3 {
+        min-height: 200px;
       }
     }
+    .control-label.text.required {
+      color: black;
+    }
   }
+
 }
 
 .available-course {
@@ -54,6 +68,9 @@
       h1 {
         font-size: $font-size-h4;
         margin: 11px 0px 20px 0px !important;
+      }
+      h2 {
+        font-size: $font-size-h5;
       }
       p {
         font-weight: $font-weight-p;

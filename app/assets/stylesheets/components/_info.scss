@@ -13,7 +13,8 @@
     margin-top: 20px;
     margin-bottom: 10px;
   }
-  .texte {
+  #live-text {
+    width: 60%;
     h1 {
       font-size: $font-size-h4;
       margin: 11px 0px 30px 0px;
@@ -33,6 +34,34 @@
     padding: $padding-large;
     border-radius: $project-border-radius;
     border: $card-border;
+  }
+
+  #live-text1 {
+    h1 {
+      font-size: $font-size-h4;
+      margin: 11px 0px 30px 0px;
+    }
+    h2 {
+      font-weight: 400;
+      font-size: $font-size-h5;
+      margin: 19px 0px 0px 0px;
+    }
+    p {
+    margin: 8px 10px 10px 10px;
+    font-weight: $font-weight-p;
+    }
+    margin-top: 20px;
+    margin-bottom: 10px;
+    background: $card-background;
+    padding: $padding-small;
+    border-radius: $project-border-radius;
+    border: $card-border;
+  }
+  .article_content {
+    margin-top: 20px;
+    #input1 {
+      min-height: 330px;
+    }
   }
 }
 

@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20171207143250) do
+ActiveRecord::Schema.define(version: 20171218161138) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -27,6 +27,15 @@ ActiveRecord::Schema.define(version: 20171207143250) do
     t.index ["author_type", "author_id"], name: "index_active_admin_comments_on_author_type_and_author_id", using: :btree
     t.index ["namespace"], name: "index_active_admin_comments_on_namespace", using: :btree
     t.index ["resource_type", "resource_id"], name: "index_active_admin_comments_on_resource_type_and_resource_id", using: :btree
+  end
+
+  create_table "articles", force: :cascade do |t|
+    t.string   "name",       null: false
+    t.text     "content",    null: false
+    t.integer  "user_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["user_id"], name: "index_articles_on_user_id", using: :btree
   end
 
   create_table "attachinary_files", force: :cascade do |t|
@@ -81,7 +90,7 @@ ActiveRecord::Schema.define(version: 20171207143250) do
 
   create_table "ceramiques", force: :cascade do |t|
     t.string   "name",                    null: false
-    t.string   "description",             null: false
+    t.text     "description",             null: false
     t.integer  "stock",                   null: false
     t.integer  "category_id"
     t.datetime "created_at",              null: false
@@ -168,6 +177,7 @@ ActiveRecord::Schema.define(version: 20171207143250) do
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true, using: :btree
   end
 
+  add_foreign_key "articles", "users"
   add_foreign_key "basketlines", "ceramiques"
   add_foreign_key "basketlines", "orders"
   add_foreign_key "calendarupdates", "lessons"
