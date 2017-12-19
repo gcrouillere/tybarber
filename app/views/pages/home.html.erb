@@ -52,9 +52,11 @@ Vendez vos produits en ligne ! Site de e-commerce configurable. Créez votre com
       <% if user_signed_in? && current_user.admin %>
           <% article_typing("accueil-gauche", "vertical", "markdown1", "live-text1", "input1") %>
           <% @markdown = @markdown1 %>
-          <%= render 'shared/articletyping' %>
+          <div class="live-text">
+            <%= render 'shared/articletyping' %>
+          </div>
       <% else %>
-        <div id="live-text">
+        <div class="plain-text">
           <% article_display("accueil-gauche", "vertical") %>
           <%= @markdown.html_safe %>
         </div>
@@ -64,9 +66,11 @@ Vendez vos produits en ligne ! Site de e-commerce configurable. Créez votre com
       <% if user_signed_in? && current_user.admin %>
           <% article_typing("accueil-droit", "vertical", "markdown2", "live-text2", "input2") %>
           <% @markdown = @markdown2 %>
-          <%= render 'shared/articletyping' %>
+          <div class="live-text">
+            <%= render 'shared/articletyping' %>
+          </div>
       <% else %>
-        <div id="live-text">
+        <div class="plain-text">
           <% article_display("accueil-droit", "vertical") %>
           <%= @markdown.html_safe %>
         </div>
