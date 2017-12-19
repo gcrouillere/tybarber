@@ -1,0 +1,30 @@
+<% if @orientation == "horizontal" %>
+
+  <div class="col-xs-6">
+    <%= simple_form_for @article do |f| %>
+      <%= f.error_notification %>
+      <%= f.input :content, label: "Contenu: ", :input_html => { :id => @input_id } %>
+      <%= f.input :user_id, :as => :hidden, :input_html => { :value => current_user.id } %>
+      <%= f.input :id, :as => :hidden, :input_html => { :value => @article.id } %>
+      <%= f.input :name, :as => :hidden, :input_html => { :value => @name } %>
+      <%= f.button :submit, "Enregistrer le contenu", class: "btn btn-primary", name: "button" %>
+    <% end %>
+  </div>
+  <div class="col-xs-6" id="<%=@live_id%>">
+    <%= @markdown.html_safe %>
+  </div>
+
+<% else %>
+
+    <div id="<%=@live_id%>"><%= @markdown.html_safe %></div>
+    <%= simple_form_for @article do |f| %>
+      <%= f.error_notification %>
+      <%= f.input :content, label: "Contenu: ", :input_html => { :id => @input_id } %>
+      <%= f.input :user_id, :as => :hidden, :input_html => { :value => current_user.id } %>
+      <%= f.input :id, :as => :hidden, :input_html => { :value => @article.id } %>
+      <%= f.input :name, :as => :hidden, :input_html => { :value => @name } %>
+      <%= f.button :submit, "Enregistrer le contenu", class: "btn btn-primary", name: "button" %>
+    <% end %>
+
+<% end %>
+

@@ -15,15 +15,17 @@ Vendez vos produits en ligne ! Site de e-commerce configurable. Affichez sur cet
       <div class="wrapper">
         <%= photo_update('avatarphoto', '', '', 25, 15, '.avatarpic', "Mise à jour photo perso")%>
         <%= @avatarpictag %>
-        <div class="texte">
-          <h1><%= "#{ENV['FIRSTNAME'].capitalize} #{ENV['LASTNAME'].capitalize} créateur de #{ENV['MODEL']}"%></h1>
-          <h2>Ma technique de fabrication des <%= ENV['MODEL']%></h2>
-          <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam condimentum dolor ut vulputate tincidunt. Integer et purus et nisl eleifend semper eu sed turpis.</p>
-          <h2>Le décor des <%=ENV['MODEL']%></h2>
-          <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam condimentum dolor ut vulputate tincidunt. Integer et purus et nisl eleifend semper eu sed turpis. Proin dignissim rutrum turpis. Sed quis volutpat dolor, a blandit risus.</p>
-          <h2>Mes créations</h2>
-          <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam condimentum dolor ut vulputate tincidunt. Integer et purus et nisl eleifend semper eu sed turpis. Proin dignissim rutrum turpis. Sed quis volutpat dolor, a blandit risus.</p>
-        </div>
+
+        <% if user_signed_in? && current_user.admin %>
+          <% article_typing("info", "horizontal", "markdown1", "live-text1", "input1") %>
+          <% @markdown = @markdown1 %>
+          <%= render 'shared/articletyping' %>
+        <% else %>
+            <div id="live-text">
+              <% article_display("info", "horizontal") %>
+              <%= @markdown.html_safe %>
+            </div>
+        <% end %>
       </div>
 
       <div class="localisation">
@@ -41,9 +43,7 @@ Vendez vos produits en ligne ! Site de e-commerce configurable. Affichez sur cet
    <div class="col-xs-12 hidden-md hidden-lg mobile-info">
       <div class="wrapper-mobile">
         <div class="img-avatar-mobile"><%= @avatarpictagmobile %></div>
-        <h4><%= "#{ENV['FIRSTNAME'].capitalize} #{ENV['LASTNAME'].capitalize}"%></h4>
-        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam condimentum dolor ut vulputate tincidunt. Integer et purus et nisl eleifend semper eu sed turpis. Proin dignissim rutrum turpis. Sed quis volutpat dolor, a blandit risus. Maecenas in semper purus, semper hendrerit est. Proin vel ante ac ex iaculis condimentum. Nunc elementum ac tellus non consequat. In tempor est quis arcu hendrerit ultricies. Ut accumsan lacus a nunc mattis, a congue magna eleifend. Phasellus vestibulum sit amet quam vitae tristique. Morbi rutrum leo ut porttitor gravida. Maecenas id vulputate nunc. Pellentesque quis auctor mi.</p>
-        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam condimentum dolor ut vulputate tincidunt. Integer et purus et nisl eleifend semper eu sed turpis. Proin dignissim rutrum turpis. Sed quis volutpat dolor, a blandit risus. Phasellus vestibulum sit amet quam vitae tristique. Morbi rutrum leo ut porttitor gravida. Maecenas id vulputate nunc. Pellentesque quis auctor mi.</p>
+        <%= @markdown.html_safe %>
       </div>
 
       <div class="localisation-mobile">

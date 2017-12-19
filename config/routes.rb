@@ -15,6 +15,8 @@ Rails.application.routes.draw do
 
   resources :users, only: [:show, :update, :create]
 
+  resources :articles, only: [:update, :create]
+
   #Stages
   get '/stage_confirmation', to: 'lessons#stage_confirmation'
   get '/stage_payment_confirmation', to: 'lessons#stage_payment_confirmation'

@@ -19,4 +19,5 @@ class PagesController < ApplicationController
     render 'pages/robots.txt.erb'
     expires_in 6.hours, public: true
   end
+
 end

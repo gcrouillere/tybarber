@@ -296,6 +296,7 @@ GEM
     rb-fsevent (0.9.8)
     rb-inotify (0.9.10)
       ffi (>= 0.5.0, < 2)
+    redcarpet (3.4.0)
     redis (3.3.3)
     responders (2.4.0)
       actionpack (>= 4.2.0, < 5.3)
@@ -384,6 +385,7 @@ DEPENDENCIES
   puma
   rails (= 5.0.3)
   rails-assets-underscore!
+  redcarpet
   redis
   sass-rails
   simple_form
