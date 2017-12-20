@@ -14,9 +14,11 @@
   .banner-content {
     position: absolute;
     top: 150px;
+    left: calc(50% - 180px);
     text-align: center;
     color: $home-font-color;
     padding: 0 10px;
+    -moz-text-size-adjust: auto;
     h1, h2, h3, p {
       color: $home-font-color;
     }
