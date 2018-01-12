@@ -8,8 +8,20 @@
     <a href="https://www.facebook.com/sharer/sharer.php">
       <i class="fa fa-facebook-square" aria-hidden="true"></i>
     </a>
-    <a href="http://www.facebook.com/share.php?u=https://<%=ENV['APPNAME']%>.herokuapp.com<%=request.fullpath%>"
+
+    <div class="fb-share-button" data-href="https://ecommercebase.herokuapp.com/produits" data-layout="button" data-size="small" data-mobile-iframe="true"><a class="fb-xfbml-parse-ignore" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2F<%=ENV['APPNAME']%>.herokuapp.com%2F<%=request.fullpath%>&amp;src=sdkpreparse">Partager</a></div>
+<!--     <a href="http://www.facebook.com/share.php?u=https://herokuapp.com<%=request.fullpath%>"
      target="_blank">facebook</a>
+
+     <a href="#"
+      onclick="
+      window.open(
+        'https://www.facebook.com/sharer/sharer.php?u=https://herokuapp.com<%=request.fullpath%>',
+        'facebook-share-dialog',
+        'width=626,height=436');
+        return false;">
+      Share on Facebook
+    </a> -->
   </div>
 
 
