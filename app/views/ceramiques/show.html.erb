@@ -204,7 +204,7 @@ Les <%="#{ENV['MODEL']} de #{ENV['FIRSTNAME'].capitalize} #{ENV['LASTNAME'].capi
       "price": "<%= humanized_money(@ceramique.price)%>",
       "priceCurrency": "€"
     },
-    "url": "https://<%= ENV['APPNAME']%>.herokuapp.com/ceramiques/<%=@ceramique.id%>",
+    "url": "<%=request.original_url%>",
     "image": "<%=cl_image_path @ceramique.photos[0].path%>"
   }
   </script>
@@ -215,13 +215,5 @@ Les <%="#{ENV['MODEL']} de #{ENV['FIRSTNAME'].capitalize} #{ENV['LASTNAME'].capi
     data-pin-round="true"
     data-pin-tall="15px"
 ></script>
-  <script>
-    document.getElementById('facebookshare').onclick = function() {
-      FB.ui({
-        method: 'share',
-        display: 'popup',
-        href: 'https://<%=ENV['APPNAME']%>.herokuapp.com<%=request.fullpath%>',
-      }, function(response){});
-    }
-  </script>
+  <%= render 'shared/facebookshare' %>
 <% end %>

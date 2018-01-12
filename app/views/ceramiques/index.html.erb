@@ -145,26 +145,18 @@ Site de e-commerce configurable. Créez votre compte et visualisez votre futur s
     "description": "Online craft store",
     "openingHours": "Mo-Fr 09:00-18:00",
     "telephone": "<%= ENV['TELEPHONE']%>",
-    "url": "https://<%= ENV['APPNAME']%>.herokuapp.com/",
-    "image":"https://<%= ENV['APPNAME']%>.herokuapp.com<%= image_path ENV['HOMEPIC']%>",
+    "url": "<%=request.original_url%>",
+    "image":"<%=request.original_url%><%= image_path ENV['HOMEPIC']%>",
     "address":"<%= ENV['ADDRESS'].gsub(/[+]/, ' ')%>",
     "priceRange":"20€ à 800€"
   }
   </script>
-    <script
-    type="text/javascript"
-    async defer
-    src="//assets.pinterest.com/js/pinit.js"
-    data-pin-round="true"
-    data-pin-tall="15px"
+  <script
+  type="text/javascript"
+  async defer
+  src="//assets.pinterest.com/js/pinit.js"
+  data-pin-round="true"
+  data-pin-tall="15px"
 ></script>
-  <script>
-    document.getElementById('facebookshare').onclick = function() {
-      FB.ui({
-        method: 'share',
-        display: 'popup',
-        href: '<%=request.original_url%>',
-      }, function(response){});
-    }
-  </script>
+  <%= render 'shared/facebookshare' %>
 <% end %>
