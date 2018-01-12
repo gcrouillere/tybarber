@@ -19,6 +19,7 @@ Module de prise de réservations. Offrez la possibilité à vos clients d'effect
     <!-- LAPTOP -->
     <div class="hidden-xs col-sm-offset-2 col-sm-8">
       <div class="stage">
+           <%= render 'shared/socialbuttons' %>
         <%= simple_form_for @lesson do |f| %>
           <%= f.input :student, collection: ENV['MINBOOKING'].to_i..ENV['CAPACITY'].to_i, label: "Nombre de participants", selected: ENV['MINBOOKING'].to_i %>
           <label class="control-label select required" for="lesson_student"><abbr title="required">*</abbr> 1er jour de stage</label>
@@ -128,5 +129,14 @@ Module de prise de réservations. Offrez la possibilité à vos clients d'effect
     "description": "Fabriquez vos poteries",
     "url": "https://<%= ENV['APPNAME']%>.herokuapp.com/lessons/new"
   }
+  </script>
+  <script>
+    document.getElementById('facebookshare').onclick = function() {
+      FB.ui({
+        method: 'share',
+        display: 'popup',
+        href: 'https://<%=ENV['APPNAME']%>.herokuapp.com<%=request.fullpath%>',
+      }, function(response){});
+    }
   </script>
 <% end %>
