@@ -15,6 +15,7 @@ class CeramiquesController < ApplicationController
       filter_by_price if params[:prix_max].present?
       filter_by_offer if params[:offer].present?
     end
+    @twitter_url = "https://#{ENV['APPNAME'] + ".herokuapp.com" + request.fullpath}".to_query('url')
   end
 
   def show
