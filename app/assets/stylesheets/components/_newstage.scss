@@ -1,7 +1,4 @@
 .body-stage {
-  background-repeat: no-repeat;
-  background-attachment: fixed;
-  background-size: 100%;
   label {
     color: $stage-color-label
   }
@@ -65,10 +62,8 @@
   background-color: $available-stage-background-color;
 }
 
-.body-stage-mobile {
-  background: #e6dada;
-  background: $mobile-stage-background-gradient;
-  .stage {
+.body-stage {
+  .stage-mobile {
     margin: 10px;
     .social-buttons {
       position: absolute;

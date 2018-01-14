@@ -57,7 +57,7 @@ Module de prise de réservations. Offrez la possibilité à vos clients d'effect
 
     <!-- MOBILE -->
     <div class="hidden-sm hidden-md hidden-lg col-xs-12">
-      <div class="stage">
+      <div class="stage-mobile">
         <%= facebook_share_id("facebooksharemobile") %>
         <%= simple_form_for @lesson do |f| %>
           <%= f.input :student, collection: ENV['MINBOOKING'].to_i..ENV['CAPACITY'].to_i, label: "Nombre de participants", selected: ENV['MINBOOKING'].to_i %>
