@@ -28,8 +28,10 @@
         <% end %>
         <% if session[:order].present? %>
           <% if Order.where(id: session[:order]).present? %>
-            <%= link_to order_path(Order.find(session[:order])) do %>
-              <span><i class="fa fa-shopping-cart"></i> Panier</span>
+            <% if Order.where(id: session[:order]).first.state != "lost" %>
+              <%= link_to order_path(Order.find(session[:order])) do %>
+                <span><i class="fa fa-shopping-cart"></i> Panier</span>
+              <% end %>
             <% end %>
           <% end %>
         <% end %>
@@ -63,7 +65,8 @@
 <div class="navbar-mobile hidden-md hidden-lg">
  <!-- Logo -->
   <%= link_to root_path, class: "navbar-brand-mobile" do %>
-    <%= image_tag ENV['LOGOSITE']%>
+    <%= render 'shared/logo_pic' %>
+    <%= @logositepictag %>
   <% end %>
 
   <div class="navbar-item">
@@ -78,8 +81,10 @@
       <% if user_signed_in? %>
         <% if session[:order].present? %>
           <% if Order.where(id: session[:order]).present? %>
-            <%= link_to order_path(Order.find(session[:order])) do %>
-              <span><i class="fa fa-shopping-cart"></i> Panier</span>
+            <% if Order.where(id: session[:order]).first.state != "lost" %>
+              <%= link_to order_path(Order.find(session[:order])) do %>
+                <span><i class="fa fa-shopping-cart"></i> Panier</span>
+              <% end %>
             <% end %>
           <% end %>
         <% end %>
