@@ -10,7 +10,8 @@ $header-font: "Raleway", "Helvetica", "sans-serif";
  * ------------------------------------- */
  //Main :
 $primary: #007B66;
-$navbar: #0FB79B;
+$navbar: linear-gradient(to right, #fefefe, #0FB79B);
+$h2card: #0FB79B;
 $body: #fbfbfb;
 $footer: #141E30;
 $discount: #FFD10C;
@@ -73,3 +74,4 @@ $project-border-radius: 3px;
 $card-border: 1px solid rgba(0, 0, 0, 0.1);
 $padding-large: 20px;
 $padding-small: 10px;
+$mobile-avatar-image-width: 70px;
