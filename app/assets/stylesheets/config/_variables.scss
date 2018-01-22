@@ -9,8 +9,9 @@ $header-font: "Raleway", "Helvetica", "sans-serif";
  * Colors
  * ------------------------------------- */
  //Main :
-$primary: #007B66;
-$navbar: #0FB79B;
+$primary: #ffc64c;
+$navbar: linear-gradient(to right, #fefefe, #9CC8D5);
+$h2card: #B77836;
 $body: #fbfbfb;
 $footer: #141E30;
 $discount: #FFD10C;
@@ -73,3 +74,4 @@ $project-border-radius: 3px;
 $card-border: 1px solid rgba(0, 0, 0, 0.1);
 $padding-large: 20px;
 $padding-small: 10px;
+$mobile-avatar-image-width: 70px;
