@@ -1,8 +1,10 @@
 ActiveAdmin.register Ceramique, as: 'Produits' do
   permit_params :name, :description, :stock, :weight, :category_id, :price_cents, photos: []
   menu priority: 1
+  config.filters = false
 
   index do
+    column :id
     column :name
     column :description
     column :stock
