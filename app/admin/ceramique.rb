@@ -82,9 +82,14 @@ show do |ceramique|
 
  controller do
 
-    def create
+  def create
     super do |format|
-      redirect_to admin_produits_path and return if resource.valid?
+      if resource.valid?
+        flash[:notice] = "Produit mis à jour"
+        redirect_to admin_produits_path and return
+      else
+        flash[:alert] = "Certains champs ont été oubliés ou ne sont pas correctement remplis. Voir ci-dessous."
+      end
     end
   end
 
@@ -97,7 +102,12 @@ show do |ceramique|
 
   def update
     super do |format|
-      redirect_to admin_produits_path and return if resource.valid?
+      if resource.valid?
+        flash[:notice] = "Produit mis à jour"
+        redirect_to admin_produits_path and return
+      else
+        flash[:alert] = "Certains champs ont été oubliés ou ne sont pas correctement remplis. Voir ci-dessous."
+      end
     end
   end
 
