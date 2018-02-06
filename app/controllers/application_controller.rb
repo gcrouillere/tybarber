@@ -56,12 +56,6 @@ class ApplicationController < ActionController::Base
       :facebook_picture_url,
       :token,
       :token_expiry,
-      :productphoto,
-      :avatarphoto,
-      :cityphoto,
-      :productphotomobile,
-      :lessonphoto,
-      :logophoto
       ])
 
     # For additional in app/views/devise/registrations/edit.html.erb
@@ -71,12 +65,6 @@ class ApplicationController < ActionController::Base
       :adress,
       :zip_code,
       :city,
-      :productphoto,
-      :avatarphoto,
-      :cityphoto,
-      :productphotomobile,
-      :lessonphoto,
-      :logophoto
       ])
   end
 

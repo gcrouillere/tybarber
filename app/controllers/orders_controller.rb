@@ -29,6 +29,7 @@ class OrdersController < ApplicationController
       @order = Order.where(state: 'pending', id: params[:id].to_i).first
       @amount = @order.amount
       @port = @order.port
+      render "show_#{@active_theme.name}"
     else
       flash[:notice] = "Votre panier a expiré"
       redirect_back(fallback_location: root_path)

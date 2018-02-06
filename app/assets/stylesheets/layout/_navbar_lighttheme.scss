@@ -1,0 +1,25 @@
+.navbar-laptop-lighttheme {
+  height: 100px;
+  padding: 20px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  .navbar-brand {
+    display: flex;
+    padding: 0px;
+    margin-left: 20px;
+    img {
+      display: flex;
+      flex: 1 0 auto;
+      height: 100%;
+    }
+  }
+  .navbar-item .nav-bar-list a {
+    font-size: 15px;
+  }
+  .lightcart {
+    width: 20px;
+    top: -1px;
+    position: relative;
+  }
+}

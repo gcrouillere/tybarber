@@ -1,0 +1,31 @@
+#footer-lighttheme {
+  position: relative;
+  display: flex;
+  justify-content: space-between;
+  .contact {
+    display: flex;
+    h3 {
+      font-size: 18px;
+      font-weight: 400;
+    }
+    h4, span {
+      font-size: 14px;
+      font-weight: 300;
+    }
+    .connect, .CGV {
+      margin: 20px;
+    }
+  }
+  a {
+    color: black;
+  }
+  a:hover {
+    color: #bfbfbf
+  }
+  .link-guillaume {
+    position: absolute;
+    right: 10px;
+    bottom: 10px;
+    color: black;
+  }
+}

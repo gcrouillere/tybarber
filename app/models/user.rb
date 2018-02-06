@@ -18,7 +18,8 @@ class User < ApplicationRecord
   has_attachment :lessonphoto
   has_attachment :avatarphoto
   has_attachment :cityphoto
-  has_attachment :logophoto # , accept: [:png]
+  has_attachment :logophoto
+  has_attachments :homerightphotos, maximum: 2
 
   def display_name
     return self.email

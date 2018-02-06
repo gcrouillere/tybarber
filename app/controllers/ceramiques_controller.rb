@@ -28,6 +28,7 @@ class CeramiquesController < ApplicationController
     @ceramique = Ceramique.friendly.find(params[:id])
     @same_category_products = @ceramique.category.ceramiques - [@ceramique]
     @twitter_url = request.original_url.to_query('url')
+    render "show_#{@active_theme.name}"
   end
 
   private

@@ -42,4 +42,11 @@ $(document).on('ready', function() {
     $('.stagepic .photo-button').removeClass('hidden');
   });
 
+  $('.homerightphotos .attachinary_container').on('click', function(e){
+    $('.homerightphotos .photo-button').removeClass('hidden');
+  });
+  $('.homerightphotos input').on('click', function(e){
+    $('.homerightphotos .photo-button').removeClass('hidden');
+  });
+
 });

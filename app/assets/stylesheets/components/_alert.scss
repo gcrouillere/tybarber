@@ -7,9 +7,29 @@
   text-align: center;
   color: white;
 }
+
+.alert-lighttheme {
+  font-weight: 100;
+  border: none !important;
+  padding: 10px;
+  color: black;
+  .close {
+    right: 0px;
+  }
+}
+
 .alert-info {
   background: $green;
 }
+
+.alert-info.alert-lighttheme {
+  background: #c1ed90;
+}
+
 .alert-warning {
   background: $red;
+}
+
+.alert-warning.alert-lighttheme {
+  background: #ff6c68;
 }

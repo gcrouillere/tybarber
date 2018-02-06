@@ -1,4 +1,5 @@
 class UsersController < ApplicationController
+  skip_before_action :authenticate_user!, only: [:subscribe]
 
   def show
     @user = current_user
@@ -8,6 +9,19 @@ class UsersController < ApplicationController
     @user = current_user
     @user.update(user_params)
     redirect_to request.referrer
+  end
+
+  def subscribe
+    unless session[:email]
+      if Regexp.new('\A([\w+\-].?)+@[a-z\d\-]+(\.[a-z]+)*\.[a-z]{2,}\z').match(params[:user][:email])
+        @user = User.create(subscribe_params)
+        SubscribeMailer.subscribe(@user, @admin).deliver_now
+        @user.destroy
+        session[:email] = params[:user][:email]
+        flash[:notice] = "Vous êtes bien inscrit(e) à la newsletter"
+        redirect_to request.referrer
+      end
+    end
   end
 
   private
@@ -31,8 +45,13 @@ class UsersController < ApplicationController
       :cityphoto,
       :productphotomobile,
       :lessonphoto,
-      :logophoto
+      :logophoto,
+      homerightphotos: []
     )
+  end
+
+  def subscribe_params
+    params.require(:user).permit(:email, first_name: "John", last_name: "Doe")
   end
 
 end
