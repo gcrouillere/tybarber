@@ -1,5 +1,5 @@
 <!-- Right Navigation LAPTOP -->
-<div class="navbar-laptop-lighttheme hidden-xs hidden-sm">
+<div class="navbar-laptop-lighttheme hidden-xs hidden-sm opacity-on-laptop">
   <!-- Logo -->
   <%= link_to root_path, class: "navbar-brand", title: "Retour à l'accueil de notre offre de boutique ligne" do %>
     <%= render 'shared/logo_pic' %>
@@ -70,7 +70,7 @@
           <span>Boutique</span>
         <% end %>
         <%= link_to info_path do %>
-          <span>A propos</span>
+          <span>Infos</span>
         <% end %>
         <%= link_to new_lesson_path do %>
           <span>Stage</span>
@@ -81,7 +81,7 @@
           <% if Order.where(id: session[:order]).present? %>
             <% if Order.where(id: session[:order]).first.state != "lost" %>
               <%= link_to order_path(Order.find(session[:order])) do %>
-                <span><i class="fa fa-shopping-cart"></i></span>
+                <span><%= image_tag "lightcart.png", class: "lightcart"%></span>
               <% end %>
             <% end %>
           <% end %>

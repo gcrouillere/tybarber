@@ -16,7 +16,7 @@ class OrdersController < ApplicationController
       @ceramique.update(stock: @ceramique.stock - @basketline.quantity)
       costs = Amountcalculation.new(@order).calculate_amount(@order)
       @order.update(amount: costs[:total], port: costs[:port], ceramique: collect_ceramiques_for_stats)
-      flash[:notice] = "Votre panier sera conservé pendant #{(ENV['BASKETDURATION'].to_f * 60).to_i } min"
+      flash[:notice] = "Votre panier sera conservé #{(ENV['BASKETDURATION'].to_f * 60).to_i } min"
       redirect_to order_path(@order)
     else
       flash[:alert] = "Désolé, il n'y a que #{@ceramique.stock} en stock"

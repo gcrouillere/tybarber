@@ -1,26 +1,27 @@
 <!-- LAPTOP -->
 
-<div class="hidden-xs">
   <div id="footer-lighttheme">
     <div class="contact">
       <div class="connect">
         <h3>Gardons le contact</h3>
         <h4>Facebook</h4>
         <h4>Instagram</h4>
-        <% if user_signed_in? %>
-          <% if current_user.admin %>
-            <%= link_to admin_root_path, class: "admin-link" do %>
-              <h4>Administration</h4>
+        <div class="hidden-xs hidden-sm hidden-md">
+          <% if user_signed_in? %>
+            <% if current_user.admin %>
+              <%= link_to admin_root_path, class: "admin-link" do %>
+                <h4>Administration</h4>
+              <% end %>
+            <% end %>
+            <%= link_to destroy_user_session_path, method: :delete do %>
+              <h4> Se déconnecter</h4>
+            <% end %>
+          <% else %>
+            <%= link_to new_user_session_path, class: "connect-link" do %>
+              <h4>Se connecter à la boutique</h4>
             <% end %>
           <% end %>
-          <%= link_to destroy_user_session_path, method: :delete do %>
-            <h4> Se déconnecter</h4>
-          <% end %>
-        <% else %>
-          <%= link_to new_user_session_path, class: "connect-link" do %>
-            <h4>Se connecter à la boutique</h4>
-          <% end %>
-        <% end %>
+        </div>
       </div>
       <div class="CGV">
         <h3>Conditions générales de vente</h3>
@@ -32,23 +33,3 @@
       <%= image_tag  'legolight.svg', alt: "Guillaume Crouillere - Developpeur WEB indépendant"%>
     <% end %>
   </div>
-</div>
-
-<!-- MOBILE -->
-<div class="hidden-sm hidden-md hidden-lg">
-  <div class="footer-mobile">
-    <div class="contact">
-      <div class="link">
-        <a href="https://www.google.fr/maps/place/<%=ENV['ADDRESS']%>" target="blank"><i class="fa fa-map"></i></a>
-      </div>
-      <div class="envelope">
-        <i class="fa fa-envelope-o"></i>
-        <h6 class="info-text"><%=ENV['EMAIL']%></h5>
-      </div>
-      <div class="phone">
-        <i class="fa fa-phone"></i>
-        <h6 class="info-text"><%=ENV['TELEPHONE']%></h5>
-      </div>
-    </div>
-  </div>
-</div>

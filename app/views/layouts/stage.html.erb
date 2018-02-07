@@ -14,14 +14,6 @@
     <meta property="og:description" content="<%= meta_description %>" />
     <meta property="og:site_name" content="<%= meta_title %>" />
 
-    <!-- Twitter Card data -->
-<!--<meta name="twitter:card" content="summary_large_image">
-    <meta name="twitter:site" content="<%=  %>">
-    <meta name="twitter:title" content="<%= meta_title %>">
-    <meta name="twitter:description" content="<%= meta_description %>">
-    <meta name="twitter:creator" content="<%= %>">
-    <meta name="twitter:image:src" content="<%= meta_image %>"> -->
-
     <%= favicon_link_tag %>
     <%= csrf_meta_tags %>
     <%= action_cable_meta_tag %>
@@ -58,11 +50,11 @@
         </div>
         <%= render 'shared/footer' %>
     <% elsif @active_theme.name = "lighttheme" %>
-      <div class="body-stage">
+      <div class="body-stage-lightheme">
       <%= render 'shared/stage_pic'%>
       <style>
         @media all and (min-width: 700px) {
-          .body-stage {
+          .body-stage-lightheme {
             background-image: url(<%= @stagepicpath %>);
             background-repeat: no-repeat;
             background-attachment: fixed;
@@ -70,7 +62,7 @@
           }
         }
         @media all and (max-width: 700px) {
-          .body-stage {
+          .body-stage-lightheme {
             background: #e6dada;
             background: linear-gradient(to right, #f0f2f0, #000c40);
           }

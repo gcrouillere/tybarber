@@ -8,7 +8,7 @@
 <%= render 'shared/home_pics' %>
 <%= render 'shared/home_right_pics' %>
 
-  <div class="homeimagescontainer">
+  <div class="homeimagescontainer hidden-xs">
     <%= photo_update('productphoto', 130, '', '', 30, '.homepic', "Mise à jour photo accueil gauche")%>
     <%= photo_update('productphotomobile', 130, '', '', 412, '.homepicmobile', "Mise à jour photo d'accueil pour mobiles")%>
     <%= photo_update('logophoto', 130, '', '', 785, '.logopic', "Mise à jour logo")%>
@@ -21,11 +21,19 @@
       <%= image_tag @homerightphoto2 %>
     </div>
   </div>
-  <div class="hometext">
+  <div class="homeimagescontainer-mobile">
+    <div class="imagehomeleft hidden-sm hidden-md hidden-lg">
+      <%= image_tag @homepicpath %>
+      <%= image_tag @homerightphoto1 %>
+      <%= image_tag @homerightphoto2 %>
+    </div>
+  </div>
+
+  <div class="hometext hidden-xs hidden-sm">
     <% if user_signed_in? && current_user.admin %>
       <% article_typing("accueil_lighttheme", "vertical", "markdown1", "live-text1", "input4") %>
       <% @markdown = @markdown1 %>
-      <div class="live-text">
+      <div class="live-text ">
         <%= render 'shared/articletyping' %>
       </div>
     <% else %>
@@ -34,6 +42,13 @@
         <%= @markdown.html_safe %>
       </div>
     <% end %>
+  </div>
+
+  <div class="hometext-mobile hidden-md hidden-lg">
+    <div class="plain-text">
+      <% article_display("accueil_lighttheme", "vertical") %>
+      <%= @markdown.html_safe %>
+    </div>
   </div>
 
   <%= render 'shared/subscribe' %>

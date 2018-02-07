@@ -1,7 +1,7 @@
 .devise-container {
   min-height: calc(100vh - 90px);
   .content-devise {
-    margin-top: 60px;
+    margin-top: 30px;
     margin-bottom: 60px;
     margin-right: 10px;
     margin-left: 10px;
@@ -118,5 +118,11 @@
     .devise-bottom-link:hover {
       color: #bfbfbf;
     }
+  }
+}
+
+@media all and (max-width: 800px) {
+  .devise-container-lighttheme .content-devise{
+    margin-top: 90px;
   }
 }

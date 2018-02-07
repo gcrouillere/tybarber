@@ -42,6 +42,28 @@
   }
 }
 
+@media all and (max-width: 800px) {
+  .subscribe-text {
+    h2 {
+      font-weight: 400;
+      font-size: 30px;
+      margin-left: 0px;
+    }
+    p {
+      font-weight: 100;
+      font-size: 15px;
+    }
+  }
+  .subscribe-form {
+    .subscribe-input {
+      padding: 10px;
+    }
+    .subscribe-submit {
+      padding: 10px;
+    }
+  }
+}
+
 .container-lighttheme {
   margin: 0;
   padding: 0px 30px;
@@ -64,3 +86,10 @@
     transition: 0.1s background-color linear, 0.1s color linear;
   }
 }
+
+@media all and (max-width: 800px) {
+  .content-lighttheme {
+    padding: 90px 0 0 0;
+  }
+}
+

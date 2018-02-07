@@ -1,7 +1,6 @@
 .lighttheme-ceramiquecard-col {
   margin: 0px 0px 55px 0px;
   padding: 0px 10px;
-  border-radius: 1px;
   .ceramiquecard-lighttheme {
     text-align: center;
     .img-container {
@@ -9,6 +8,7 @@
       background-size: cover;
       background-position-y: center;
       background-position-x: center;
+      border-radius: 1px;
       height: 300px;
       .ceramiques-card-circle {
         position: absolute;
@@ -51,6 +51,17 @@
       }
       .previous-price {
         text-decoration: line-through;
+      }
+    }
+  }
+}
+
+@media all and (max-width: 500px) {
+  .lighttheme-ceramiquecard-col {
+    margin-bottom: 20px;
+    .ceramiquecard-lighttheme {
+      .img-container {
+        height: 200px;
       }
     }
   }

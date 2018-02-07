@@ -17,9 +17,8 @@ Site de e-commerce configurable. Créez votre compte et visualisez votre futur s
 
 <div class="container-lighttheme">
   <div class="row">
-    <div class="hidden-xs hidden-sm">
        <% @ceramiques.each_with_index do |ceramique, index| %>
-          <div class="col-xs-3 lighttheme-ceramiquecard-col">
+          <div class="col-xs-6 col-sm-4 col-md-3 lighttheme-ceramiquecard-col">
             <%= link_to ceramique_path(ceramique), title: "#{ceramique.name}", class: "cardlink-lighttheme" do %>
               <div class="ceramiquecard-lighttheme">
                 <div class="img-container ceramique-front-image-<%=index%>">
@@ -56,6 +55,7 @@ Site de e-commerce configurable. Créez votre compte et visualisez votre futur s
             <% end %>
           </div>
       <% end %>
-    </div>
   </div>
 </div>
+
+<%= render 'shared/subscribe' %>

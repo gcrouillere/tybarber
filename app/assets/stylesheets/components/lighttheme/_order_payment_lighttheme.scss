@@ -5,6 +5,7 @@
 }
 
 .pay-form-lighttheme {
+  margin-bottom: 100px;
   .adress, .product-amount, .lesson-amount {
     margin-top: 20px;
     margin-bottom: 10px;
@@ -13,27 +14,19 @@
     border-radius: 1px;
     border: $card-border;
     text-decoration: none;
-    min-width: 600px;
   }
-  margin-bottom: 100px;
-  form {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    h4 {
-      margin-bottom: 15px;
-      font-weight: 300;
-    }
-    h3 {
-      font-weight: 400;
-    }
-    .stripe-button-el span{
-      font-size: $font-size-a;
-    }
-    a {
-      margin-top: 10px;
-    }
+  h4 {
+    margin-bottom: 15px;
+    font-weight: 300;
+  }
+  h3 {
+    font-weight: 400;
+  }
+  .stripe-button-el span{
+    font-size: $font-size-a;
+  }
+  a {
+    margin-top: 10px;
   }
 }
 
@@ -48,11 +41,6 @@
   .stripe {
     height: 20px;
   }
-}
-
-// MOBILE
-.pay-form.mobile {
-  margin: 0px 10px 10px 10px;
 }
 
 .mobile-link-coord {
@@ -80,3 +68,32 @@
     color: white;
   }
 }
+
+// MOBILE
+
+@media all and (max-width: 700px) {
+  .pay-form-lighttheme  {
+    padding: 10px;
+    margin-bottom: 30px;
+    h3 {
+      font-size: 22px;
+    }
+    h4 {
+      font-size: 18px;
+    }
+    h5 {
+     font-size: 15px;
+    }
+    .adress {
+      padding: 10px 10px 20px 10px;
+      margin-top: 10px;
+    }
+    .product-amount {
+      padding: 10px;
+    }
+    .laptop-link-coord {
+      padding: 10px;
+    }
+  }
+}
+
