@@ -3,13 +3,16 @@ class PagesController < ApplicationController
 
   def home
     @dev_redirection = "https://creermonecommerce.fr/"
+    render "home_#{@active_theme.name}"
   end
 
   def confirmation
+    render "confirmation_#{@active_theme.name}"
   end
 
   def info
     @dev_redirection = "https://creermonecommerce.fr/#anchor-info"
+    render "info_#{@active_theme.name}"
   end
 
   def google906057532e2dbb7e

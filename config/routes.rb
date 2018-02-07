@@ -30,6 +30,9 @@ Rails.application.routes.draw do
   #Sitemap
   get 'sitemap.xml', :to => 'sitemap#sitemap', :defaults => { :format => 'xml' }
 
+  #Subscribe
+  post '/user-subscribe', to: "users#subscribe"
+
   #Root
   root to: 'pages#home'
 end
