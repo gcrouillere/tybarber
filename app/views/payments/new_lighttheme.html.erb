@@ -17,9 +17,11 @@
               <h4><%= current_user.adress%></h4>
               <h4><%= current_user.zip_code%> - <%= current_user.city%></h4>
               <% unless @order.lesson.present? %>
-                <div class="laptop-link-coord">
-                  <%= link_to 'METTRE A JOUR VOS COORDONNEES', edit_user_registration_path %>
-                </div>
+                <%= link_to edit_user_registration_path do %>
+                  <div class="laptop-link-coord">
+                    METTRE A JOUR VOS COORDONNEES
+                  </div>
+              <% end %>
               <% end %>
             </div>
           <% end %>

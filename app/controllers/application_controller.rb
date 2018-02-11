@@ -5,6 +5,7 @@ class ApplicationController < ActionController::Base
   before_action :configure_permitted_parameters, if: :devise_controller?
   before_action :retrieve_admin
   before_action :check_theme
+  before_action :uniq_categories
   layout :layout_by_resource
   after_action :store_location
 
@@ -18,6 +19,13 @@ class ApplicationController < ActionController::Base
 
   def check_theme
     @active_theme = Theme.where(active: true).first || Theme.create(active: true, name: "default")
+  end
+
+  def uniq_categories
+    @categories = Ceramique.all.map do |ceramique|
+      ceramique.category.name
+    end
+    @categories = @categories.uniq.sort
   end
 
   #DEVISE methods:

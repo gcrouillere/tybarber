@@ -41,6 +41,15 @@
         <div class="content-lighttheme">
           <%= yield %>
         </div>
+        <%= render "shared/lighttheme_filter" %>
+        <%= render "shared/footer_#{@active_theme.name}" %>
+    <% elsif  @active_theme.name = "darktheme" %>
+      <div class="body-<%=@active_theme.name%>">
+        <%= render "shared/navbar_#{@active_theme.name}" %>
+        <%= render 'shared/flashes_darktheme' %>
+        <div class="content-darktheme">
+          <%= yield %>
+        </div>
         <%= render "shared/footer_#{@active_theme.name}" %>
     <% end %>
 

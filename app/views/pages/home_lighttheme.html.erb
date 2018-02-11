@@ -31,7 +31,7 @@
 
   <div class="hometext hidden-xs hidden-sm">
     <% if user_signed_in? && current_user.admin %>
-      <% article_typing("accueil_lighttheme", "vertical", "markdown1", "live-text1", "input4") %>
+      <% article_typing("accueil_lighttheme", "vertical", "markdown1", "live-text4", "input4") %>
       <% @markdown = @markdown1 %>
       <div class="live-text ">
         <%= render 'shared/articletyping' %>

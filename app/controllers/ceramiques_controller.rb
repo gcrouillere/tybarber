@@ -7,7 +7,6 @@ class CeramiquesController < ApplicationController
     Offer.where(showcased: true).first ? (Offer.where(showcased: true).first.ceramiques.present? ? @front_offer = Offer.all.where(showcased: true).first : nil) : nil
     @front_offer ? @ceramiques_to_display_in_offer = Ceramique.all.where(offer: @front_offer) : nil
     clean_orders
-    uniq_categories
     if params[:all].present?
       @ceramiques
     else
@@ -44,13 +43,6 @@ class CeramiquesController < ApplicationController
         session[:order] = nil
       end
     end
-  end
-
-  def uniq_categories
-    @categories = @ceramiques.map do |ceramique|
-      ceramique.category.name
-    end
-    @categories = @categories.uniq.sort
   end
 
   def filter_by_category

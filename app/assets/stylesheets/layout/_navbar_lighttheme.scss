@@ -24,6 +24,15 @@
   }
 }
 
+#lighttheme-filter-search, #lighttheme-filter-search-mobile {
+  margin-right: 20px;
+  .searchimg {
+    width: 20px;
+    top: -2px;
+    position: relative;
+  }
+}
+
 .opacity-on-laptop {
   background: rgba(255, 255, 255, 0.3);
 }
@@ -52,6 +61,11 @@
   }
   .lightcart {
     width: 19px;
+    top: -1px;
+    position: relative;
+  }
+  .infoimg {
+    width: 20px;
     top: -1px;
     position: relative;
   }

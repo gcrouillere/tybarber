@@ -52,21 +52,18 @@
   width: 60%;
   border-radius: 1px;
   padding: 21px 34px;
+  color: black;
+  font-size: 14px;
   border: 1px solid black;
   background-color: white;
   transition: 0.1s background-color linear, 0.1s color linear;
   margin: auto;
-  a {
-    color: black;
-    font-size: 14px;
-  }
 }
+
 .laptop-link-coord:hover {
   background-color: black;
   transition: 0.1s background-color linear, 0.1s color linear;
-  a {
-    color: white;
-  }
+  color: white;
 }
 
 // MOBILE
