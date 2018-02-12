@@ -6,7 +6,7 @@
       <h3>Catégories</h3>
       <div class="filter-category">
         <ul>
-          <% @categories.each do |category| %>
+          <% @uniq_categories.each do |category| %>
             <li><label class="label-search"><input type="checkbox" name="categories[]" value="<%= category %>"><%= category %></label></li>
           <% end %>
         </ul>

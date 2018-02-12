@@ -55,7 +55,7 @@ Site de e-commerce configurable. Créez votre compte et visualisez votre futur s
             <h3>Catégories</h3>
             <div class="filter-category">
               <ul>
-                <% @categories.each do |category| %>
+                <% @uniq_categories.each do |category| %>
                   <li><label class="label-search"><input type="checkbox" name="categories[]" value="<%= category %>"><%= category %></label></li>
                 <% end %>
               </ul>
@@ -71,9 +71,9 @@ Site de e-commerce configurable. Créez votre compte et visualisez votre futur s
       </div>
     </div>
 
-    <div class="hidden-xs hidden-sm col-md-9 ceramique-list">
+    <div class="col-xs-12 col-sm-12 col-md-9 ceramique-list">
       <% @ceramiques.each do |ceramique| %>
-          <div class="col-xs-6">
+          <div class="col-md-6">
             <%= link_to ceramique_path(ceramique), title: "#{ceramique.name}", class: "cardlink" do %>
               <div class="ceramiquecard">
                 <% if ceramique.offer%>
@@ -89,16 +89,31 @@ Site de e-commerce configurable. Créez votre compte et visualisez votre futur s
                     <img class="img" src="<%= cl_image_path ceramique.photos[0].path %>" alt="<%=ceramique.name%>">
                   <% end %>
                   <% ceramique.offer ? discount =  ceramique.offer.discount : discount = 0 %>
-                  <h2 class="prix-index"><%= humanized_money(ceramique.price * (1 - discount))%> <%= currency_symbol %></h2>
+                  <h2 class="prix-index hidden-xs hidden-sm"><%= humanized_money(ceramique.price * (1 - discount))%> <%= currency_symbol %></h2>
                   <% if ceramique.offer %>
                     <% if ceramique.offer.discount > 0 %>
-                      <h3 class="previous-price"><%= humanized_money(ceramique.price)%> <%= currency_symbol %></h3>
+                      <div class="allpricesmobile-w hidden-md hidden-lg">
+                        <h2 class="prix-index-mobile"><%= humanized_money(ceramique.price * (1 - discount))%> <%= currency_symbol %></h2>
+                        <h3 class="previous-price-mobile"><%= humanized_money(ceramique.price)%> <%= currency_symbol %></h3>
+                      </div>
+                    <% else %>
+                      <div class="allpricesmobile-w-zero hidden-md hidden-lg">
+                        <h2 class="prix-index-mobile"><%= humanized_money(ceramique.price * (1 - discount))%> <%= currency_symbol %></h2>
+                      </div>
                     <% end %>
+                  <% if ceramique.offer.discount > 0 %>
+                    <h3 class="previous-price hidden-xs hidden-sm"><%= humanized_money(ceramique.price)%> <%= currency_symbol %></h3>
                   <% end %>
+                  <% else %>
+                    <div class="allpricesmobile-wo hidden-md hidden-lg">
+                      <h2 class="prix-index-mobile"><%= humanized_money(ceramique.price * (1 - discount))%> <%= currency_symbol %></h2>
+                    </div>
+                <% end %>
                 </div>
-                <h2> <%= ceramique.name.capitalize%> </h2>
+                <h2 class="hidden-xs hidden-sm"> <%= ceramique.name.capitalize%> </h2>
+                <h2 class="card-mobile-h2 hidden-md hidden-lg"> <%= ceramique.name.capitalize%> </h2>
                 <% ratio = ceramique.photos[0].width.to_f / ceramique.photos[0].height > 1.35 ? "large" : "small" %>
-                <p class="<%= ratio %>"> <%= ceramique.description%> </p>
+                <p class="<%= ratio %> hidden-xs hidden-sm"> <%= ceramique.description%> </p>
               </div>
             <% end %>
           </div>
@@ -116,7 +131,7 @@ Site de e-commerce configurable. Créez votre compte et visualisez votre futur s
         <h3>Catégories</h3>
         <div class="filter-category">
           <ul>
-            <% @categories.each do |category| %>
+            <% @uniq_categories.each do |category| %>
               <li><label class="label-search"><input type="checkbox" name="categories[]" value="<%= category %>"><%= category %></label></li>
             <% end %>
           </ul>
@@ -137,44 +152,6 @@ Site de e-commerce configurable. Créez votre compte et visualisez votre futur s
 <div id="mobile-filter-search" class="hidden-md hidden-lg">
   <i class="fa fa-search" aria-hidden="true"></i>
 </div>
-
-<div class="hidden-md hidden-lg col-xs-12 col-md-12 ceramique-list">
-      <% @ceramiques.each do |ceramique| %>
-          <div class="col-xs-12">
-            <%= link_to ceramique_path(ceramique), title: "#{ceramique.name}", class: "cardlink" do %>
-              <div class="ceramiquecard mobile">
-                <% if ceramique.offer%>
-                  <% if ceramique.offer.discount > 0 %>
-                    <p class="discount-offer">-<%= (ceramique.offer.discount * 100).to_i %>%</p>
-                    <div class="ribbon"></div>
-                  <% end %>
-                <% end %>
-                <div class="img-container">
-                  <img class="img" src="<%= cl_image_path ceramique.photos[0].path %>" alt="<%=ceramique.name%>">
-                  <% ceramique.offer ? discount =  ceramique.offer.discount : discount = 0 %>
-                  <% if ceramique.offer %>
-                    <% if ceramique.offer.discount > 0 %>
-                      <div class="allpricesmobile-w">
-                        <h2 class="prix-index-mobile"><%= humanized_money(ceramique.price * (1 - discount))%> <%= currency_symbol %></h2>
-                        <h3 class="previous-price-mobile"><%= humanized_money(ceramique.price)%> <%= currency_symbol %></h3>
-                      </div>
-                      <% else %>
-                        <div class="allpricesmobile-w-zero">
-                          <h2 class="prix-index-mobile"><%= humanized_money(ceramique.price * (1 - discount))%> <%= currency_symbol %></h2>
-                        </div>
-                    <% end %>
-                  <% else %>
-                    <div class="allpricesmobile-wo">
-                      <h2 class="prix-index-mobile"><%= humanized_money(ceramique.price * (1 - discount))%> <%= currency_symbol %></h2>
-                    </div>
-                  <% end %>
-                </div>
-                <h2 class="card-mobile-h2"> <%= ceramique.name.capitalize%> </h2>
-              </div>
-            <% end %>
-          </div>
-      <% end %>
-    </div>
 
   </div>
 </div>
