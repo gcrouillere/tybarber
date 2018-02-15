@@ -6,7 +6,7 @@ ActiveAdmin.register Theme do
 
     index do
       column "Thème" do |theme|
-        theme.name == "default" ? "Couleur - thème par défaut" : "Epuré"
+        theme.name == "default" ? "Couleur - thème par défaut" : (theme.name == "darktheme" ? "Dark" : "Epuré")
       end
       column "Actif ?" do |theme|
         theme.active

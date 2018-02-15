@@ -13,18 +13,10 @@
 // Your CSS
 @import "components/*";
 @import "components/lighttheme/*";
+@import "components/darktheme/*";
 @import "config/*";
 @import "layout/*";
 @import "pages/*";
-
-
-.body-default {
-  background-color: $body;
-
-  &.filter-opened {
-    overflow: hidden;
-  }
-}
 
 .content {
   min-height: calc(100vh - 90px);

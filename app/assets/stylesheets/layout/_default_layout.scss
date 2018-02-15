@@ -1,0 +1,7 @@
+.body-default {
+  background-color: $body;
+
+  &.filter-opened {
+    overflow: hidden;
+  }
+}

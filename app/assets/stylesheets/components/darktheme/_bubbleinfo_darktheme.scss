@@ -1,15 +1,14 @@
-.info-top {
+.info-top-darktheme {
   display: flex;
   justify-content: center;
-  .list-header-1 {
+  .list-header-1-darktheme {
     width: 100%;
-    box-shadow: 0 4px 6px rgba(50,50,93,.11), 0 1px 3px rgba(0,0,0,.08);
     margin-top: 10px;
     margin-bottom: 10px;
     padding: 0px;
-    background: $card-background;
+    background: #171717;
     border-radius: $project-border-radius;
-    border: $card-border;
+    border: 1px solid $primary-opacified ;
     position: relative;
     .social-buttons {
           position: absolute;
@@ -33,9 +32,10 @@
     p {
       margin: 12px;
       font-weight: 100;
+      color: white;
     }
     .list-h1 {
-      background: linear-gradient(to right, $primary, lighten($primary, 72%));
+      background: $primary;
       display: flex;
       align-items: center;
       justify-content: space-between;
@@ -50,16 +50,17 @@
       }
       .cross-1 {
         cursor: pointer;
+        color: black;
       }
       .info-circle {
-        color: #f0f2f0;
+        color: black;
       }
       h1 {
         font-size: larger;
         font-weight: 500;
         margin: 10px;
         padding: 2px;
-        color: white;
+        color: black;
       }
     }
   }
@@ -110,7 +111,7 @@
         .thumbnail-offer {
           border-radius: $project-border-radius;
           height: 110px;
-          border: 1px solid white;
+          border: 1px solid grey;
         }
         .price-strip {
           transition: none;

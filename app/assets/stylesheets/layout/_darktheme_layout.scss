@@ -1,0 +1,17 @@
+.body-darktheme {
+  background: #171717;
+
+  .btn.btn-primary {
+    background: transparent;
+    border-color: $primary;
+    border-radius: $project-border-radius;
+    padding: 6px 12px;
+    font-weight: 100;
+    transition: 0.1s background-color linear, 0.1s color linear;
+  }
+  .btn.btn-primary:hover {
+    background-color: $primary;
+    color: black;
+    transition: 0.1s background-color linear, 0.1s color linear;
+  }
+}

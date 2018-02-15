@@ -1,5 +1,5 @@
 .photo-update-box {
-  background: $card-background;
+  background: white;
   border-radius: $project-border-radius;
   border: 5px solid grey;
   padding: $padding-small;
@@ -17,6 +17,7 @@
   }
   p {
     font-size: 16px;
+    color: black !important;
   }
   .attachinary.optional.attachinary-input {
     display: inline-block;

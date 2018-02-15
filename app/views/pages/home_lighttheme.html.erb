@@ -14,7 +14,14 @@
     <%= photo_update('logophoto', 130, '', '', 785, '.logopic', "Mise à jour logo")%>
     <%= photo_update('homerightphotos', 350, '', '', 30, '.homerightphotos', "Mise à jour photos accueil droite")%>
     <div class="imagehomeleft col-sm-8">
-      <%= image_tag @homepicpath %>
+      <style>
+        .imagehomeleft {
+          background-image: url(<%= @homepicpath %>);
+          background-size: cover;
+          background-position-y: center;
+          background-position-x: center;
+        }
+      </style>
     </div>
     <div class="imageshomeright col-sm-4">
       <%= image_tag @homerightphoto1 %>
@@ -22,7 +29,7 @@
     </div>
   </div>
   <div class="homeimagescontainer-mobile">
-    <div class="imagehomeleft hidden-sm hidden-md hidden-lg">
+    <div class="imagehomeleft-mobile hidden-sm hidden-md hidden-lg">
       <%= image_tag @homepicpath %>
       <%= image_tag @homerightphoto1 %>
       <%= image_tag @homerightphoto2 %>
