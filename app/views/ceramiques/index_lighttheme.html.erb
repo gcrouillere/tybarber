@@ -24,12 +24,16 @@ Site de e-commerce configurable. Créez votre compte et visualisez votre futur s
                 <div class="img-container ceramique-front-image-<%=index%>">
                   <style>
                     .ceramique-front-image-<%=index%> {
-                      background-image: url(<%= cl_image_path ceramique.photos[1].path %>);
+                      <% if  cl_image_path ceramique.photos[1]%>
+                        background-image: url(<%= cl_image_path ceramique.photos[1].path %>);
+                      <% end %>
                       background-image: url(<%= cl_image_path ceramique.photos[0].path %>);
                     }
                     <% if ceramique.photos[1]%>
                     .ceramique-front-image-<%=index%>:hover {
-                      background-image: url(<%= cl_image_path ceramique.photos[1].path %>);
+                      <% if  cl_image_path ceramique.photos[1]%>
+                        background-image: url(<%= cl_image_path ceramique.photos[1].path %>);
+                      <% end %>
                     }
                     <% end %>
                   </style>
