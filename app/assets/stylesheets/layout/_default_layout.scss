@@ -1,6 +1,10 @@
 .body-default {
   background-color: $body;
 
+  h1 {
+    margin-left: 30px;
+  }
+
   &.filter-opened {
     overflow: hidden;
   }

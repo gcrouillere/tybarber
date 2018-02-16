@@ -8,7 +8,7 @@
   <div class="row">
     <div class="col-xs-12 col-sm-offset-2 col-sm-8">
 
-      <div class="pay-form mobile">
+      <div class="pay-form-darktheme mobile-darktheme">
         <%= form_tag order_payments_path(@order) do %>
           <div class="amount text-center">
             <div class="hidden-xs">
@@ -49,7 +49,7 @@
             data-currency="<%= @order.amount.currency %>">
           </script>
           <% unless @order.lesson.present? %>
-            <div class="hidden-xs laptop-link-coord">
+            <div class="hidden-xs laptop-link-coord-default">
               <%= link_to 'Mettre à jour vos coordonnées pour l\'envoi du colis', edit_user_registration_path %>
             </div>
             <div class="hidden-sm hidden-md hidden-lg mobile-link-coord">
@@ -58,7 +58,7 @@
           <% end %>
         <% end %>
         <div class="secure">
-          <div class="stripe"><span>Paiement sécurisé par</span> <%= image_tag "stripe-black.svg", class: "stripe-logo"%></div>
+          <div class="stripe"><span>Paiement sécurisé par</span> <%= image_tag "stripe.svg", class: "stripe-logo"%></div>
           <p>Cartes acceptées</p>
           <div class="cards">
              <%= image_tag "mastercard.svg", class: "mastercard"%> <%= image_tag "visa.svg", class: "visa"%> <%= image_tag "american-express.svg", class: "american-express"%>
@@ -69,5 +69,7 @@
     </div>
   </div>
 </div>
+
+
 
 

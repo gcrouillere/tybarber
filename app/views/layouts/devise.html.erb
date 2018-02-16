@@ -27,10 +27,10 @@
           </div>
         </div>
         <%= render 'shared/footer' %>
-    <% elsif @active_theme.name = "lighttheme" %>
+    <% elsif @active_theme.name == "lighttheme" %>
       <div class="body-devise">
         <%= render "shared/navbar_#{@active_theme.name}" %>
-        <%= render 'shared/flashes_lighttheme' %>
+        <%= render "shared/flashes_#{@active_theme.name}" %>
         <div class="container devise-container-lighttheme">
           <div class="row">
             <div class="col-xs-12 col-sm-offset-3 col-sm-6">
@@ -41,6 +41,20 @@
           </div>
         </div>
         <%= render "shared/lighttheme_filter" %>
+        <%= render "shared/footer_#{@active_theme.name}" %>
+    <% elsif @active_theme.name == "darktheme" %>
+      <div class="body-devise-darktheme">
+        <%= render "shared/navbar_#{@active_theme.name}" %>
+        <%= render "shared/flashes_#{@active_theme.name}" %>
+        <div class="container devise-container-darktheme">
+          <div class="row">
+            <div class="col-xs-12 col-sm-offset-3 col-sm-6">
+              <div class="content-devise">
+                <%= yield %>
+              </div>
+            </div>
+          </div>
+        </div>
         <%= render "shared/footer_#{@active_theme.name}" %>
     <% end%>
 

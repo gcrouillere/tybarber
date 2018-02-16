@@ -24,6 +24,7 @@
   <body>
     <%= render 'shared/facebookSDK'%>
 
+<!-- DEFAULT THEME -->
     <% if @active_theme.name == "default" %>
       <div class="body-stage">
       <%= render 'shared/stage_pic'%>
@@ -49,7 +50,8 @@
           <%= yield %>
         </div>
         <%= render 'shared/footer' %>
-    <% elsif @active_theme.name = "lighttheme" %>
+<!-- LIGHTTHEME -->
+    <% elsif @active_theme.name == "lighttheme" %>
       <div class="body-stage-lightheme">
       <%= render 'shared/stage_pic'%>
       <style>
@@ -74,6 +76,32 @@
           <%= yield %>
         </div>
         <%= render "shared/lighttheme_filter" %>
+        <%= render "shared/footer_#{@active_theme.name}" %>
+<!-- DARKTHEME -->
+     <% elsif @active_theme.name == "darktheme" %>
+      <div class="body-stage-darktheme">
+      <%= render 'shared/stage_pic'%>
+      <style>
+        @media all and (min-width: 700px) {
+          .body-stage-darktheme {
+            background-image: url(<%= @stagepicpath %>);
+            background-repeat: no-repeat;
+            background-attachment: fixed;
+            background-size: 100%;
+          }
+        }
+        @media all and (max-width: 700px) {
+          .body-stage-darktheme {
+            background: #e6dada;
+            background: linear-gradient(to right, #f0f2f0, #000c40);
+          }
+        }
+      </style>
+        <%= render "shared/navbar_#{@active_theme.name}" %>
+        <%= render 'shared/flashes_lighttheme' %>
+        <div class="content-darktheme">
+          <%= yield %>
+        </div>
         <%= render "shared/footer_#{@active_theme.name}" %>
     <% end %>
 

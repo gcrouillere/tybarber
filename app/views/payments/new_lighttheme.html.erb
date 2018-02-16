@@ -12,7 +12,7 @@
           <% unless @order.lesson.present? %>
             <div class="adress text-center">
               <h3>Coordonnées pour l'expédition du colis</h3>
-              <h4>Livraison colissimo sous 3 semaines à l'adresse suivante :</h5>
+              <h4>Livraison via colissimo, sous <%= @admin.tracking%>, à l'adresse suivante:</h5>
               <h4><%= current_user.first_name%> <%= current_user.last_name%></h4>
               <h4><%= current_user.adress%></h4>
               <h4><%= current_user.zip_code%> - <%= current_user.city%></h4>
@@ -44,8 +44,11 @@
               data-currency="<%= @order.amount.currency %>">
             </script>
             <div class="secure">
-              <h5>Paiement sécurisé par</h5>
-              <%= image_tag "stripe.png", class: "stripe"%>
+              <div class="stripe"><span>Paiement sécurisé par</span> <%= image_tag "stripe-black.svg", class: "stripe-logo"%></div>
+              <p>Cartes acceptées</p>
+              <div class="cards">
+                 <%= image_tag "mastercard.svg", class: "mastercard"%> <%= image_tag "visa.svg", class: "visa"%> <%= image_tag "american-express.svg", class: "american-express"%>
+              </div>
             </div>
           </div>
         <% end %>

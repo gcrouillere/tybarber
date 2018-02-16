@@ -1,7 +1,7 @@
 class ApplicationController < ActionController::Base
   # DEVISE :
   protect_from_forgery with: :exception
-  before_action :authenticate_user!
+  before_action :authenticate_user!, unless: :devise_controller?
   before_action :configure_permitted_parameters, if: :devise_controller?
   before_action :retrieve_admin
   before_action :check_theme
@@ -47,6 +47,7 @@ class ApplicationController < ActionController::Base
   end
 
   def after_sign_in_path_for(resource)
+    session[:signincount] += 1
     session[:previous_url] || root_path
   end
 
@@ -74,6 +75,22 @@ class ApplicationController < ActionController::Base
       :zip_code,
       :city,
       ])
+  end
+
+  protected
+
+  def authenticate_user!(options={})
+    session[:signincount] ||= 0
+    unless user_signed_in?
+      if session[:signincount] < 1
+        store_location_for(:user, request.url)
+        redirect_to new_user_registration_url and return
+      else
+        store_location_for(:user, request.url)
+        redirect_to  new_user_session_url and return
+      end
+    end
+    super(options)
   end
 
 end

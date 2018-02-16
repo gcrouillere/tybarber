@@ -1,65 +1,53 @@
-.jumbotron {
+.jumbotron-darktheme {
   padding: 0;
   margin-bottom: 0;
 }
 
-.jumbotron .banner {
-  background-size: cover;
-  height: 1000px;
-  position: relative;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-
-  .banner-content {
-    position: absolute;
-    top: 150px;
-    left: calc(50% - 204px);
-    text-align: center;
-    color: $home-font-color;
-    padding: 0 10px;
-    -moz-text-size-adjust: auto;
-    h1, h2, h3, p {
-      color: $home-font-color;
+.banner-darktheme {
+  padding: 10px 30px 30px 30px;
+  img {
+    width: 100%;
+    padding-bottom: 30px;
+    border-radius: $project-border-radius;
+  }
+  .photos3and4 {
+    width: 100%;
+    display: flex;
+    .photo3 {
+      padding-right: 15px;
+      border-radius: $project-border-radius;
     }
-    h1 {
-      text-shadow: 1px 1px 0px $home-text-shadow;
-      margin-right: 30px;
-      letter-spacing: 6px;
-    }
-    p {
-      font-weight: 400;
+    .photo4 {
+      padding-left: 15px;
+      border-radius: $project-border-radius;
     }
   }
 }
 
-.jumbotron .banner-xs {
-    background-size: cover;
-    height: 634px;
-    position: relative;
+.jumbotron-darktheme .banner-xs-darktheme {
+  padding: 14px;
+  img {
+    width: 100%;
+    padding-bottom: 14px;
+  }
+  .photos3and4 {
+    width: 100%;
     display: flex;
-    align-items: center;
-    justify-content: center;
-    .banner-content-xs {
-      position: absolute;
-      top: 100px;
-      text-align: center;
-      left: calc(50% - 120px);
-      color: $home-font-color;
-      padding: 0 10px;
-      h1, h2, h3, p {
-        color: $home-font-color;
-      }
-      h1 {
-        text-shadow: 1px 1px 0px $home-text-shadow;
-        margin-right: 30px;
-      }
+    .photo3 {
+      padding-right: 7px;
     }
+    .photo4 {
+      padding-left: 7px;
+    }
+  }
 }
 
-.home-text {
-  background: linear-gradient(135deg, #979EA1, #454749);
+.home-text.home-text-darktheme {
   padding: 10px;
+  background: #171717;
+  label {
+    color: white;
+  }
   .text {
     display: flex;
     h1:first-child, h2:first-child {
@@ -124,13 +112,4 @@
       }
     }
   }
-}
-
-.btn-home {
-  padding: 10px 20px;
-  border: none;
-  border-radius: 50px;
-  font-weight: 100;
-  font-size: 20px;
-  letter-spacing: 2px;
 }

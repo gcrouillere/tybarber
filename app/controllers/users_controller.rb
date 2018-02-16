@@ -13,12 +13,19 @@ class UsersController < ApplicationController
 
   def subscribe
     unless session[:email]
-      if Regexp.new('\A([\w+\-].?)+@[a-z\d\-]+(\.[a-z]+)*\.[a-z]{2,}\z').match(params[:user][:email])
+      if Regexp.new('\A([\w+\-].?)+@[a-z\d\-]+(\.[a-z]+)*\.[a-z]{2,}\z').match(params[:user][:email]) && params[:user][:first_name] != "" && params[:user][:tracking] != ""
         @user = User.create(subscribe_params)
-        SubscribeMailer.subscribe(@user, @admin).deliver_now
+        if request.referrer.match("contact")
+          SubscribeMailer.web_message(@user, @admin).deliver_now
+        else
+          SubscribeMailer.subscribe(@user, @admin).deliver_now
+        end
         @user.destroy
         session[:email] = params[:user][:email]
-        flash[:notice] = "Vous êtes bien inscrit(e) à la newsletter"
+        flash[:notice] = "Merci pour votre message"
+        redirect_to request.referrer
+      else
+        flash[:alert] = "Les champs ne sont pas remplis correctement"
         redirect_to request.referrer
       end
     end
@@ -36,6 +43,7 @@ class UsersController < ApplicationController
       :zip_code,
       :city,
       :provider,
+      :tracking,
       :uid,
       :facebook_picture_url,
       :token,
@@ -51,7 +59,7 @@ class UsersController < ApplicationController
   end
 
   def subscribe_params
-    params.require(:user).permit(:email, first_name: "John", last_name: "Doe")
+    params.require(:user).permit(:email, :first_name, :tracking, last_name: "Doe")
   end
 
 end

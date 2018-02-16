@@ -24,6 +24,7 @@ Rails.application.routes.draw do
   #Pages
   get '/confirmation', to: 'pages#confirmation'
   get '/info', to: 'pages#info'
+  get '/contact', to: 'pages#contact'
   get '/google906057532e2dbb7e', to: 'pages#google906057532e2dbb7e'
   get '/robots.txt', to: 'pages#robots', :defaults => { :format => 'txt' }
 
