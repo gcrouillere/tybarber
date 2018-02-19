@@ -5,6 +5,8 @@ Vendez vos produits en ligne ! Site de e-commerce configurable. Affichez sur cet
   Page bio de votre site de e-commerce
 <% end %>
 
+<%= render 'shared/info_pics' %>
+
  <div class="contact-coord">
   <div class="col-md-12 hidden-xs hidden-sm coord">
     <% if user_signed_in? && current_user.admin %>
@@ -47,13 +49,16 @@ Vendez vos produits en ligne ! Site de e-commerce configurable. Affichez sur cet
 
 <!-- LAPTOP -->
 <div class="hidden-xs photos-and-maps">
-  <div class="atelier"><%= image_tag "avatar.jpg", alt: "Saint Quentin La Poterie. Village de céramistes."%>
+  <div class="atelier">
+    <%= photo_update('avatarphoto', '', '', '', 30, '.avatarpic', "Mise à jour photo perso")%>
+    <%= @avatarpictag %>
   </div>
   <div class="localisation-contact">
     <div class="city-img">
+      <%= photo_update('cityphoto', -3, '', '', 15, '.citypic', "Mise à jour photo ville")%>
       <style>
         .city-img {
-          background-image: url(<%= image_path "city.jpg" %>);
+          background-image: url(<%= cl_image_path @citypicpath %>);
           background-size: cover;
           background-position-y: center;
           background-position-x: center;

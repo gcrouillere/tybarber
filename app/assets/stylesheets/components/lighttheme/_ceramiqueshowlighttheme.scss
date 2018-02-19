@@ -164,6 +164,14 @@
 }
 
 // MOBILE
+
+@media all and (max-width: 800px) {
+  .lighttheme-socials .social-buttons {
+    top: 64px;
+    right: 16px;
+  }
+}
+
 .other-imgs-lighttheme.other-mobile-lighttheme {
   margin-top: 10px;
   margin-bottom: 30px;

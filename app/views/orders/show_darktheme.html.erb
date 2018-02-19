@@ -46,7 +46,7 @@
     <div class="col-xs-12 hidden-sm hidden-md hidden-lg">
 
       <% @order.basketlines.each do |basketline| %>
-        <div class="basket-item mobile">
+        <div class="basket-item mobile-darktheme">
           <%= cl_image_tag basketline.ceramique.photos[0].path, class: "basket-article-img" %>
           <div class="order-detail">
             <h4><%= basketline.ceramique.name.capitalize %></h4>

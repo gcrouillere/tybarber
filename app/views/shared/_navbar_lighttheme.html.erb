@@ -83,7 +83,7 @@
           <% if Order.where(id: session[:order]).present? %>
             <% if Order.where(id: session[:order]).first.state != "lost" %>
               <%= link_to order_path(Order.find(session[:order])) do %>
-                <span><%= image_tag "lightcart.png", class: "lightcart"%></span>
+                <span><%= image_tag "cart.svg", class: "lightcart"%></span>
               <% end %>
             <% end %>
           <% end %>

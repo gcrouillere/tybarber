@@ -127,7 +127,7 @@ Les <%="#{ENV['MODEL']} de #{ENV['FIRSTNAME'].capitalize} #{ENV['LASTNAME'].capi
             <%= facebook_share_id("facebooksharemobile") %>
           </div>
         </div>
-        <div class="other-imgs other-mobile">
+        <div class="other-imgs other-mobile-darktheme">
           <div class="images-mobile">
             <% @ceramique.photos.each_with_index do |photo, index| %>
               <% if index < 4 %>
@@ -137,7 +137,7 @@ Les <%="#{ENV['MODEL']} de #{ENV['FIRSTNAME'].capitalize} #{ENV['LASTNAME'].capi
           </div>
         </div>
 
-        <div class="product-show-mobile text center">
+        <div class="product-show-mobile-darktheme text center">
           <div class="info-add-basket">
             <div class="description">
               <p class="description"> <%= @ceramique.description.gsub(/\n/, '<br>').html_safe %> </p>

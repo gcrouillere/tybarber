@@ -30,9 +30,13 @@
 
 .body-stage-darktheme {
 
+  .content-darktheme {
+    min-height: calc(100vh - 90px);
+  }
+
   .btn.btn-primary, .text-save-btn {
-    background: rgba(255, 255, 255, 0.3);
-    color: black;
+    background: rgba(0, 0, 0, 0.3);
+    color: white;
     border: 1px solid $primary;
     border-radius: $project-border-radius;
     padding: 6px 12px;
@@ -41,9 +45,24 @@
   }
   .btn.btn-primary:hover, .text-save-btn:hover {
     background: $primary;
+    padding: 6px 12px;
+    border: 1px solid $primary;
     color: black;
-    border: none;
     transition: 0.1s background-color linear, 0.1s color linear;
+  }
+
+  .text-center-stage.stage-payment, .text-center-stage-mobile{
+    .btn.btn-primary, .text-save-btn {
+      background: white;
+      color: black;
+    }
+    .btn.btn-primary:hover {
+      background: $primary;
+      padding: 6px 12px;
+      border: 1px solid $primary;
+      color: black;
+      transition: 0.1s background-color linear, 0.1s color linear;
+    }
   }
 
 }

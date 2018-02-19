@@ -14,7 +14,8 @@
       font-weight: 300;
     }
     .connect, .CGV {
-      margin: 20px;
+      margin: 20px 20px 0px 20px;
+      padding-bottom: 20px;
     }
     .CGV {
       min-height: 100px;
@@ -46,6 +47,9 @@
       }
       .connect {
         padding-top: 10px;
+        h4:last-child {
+          margin-bottom: 0px;
+        }
       }
     }
     .link-guillaume {

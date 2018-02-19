@@ -73,16 +73,20 @@
   font-size: 25px;
 }
 
-.basket-item.mobile {
+.basket-item.mobile-darktheme {
   margin: 0px 10px 10px 10px;
   justify-content: space-around;
+  background: #171717;
+  border-bottom: 1px solid $primary-opacified;
+    &:nth-child(1) {
+    border-top: 1px solid $primary-opacified;
+  }
   .basket-article-img {
     width: 45%;
     height: 45%;
   }
   .order-detail {
     text-align: center;
-    position: relative;
     i {
       margin: 0px;
     }

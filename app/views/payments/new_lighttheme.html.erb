@@ -11,14 +11,14 @@
       <div class="pay-form-lighttheme">
           <% unless @order.lesson.present? %>
             <div class="adress text-center">
-              <h3>Coordonnées pour l'expédition du colis</h3>
+              <h3>Livraison du colis</h3>
               <h4>Livraison via colissimo, sous <%= @admin.tracking%>, à l'adresse suivante:</h5>
               <h4><%= current_user.first_name%> <%= current_user.last_name%></h4>
               <h4><%= current_user.adress%></h4>
               <h4><%= current_user.zip_code%> - <%= current_user.city%></h4>
               <% unless @order.lesson.present? %>
                 <%= link_to edit_user_registration_path do %>
-                  <div class="laptop-link-coord">
+                  <div class="btn btn-primary">
                     METTRE A JOUR VOS COORDONNEES
                   </div>
               <% end %>

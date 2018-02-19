@@ -73,12 +73,11 @@
         <span>Shop</span>
       <% end %>
       <%= link_to contact_path do %>
-        <%= image_tag "info.svg", class: "infoimg"%>
+        <span>Info</span>
       <% end %>
       <%= link_to new_lesson_path do %>
         <span>Stage</span>
       <% end %>
-      <a href="#" id="lighttheme-filter-search-mobile"><%= image_tag "search.svg", class: "searchimg"%></a>
       <% if user_signed_in? %>
         <% if session[:order].present? %>
           <% if Order.where(id: session[:order]).present? %>

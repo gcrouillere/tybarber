@@ -54,6 +54,10 @@ class UsersController < ApplicationController
       :productphotomobile,
       :lessonphoto,
       :logophoto,
+      :darktheme1photo,
+      :darktheme2photo,
+      :darktheme3photo,
+      :darktheme4photo,
       homerightphotos: []
     )
   end

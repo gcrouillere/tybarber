@@ -18,7 +18,7 @@
     <% unless  current_user.provider %>
       <%= f.input :password, :label => 'Mot de passe', autocomplete: "off", hint: "Laissez vide si vous ne le changer pas", required: false %>
       <%= f.input :password_confirmation, :label => 'Confirmation mot de passe', hint: "Laissez vide si vous ne le changer pas", required: false %>
-      <%= f.input :current_password, hint: "Votre mot de passe actuel pour confirmer tous vos changements", required: true %>
+      <%= f.input :current_password, :label => 'Mot de passe actuel', hint: "Votre mot de passe actuel pour confirmer tous vos changements", required: true %>
     <% end %>
   </div>
 

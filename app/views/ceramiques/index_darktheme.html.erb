@@ -25,7 +25,7 @@ Site de e-commerce configurable. Créez votre compte et visualisez votre futur s
       <%= render 'shared/general_info_bubble_darktheme' %>
     </div>
     <div class="h1-index mobile hidden-md hidden-lg">
-      <h1>Les créations uniques</h1>
+      <h1>Céramiques: les pièces uniques en vente sur le site</h1>
       <hr>
     </div>
   <% elsif params[:offer].present? %>
@@ -35,7 +35,7 @@ Site de e-commerce configurable. Créez votre compte et visualisez votre futur s
     </div>
   <% else %>
     <div class="h1-index hidden-xs hidden-sm">
-      <h1>Les créations uniques : <%= ENV['MODEL']%></h1>
+      <h1>Céramiques: les pièces uniques en vente sur le site</h1>
       <hr>
     </div>
     <div class="h1-index mobile hidden-md hidden-lg">
@@ -45,7 +45,7 @@ Site de e-commerce configurable. Créez votre compte et visualisez votre futur s
   <% end %>
 
 <!-- LAPTOP -->
-    <div class="hidden-xs hidden-sm col-md-3">
+    <div class="hidden-xs hidden-sm col-lg-3">
       <div id="ceramique-filters-content-darktheme">
         <h2>Filtrer</h2>
         <form action="/<%=ENV['MODEL']%>" method='get'>
@@ -71,9 +71,9 @@ Site de e-commerce configurable. Créez votre compte et visualisez votre futur s
       </div>
     </div>
 
-    <div class="col-xs-12 col-sm-12 col-md-9 ceramique-list">
+    <div class="col-xs-12 col-lg-9 ceramique-list">
       <% @ceramiques.each_with_index do |ceramique, index| %>
-        <div class="col-sm-6">
+        <div class="col-xs-12 col-sm-6">
           <%= link_to ceramique_path(ceramique), title: "#{ceramique.name}", class: "cardlink" do %>
             <div class="ceramiquecard-darktheme ceramiquecardimage-<%=index%>">
                 <style>
