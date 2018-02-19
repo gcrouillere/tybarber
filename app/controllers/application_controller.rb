@@ -84,10 +84,10 @@ class ApplicationController < ActionController::Base
     unless user_signed_in?
       if session[:signincount] < 1
         store_location_for(:user, request.url)
-        redirect_to new_user_registration_url and return
+        redirect_to new_user_registration_path and return
       else
         store_location_for(:user, request.url)
-        redirect_to  new_user_session_url and return
+        redirect_to  new_user_session_path and return
       end
     end
     super(options)
