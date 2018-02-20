@@ -15,8 +15,6 @@ $(document).ready(function() {
       }
     }
     else if($('#ceramique-filters-content-darktheme').size() > 0) {
-      console.log($(document).scrollTop() + $('.navbar-laptop-darktheme').height())
-      console.log($('.ceramique-list').offset().top)
       if($(document).scrollTop() + $('.navbar-laptop-darktheme').height() > $('.ceramique-list').offset().top)  {
         $('#ceramique-filters-content-darktheme').css({
           position: 'fixed',

@@ -60,8 +60,12 @@
   .lighttheme-ceramiquecard-col {
     margin-bottom: 20px;
     .ceramiquecard-lighttheme {
+      min-height: 270px;
       .img-container {
         height: 200px;
+      }
+      h2 {
+        font-size: 14px;
       }
     }
   }
