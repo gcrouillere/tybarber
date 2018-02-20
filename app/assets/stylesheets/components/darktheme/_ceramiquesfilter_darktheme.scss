@@ -62,16 +62,16 @@
   }
 }
 
-#ceramique-filters-content-mobile {
+#ceramique-filters-content-mobile-darktheme {
   overflow-y: auto;
   position: fixed;
   top: 100vh;
   height: 100vh;
   left: 0px;
   width: 100%;
-  z-index: 4;
+  z-index: 5;
   transition: top 0.6s ease;
-  background: $card-background;
+  background: #171717;
   padding: $padding-small;
   form {
     padding: 10px;
@@ -81,10 +81,11 @@
     top: 23px;
     right: 16px;
     font-size: 27px;
-    color: $filter-title;
+    color: white;
   }
   .label-search {
     font-weight: $font-weight-label;
+    color: white;
   }
   .label-search.all {
     width: 100%;
@@ -98,21 +99,21 @@
     font-size: $font-size-h4;
     margin-bottom: 20px;
     margin-top: 5px;
-    color: $filter-title;
-    background: $navbar;
+    color: white;
+    border-bottom: 1px solid $primary-opacified;
+    background: #171717;
     border-radius: $project-border-radius;
     padding: 10px;
-    box-shadow: 1px 1px 1px grey;
   }
 
   h3 {
     margin: 20px 0 15px 0;
     font-size: $font-size-h5;
     font-weight: $font-weight-h5-search;
-    background-color: #cecece;
+    background: #171717;
+    border-bottom: 1px solid $primary-opacified;
     padding: 5px;
     border-radius: $project-border-radius;
-    box-shadow: 1px 1px 1px grey;
   }
 
   input {
@@ -124,6 +125,7 @@
   }
 
   ul {
+    color: white;
     list-style: none;
     padding: 0;
     margin: 0;
@@ -140,7 +142,7 @@
   }
 }
 
-#mobile-filter-search {
+#mobile-filter-search-darktheme {
   position: fixed;
   border: 1px solid white;
   width: 70px;
@@ -158,4 +160,3 @@
     font-size: 30px;
   }
 }
-
