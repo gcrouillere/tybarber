@@ -84,7 +84,7 @@ ActiveAdmin.register User, as: 'Clients' do
         @user = User.find(params[:id].to_i)
         puts "#{@user.email}"
         puts "#{@user.tracking}"
-        unless @user.admin_clients_path
+        unless @user.admin
           OrderMailer.send_tracking_after_order(@user).deliver_now
         end
         redirect_to admin_clients_path and return if resource.valid?
