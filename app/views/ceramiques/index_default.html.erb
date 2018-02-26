@@ -86,7 +86,7 @@ Site de e-commerce configurable. Créez votre compte et visualisez votre futur s
                   <% if ceramique.photos[0].height >= ceramique.photos[0].width %>
                     <%= cl_image_tag(cl_image_path(ceramique.photos[0].path, :width => 285, :height => 285, :crop => :fit), alt: "#{ceramique.name}", class: "img-resized") %>
                   <% else %>
-                    <img class="img" src="<%= cl_image_path ceramique.photos[0].path %>" alt="<%=ceramique.name%>">
+                  <%= cl_image_tag ceramique.photos[0].path, :quality=>"auto", alt: ceramique.name, class: "img" %>
                   <% end %>
                   <% ceramique.offer ? discount =  ceramique.offer.discount : discount = 0 %>
                   <h2 class="prix-index hidden-xs hidden-sm"><%= humanized_money(ceramique.price * (1 - discount))%> <%= currency_symbol %></h2>
