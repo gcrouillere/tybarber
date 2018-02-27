@@ -19,7 +19,8 @@ Les <%="#{ENV['MODEL']} de #{ENV['FIRSTNAME'].capitalize} #{ENV['LASTNAME'].capi
     <div class="row">
       <div class="col-md-12">
         <div class="product-show-darktheme text center">
-          <div class="col-md-6 product-show-half-top-wrapper">
+
+          <div class="product-show-half-top-wrapper-left">
             <div class="ceramique-images">
               <% verticale = false %>
               <% classe = "" %>
@@ -38,7 +39,7 @@ Les <%="#{ENV['MODEL']} de #{ENV['FIRSTNAME'].capitalize} #{ENV['LASTNAME'].capi
             </div>
           </div>
 
-          <div class="col-md-6 product-show-half-top-wrapper">
+          <div class="product-show-half-top-wrapper-right">
           <div class="info-add-basket">
             <div class="description">
               <h1> <%= @ceramique.name.capitalize%> </h1>
