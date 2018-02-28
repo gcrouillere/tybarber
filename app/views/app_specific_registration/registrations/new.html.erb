@@ -1,9 +1,10 @@
-<h4 class="new-session-h4">Créez un compte pour ajouter au panier </h4>
+<h4 class="new-session-h4">Créez un compte pour finaliser votre commande </h4>
 
 <%- if devise_mapping.omniauthable? %>
   <%- resource_class.omniauth_providers.each do |provider| %>
     <div class="facebook-block">
-      <%= link_to "Créer un compte avec #{OmniAuth::Utils.camelize(provider)}", omniauth_authorize_path(resource_name, provider), class: "facebook-button" %>
+      <%= link_to "Créer un compte avec #{OmniAuth::Utils.camelize(provider)}", omniauth_authorize_path(resource_name, provider), class: "facebook-button hidden-xs" %>
+      <%= link_to "Connexion avec #{OmniAuth::Utils.camelize(provider)}", omniauth_authorize_path(resource_name, provider), class: "facebook-button hidden-sm hidden-md hidden-lg" %>
     </div>
   <% end -%>
 <% end -%>

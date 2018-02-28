@@ -47,7 +47,7 @@
               data-currency="<%= @order.amount.currency %>">
             </script>
             <div class="secure">
-              <%= @payment_theme == "darktheme" ? logo = "stripe.svg" : logo = "stripe-black.svg" %>
+              <% @payment_theme == "darktheme" ? logo = "stripe.svg" : logo = "stripe-black.svg" %>
               <div class="stripe"><span>Paiement sécurisé par</span> <%= image_tag logo, class: "stripe-logo"%></div>
               <p>Cartes acceptées</p>
               <div class="cards">
