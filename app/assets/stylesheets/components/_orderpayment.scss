@@ -27,7 +27,15 @@
     margin-top: 10px;
     .mobile-link-coord {
       text-align: center;
-      margin-top: 10px;
+      margin: 10px auto;
+      width: 90%;
+      border-radius: 1px;
+      padding: 6px 12px;
+      color: white;
+      font-size: 14px;
+      border: 1px solid darken($primary, 10%);
+      background-color: $primary;
+      transition: 0.1s background-color linear, 0.1s color linear;
     }
 
     .laptop-link-coord {

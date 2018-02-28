@@ -1,5 +1,7 @@
 class OrdersController < ApplicationController
 
+  skip_before_action :authenticate_user!, only: [:create, :show, :destroy]
+
   def create
     @ceramique = Ceramique.find(params[:ceramique].to_i)
     if session[:order].present?
@@ -27,6 +29,7 @@ class OrdersController < ApplicationController
   def show
     if Order.find(params[:id]).state == "pending"
       @order = Order.where(state: 'pending', id: params[:id].to_i).first
+      @order.update(user: current_user) if current_user
       @amount = @order.amount
       @port = @order.port
       render "show_#{@active_theme.name}"
@@ -56,11 +59,7 @@ class OrdersController < ApplicationController
   private
 
   def create_order
-    order  = Order.create!(
-      ceramique: @ceramique.name,
-      state: 'pending',
-      user: current_user
-    )
+    order  = Order.create!(ceramique: @ceramique.name, state: 'pending')
     session[:order] = order.id
     return order
   end
