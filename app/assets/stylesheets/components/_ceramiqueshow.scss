@@ -28,16 +28,26 @@
           bottom: 0;
           background-color: rgba(0,0,0,0.5); /* Black background with opacity */
           z-index: 2; /* Specify a stack order in case you're using a different order for other elements */
-          cursor: pointer; /* Add a pointer on hover */
           .overlay-text {
             position: absolute;
             top: 50%;
             left: 50%;
-            font-size: 20px;
-            font-weight: 100;
             color: white;
             transform: translate(-50%,-50%);
             -ms-transform: translate(-50%,-50%);
+            p {
+              font-family: Raleway;
+              font-size: 23px;
+              font-weight: 400;
+            }
+            .overlay-ok {
+              border: 1px solid white;
+              padding: 11px 12px;
+              width: 50%;
+              margin: 20px auto;
+              cursor: pointer; /* Add a pointer on hover */
+              border-radius: $project-border-radius;
+            }
           }
           .mousewheel {
             width: 20%;
