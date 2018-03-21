@@ -34,7 +34,7 @@ fr:
         category:
           one: "Catégories"
           other: "Catégories"
-        calendarupdate: "Ouverture de stage"
+        calendarupdate: "Bloquage de période"
         lesson:
           one: "Réservation"
           other: "Réservations"
