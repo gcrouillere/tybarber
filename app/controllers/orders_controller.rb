@@ -28,19 +28,19 @@ class OrdersController < ApplicationController
 
   def show
     if Order.find(params[:id])
-      if Order.find(params[:id]).state == "pending"
-        @order = Order.where(state: 'pending', id: params[:id].to_i).first
+      @order = Order.find(params[:id])
+      if @order.state == "pending" || @order.state == "payment page"
         @order.update(user: current_user) if current_user
         @amount = @order.amount
         @port = @order.port
         render "show_#{@active_theme.name}"
       else
         flash[:notice] = "Votre panier a expiré"
-        redirect_back(fallback_location: root_path)
+        redirect_to ceramiques_path
       end
     else
       flash[:notice] = "Votre panier a expiré"
-      redirect_back(fallback_location: root_path)
+      redirect_to ceramiques_path
     end
   end
 

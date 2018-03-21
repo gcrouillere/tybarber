@@ -1,14 +1,20 @@
 class PaymentsController < ApplicationController
-  before_action :set_order, only: [:create]
+  before_action :set_order, only: [:create, :new]
 
   def new
-    set_order
     @payment_theme = @active_theme.name
+    if @order.state == "lost"
+      flash[:notice] = "Votre panier a expiré"
+      redirect_to ceramiques_path and return
+    end
   end
 
   def create
     # STRIPE
-    @order = Order.find(params[:order_id])
+    if @order.state == "lost"
+      flash[:error] = "Votre panier a expiré, la commande est annulée. Votre CB n'a pas été débitée."
+      redirect_to ceramiques_path and return
+    end
     customer = Stripe::Customer.create(
       source: params[:stripeToken],
       email:  params[:stripeEmail]
@@ -22,7 +28,6 @@ class PaymentsController < ApplicationController
     )
 
     @order.update(payment: charge.to_json, state: 'paid')
-
     @lesson =  @order.lesson
     unless @lesson.present?
       # SEND EMAILS
@@ -49,7 +54,8 @@ class PaymentsController < ApplicationController
   private
 
   def set_order
-    @order = Order.where(state: 'pending').find(params[:order_id])
+    @order = Order.find(params[:order_id])
+    @order.update(state: "payment page") unless @order.state == "lost"
     @order.update(user: current_user) unless @order.user
     if (/\A(F-)?(((2[A|B])|[0-8]{1}[0-9]{1})|(9{1}[0-5]{1}))[0-9]{3}\z/).match("#{current_user.zip_code}") == nil
       flash[:alert] = "Les livraisons ne sont possibles qu'en France métropolitaine. Modifiez votre adresse si vous souhaitez poursuivre."
