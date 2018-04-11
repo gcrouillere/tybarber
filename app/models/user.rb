@@ -9,9 +9,11 @@ class User < ApplicationRecord
   validates :email, presence: true, format: {with: Regexp.new('\A([\w+\-].?)+@[a-z\d\-]+(\.[a-z]+)*\.[a-z]{2,}\z'), message:"Adresse email invalide"}
   validates :first_name, presence: true
   validates :last_name, presence: true
-  # validates :adress, presence: true
-  # validates :zip_code, presence: true, format: {with: Regexp.new('\A(F-)?(((2[A|B])|[0-8]{1}[0-9]{1})|(9{1}[0-5]{1}))[0-9]{3}\z'), message:"Le code postal doit être en France métropolitaine pour les livraisons"}
-  # validates :city, presence: true
+  validates :adress, presence: true
+  validates :zip_code, presence: true
+  validates :city, presence: true
+  validates_acceptance_of :consented, message: "Doit être coché"
+  attr_accessor :consented
 
   has_attachment :productphoto
   has_attachment :productphotomobile
@@ -35,6 +37,7 @@ class User < ApplicationRecord
     user_params[:facebook_picture_url] = auth.info.image
     user_params[:token] = auth.credentials.token
     user_params[:token_expiry] = Time.at(auth.credentials.expires_at)
+    user_params[:consented] = true
     user_params = user_params.to_h
 
     user = User.find_by(provider: auth.provider, uid: auth.uid)

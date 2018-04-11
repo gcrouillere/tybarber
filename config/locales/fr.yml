@@ -23,53 +23,60 @@ fr:
   errors:
     messages:
       blank: "Ne peut être vide"
+    attributes:
+      consented:
+  errors:
+     attributes:
+       consented:
+         invalid: "Doit être coché"
+         false_value: "Doit être coché"
   activerecord:
-      models:
-        user:
-          one: "Client"
-          other: "Clients"
-        ceramique:
-          one: "Produit"
-          other: "Produits"
-        category:
-          one: "Catégories"
-          other: "Catégories"
-        calendarupdate: "Bloquage de période"
-        lesson:
-          one: "Réservation"
-          other: "Réservations"
-        offer:
-          one: "Offre"
-          other: "Offres"
-      attributes:
-        user:
-          first_name: "Prénom"
-          last_name: "Nom"
-          tracking: "N° de suivi colis"
-        ceramique:
-          name: "Nom"
-          description: "Description"
-          category: "Catégorie"
-          price_cents: "Prix en cents d'€"
-          weight: "Poids"
-        category:
-          name: "Nom"
-        lesson:
-          start: "Début de la réservation"
-          duration: "Durée en jours"
-          user: "Client"
-          confirmed: "Confirmé ?"
-          student: "Nombre de participants"
-        calendarupdate:
-          period_start: "Début de la période"
-          period_end: "Fin de la période"
-          capacity: "Places disponibles"
-          available: "Disponible ?"
-          price_cents: "Prix en cents d'€"
-        offer:
-          title: "Titre"
-          description: "Description"
-          showcased: "En première page ?"
+    models:
+      user:
+        one: "Client"
+        other: "Clients"
+      ceramique:
+        one: "Produit"
+        other: "Produits"
+      category:
+        one: "Catégories"
+        other: "Catégories"
+      calendarupdate: "Bloquage de période"
+      lesson:
+        one: "Réservation"
+        other: "Réservations"
+      offer:
+        one: "Offre"
+        other: "Offres"
+    attributes:
+      user:
+        first_name: "Prénom"
+        last_name: "Nom"
+        tracking: "N° de suivi colis"
+      ceramique:
+        name: "Nom"
+        description: "Description"
+        category: "Catégorie"
+        price_cents: "Prix en cents d'€"
+        weight: "Poids"
+      category:
+        name: "Nom"
+      lesson:
+        start: "Début de la réservation"
+        duration: "Durée en jours"
+        user: "Client"
+        confirmed: "Confirmé ?"
+        student: "Nombre de participants"
+      calendarupdate:
+        period_start: "Début de la période"
+        period_end: "Fin de la période"
+        capacity: "Places disponibles"
+        available: "Disponible ?"
+        price_cents: "Prix en cents d'€"
+      offer:
+        title: "Titre"
+        description: "Description"
+        showcased: "En première page ?"
   active_admin:
     models:
       calendarupdate:
