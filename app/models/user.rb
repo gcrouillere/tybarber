@@ -10,7 +10,7 @@ class User < ApplicationRecord
   validates :first_name, presence: true
   validates :last_name, presence: true
   validates :adress, presence: true
-  validates :zip_code, presence: true
+  # validates :zip_code, presence: true
   validates :city, presence: true
   validates_acceptance_of :consented, message: "Doit être coché"
   attr_accessor :consented
@@ -37,7 +37,8 @@ class User < ApplicationRecord
     user_params[:facebook_picture_url] = auth.info.image
     user_params[:token] = auth.credentials.token
     user_params[:token_expiry] = Time.at(auth.credentials.expires_at)
-    user_params[:consented] = true
+    user_params[:adress] = "à mettre à jour"
+    user_params[:city] = "à mettre à jour"
     user_params = user_params.to_h
 
     user = User.find_by(provider: auth.provider, uid: auth.uid)
