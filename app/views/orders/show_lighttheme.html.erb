@@ -80,15 +80,22 @@
       total = <%= @amount.to_f %>
       port = <%= @port.to_f %>
       $('.payment-form input').on('click', function(event) {
+        if ($('.cost-details').css('width') == '0px') {
+          width = NaN
+        } else {
+          width = parseFloat($('.cost-details').css('width').replace("px","")) + 0.9
+        }
         if ($('h3.total_amount').hasClass('take_away-checked')) {
-          console.log('if')
           $('.port').css({'visibility':'visible'});
           $('.total_amount').removeClass('take_away-checked')
+          width += 2
+          $('.total_amount').css({'width': width + 'px'});
           $('.total_amount').text('Montant total: '+ String(total + port).replace(".", ",") + " €")
         } else {
-          console.log('else')
+          width -= 2
           $('.port').css({'visibility':'hidden'});
           $('.total_amount').addClass('take_away-checked')
+          $('.total_amount').css({'width': width + 'px'});
           $('.total_amount').text('Montant total: '+ String(total).replace(".", ",") + " €")
         }
       });

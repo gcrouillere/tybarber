@@ -95,16 +95,19 @@
         if ($('.cost-details').css('width') == '0px') {
           width = NaN
         } else {
-          width = $('.cost-details').css('width')
+          width = parseFloat($('.cost-details').css('width').replace("px","")) + 0.9
         }
         if ($('h3.total_amount').hasClass('take_away-checked')) {
           $('.port').css({'visibility':'visible'});
           $('.total_amount').removeClass('take_away-checked')
+          width += 2
+          $('.total_amount').css({'width': width + 'px'});
           $('.total_amount').text('Montant total: '+ String(total + port).replace(".", ",") + " €")
         } else {
+          width -= 2
           $('.port').css({'visibility':'hidden'});
           $('.total_amount').addClass('take_away-checked')
-          $('.total_amount').css({'width':width});
+          $('.total_amount').css({'width': width + 'px'});
           $('.total_amount').text('Montant total: '+ String(total).replace(".", ",") + " €")
         }
       });
