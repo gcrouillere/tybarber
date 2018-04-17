@@ -37,10 +37,10 @@ Site de e-commerce configurable. Créez votre compte et visualisez votre futur s
                     <% end %>
                   </style>
                   <% if  ceramique.stock == 0%>
-                    <div class="ceramiques-card-circle soldout"><p>Epuisé</p></div>
+                    <div class="ceramiques-card-circle soldout lighttheme-circle"><p>Epuisé</p></div>
                   <% elsif ceramique.offer%>
                     <% if ceramique.offer.discount > 0 %>
-                      <div class="ceramiques-card-circle discount-circle"><p>-<%= (ceramique.offer.discount * 100).to_i %>%</p></div>
+                      <div class="ceramiques-card-circle discount-circle lighttheme-circle"><p>-<%= (ceramique.offer.discount * 100).to_i %>%</p></div>
                     <% end %>
                   <% end %>
                 </div>

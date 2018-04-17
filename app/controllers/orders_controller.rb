@@ -64,7 +64,7 @@ class OrdersController < ApplicationController
   private
 
   def create_order
-    order  = Order.create!(ceramique: @ceramique.name, state: 'pending')
+    order  = Order.create!(ceramique: @ceramique.name, state: 'pending', take_away: false)
     session[:order] = order.id
     return order
   end
