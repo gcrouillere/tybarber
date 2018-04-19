@@ -44,18 +44,6 @@
 
 }
 
-.back-stage > a {
-  color: $backstagelink;
-  text-decoration: none;
-  float: right;
-  margin-top: 100px;
-}
-
-.back-stage:hover > a {
-  color: $backstagelinkhover;
-  text-decoration: none;
-}
-
 .text-center-stage-mobile {
   margin: 20px 10px 20px 10px;
   background: $card-background;
@@ -75,12 +63,4 @@
   p {
     font-weight: $font-weight-p;
   }
-}
-
-.back-stage-mobile > a {
-  color: $backstagelink;
-  text-decoration: none;
-  float: right;
-  margin-top: 10px;
-  margin-right: 10px;
 }
