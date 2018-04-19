@@ -11,14 +11,13 @@
     height: 111%;
     z-index: 1;
   }
-  z-index: 0;
   background: $card-background;
   border-radius: $project-border-radius;
   border: $card-border;
   padding: $padding-small;
   form {
     padding: 10px;
-    margin-left: 21px;
+    margin-left: 36px;
   }
   .label-search {
     font-weight: $font-weight-label;
@@ -31,11 +30,11 @@
 
   }
   h2 {
+    text-align: center;
     font-weight: $font-weight-h4-search;
     font-size: $font-size-h4;
     margin-bottom: 20px;
     margin-top: 0px;
-    margin-left: 26px;
     color: $filter-title;
     background: white;
     border-bottom: 1px solid $primary;
@@ -68,8 +67,8 @@
     }
   }
   #recherche {
-    width: 111%;
-    margin-left: -20px;
+    width: 102%;
+    margin-left: 0px;
   }
 }
 
