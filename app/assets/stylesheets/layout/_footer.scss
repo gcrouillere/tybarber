@@ -1,10 +1,17 @@
+.footermask {
+  width: 100%;
+  transform: scaleY(-1);
+  position: absolute;
+  z-index: 2;
+}
+
 #footer {
-  height: 107px;
+  height: 162px;
   background-color: $footer;
   display: flex;
   justify-content: space-between;
   align-items: center;
-
+  position: relative;
   .contact-default {
     background-color: $footer;
     display: flex;
@@ -41,10 +48,16 @@
       margin-right: 20px;
     }
   }
-  img {
-    margin-right: 30px;
-    width: 40px;
+  .mylink {
+    position: absolute;
+    right: -17px;
+    bottom: 9px;
+    img {
+      margin-right: 30px;
+      width: 40px;
+    }
   }
+
 }
 
 #footer-mobile {

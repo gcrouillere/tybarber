@@ -11,68 +11,66 @@
     height: 111%;
     z-index: 1;
   }
-  // .filter-content {
-    z-index: 0;
-    background: $card-background;
-    border-radius: $project-border-radius;
-    border: $card-border;
-    padding: $padding-small;
-    form {
-      padding: 10px;
-      margin-left: 21px;
-    }
-    .label-search {
-      font-weight: $font-weight-label;
-    }
-    .label-search.all {
-      width: 100%;
-      margin: 0px 0px 20px 0px;
-    }
-    .aa-input-mobile {
+  z-index: 0;
+  background: $card-background;
+  border-radius: $project-border-radius;
+  border: $card-border;
+  padding: $padding-small;
+  form {
+    padding: 10px;
+    margin-left: 21px;
+  }
+  .label-search {
+    font-weight: $font-weight-label;
+  }
+  .label-search.all {
+    width: 100%;
+    margin: 0px 0px 20px 0px;
+  }
+  .aa-input-mobile {
 
-    }
-    h2 {
-      font-weight: $font-weight-h4-search;
-      font-size: $font-size-h4;
-      margin-bottom: 20px;
-      margin-top: 0px;
-      margin-left: 26px;
-      color: $filter-title;
-      background: white;
-      border-bottom: 1px solid $primary;
-      padding: 10px;
-    }
+  }
+  h2 {
+    font-weight: $font-weight-h4-search;
+    font-size: $font-size-h4;
+    margin-bottom: 20px;
+    margin-top: 0px;
+    margin-left: 26px;
+    color: $filter-title;
+    background: white;
+    border-bottom: 1px solid $primary;
+    padding: 10px;
+  }
 
-    h3 {
-      margin: 20px 0 5px 0;
-      font-size: $font-size-h5;
-      font-weight: $font-weight-h5-search;
-    }
+  h3 {
+    margin: 20px 0 5px 0;
+    font-size: $font-size-h5;
+    font-weight: $font-weight-h5-search;
+  }
 
-    input {
-      margin-right: 5px;
-    }
+  input {
+    margin-right: 5px;
+  }
 
-    .prix {
-      margin-bottom: 20px;
-    }
+  .prix {
+    margin-bottom: 20px;
+  }
 
-    ul {
-      list-style: none;
-      padding: 0;
-      margin: 0;
-      li {
-        margin-left: 12px;
-      }
-      li:last-child {
-        margin-bottom: 10px;
-      }
+  ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    li {
+      margin-left: 12px;
     }
-    #recherche {
-      width: 111%;
-      margin-left: -20px;
+    li:last-child {
+      margin-bottom: 10px;
     }
-  // }
+  }
+  #recherche {
+    width: 111%;
+    margin-left: -20px;
+  }
 }
 
 #ceramique-filters-content-mobile {
