@@ -145,7 +145,7 @@ ActiveRecord::Schema.define(version: 20180416105437) do
     t.integer  "user_id"
     t.integer  "lesson_id"
     t.integer  "port_cents",   default: 0, null: false
-    t.boolean  "take_away",                null: false
+    t.boolean  "take_away"
     t.index ["lesson_id"], name: "index_orders_on_lesson_id", using: :btree
     t.index ["user_id"], name: "index_orders_on_user_id", using: :btree
   end

@@ -9,21 +9,21 @@
     background-color: $footer;
     display: flex;
     align-items: center;
-    color: $primary;
+    color: white;
     font-size: $font-size-footer-icone;
     a {
       margin-left: 30px;
-      color: $primary;
+      color: $footer-color-text;
     }
     i {
-      color: $primary;
+      color: $footer-color-text;
       margin-right: 20px;
       &:hover {
       font-size: larger;
       }
     }
     h6 {
-      color: $primary;
+      color: $footer-color-text;
       .middle-text {
         margin-right: 10px !important;
       }
@@ -43,6 +43,7 @@
   }
   img {
     margin-right: 30px;
+    width: 40px;
   }
 }
 
@@ -56,7 +57,7 @@
     color: $navbar;
     font-size: $font-size-footer-icone;
     h6, i {
-    color: $primary;
+    color: $footer-color-text;
     }
     .link {
       margin-top: 10px;

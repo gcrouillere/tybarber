@@ -94,16 +94,17 @@
     list-style: none;
     a {
         text-decoration: none !important;
-        color: black !important;
+        color: $nav-text-color;
         margin-right: 20px;
         padding-bottom: 2px;
-         border-bottom: 1px solid transparent;
+        border-bottom: 1px solid transparent;
+        font-weight: 100;
       i {
-        color: black !important;
+        color: $nav-text-color;
       }
     }
     a:hover {
-      border-bottom: 1px solid black;
+      border-bottom: 1px solid $nav-text-color;
     }
   }
   /* mobile */
@@ -112,8 +113,9 @@
     list-style: none;
     a {
       text-decoration: none !important;
-      color: black !important;
+      color: $nav-text-color;
       margin-right: 15px;
+      font-weight: 100;
     }
   }
 }

@@ -10,7 +10,7 @@
 <div class="jumbotron">
   <style>
   .jumbotron .banner {
-  background-image: linear-gradient(135deg, rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url(<%= @homepicpath %>);
+  background-image: linear-gradient(135deg, rgba(0,0,0,0.1), rgba(0,0,0,0.1)), url(<%= @homepicpath %>);
   }
   .jumbotron .banner-xs {
   background-image: linear-gradient(135deg, rgba(0,0,0,0.7) 0%, rgba(0,0,0,0.4) 50%), url(<%= @homepicpathmobile %>);
@@ -21,9 +21,18 @@
   <div class="hidden-xs">
     <div class="banner">
       <div class="banner-content">
-        <h1><%= ENV['MODEL'].capitalize%></h1>
-        <p><%= "#{ENV['FIRSTNAME'].capitalize} #{ENV['LASTNAME'].capitalize}" %></p>
-        <%= link_to "Voir les #{ENV['MODEL']}", ceramiques_path, class: "btn btn-primary btn-lg btn-home" %>
+        <div class="banner-text">
+          <h1>Ty Barber</h1>
+          <p>Accessoires de rasage en bois noble</p>
+          <div class="logos">
+            <%= image_tag "bordureblanche.png", class: "bordureg", alt: "XXXX"%>
+            <%= image_tag "blaireau.png", class: "blaireau", alt: "XXXX"%>
+            <%= image_tag "boite.png", class: "boite", alt: "XXXX"%>
+            <%= image_tag "rasoir.png", class: "blaireau", alt: "XXXX"%>
+            <%= image_tag "bordureblanche.png", class: "bordured", alt: "XXXX"%>
+          </div>
+          <%= link_to "Voir les #{ENV['MODEL']}", ceramiques_path, class: "btn btn-primary btn-lg btn-home" %>
+        </div>
       </div>
         <%= photo_update('productphoto', 30, '', '', 30, '.homepic', "Mise à jour photo d'accueil")%>
         <%= photo_update('productphotomobile', 30, '', '', 412, '.homepicmobile', "Mise à jour photo d'accueil pour mobiles")%>
@@ -44,7 +53,22 @@
 
 </div>
 
-<div class="home-text hidden-xs hidden-sm">
+<div class="home-info-bloc">
+  <div class="home-info-text">
+    <h2>Une essence rare </h2>
+    <p>Philippe Nerriere à partir de son atelier situé à Guérande produit l'ensemble des modèles de rasoirs et de blaireaux de rasage et travaille uniquement le Morta, cette richesse locale que l'on appelle aussi L'or noir de Brière.</p>
+    <p>Après avoir extrait du marais ce bois en cours de fossilisation, de nombreuses étapes sont nécessaires afin d'obtenir un résultat digne de cette matière brut et naturel. Parmi celles-ci 2 sont capitales. Le séchage de ce bois et sa finition afin de lui redonner vie.</p>
+  </div>
+  <div class="home-info-images">
+    <div class="inner-photos">
+      <%= image_tag "arbreh.jpg", class: "arbre", alt: "XXXX"%>
+      <%= image_tag "maraish.jpg", class: "marais", alt: "XXXX"%>
+      <%= image_tag "bois.jpg", class: "bois", alt: "XXXX"%>
+    </div>
+  </div>
+</div>
+
+<!-- <div class="home-text hidden-xs hidden-sm">
   <div class="text">
     <div class="text-left col-xs-4">
       <% if user_signed_in? && current_user.admin %>
@@ -76,6 +100,7 @@
 
     </div>
 </div>
+</div> -->
 
 <% content_for(:after_js) do %>
   <script type="application/ld+json">

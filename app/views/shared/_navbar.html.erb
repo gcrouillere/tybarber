@@ -14,17 +14,17 @@
       <div class="nav-bar-list">
         <% if current_user.admin %>
           <%= link_to admin_root_path do %>
-            <span><i class="fa fa-unlock-alt"></i> Administration</span>
+            <span>Administration</span>
           <% end %>
         <% end %>
         <%= link_to ceramiques_path do %>
-          <span><i class="fa fa-bars"></i> Boutique</span>
+          <span>Boutique</span>
         <% end %>
         <%= link_to info_path do %>
-          <span><i class="fa fa-female"></i> Infos</span>
+          <span>Infos</span>
         <% end %>
         <%= link_to new_lesson_path do %>
-          <span><i class="fa fa-calendar-o"></i> Réserver un stage</span>
+          <span>Réserver un stage</span>
         <% end %>
         <% if session[:order].present? %>
           <% if Order.where(id: session[:order]).present? %>
@@ -36,7 +36,7 @@
           <% end %>
         <% end %>
         <%= link_to destroy_user_session_path, method: :delete do %>
-          <span><i class="fa fa-sign-out"></i> Se déconnecter</span>
+          <span>Se déconnecter</span>
         <% end %>
       </div>
     </div>
@@ -45,13 +45,13 @@
     <div class="navbar-item">
       <div class="nav-bar-list">
         <%= link_to ceramiques_path do %>
-          <span><i class="fa fa-bars"></i> Boutique</span>
+          <span>Boutique</span>
         <% end %>
         <%= link_to info_path do %>
-            <span><i class="fa fa-female"></i> Infos</span>
+            <span>Infos</span>
         <% end %>
         <%= link_to new_lesson_path do %>
-          <span><i class="fa fa-calendar-o"></i> Réserver un stage</span>
+          <span>Réserver un stage</span>
         <% end %>
         <% if session[:order].present? %>
           <% if Order.where(id: session[:order]).present? %>
@@ -63,7 +63,7 @@
           <% end %>
         <% end %>
         <%= link_to new_user_session_path, class: "navbar-item navbar-link" do %>
-          <span><i class="fa fa-sign-in"></i> Se connecter</span>
+          <span>Se connecter</span>
         <% end %>
       </div>
     </div>
@@ -81,13 +81,13 @@
   <div class="navbar-item">
     <div class="list-mobile">
       <%= link_to ceramiques_path do %>
-          <span><i class="fa fa-bars"></i> Shop</span>
+          <span>Shop</span>
         <% end %>
       <%= link_to info_path do %>
-        <li><span><i class="fa fa-female"></i> Infos</span></li>
+        <li><span>Infos</span></li>
       <% end %>
       <%= link_to new_lesson_path do %>
-        <span><i class="fa fa-calendar-o"></i> Stage</span>
+        <span>Stage</span>
       <% end %>
 
       <% if session[:order].present? %>

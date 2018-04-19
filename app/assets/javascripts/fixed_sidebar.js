@@ -5,7 +5,7 @@ $(document).ready(function() {
       if($(document).scrollTop() + $('.navbar-laptop').height() > $('.ceramique-list').offset().top) {
         $('#ceramique-filters-content').css({
           position: 'fixed',
-          top: 70,
+          top: 76,
         });
       } else {
         $('#ceramique-filters-content').css({

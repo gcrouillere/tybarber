@@ -1,64 +1,78 @@
 #ceramique-filters-content {
   width: 250px;
   margin-top: 20px;
-  background: $card-background;
-  border-radius: $project-border-radius;
-  border: $card-border;
-  padding: $padding-small;
   z-index: 2;
-  form {
-    padding: 10px;
+  position: relative;
+  .poteau {
+    position: absolute;
+    top: -22px;
+    bottom: 0;
+    left: -52px;
+    height: 111%;
+    z-index: 1;
   }
-  .label-search {
-    font-weight: $font-weight-label;
-  }
-  .label-search.all {
-    width: 100%;
-    margin: 0px 0px 20px 0px;
-  }
-  .aa-input-mobile {
-
-  }
-  h2 {
-    font-weight: $font-weight-h4-search;
-    font-size: $font-size-h4;
-    margin-bottom: 20px;
-    margin-top: 5px;
-    color: $filter-title;
-    background: $primary;
+  // .filter-content {
+    z-index: 0;
+    background: $card-background;
     border-radius: $project-border-radius;
-    padding: 10px;
-    box-shadow: 1px 1px 1px grey;
-  }
-
-  h3 {
-    margin: 20px 0 5px 0;
-    font-size: $font-size-h5;
-    font-weight: $font-weight-h5-search;
-  }
-
-  input {
-    margin-right: 5px;
-  }
-
-  .prix {
-    margin-bottom: 20px;
-  }
-
-  ul {
-    list-style: none;
-    padding: 0;
-    margin: 0;
-    li {
-      margin-left: 12px;
+    border: $card-border;
+    padding: $padding-small;
+    form {
+      padding: 10px;
+      margin-left: 21px;
     }
-    li:last-child {
-      margin-bottom: 10px;
+    .label-search {
+      font-weight: $font-weight-label;
     }
-  }
-  #recherche {
-    width: 100%;
-  }
+    .label-search.all {
+      width: 100%;
+      margin: 0px 0px 20px 0px;
+    }
+    .aa-input-mobile {
+
+    }
+    h2 {
+      font-weight: $font-weight-h4-search;
+      font-size: $font-size-h4;
+      margin-bottom: 20px;
+      margin-top: 0px;
+      margin-left: 26px;
+      color: $filter-title;
+      background: white;
+      border-bottom: 1px solid $primary;
+      padding: 10px;
+    }
+
+    h3 {
+      margin: 20px 0 5px 0;
+      font-size: $font-size-h5;
+      font-weight: $font-weight-h5-search;
+    }
+
+    input {
+      margin-right: 5px;
+    }
+
+    .prix {
+      margin-bottom: 20px;
+    }
+
+    ul {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+      li {
+        margin-left: 12px;
+      }
+      li:last-child {
+        margin-bottom: 10px;
+      }
+    }
+    #recherche {
+      width: 111%;
+      margin-left: -20px;
+    }
+  // }
 }
 
 #ceramique-filters-content-mobile {

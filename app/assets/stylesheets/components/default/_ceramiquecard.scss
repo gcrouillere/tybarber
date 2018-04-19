@@ -70,6 +70,7 @@
     justify-content: center;
     position: relative;
     margin: 10px;
+    height: 300px;
 
     .img {
       border-radius: $project-border-radius;
@@ -137,8 +138,8 @@
     text-overflow: ellipsis;
     display: -webkit-box;
     line-height: 20px;     /* fallback */
-    max-height: 104px;      /* fallback */
-    -webkit-line-clamp: 5; /* number of lines to show */
+    max-height: 62px;      /* fallback */
+    -webkit-line-clamp: 3; /* number of lines to show */
     -webkit-box-orient: vertical;
   }
   .allpricesmobile-w {

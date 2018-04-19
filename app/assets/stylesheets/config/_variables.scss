@@ -10,12 +10,14 @@ $header-font: "Raleway", "Helvetica", "sans-serif";
  * Colors
  * ------------------------------------- */
  //Main :
-$primary:  #0FB79B;
-$primary-opacified: rgba(15, 183, 155, 0.3);
-$navbar: linear-gradient(to right, #fefefe, #0FB79B);
-$h2card: #0FB79B;
+$primary:#e2a24d;
+$nav-text-color: #e2a24d;
+$footer-color-text: #e2a24d;
+$primary-opacified: rgba(198, 135, 51, 0.3);
+$navbar: #191919;
+$h2card:  #444549;
 $body: #fbfbfb;
-$footer: #141E30;
+$footer: #191919;
 $discount: #FFD10C;
 $home-text-shadow: #333333;
 $home-font-color: white;
