@@ -115,11 +115,12 @@ ActiveAdmin.register Lesson do
     def create_order_for_lesson(lesson)
       amount = 0.0
       lesson.duration == ENV['MINDURATION'].to_i ? amount = ENV['TWODAYSLESSONPRICE'].to_f * lesson.student.to_f * ENV['LESSONDEPOSITRATIO'].to_f : amount = ENV['FIVEDAYSLESSONPRICE'].to_f * lesson.student.to_f * ENV['LESSONDEPOSITRATIO'].to_f
-      Order.create!(
+      order = Order.create!(
         state: 'pending',
         amount_cents: amount * 100,
         user: lesson.user,
-        lesson: lesson
+        lesson: lesson,
+        take_away: false
       )
     end
 

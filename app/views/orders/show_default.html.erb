@@ -13,10 +13,14 @@
       <% @order.basketlines.each do |basketline| %>
         <div class="basket-item">
           <%= cl_image_tag basketline.ceramique.photos[0].path, class: "basket-article-img" %>
-          <h4><%= basketline.ceramique.name.capitalize %></h4>
+          <div class="basketline-content">
+            <% basketline.with_support ? text = " avec support" : text = "" %>
+            <h4><%= basketline.ceramique.name.capitalize + text%></h4>
+          </div>
           <h5>Quantité: <%= basketline.quantity %></h5>
           <% basketline.ceramique.offer ? discount =  basketline.ceramique.offer.discount : discount = 0 %>
-          <h5>Prix: <%= humanized_money(basketline.ceramique.price * (1 - discount) * basketline.quantity) %> <%= currency_symbol %></h5>
+          <% amount_support = (basketline.with_support ? basketline.ceramique.support_price : 0) %>
+          <h5>Prix: <%= humanized_money(basketline.ceramique.price * (1 - discount) * basketline.quantity + amount_support * basketline.quantity) %> <%= currency_symbol %></h5>
           <%= link_to  order_path(:id => @order.id, :basketline_id => basketline.id), :confirm => 'Are you sure?', :method => :delete, class: "delete-article" do %>
             <i class="fa fa-trash"></i>
           <% end %>

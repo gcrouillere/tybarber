@@ -14,6 +14,7 @@ class Ceramique < ApplicationRecord
   has_many :basketlines, dependent: :destroy
 
   monetize :price_cents
+  monetize :support_price_cents
 
   validates :photos, presence: true
   validates :category, presence: true

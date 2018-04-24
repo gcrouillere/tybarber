@@ -41,42 +41,58 @@
           </div>
 
           <div class="product-show-half-top-wrapper-right">
-          <div class="info-add-basket">
-            <div class="description">
-              <h1> <%= @ceramique.name.capitalize%> </h1>
-              <%= facebook_share_id("facebookshare") %>
-              <p class="description"> <%= @ceramique.description.gsub(/\n/, '<br>').html_safe%> </p>
-              <hr>
-            </div>
-            <div class="prix-form">
-              <% @ceramique.offer ? discount =  @ceramique.offer.discount : discount = 0 %>
-              <h2> <%= humanized_money(@ceramique.price * (1 - discount))%> <%= currency_symbol %> </h2>
-              <% if @ceramique.offer %>
-                <% if @ceramique.offer.discount > 0 %>
-                  <h3 class="previous-price"><%= humanized_money(@ceramique.price)%> <%= currency_symbol %></h3>
-                <% end %>
-              <% end %>
-              <% if  @ceramique.stock > 0 %>
+            <div class="info-add-basket">
+
+              <div class="description">
+                <h1> <%= @ceramique.name.capitalize%> </h1>
+                <%= facebook_share_id("facebookshare") %>
+                <p class="description"> <%= @ceramique.description.gsub(/\n/, '<br>').html_safe%> </p>
+                <hr>
+              </div>
+              <div class="prix-form">
                 <form action="/orders" method="post" authenticity_token="true" class="form">
                   <%= hidden_field_tag :authenticity_token, form_authenticity_token %>
-                  <div class="qte">
-                    <label for="quantity">Quantité </label>
-                    <select name="quantity">
-                      <% for i in 1..@ceramique.stock %>
-                        <option value="<%= i %>"><%= i %></option>
+                  <div class="form-top-section">
+                    <% @ceramique.offer ? discount =  @ceramique.offer.discount : discount = 0 %>
+
+                      <div class="all-prices">
+                      <h2 class="product-price"> <%= humanized_money(@ceramique.price * (1 - discount))%> <%= currency_symbol %> </h2>
+                      <% if @ceramique.offer %>
+                        <% if @ceramique.offer.discount > 0 %>
+                          <h3 class="previous-price"><%= humanized_money(@ceramique.price)%> <%= currency_symbol %></h3>
+                        <% end %>
                       <% end %>
-                    </select>
+                      </div>
+
+                    <% if  @ceramique.support_price_cents > 0%>
+                      <div class="input-support">
+                        <input id="support-checkbox" type="checkbox" name="support">
+                        <label for="support-checkbox">Ajouter le support</label>
+                      </div>
+                    <% end %>
                   </div>
-                  <input type="hidden" name="ceramique" value="<%= @ceramique.id%>">
-                  <button type="submit" class="pull-right btn btn-primary order">
-                    <i class="fa fa-plus""></i> Ajouter au panier
-                  </button>
+                  <div class="form-bottom-section">
+                    <% if @ceramique.stock > 0 %>
+                      <div class="qte">
+                        <label for="quantity">Quantité </label>
+                        <select name="quantity">
+                          <% for i in 1..@ceramique.stock %>
+                            <option value="<%= i %>"><%= i %></option>
+                          <% end %>
+                        </select>
+                      </div>
+                      <input type="hidden" name="ceramique" value="<%= @ceramique.id%>">
+                      <button type="submit" class="pull-right btn btn-primary order">
+                        <i class="fa fa-plus""></i> Ajouter au panier
+                      </button>
+                    <% else %>
+                     <h2 class="stock0">Stock épuisé</h2>
+                    <% end %>
+                  </div>
                 </form>
-              <% else %>
-                  <h2 class="stock0">Stock épuisé</h2>
-              <% end %>
+              </div>
+
             </div>
-          </div>
           </div>
 
         </div>
@@ -210,5 +226,23 @@
     data-pin-round="true"
     data-pin-tall="15px"
 ></script>
+<script>
+  $(document).on('ready', function() {
+    total = <%= @ceramique.price.to_f * (1 - discount) %>
+    support = <%= @ceramique.support_price.to_f || 0 %>
+    console.log(total)
+    console.log(support)
+    width = $('.product-price').width()
+    $('.form #support-checkbox').on('click', function(event) {
+      if ($('.product-price').hasClass('support-checked')) {
+        $('.product-price').removeClass('support-checked')
+        $('.product-price').text(String(total).replace(".", ",") + " €")
+      } else {
+        $('.product-price').addClass('support-checked')
+        $('.product-price').text(String(total + support).replace(".", ",") + " €")
+      }
+    });
+  });
+</script>
 <%= render 'shared/facebookshare' %>
 <% end %>

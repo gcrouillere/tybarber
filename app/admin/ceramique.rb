@@ -1,10 +1,11 @@
 ActiveAdmin.register Ceramique, as: 'Produits' do
-  permit_params :name, :description, :stock, :weight, :category_id, :price_cents, photos: []
+  permit_params :name, :description, :stock, :weight, :category_id, :price_cents, :position, :support_price_cents, photos: []
   menu priority: 1
   config.filters = false
 
   index do
     column :id
+    column :position
     column :name
     column :description
     column :stock
@@ -21,12 +22,14 @@ ActiveAdmin.register Ceramique, as: 'Produits' do
 
   form do |f|
   f.inputs "" do
+    f.input :position
     f.input :name
     f.input :description
     f.input :stock
     f.input :weight, :hint => "Poids en grammes"
     f.input :category
-    f.input :price_cents, :hint => "Prix en centimes d'euros. Ex: entrez 1200 pour un prix de 12 €"
+    f.input :price_cents, :hint => "Prix en centimes d'euros. Ex: entrez 3500 pour un prix de 35 €"
+    f.input :support_price_cents, :hint => "Prix du support en centimes d'euros. Ex: entrez 1200 pour un prix de 12 €"
     f.input :photos, :as => :formtastic_attachinary, :hint => "Sélectionnez les photos du produit. Maintenez Ctrl appuyé pour en sélectionner plusieurs."
   end
   f.actions

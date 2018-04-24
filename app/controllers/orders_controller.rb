@@ -14,7 +14,7 @@ class OrdersController < ApplicationController
       @order = create_order
     end
     if params[:quantity].to_i <= @ceramique.stock
-      @basketline = Basketline.create(ceramique: @ceramique, quantity: params[:quantity].to_i, order: @order)
+      @basketline = Basketline.create(ceramique: @ceramique, quantity: params[:quantity].to_i, order: @order, with_support: params[:support] == "on")
       @ceramique.update(stock: @ceramique.stock - @basketline.quantity)
       costs = Amountcalculation.new(@order).calculate_amount(@order)
       @order.update(amount: costs[:total], port: costs[:port], ceramique: collect_ceramiques_for_stats)
