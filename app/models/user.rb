@@ -53,4 +53,22 @@ class User < ApplicationRecord
 
     return user
   end
+
+  def self.user_subscribe(user_params_i)
+    user_params = user_params_i.slice(:first_name, :tracking, :email)
+    user_params[:first_name] ||= "newsletter"
+    user_params[:adress] = "------ à mettre à jour ------"
+    user_params[:city] = "------ à mettre à jour ------"
+    user_params[:first_name] == "newsletter" ? user_params[:last_name] = "." : user_params[:last_name] = "message"
+
+    user = User.find_by(email: user_params[:email])
+    if user
+      user.update(tracking: user_params[:tracking]) if user_params[:tracking]
+    else
+      user = User.new(user_params)
+      user.password = Devise.friendly_token[0,20]
+      user.save
+    end
+    return user
+  end
 end

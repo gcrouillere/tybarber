@@ -48,6 +48,9 @@ fr:
       offer:
         one: "Offre"
         other: "Offres"
+      order:
+        one: "Commande"
+        other: "Commandes"
     attributes:
       user:
         first_name: "Prénom"
@@ -77,6 +80,11 @@ fr:
         title: "Titre"
         description: "Description"
         showcased: "En première page ?"
+      order:
+        state: "Statut"
+        ceramique: "Produits"
+        amount_cents: "Montant centimes d'euros"
+        port_cents: "Frais de port en centimes d'euros"
   active_admin:
     models:
       calendarupdate:
