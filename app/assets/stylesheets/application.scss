@@ -20,7 +20,7 @@
 @import "pages/*";
 
 .content {
-  min-height: calc(100vh - 90px);
+  min-height: calc(100vh - 70px);
 }
 
 .col-xs-12 {
@@ -32,6 +32,7 @@
 }
 
 .legal {
+  padding: 10px;
   h1, h2, h3, p {
     margin-left: auto;
     margin-right: auto;

@@ -1,8 +1,11 @@
 class PagesController < ApplicationController
-  skip_before_action :authenticate_user!, only: [:home, :confirmation, :info, :contact, :google906057532e2dbb7e, :robots, :legal]
+  skip_before_action :authenticate_user!, only: [:home, :confirmation, :atelier, :contact, :google906057532e2dbb7e, :robots, :legal, :agenda, :cgv, :atelier, :morta, :la_briere]
 
   def home
     @dev_redirection = "https://www.creermonecommerce.fr/"
+    @rasoir = Ceramique.joins(:category).where("categories.name ILIKE ?", "%rasoir%").order(position: :asc).order(updated_at: :desc).first
+    @lampe = Ceramique.joins(:category).where("categories.name ILIKE ?", "%lampe%").order(position: :asc).order(updated_at: :desc).first
+    @tirebouchon = Ceramique.joins(:category).where("categories.name ILIKE ?", "%tire-bouchon%").order(position: :asc).order(updated_at: :desc).first
     render "home_#{@active_theme.name}"
   end
 
@@ -10,14 +13,30 @@ class PagesController < ApplicationController
     render "confirmation_#{@active_theme.name}"
   end
 
-  def info
+  def atelier
     @dev_redirection = "https://www.creermonecommerce.fr/#anchor-info"
-    render "info_#{@active_theme.name}"
+    render "atelier_#{@active_theme.name}"
+  end
+
+  def la_briere
+    @dev_redirection = "https://www.creermonecommerce.fr/#anchor-info"
+  end
+
+  def morta
+    @dev_redirection = "https://www.creermonecommerce.fr/#anchor-info"
   end
 
   def contact
     @dev_redirection = "https://www.creermonecommerce.fr/produits"
     render "contact_#{@active_theme.name}"
+  end
+
+  def agenda
+    @dev_redirection = "https://www.creermonecommerce.fr"
+  end
+
+  def cgv
+    @dev_redirection = "https://www.creermonecommerce.fr"
   end
 
   def legal

@@ -13,7 +13,7 @@ Rails.application.routes.draw do
 
   resources :lessons, only: [:new, :create, :destroy, :show]
 
-  resources :users, only: [:show, :update, :create]
+  resources :users, only: [:update, :create]
 
   resources :articles, only: [:update, :create]
 
@@ -23,7 +23,11 @@ Rails.application.routes.draw do
 
   #Pages
   get '/confirmation', to: 'pages#confirmation'
-  get '/info', to: 'pages#info'
+  get '/agenda', to: 'pages#agenda'
+  get '/cgv', to: 'pages#cgv'
+  get '/atelier', to: 'pages#atelier'
+  get '/morta', to: 'pages#morta'
+  get '/la_briere', to: 'pages#la_briere'
   get '/contact', to: 'pages#contact'
   get '/legal', to: 'pages#legal'
   get '/google906057532e2dbb7e', to: 'pages#google906057532e2dbb7e'
@@ -40,4 +44,5 @@ Rails.application.routes.draw do
 
   #Errors
   get "/404", to: "errors#error_404"
+
 end

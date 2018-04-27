@@ -4,65 +4,91 @@
 }
 
 .jumbotron .banner {
-  background-size: cover;
+  width: 100%;
   height: 100vh;
   position: relative;
   display: flex;
   align-items: center;
   justify-content: center;
+  background: $navbar;
+  .image-1 {
+    width: 20%;
+    height: 100%;
+    margin: 0 10px
+  }
+  .image-2 {
+    width: 30%;
+    height: 100%;
+  }
 
+  .image-3 {
+    width: 50%;
+    height: 100%;
+    margin: 0 10px
+  }
   .banner-content {
     position: absolute;
-    top: 100px;
+    top: 120px;
     left: calc(50% - 400px);
     text-align: center;
     color: $home-font-color;
-    padding: 0 10px;
     -moz-text-size-adjust: auto;
-    .logos {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      margin-top: 20px;
-      margin-bottom: 30px;
-      width: 800px;
-      .blaireau {
-        width: 55px;
-        height: 100%;
-      }
-      .boite {
-        width: 65px;
-        height: 100%;
-      }
-      .bordureg {
-        transform: rotate(0.06turn);
-        width: 200px;
-        margin-right: 20px
-      }
-      .bordured {
-        width: 200px;
-        margin-left: 20px;
-        transform: scaleX(-1) rotate(0.06turn);
-      }
-    }
     h1, h2, h3, p {
       color: $home-font-color;
     }
     h1 {
       text-shadow: 1px 1px 0px $home-text-shadow;
       letter-spacing: 6px;
+      margin-bottom: 6px;
     }
     p {
-      font-weight: 400;
+      font-weight: 100;
+      font-size: 18px;
     }
-  }
-  .bannermask {
-    position: absolute;
-    bottom: 0px;
-    width: 100%;
+
+    .home-links {
+      width: 800px;
+      margin-top: 60px;
+      display: flex;
+      align-items: center;
+      justify-content: space-around;
+      padding: 40px 40px 20px 40px;
+      .link-i {
+        overflow: hidden;
+        .line {
+          background: white;
+          height: 4px;
+          width: 100%;
+          margin: 10px 0;
+          visibility: hidden;
+        }
+        .line1 {
+          transform: translateX(-158px);
+        }
+        .line2 {
+          transform: translateX(-59px);
+        }
+        .line3 {
+          transform: translateX(-160px);
+        }
+      }
+      .link-i:hover .line {
+        transform: translateX(0px);
+        visibility: visible;
+        transition: all 0.3s ease-in-out 0s;
+      }
+      a {
+        color: white;
+        font-size: 28px;
+        text-shadow: 1px 1px 0px $home-text-shadow;
+        font-weight: 500;
+        cursor: pointer;
+      }
+    }
   }
 }
 
+//MOBILE
 .jumbotron .banner-xs {
     background-size: cover;
     height: 634px;
@@ -74,7 +100,6 @@
       position: absolute;
       top: 100px;
       text-align: center;
-      left: calc(50% - 137px);
       color: $home-font-color;
       padding: 0 10px;
       h1, h2, h3, p {
@@ -86,14 +111,70 @@
     }
 }
 
+@media all and (max-width: 600px) {
+  .home-products-bloc {
+    .univers-cards {
+      flex-direction: column;
+      .decoration {
+        height: 500px;
+        margin-top: 20px;
+        margin-bottom: 20px;
+      }
+    }
+  }
+}
+
+@media all and (max-width: 800px) {
+  .jumbotron .banner .banner-content .home-links.col-xs-12 {
+    width: 700px !important;
+  }
+  .jumbotron .banner .banner-content {
+    top: 80px;
+    left: calc(50% - 350px);
+  }
+  .home-info-bloc {
+      .home-info-text {
+        h2 {
+          font-size : 30px !important;
+        }
+      }
+    .home-info-images {
+      .inner-photos {
+        height: 400px !important;
+        left: 8px !important;
+        .arbre {
+          width: 200px !important;
+          bottom: calc(25%) !important;
+        }
+        .marais {
+          width: 200px !important;
+          top:  calc(30%) !important;
+          right: calc(8%) !important;
+        }
+        .bois {
+          width: 200px !important;
+          position: absolute;
+          right: calc(25%) !important;
+          bottom: 0px !important;
+        }
+      }
+    }
+  }
+
+  .soin, .vin {
+    padding: 0 8px !important;
+  }
+  .decoration {
+    padding: 0 !important;
+  }
+}
+//HOME LAPTOP SECOND BLOC
 .home-info-bloc {
   width: 100%;
-  display: flex;
-  padding: 70px 30px;
+  padding-top: 70px;
+  padding-bottom: 70px;
+  margin: 0 auto;
   .home-info-text {
-    width: 30%;
-    margin-top: 30px;
-    margin-left: 30px;
     text-align: justify;
     h2 {
       font-size: 36px;
@@ -104,12 +185,12 @@
     }
   }
   .home-info-images {
-    width: 70%;
     .inner-photos {
       width: 100%;
       height: 600px;
       margin: 0 auto;
       position: relative;
+      left: 25px;
       .arbre {
         width: 350px;
         position: absolute;
@@ -138,80 +219,102 @@
   }
 }
 
-.home-text {
-  background: linear-gradient(135deg, #979EA1, #454749);
-  padding: 10px;
-  .text {
+//HOME LAPTOP THIRD BLOC
+.home-products-bloc {
+  background: $primary;
+  padding-top: 30px;
+  padding-bottom: 30px;
+  margin: 0;
+  width: 100%;
+  img {
+    width: 100%
+  }
+  h2 {
+    text-align: center;
+    margin-bottom: 52px;
+  }
+  .home-cards-text {
+    padding: 20px;
+    border-left: 2px solid #333333;
+    border-right: 2px solid #333333;
+    flex-grow: 1;
+  }
+  .home-text-left {
+    margin-top: 10px;
+    border-bottom: 2px solid #333333;
+  }
+  .home-text-right {
+    margin-bottom: 10px;
+    border-top: 2px solid #333333;
+  }
+  p {
+    font-size: 18px;
+    font-weight: 100;
+  }
+  h3 {
+    margin-top: 5px;
+  }
+  .univers-cards {
     display: flex;
-    h1:first-child, h2:first-child {
-      margin-top: 20px;
-    }
-    h2, h1{
-      font-size: 16px !important;
-      margin: 22px 10px 11px 10px;
-      color: $home-font-color;
-    }
-    p {
-      font-size: 14px !important;
-      font-weight:200;
-      color: $home-font-color;
-      text-align: justify;
+    margin: 0;
+    a {
+      color: #333333;
     }
   }
-  .text-right {
-    padding: 20px;
-    text-align: left;
+  .soin, .vin {
+    padding: 0 20px;
+    display: flex;
+    flex-direction: column;
+  }
+  .card-image {
+    height: 280px;
+    display: flex;
+    align-items: flex-end;
+    justify-content: flex-end;
     p {
-      margin: 0px 0px 11px 13px;
+      font-weight: 400;
+      margin-right: 20px;
+      opacity: 0;
+      transform: translateY(0px);
+      transition: opacity 0.2s, transform 0.35s;
+      transition-duration: 0.35s;
     }
-    .article_content {
-      display: block;
-      #input2 {
-        min-height: 185px;
+    &:hover p {
+      opacity: 1;
+      transform: translateY(-40px);
+    }
+  }
+  .decoration {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    .home-text-center {
+      background: rgba(51,51,51,0.8);
+      padding: 20px 13px 20px 13px !important;
+      width: 85%;
+      transition: 0.2s;
+      transition-duration: 0.35s;
+      margin: 0 auto;
+      h3 {
+        color: white;
+        text-align: center;
+        transition: 0.2s;
+        transition-duration: 0.35s;
       }
-    }
-  }
-  .text-left {
-    padding: 20px;
-    span {
-      top: 25px;
-      font-family: Raleway;
-      font-size: 32px;
-      font-weight: 500;
-      letter-spacing: 2px;
-      color: white;
-      text-shadow: 1px 1px 0px $primary;
-    }
-    .live-text {
-      margin-top: 20px;
-    }
-    p {
-      margin-left: 13px;
-      margin-top: 0px;
-      margin-bottom: 11px;
-    }
-    #live-text1 {
-      min-height: 20px;
       p {
-        margin-left: 13px;
-        margin-top: 0px;
-        margin-bottom: 11px;
+        color: white;
+        text-align: justify;
+        transition: 0.2s;
+        transition-duration: 0.35s;
       }
     }
-    .article_content {
-      display: block;
-      #input1 {
-        min-height: 185px;
+    .decoration-link {
+      &:hover h3, &:hover p{
+        color: #333333;
+      }
+      &:hover .home-text-center {
+        background: rgba(250,250,250,0.8);
       }
     }
   }
-}
-
-.btn-home {
-  padding: 10px 20px;
-  border: none;
-  border-radius: 50px;
-  font-weight: 100;
-  font-size: 20px;
-  letter-spacing: 2px;
 }

@@ -1,37 +1,40 @@
 <!-- LAPTOP -->
-<div class="hidden-xs">
-  <%= image_tag "footer.png", class: "footermask", alt: "XXXX"%>
+<div class="">
   <div id="footer">
     <div class="contact-default">
-      <a href="https://www.google.fr/maps/place/<%=ENV['ADDRESS']%>" target="blank"><i class="fa fa-map"></i></a>
-      <i class="fa fa-envelope-o"></i>
-      <h6 class="info-text middle-text"><%=ENV['EMAIL']%></h5>
-      <i class="fa fa-phone"></i>
-      <h6 class="info-text"><%=ENV['TELEPHONE']%></h5>
+      <a href="https://www.google.fr/maps/place/<%=ENV['ADDRESS']%>" target="blank">
+        <div class="icone-bloc">
+          <i class="fa fa-map"></i>
+          <h6 class="info-text">adresse</h6>
+        </div>
+      </a>
+      <div class="icone-bloc">
+        <i class="fa fa-envelope-o"></i>
+        <h6 class="info-text middle-text"><%=ENV['EMAIL']%></h6>
+      </div>
+      <div class="icone-bloc">
+        <i class="fa fa-phone"></i>
+        <h6 class="info-text"><%=ENV['TELEPHONE']%></h6>
+      </div>
+    </div>
+    <div class="footer-center-infos">
+      <div class="center-bloc">
+        <%= link_to "Contact", contact_path , class: "first-a" %>
+        <a href="#">Presse</a>
+      </div>
+      <div class="center-bloc">
+        <a href="#" class="first-a">Sites Partenaires</a>
+        <a href="#">Professionnels</a>
+      </div>
+      <div class="center-bloc">
+        <%= link_to "CGV", cgv_path , class: "first-a" %>
+        <%= link_to "Données", legal_path %>
+      </div>
     </div>
     <div class="mylink">
       <%= link_to @dev_redirection || session[:dev_redirection_default], title: "Créez votre boutique en ligne avec l'agence de Guillaume Crouillere" do %>
         <%= image_tag  'lego.svg', alt: "Guillaume Crouillere - Developpeur WEB indépendant"%>
     <% end %>
-    </div>
-  </div>
-</div>
-
-<!-- MOBILE -->
-<div class="hidden-sm hidden-md hidden-lg">
-  <div id="footer-mobile">
-    <div class="contact-default">
-      <div class="link">
-        <a href="https://www.google.fr/maps/place/<%=ENV['ADDRESS']%>" target="blank"><i class="fa fa-map"></i></a>
-      </div>
-      <div class="envelope">
-        <i class="fa fa-envelope-o"></i>
-        <h6 class="info-text"><%=ENV['EMAIL']%></h5>
-      </div>
-      <div class="phone">
-        <i class="fa fa-phone"></i>
-        <h6 class="info-text"><%=ENV['TELEPHONE']%></h5>
-      </div>
     </div>
   </div>
 </div>

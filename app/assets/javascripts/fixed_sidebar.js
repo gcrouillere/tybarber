@@ -3,10 +3,17 @@ $(document).ready(function() {
   function changeButtonFixeNav() {
     if($('#ceramique-filters-content').size() > 0) {
       if($(document).scrollTop() + $('.navbar-laptop').height() > $('.ceramique-list').offset().top) {
-        $('#ceramique-filters-content').css({
-          position: 'fixed',
-          top: 76,
-        });
+        if($(document).scrollTop() + $('.navbar-laptop').height() + 40 > $(".last-ceramique").offset().top) {
+          $('#ceramique-filters-content').css({
+            position: 'absolute',
+            top: $(".last-ceramique").offset().top - $(".last-ceramique").height() + 40,
+         });
+        } else {
+          $('#ceramique-filters-content').css({
+            position: 'fixed',
+            top: 96,
+         });
+        }
       } else {
         $('#ceramique-filters-content').css({
           position: '',

@@ -1,105 +1,138 @@
 <!-- Right Navigation LAPTOP -->
 <div class="navbar-laptop hidden-xs hidden-sm">
-  <!-- Logo -->
-  <%= link_to root_path, class: "navbar-brand", title: "Retour à l'accueil de notre offre de boutique ligne" do %>
-    <%= render 'shared/logo_pic' %>
-    <%= @logositepictag %>
-  <% end %>
+  <div class="main-nav">
+    <!-- Logo -->
+    <%= link_to root_path, class: "navbar-brand", title: "Retour à l'accueil de notre offre de boutique ligne" do %>
+      <%= render 'shared/logo_pic' %>
+      <%= @logositepictag %>
+    <% end %>
 
-  <!-- Different navigation if login or not -->
-  <% if user_signed_in? %>
+      <div class="navbar-item">
+        <div class="nav-bar-list">
 
-    <!-- Navbar right when connected -->
-    <div class="navbar-item">
-      <div class="nav-bar-list">
-        <% if current_user.admin %>
-          <%= link_to admin_root_path do %>
-            <span>Administration</span>
+    <!-- Different navigation if login or not -->
+          <% if user_signed_in? %>
+             <% if current_user.admin %>
+              <%= link_to admin_root_path do %>
+                <span>Administration</span>
+              <% end %>
+            <% end %>
+            <%= link_to destroy_user_session_path, method: :delete do %>
+              <span>Se déconnecter</span>
+            <% end %>
+          <% else %>
+            <%= link_to new_user_session_path, class: "navbar-item navbar-link" do %>
+              <span>Se connecter</span>
+            <% end %>
           <% end %>
-        <% end %>
-        <%= link_to ceramiques_path do %>
-          <span>Boutique</span>
-        <% end %>
-        <%= link_to info_path do %>
-          <span>Infos</span>
-        <% end %>
-        <%= link_to new_lesson_path do %>
-          <span>Réserver un stage</span>
-        <% end %>
-        <% if session[:order].present? %>
-          <% if Order.where(id: session[:order]).present? %>
-            <% if Order.where(id: session[:order]).first.state != "lost" %>
-              <%= link_to order_path(Order.find(session[:order])) do %>
-                <span><i class="fa fa-shopping-cart"></i></span>
+
+          <%= link_to ceramiques_path do %>
+            <span>Boutique</span>
+          <% end %>
+
+          <div class="dropdown">
+            <a class="dropdown-toggle" type="button" data-toggle="dropdown">
+              Infos
+              <span class="caret"></span>
+            </a>
+            <ul class="dropdown-menu">
+              <li><%= link_to "Atelier", atelier_path%>
+              <li><%= link_to "Le Morta", morta_path%>
+              <li><%= link_to "La Brière", la_briere_path%>
+              <li><%= link_to "Agenda", agenda_path%>
+              <li><%= link_to "Contact", contact_path%>
+            </ul>
+          </div>
+
+          <%= link_to new_lesson_path do %>
+            <span>Réserver un stage</span>
+          <% end %>
+          <% if session[:order].present? %>
+            <% if Order.where(id: session[:order]).present? %>
+              <% if Order.where(id: session[:order]).first.state != "lost" %>
+                <%= link_to order_path(Order.find(session[:order])) do %>
+                  <span><i class="fa fa-shopping-cart"></i></span>
+                <% end %>
               <% end %>
             <% end %>
           <% end %>
-        <% end %>
-        <%= link_to destroy_user_session_path, method: :delete do %>
-          <span>Se déconnecter</span>
-        <% end %>
+        </div>
       </div>
     </div>
-
-  <% else %>
-    <div class="navbar-item">
-      <div class="nav-bar-list">
-        <%= link_to ceramiques_path do %>
-          <span>Boutique</span>
-        <% end %>
-        <%= link_to info_path do %>
-            <span>Infos</span>
-        <% end %>
-        <%= link_to new_lesson_path do %>
-          <span>Réserver un stage</span>
-        <% end %>
-        <% if session[:order].present? %>
-          <% if Order.where(id: session[:order]).present? %>
-            <% if Order.where(id: session[:order]).first.state != "lost" %>
-              <%= link_to order_path(Order.find(session[:order])) do %>
-                <span><i class="fa fa-shopping-cart"></i></span>
-              <% end %>
-            <% end %>
-          <% end %>
-        <% end %>
-        <%= link_to new_user_session_path, class: "navbar-item navbar-link" do %>
-          <span>Se connecter</span>
-        <% end %>
+    <% if params[:controller] == "ceramiques" %>
+    <style>
+      .main-nav {
+        height: 60px !important;
+      }
+    </style>
+      <div class="nav-categories">
+        <%= link_to "AUTOUR DU VIN", ceramiques_path(categories: ["tire bouchon", "tire-bouchon"]) %>
+        <hr>
+        <%= link_to "SOIN", ceramiques_path(categories: ["rasoir", "blaireau", "bol"]) %>
+        <hr>
+        <%= link_to "DECORATION", ceramiques_path(categories: ["pendule", "horloge", "boite"]) %>
       </div>
-    </div>
-  <% end %>
+    <% end %>
   </div>
 
 <!-- Right Navigation MOBILE -->
 <div class="navbar-mobile hidden-md hidden-lg">
- <!-- Logo -->
-  <%= link_to root_path, class: "navbar-brand-mobile" do %>
-    <%= render 'shared/logo_pic' %>
-    <%= @logositepictag %>
-  <% end %>
+  <div class="main-nav-mobile">
+   <!-- Logo -->
+    <%= link_to root_path, class: "navbar-brand-mobile" do %>
+      <%= render 'shared/logo_pic' %>
+      <%= @logositepictag %>
+    <% end %>
 
-  <div class="navbar-item">
-    <div class="list-mobile">
-      <%= link_to ceramiques_path do %>
-          <span>Shop</span>
+    <div class="navbar-item">
+      <div class="list-mobile">
+        <%= link_to ceramiques_path do %>
+            <span>Shop</span>
+          <% end %>
+
+        <div class="dropdown">
+          <a class="dropdown-toggle" type="button" data-toggle="dropdown">
+            Infos
+            <span class="caret"></span>
+          </a>
+          <ul class="dropdown-menu">
+            <li><%= link_to "Atelier", atelier_path%>
+            <li><%= link_to "Le Morta", morta_path%>
+            <li><%= link_to "La Brière", la_briere_path%>
+            <li><%= link_to "Agenda", agenda_path%>
+            <li><%= link_to "Contact", contact_path%>
+          </ul>
+        </div>
+
+        <%= link_to new_lesson_path do %>
+          <span>Stage</span>
         <% end %>
-      <%= link_to info_path do %>
-        <li><span>Infos</span></li>
-      <% end %>
-      <%= link_to new_lesson_path do %>
-        <span>Stage</span>
-      <% end %>
 
-      <% if session[:order].present? %>
-        <% if Order.where(id: session[:order]).present? %>
-          <% if Order.where(id: session[:order]).first.state != "lost" %>
-            <%= link_to order_path(Order.find(session[:order])) do %>
-              <span><i class="fa fa-shopping-cart"></i></span>
+        <% if session[:order].present? %>
+          <% if Order.where(id: session[:order]).present? %>
+            <% if Order.where(id: session[:order]).first.state != "lost" %>
+              <%= link_to order_path(Order.find(session[:order])) do %>
+                <span><i class="fa fa-shopping-cart"></i></span>
+              <% end %>
             <% end %>
           <% end %>
         <% end %>
-      <% end %>
+      </div>
     </div>
   </div>
 
+  <% if params[:controller] == "ceramiques" %>
+    <style>
+      .main-nav-mobile {
+        height: 60px !important;
+      }
+    </style>
+    <div class="nav-categories-mobile">
+      <%= link_to "VIN", ceramiques_path(categories: ["tire bouchon"]) %>
+      <hr>
+      <%= link_to "DECORATION", ceramiques_path(categories: ["pendule", "horloge", "boite"]) %>
+      <hr>
+      <%= link_to "SOIN", ceramiques_path(categories: ["rasoir", "blaireau"]) %>
+    </div>
+  <% end %>
 </div>

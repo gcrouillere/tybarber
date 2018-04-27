@@ -1,104 +1,92 @@
-.footermask {
-  width: 100%;
-  transform: scaleY(-1);
-  position: absolute;
-  z-index: 2;
-}
-
 #footer {
-  height: 162px;
   background-color: $footer;
   display: flex;
-  justify-content: space-between;
-  align-items: center;
-  position: relative;
   .contact-default {
-    z-index: 3;
-    background-color: $footer;
-    display: flex;
-    align-items: center;
-    color: white;
-    font-size: $font-size-footer-icone;
+    width: 25%;
+    padding: 10px 0;
     a {
-      margin-left: 30px;
-      color: $footer-color-text;
+      text-decoration: none;
     }
-    i {
-      color: $footer-color-text;
-      margin-right: 20px;
-      cursor: pointer;
-      &:hover {
-      font-size: larger;
+    .icone-bloc {
+      min-height: 38px;
+      display: flex;
+      align-items: center;
+      margin-left: 25px;
+      i {
+        color: $primary;
+        margin-right: 10px;
+        cursor: pointer;
+      }
+      h6 {
+        color: $primary;
+        font-weight: 100;
+        opacity: 0;
+        transition: ease 0.2s;
       }
     }
-    h6 {
-      color: $footer-color-text;
-      .middle-text {
-        margin-right: 10px !important;
-      }
+  }
+  .footer-center-infos {
+    display: flex;
+    width: 50%;
+    justify-content: center;
+    .center-bloc {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      margin: 0 20px;
     }
-    .info-text {
-      width: 0px;
-      transition: width ease 0.2s;
-      visibility: hidden;
+    a {
+      font-weight: 100;
     }
-
-    .info-text.visible {
-      width: 100%;
-      outline: none;
-      visibility: visible;
-      margin-right: 20px;
+    .first-a {
+      margin-bottom: 10px;
     }
   }
   .mylink {
-    position: absolute;
-    right: 12px;
-    bottom: 12px;
-    img {
-      width: 42px;
-    }
+    width: 25%;
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    margin-right: 25px;
   }
-
 }
 
-#footer-mobile {
-  background-color: $footer;
-  display: flex;
-  align-items: flex-start;
+h6.visible {
+  opacity: 1 !important;
+}
 
+@media all and (max-width: 600px) {
   .contact-default {
-    background-color: $footer;
-    color: $navbar;
-    font-size: $font-size-footer-icone;
-    h6, i {
-    color: $footer-color-text;
-    }
-    .link {
-      margin-top: 10px;
-      margin-left: 20px;
-    }
-    .phone, .envelope {
-      display: flex;
-      align-items: center;
-
-      .info-text {
-        width: 0px;
-        margin: 0px;
-        transition: width ease 0.2s;
-        visibility: hidden;
-      }
-
-      .info-text.visible {
-        margin-left: 10px;
-        outline: none;
-        visibility: visible;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    .icone-bloc {
+      height: 45px;
+      display: block !important;
+      margin-left: 5px !important;
+      text-align: center;
+      h6 {
+        font-size: 11px;
+        margin: 2px;
       }
     }
-    .envelope {
-      margin: 10px 10px 10px 20px;
+  }
+  .footer-center-infos {
+    display: block !important;
+    margin: 10px 0 !important;
+    .center-bloc {
+      display: block;
+      margin: 0 20px !important;
+      a {
+        margin-bottom: 10px;
+      }
     }
-    .phone {
-      margin: 0px 10px 10px 20px
+  }
+  .mylink {
+    margin-right: 5px !important;
+    img {
+      margin-right: 10px;
     }
   }
 }

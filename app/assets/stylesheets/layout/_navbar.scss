@@ -38,13 +38,35 @@
 /* Navbar laptop */
 .navbar-laptop {
   box-shadow: 0 1px 5px 0 rgba(0,0,0,0.07),0 1px 0 0 rgba(0,0,0,0.03);
-  background: $navbar;
   transition: all 0.3s ease;
-  height: 70px;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-    /* Navbar logo */
+  .main-nav {
+    background: $navbar;
+    height: 70px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    }
+  .nav-categories {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 30px;
+    background: rgba(226,162,77,0.9);
+    a {
+      width: 125px;
+      margin:0 20px;
+      color: black;
+      font-weight: 100;
+      text-align: center;
+    }
+    hr {
+      width: 10px;
+      margin: 0;
+      transform: rotate(0.25turn);
+      border-top: 1px solid black;
+    }
+  }
+  /* Navbar logo */
   .navbar-brand {
     display: flex;
     padding: 0px;
@@ -65,11 +87,33 @@
 .navbar-mobile {
   box-shadow: 0 1px 5px 0 rgba(0,0,0,0.07),0 1px 0 0 rgba(0,0,0,0.03);
   background: $navbar;
-  transition: all 0.3s ease;
-  height: 70px;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
+  .main-nav-mobile {
+    background: $navbar;
+    height: 70px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    }
+  .nav-categories-mobile {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 30px;
+    background: rgba(226,162,77,0.9);
+    a {
+      width: 125px;
+      margin:0 20px;
+      color: black;
+      font-weight: 100;
+      text-align: center;
+    }
+    hr {
+      width: 10px;
+      margin: 0;
+      transform: rotate(0.25turn);
+      border-top: 1px solid black;
+    }
+  }
   /* Navbar logo */
   .navbar-brand-mobile {
     display: flex;
@@ -81,7 +125,10 @@
       height: 30px;
     }
   }
-
+  .dropdown-menu {
+    left: auto;
+    right: 0px;
+  }
 }
 
 /* Navbar right items */
@@ -92,6 +139,13 @@
   .nav-bar-list {
     display: flex;
     list-style: none;
+    .dropdown .dropdown-menu{
+      a {
+        color: black;
+        margin-right: 0px;
+        text-align: center;
+      }
+    }
     a {
         text-decoration: none !important;
         color: $nav-text-color;
@@ -111,6 +165,13 @@
   .list-mobile {
     display: flex;
     list-style: none;
+    .dropdown .dropdown-menu{
+      a {
+        color: black;
+        margin-right: 0px;
+        text-align: center;
+      }
+    }
     a {
       text-decoration: none !important;
       color: $nav-text-color;

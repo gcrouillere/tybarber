@@ -1,0 +1,38 @@
+.agenda {
+  display: flex;
+  margin-top: 20px;
+  margin-bottom: 50px;
+  .agenda-text {
+    padding: 10px;
+  }
+  p {
+    text-align: justify;
+    img {
+      display: block;
+      margin: 0 auto;
+    }
+  }
+}
+
+.agenda-separator {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  .agenda-hr {
+    background-color: grey;
+    width: 1px;
+    height: 100%;
+  }
+}
+
+@media all and (max-width: 600px) {
+  .agenda {
+    flex-direction: column;
+    .agenda-hr {
+      width: 80%;
+      height: 1px;
+      margin-top: 20px;
+      margin-bottom: 20px;
+    }
+  }
+}

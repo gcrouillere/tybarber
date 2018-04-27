@@ -71,12 +71,14 @@ Site de e-commerce configurable. Créez votre compte et visualisez votre futur s
       </div>
     </div>
 
-    <div class="col-xs-12 col-lg-9 ceramique-list">
-      <% @ceramiques.each do |ceramique| %>
+    <% if  @ceramiques.present? %>
+      <div class="col-xs-12 col-lg-9 ceramique-list">
+        <% @ceramiques.each do |ceramique| %>
           <div class="col-xs-12 col-sm-6">
             <%= link_to ceramique_path(ceramique), title: "#{ceramique.name}", class: "cardlink" do %>
-              <div class="ceramiquecard">
-                <% if ceramique.offer%>
+              <% ceramique == @ceramiques.last ? additionnal_class = "last-ceramique" : additionnal_class = "" %>
+              <div class="ceramiquecard <%=additionnal_class%>">
+                <% if ceramique.offer %>
                   <% if ceramique.offer.discount > 0 %>
                     <p class="discount-offer">-<%= (ceramique.offer.discount * 100).to_i %>%</p>
                     <div class="ribbon"></div>
@@ -124,8 +126,16 @@ Site de e-commerce configurable. Créez votre compte et visualisez votre futur s
               </div>
             <% end %>
           </div>
-      <% end %>
+        <% end %>
+    <% else %>
+      <div class="col-xs-12 col-lg-9 no-ceramique-list">
+        <div class="no-ceramique">
+          <p>Nous sommes désolés, aucun produit ne correspond à cette recherche</p>
+          <%= link_to "AFFICHER TOUS LES PRODUITS", ceramiques_path, class: "btn btn-primary" %>
+        </div>
+      </div>
     </div>
+  <% end %>
 
 <!-- MOBILE -->
 

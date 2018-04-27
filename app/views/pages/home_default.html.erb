@@ -8,100 +8,165 @@
 <%= render 'shared/home_pics' %>
 
 <div class="jumbotron">
-  <style>
-  .jumbotron .banner {
-  background-image: linear-gradient(135deg, rgba(0,0,0,0.1), rgba(0,0,0,0.1)), url(<%= @homepicpath %>);
-  }
-  .jumbotron .banner-xs {
-  background-image: linear-gradient(135deg, rgba(0,0,0,0.7) 0%, rgba(0,0,0,0.4) 50%), url(<%= @homepicpathmobile %>);
-  }
-  </style>
 
 <!-- LAPTOP -->
   <div class="hidden-xs">
     <div class="banner">
+      <div class="image-1">
+        <style>
+          .image-1 {
+            background-image: linear-gradient(135deg, rgba(0,0,0,0.2) 0%, rgba(0,0,0,0.3) 50%), url(<%= image_path "arbreh.jpg" %>);
+            background-size: cover;
+            background-position-y: center;
+            background-position-x: center;
+          }
+        </style>
+      </div>
+      <div class="image-2">
+        <style>
+          .image-2 {
+            background-image: linear-gradient(135deg, rgba(0,0,0,0.2) 0%, rgba(0,0,0,0.3) 50%), url(<%= image_path "maraish.jpg" %>);
+            background-size: cover;
+            background-position-y: center;
+            background-position-x: center;
+          }
+        </style>
+      </div>
+      <div class="image-3">
+        <style>
+          .image-3 {
+            background-image: linear-gradient(135deg, rgba(0,0,0,0.2) 0%, rgba(0,0,0,0.3) 50%), url(<%= image_path "bois.jpg" %>);
+            background-size: cover;
+            background-position-y: center;
+            background-position-x: center;
+          }
+        </style>
+      </div>
       <div class="banner-content">
         <div class="banner-text">
-          <h1>Ty Barber</h1>
-          <p>Accessoires de rasage en bois noble</p>
-          <div class="logos">
-            <%= image_tag "bordureblanche.png", class: "bordureg", alt: "XXXX"%>
-            <%= image_tag "blaireau.png", class: "blaireau", alt: "XXXX"%>
-            <%= image_tag "boite.png", class: "boite", alt: "XXXX"%>
-            <%= image_tag "rasoir.png", class: "blaireau", alt: "XXXX"%>
-            <%= image_tag "bordureblanche.png", class: "bordured", alt: "XXXX"%>
+          <h1>Ty Morta</h1>
+          <p>Offrez-vous 5000 ans d’émotions avec l'or noir de Brière, le MORTA</p>
+        </div>
+        <div class="home-links col-xs-12">
+          <div class="link-i">
+            <%= link_to "SOIN", ceramiques_path(categories: ["rasoir", "blaireau"]) %>
+            <div class="line line2"></div>
           </div>
-          <%= link_to "Voir les #{ENV['MODEL']}", ceramiques_path, class: "btn btn-primary btn-lg btn-home" %>
+          <div class="link-i">
+            <%= link_to "DECORATION", ceramiques_path(categories: ["pendule", "horloge", "boite"]) %>
+            <div class="line line1"></div>
+          </div>
+          <div class="link-i">
+            <%= link_to "AUTOUR DU VIN", ceramiques_path(categories: ["tire bouchon", "tire-bouchon"]) %>
+            <div class="line line3"></div>
+          </div>
         </div>
       </div>
         <%= photo_update('productphoto', 30, '', '', 30, '.homepic', "Mise à jour photo d'accueil")%>
         <%= photo_update('productphotomobile', 30, '', '', 412, '.homepicmobile', "Mise à jour photo d'accueil pour mobiles")%>
         <%= photo_update('logophoto', 30, '', '', 785, '.logopic', "Mise à jour logo")%>
-        <%= image_tag "footer.png", class: "bannermask", alt: "XXXX"%>
     </div>
   </div>
 
 <!-- MOBILE -->
   <div class="hidden-sm hidden-md hidden-lg">
     <div class="banner-xs">
+      <style>
+        .banner-xs {
+          background-image: linear-gradient(135deg, rgba(0,0,0,0.2) 0%, rgba(0,0,0,0.3) 50%), url(<%= image_path "home-base-mobile.jpg" %>);
+        }
+      </style>
       <div class="banner-content-xs">
-        <h1><%= ENV['MODEL'].capitalize%></h1>
-        <p><%= "#{ENV['FIRSTNAME'].capitalize} #{ENV['LASTNAME'].capitalize}" %></p>
-        <%= link_to "Voir les #{ENV['MODEL']}", ceramiques_path, class: "btn btn-primary btn-home" %>
+        <h1>Ty Morta</h1>
+        <p>Offrez-vous 5000 ans d’émotions avec l'or noir de Brière, le MORTA</p>
+        <%= link_to "VOIR LES CREATIONS", ceramiques_path, class: "btn btn-primary btn-home" %>
       </div>
     </div>
   </div>
 
 </div>
 
-<div class="home-info-bloc hidden-xs">
-  <div class="home-info-text">
-    <h2>Une essence rare </h2>
-    <p>Philippe Nerriere à partir de son atelier situé à Guérande produit l'ensemble des modèles de rasoirs et de blaireaux de rasage et travaille uniquement le Morta, cette richesse locale que l'on appelle aussi L'or noir de Brière.</p>
-    <p>Après avoir extrait du marais ce bois en cours de fossilisation, de nombreuses étapes sont nécessaires afin d'obtenir un résultat digne de cette matière brut et naturel. Parmi celles-ci 2 sont capitales. Le séchage de ce bois et sa finition afin de lui redonner vie.</p>
-  </div>
-  <div class="home-info-images">
-    <div class="inner-photos">
-      <%= image_tag "arbreh.jpg", class: "arbre", alt: "XXXX"%>
-      <%= image_tag "maraish.jpg", class: "marais", alt: "XXXX"%>
-      <%= image_tag "bois.jpg", class: "bois", alt: "XXXX"%>
+<div class="container">
+  <div class="home-info-bloc row">
+    <div class="home-info-text col-xs-12 col-sm-5 col-lg-4">
+      <h2>Une essence rare </h2>
+      <p>Philippe Nerriere à partir de son atelier situé à Guérande produit l'ensemble des objets de soin, de décoration et les accessoires pour le vin. Il travaille uniquement le Morta, cette richesse locale que l'on appelle aussi L'or noir de Brière.</p>
+      <p>Après avoir extrait du marais ce bois en cours de fossilisation, de nombreuses étapes sont nécessaires afin d'obtenir un résultat digne de cette matière brut et naturelle. Parmi celles-ci 2 sont capitales : le séchage de ce bois et sa finition afin de lui redonner vie.</p>
+    </div>
+    <div class="home-info-images col-xs-12 col-sm-7 col-lg-8">
+      <div class="inner-photos">
+        <%= image_tag "arbreh.jpg", class: "arbre", alt: "XXXX"%>
+        <%= image_tag "maraish.jpg", class: "marais", alt: "XXXX"%>
+        <%= image_tag "bois.jpg", class: "bois", alt: "XXXX"%>
+      </div>
     </div>
   </div>
 </div>
 
-<!-- <div class="home-text hidden-xs hidden-sm">
-  <div class="text">
-    <div class="text-left col-xs-4">
-      <% if user_signed_in? && current_user.admin %>
-          <% article_typing("accueil-gauche", "vertical", "markdown1", "live-text1", "input1") %>
-          <% @markdown = @markdown1 %>
-          <div class="live-text">
-            <%= render 'shared/articletyping' %>
-          </div>
-      <% else %>
-        <div class="plain-text">
-          <% article_display("accueil-gauche", "vertical") %>
-          <%= @markdown.html_safe %>
-        </div>
-      <% end %>
-    </div>
-    <div class="text-right col-xs-8">
-      <% if user_signed_in? && current_user.admin %>
-          <% article_typing("accueil-droit", "vertical", "markdown2", "live-text2", "input2") %>
-          <% @markdown = @markdown2 %>
-          <div class="live-text">
-            <%= render 'shared/articletyping' %>
-          </div>
-      <% else %>
-        <div class="plain-text">
-          <% article_display("accueil-droit", "vertical") %>
-          <%= @markdown.html_safe %>
-        </div>
-      <% end %>
+<div class="home-products-bloc">
+  <h2>DECOUVREZ TOUTE LA GAMME TY MORTA</h2>
 
+    <div class="univers-cards row">
+      <div class="soin col-xs-12 col-sm-4">
+        <%= link_to (@rasoir ? ceramique_path(@rasoir) : ceramiques_path) do %>
+          <div class="card-image card-image1">
+            <% @rasoir ? path = cl_image_path(@rasoir.photos[0].path, :quality => "auto") : path = image_path("rasoir.jpg")%>
+            <style>
+              .card-image1 {
+                background-image: url(<%= path %>);
+                background-size: cover;
+                background-position-y: center;
+                background-position-x: center;
+              }
+            </style>
+            <p>Découvrez ce produit</p>
+          </div>
+        <% end %>
+        <div class="home-cards-text home-text-left">
+          <h3>SOIN</h3>
+          <p>La gamme soin se compose de rasoirs, blaireaux et bols. Tous ces accessoires sont confectionnés artisanalement dans l'atelier Ty Morta.</p>
+        </div>
+      </div>
+      <div class="decoration col-xs-12 col-sm-4">
+        <%= link_to (@lampe ? ceramique_path(@lampe) : ceramiques_path), class: "decoration-link" do %>
+        <% @lampe ? path2 = cl_image_path(@lampe.photos[0].path, :quality => "auto") : path2 = image_path("deco.jpg")%>
+            <style>
+              .decoration {
+                background-image: url(<%= path2 %>);
+                background-size: cover;
+                background-position-y: center;
+                background-position-x: center;
+              }
+            </style>
+            <div class="home-text-center">
+              <h3>DECORATION</h3>
+              <p>Habillez vos pièces avec de superbes objets en Morta : horloges, pendules et lampes.</p>
+            </div>
+        <% end %>
+      </div>
+      <div class="vin col-xs-12 col-sm-4">
+        <div class="home-cards-text home-text-right">
+          <h3>AUTOUR DU VIN</h3>
+          <p>Retrouvez des objets pour accompagner vos degustations de vin : tire-bouchons et couteaux à huîtres.</p>
+        </div>
+        <%= link_to (@tirebouchon ? ceramique_path(@tirebouchon) : ceramiques_path) do %>
+          <div class="card-image card-image3">
+          <% @tirebouchon ? path3 = cl_image_path(@tirebouchon.photos[0].path, :quality => "auto") : path3 = image_path("tirebouchon.jpg")%>
+            <style>
+              .card-image3 {
+                background-image: url(<%= path3 %>);
+                background-size: cover;
+                background-position-y: center;
+                background-position-x: center;
+              }
+            </style>
+            <p>Découvrez ce produit</p>
+          </div>
+        <% end %>
+      </div>
     </div>
+
 </div>
-</div> -->
 
 <% content_for(:after_js) do %>
   <script type="application/ld+json">

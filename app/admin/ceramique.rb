@@ -29,7 +29,7 @@ ActiveAdmin.register Ceramique, as: 'Produits' do
     f.input :weight, :hint => "Poids en grammes"
     f.input :category
     f.input :price_cents, :hint => "Prix en centimes d'euros. Ex: entrez 3500 pour un prix de 35 €"
-    f.input :support_price_cents, :hint => "Prix du support en centimes d'euros. Ex: entrez 1200 pour un prix de 12 €"
+    f.input :support_price_cents, :hint => "Prix du support en centimes d'euros. Entrez 0 si le support n'existe pas."
     f.input :photos, :as => :formtastic_attachinary, :hint => "Sélectionnez les photos du produit. Maintenez Ctrl appuyé pour en sélectionner plusieurs."
   end
   f.actions
@@ -80,7 +80,7 @@ show do |ceramique|
   def create
     super do |format|
       if resource.valid?
-        flash[:notice] = "Produit mis à jour"
+        flash[:notice] = "Produit crée"
         redirect_to admin_produits_path and return
       else
         flash[:alert] = "Certains champs ont été oubliés ou ne sont pas correctement remplis. Voir ci-dessous."

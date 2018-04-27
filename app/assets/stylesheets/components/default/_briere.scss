@@ -1,0 +1,52 @@
+.briere-bloc:first-child {
+  margin-top: -20px;
+}
+
+.briere-bloc {
+  width: 100%;
+  display: flex;
+  .left-bloc {
+    width: 50%;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+    .vertical-line {
+      width: 1px;
+      height: 100px;
+      background: #333;
+    }
+    .briere-text {
+      padding: 0 50px;
+      h1, h2 {
+        text-align: center;
+      }
+      hr {
+        border-top: 1px solid grey;
+        width: 20%;
+      }
+      p {
+        text-align: justify;
+      }
+    }
+  }
+  .right-bloc {
+    width: 50%;
+    min-height: 100vh;
+    box-shadow: inset 1px 0px 7px rgba(51,51,51,0.8);
+  }
+}
+
+
+@media all and (max-width: 600px) {
+  .left-bloc {
+    width: 70% !important;
+  }
+  .right-bloc {
+    width: 30% !important;
+  }
+  .briere-text {
+    padding: 0 10px !important;
+  }
+}

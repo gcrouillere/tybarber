@@ -1,5 +1,6 @@
 class Ceramique < ApplicationRecord
   include AlgoliaSearch
+  after_initialize :default_values
   # extend FriendlyId
 
   algoliasearch do
@@ -23,6 +24,8 @@ class Ceramique < ApplicationRecord
   validates :stock, presence: true, numericality: { only_integer: true , message:'Doit être un entier'}
   validates :price_cents, presence: true, numericality: { greater_than: 0 , message:'Doit être un entier supérieur à 0' }
   validates :description, presence: true
+  # validates :support_price_cents, numericality: { greater_than_or_equal_to: 0 , message:'Doit être un entier' }
+  # validates :position, numericality: { greater_than_or_equal_to: 0 , message:'Doit être un entier' }
 
   # def slug_candidates
   #   [
@@ -32,4 +35,9 @@ class Ceramique < ApplicationRecord
   def to_param
     [id, name.parameterize, category.name.parameterize].join("-")
   end
+
+  private
+    def default_values
+      self.support_price_cents ||= 0
+    end
 end

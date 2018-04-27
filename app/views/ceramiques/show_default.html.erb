@@ -144,9 +144,9 @@
       <div class="col-xs-12 hidden-md hidden-lg">
 
         <div class="head">
-          <%= facebook_share_id("facebooksharemobile") %>
           <h1> <%= @ceramique.name.capitalize%> </h1>
           <div class="image-xs-sm">
+            <%= facebook_share_id("facebooksharemobile") %>
             <img class="img-front" src="<%= cl_image_path @ceramique.photos[0].path, quality: "auto" %>" alt="<%=@ceramique.name%>">
           </div>
         </div>

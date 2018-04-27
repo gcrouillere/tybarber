@@ -5,7 +5,7 @@
   .coord {
     margin-left: 15px;
     label {
-      color: white;
+      color: black;
     }
     .live-text, .plain-text {
       h1 {
@@ -32,6 +32,8 @@
       margin-left: 0px;
     }
   }
+}
+
   .subscribe-form {
     text-align: center;
     display: flex;
@@ -54,7 +56,6 @@
       margin: 10px auto;
     }
   }
-}
 
 .submit-lightheme-contact {
   border-radius: 1px;
@@ -119,7 +120,7 @@
       .black-bar {
         height: 30px;
         width: 100%;
-        background: #171717;
+        background: #F5F5F5;
         position: absolute;
         z-index: 3;
         bottom: -7px;

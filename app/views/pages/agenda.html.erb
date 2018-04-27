@@ -1,0 +1,46 @@
+<% content_for(:description) do %>
+Agenda des salons et expositions dans lesquels vous retrouverez les produits Ty Morta. Les lieux de ventes temporaires ou permanents sont également listés.
+<% end %>
+<% content_for(:title_tag) do %>
+  Salons, expositions et lieux de ventes pour retrouver Ty Morta.
+<% end %>
+
+ <div class="container">
+
+   <div class="row agenda">
+    <div class="col-xs-12 col-sm-5 agenda-text">
+      <% if user_signed_in? && current_user.admin %>
+        <% article_typing("agenda", "vertical", "markdown1", "live-text1", "input1") %>
+        <% @markdown = @markdown1 %>
+        <div class="live-text">
+          <%= render 'shared/articletyping' %>
+        </div>
+      <% else %>
+        <div class="plain-text">
+          <% article_display("agenda", "vertical") %>
+          <%= @markdown.html_safe %>
+        </div>
+      <% end %>
+    </div>
+    <div class="col-xs-12 col-sm-2 agenda-separator">
+      <div class="agenda-hr"></div>
+    </div>
+    <div class="col-xs-12 col-sm-5 agenda-text">
+      <% if user_signed_in? && current_user.admin %>
+        <% article_typing("ventes", "vertical", "markdown2", "live-text2", "input2") %>
+        <% @markdown = @markdown2 %>
+        <div class="live-text">
+          <%= render 'shared/articletyping' %>
+        </div>
+      <% else %>
+        <div class="plain-text">
+          <% article_display("ventes", "vertical") %>
+          <%= @markdown.html_safe %>
+        </div>
+      <% end %>
+    </div>
+  </div>
+</div>
+
+
+

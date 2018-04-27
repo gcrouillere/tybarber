@@ -1,7 +1,7 @@
 .h1-index {
   h1 {
     font-size: $font-size-h4;
-    margin: 0px;
+    margin: 20px 0 0 0;
   }
   hr {
     margin: 5px 0px 10px 0px;
@@ -214,4 +214,17 @@
 
 .ceramique-list {
   margin-bottom: 60px;
+}
+
+.no-ceramique-list {
+  margin-top: 200px;
+  .no-ceramique {
+    text-align: center;
+  }
+}
+
+@media all and (max-width: 800px) {
+  .no-ceramique-list {
+    margin-top: 50px;
+  }
 }

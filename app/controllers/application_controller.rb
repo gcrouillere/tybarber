@@ -46,12 +46,17 @@ class ApplicationController < ActionController::Base
     session[:dev_redirection_default] = "https://www.creermonecommerce.fr"
   end
 
+  def after_sign_out_path_for(resource_or_scope)
+    request.referer
+  end
+
   def after_sign_in_path_for(resource)
     session[:signincount] ? session[:signincount] += 1 : session[:signincount] = 0
     session[:previous_url] || root_path
   end
 
-  # 2 - Permitted parameters for sign_in/up
+
+  # 3 - Permitted parameters for sign_in/up
   def configure_permitted_parameters
     # For additional fields in app/views/devise/registrations/new.html.erb
     devise_parameter_sanitizer.permit(:sign_up, keys: [

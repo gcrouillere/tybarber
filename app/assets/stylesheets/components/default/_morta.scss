@@ -1,0 +1,96 @@
+.morta-page {
+  padding: 0px 15px;
+}
+
+.morta-cards-row1 {
+  display: flex;
+  justify-content: space-around;
+  .morta-card {
+    background: white;
+    padding: 0px;
+    border-radius: 1px;
+    box-shadow: 0px 18px 35px rgba(50,50,93,.2), 0px 8px 15px rgba(0,0,0,.5);
+    .morta-card-image {
+      height: 300px;
+      width: 100%;
+    }
+    .morta-card-text {
+      padding: 10px 20px;
+      h2 {
+        font-size: 20px;
+        margin-top: 11px;
+      }
+      p {
+        font-size: 14px;
+        text-align: justify;
+      }
+    }
+  }
+}
+
+.morta-cards-row1 {
+  .morta-card.last-card {
+    background: transparent;
+    box-shadow: none;
+  }
+}
+
+.line-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  .card-link-line {
+    z-index: 1;
+    width: 150px;
+    height: 2px;
+    background: #333;
+  }
+  .card-link-line.transparent-line {
+    background: transparent;
+  }
+}
+
+.middle-row {
+  display: flex;
+  justify-content: space-around;
+  .empty-bloc {
+    padding: 0px;
+  }
+  .vertical-line-bloc {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 0px;
+  }
+  .vertical-card-link-line {
+    width: 2px;
+    height: 100px;
+    z-index: 1;
+    background: #333  ;
+  }
+}
+
+.last-row {
+  margin-bottom: 50px;
+}
+
+//MOBILE
+@media all and (max-width: 800px) and (min-width: 600px) {
+  .line-container {
+    .card-link-line {
+      width: 60px;
+    }
+  }
+  .vertical-card-link-line {
+    height: 60px !important;
+  }
+}
+
+@media all and (max-width: 800px) and (max-width: 600px) {
+  .morta-cards-row1 {
+    display: block;
+    .morta-card {
+      margin-bottom: 30px;
+    }
+  }
+}

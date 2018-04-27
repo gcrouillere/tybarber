@@ -1,0 +1,87 @@
+<% content_for(:description) do %>
+  Philippe Nerriere façonne tous les objets en Morta dans son atelier à Guérande.
+<% end %>
+
+<% content_for(:title_tag) do %>
+  Atelier Philippe Nerriere à Guérande - Travail du Morta
+<% end %>
+
+<%= render 'shared/atelier_pics' %>
+
+<div class="orange-div"></div>
+<div class="orange-div-left"></div>
+<div class="orange-div-right"></div>
+<div class="orange-div-bottom"></div>
+
+<div class="container">
+  <div class="row">
+
+  <!-- LAPTOP -->
+    <div class="hidden-xs hidden-sm col-sm-12">
+      <div class="wrapper-1">
+        <%= photo_update('atelier1photo', 35, '', '', 15, '.avatarpic', "Mise à jour photo perso")%>
+        <%= @atelier1 %>
+
+        <% if user_signed_in? && current_user.admin %>
+          <% article_typing("info", "horizontal", "markdown1", "live-text1", "input1") %>
+          <% @markdown = @markdown1 %>
+          <%= render 'shared/articletyping' %>
+        <% else %>
+            <div id="live-text">
+              <% article_display("info", "horizontal") %>
+              <%= @markdown.html_safe %>
+            </div>
+        <% end %>
+      </div>
+
+      <div class="wrapper-2">
+        <% if user_signed_in? && current_user.admin %>
+          <% article_typing("info-bottom", "horizontal", "markdown2", "live-text2", "input2") %>
+          <% @markdown = @markdown2 %>
+          <%= render 'shared/articletyping' %>
+        <% else %>
+            <div id="live-text">
+              <% article_display("info-bottom", "horizontal") %>
+              <%= @markdown.html_safe %>
+            </div>
+        <% end %>
+        <%= photo_update('atelier2photo', 15, 15, '', '', '.citypic', "Mise à jour photo ville")%>
+        <%= @atelier2 %>
+      </div>
+    </div>
+
+  <!-- MOBILE -->
+   <div class="col-xs-12 hidden-md hidden-lg mobile-info">
+      <div class="wrapper-mobile">
+        <div class="img-avatar-mobile"><%= @atelier1 %></div>
+        <% article_display("info", "horizontal") %>
+        <%= @markdown.html_safe %>
+      </div>
+
+      <div class="wrapper-mobile">
+        <div class="img-avatar-mobile"> <%= @atelier2 %></div>
+        <% article_display("info-bottom", "horizontal") %>
+        <%= @markdown.html_safe %>
+      </div>
+
+    </div>
+
+  </div>
+</div>
+
+<% content_for(:after_js) do %>
+  <script type="application/ld+json">
+    {
+      "@context": "http://schema.org",
+      "@type": "ArtGallery",
+      "name": "Les <%="#{ENV['MODEL']} de #{ENV['FIRSTNAME'].capitalize} #{ENV['LASTNAME'].capitalize}"%>",
+      "description": "Online craft store",
+      "openingHours": "Mo-Fr 09:00-18:00",
+      "telephone": "<%= ENV['TELEPHONE']%>",
+      "url": "<%=request.original_url%>",
+      "image":"<%=request.original_url%><%= image_path ENV['HOMEPIC']%>"
+      "address":"<%= ENV['ADDRESS'].gsub(/[+]/, ' ') %>",
+      "priceRange":"20€ à 800€"
+    }
+  </script>
+<% end %>
