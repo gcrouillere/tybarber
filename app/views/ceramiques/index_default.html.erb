@@ -1,8 +1,8 @@
 <% content_for(:description) do %>
-Site de e-commerce configurable. Créez votre compte et visualisez votre futur site de vente en ligne de vos produits.
+  Tous les objets sont confectionnés à la main dans mon atelier de Guérande. Vous retrouverez dans la boutique des objets dans les univers du soin, de la décoration ou de la table.
 <% end %>
 <% content_for(:title_tag) do %>
-  Liste des produits à vendre
+  Les objets en Morta à vendre dans la boutique Ty Morta
 <% end %>
 
 <% if @front_offer %>
@@ -178,12 +178,12 @@ Site de e-commerce configurable. Créez votre compte et visualisez votre futur s
   {
     "@context": "http://schema.org",
     "@type": "ArtGallery",
-    "name": "Les <%="#{ENV['MODEL']} de #{ENV['FIRSTNAME'].capitalize} #{ENV['LASTNAME'].capitalize}"%>",
+    "name": "Objets d'art en Morta par Philippe Nerriere",
     "description": "Online craft store",
     "openingHours": "Mo-Fr 09:00-18:00",
     "telephone": "<%= ENV['TELEPHONE']%>",
     "url": "<%=request.original_url%>",
-    "image":"<%=request.original_url%><%= image_path ENV['HOMEPIC']%>",
+    "image": "<%=request.original_url%><%= image_path ENV['HOMEPIC3']%>",
     "address":"<%= ENV['ADDRESS'].gsub(/[+]/, ' ')%>",
     "priceRange":"20€ à 800€"
   }
