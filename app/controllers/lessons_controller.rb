@@ -24,12 +24,12 @@ class LessonsController < ApplicationController
     end
 
     if params[:lesson][:start].blank?
-      flash[:alert] = "Veuillez sélectionner le 1er jour du stage"
+      flash[:alert] = "Veuillez sélectionner le jour de la visite"
       redirect_to new_lesson_path and return
     end
 
     if current_user.lessons.where(confirmed: false).present?
-      flash[:alert] = "Vous avez déjà une demande de stage en cours"
+      flash[:alert] = "Vous avez déjà une demande de visite en cours"
       redirect_to new_lesson_path and return
     end
 
@@ -49,7 +49,7 @@ class LessonsController < ApplicationController
         if booking.course != i + 1
           closest_start_answer = Findcloseststart.new(@lesson).closest_start(@lesson) # See service
           @lesson.destroy
-          flash[:alert] = "Impossible de réserver. Jour(s) possible(s) pour début du stage : #{closest_start_answer}"
+          flash[:alert] = "Impossible de réserver. Jour(s) possible(s) pour la visite : #{closest_start_answer}"
           redirect_to new_lesson_path and return
         end
         if @lesson.student > booking.capacity

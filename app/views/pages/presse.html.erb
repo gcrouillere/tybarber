@@ -1,0 +1,26 @@
+<% content_for(:description) do %>
+  Découvrez les articles de presse parus sur Ty Morta.
+<% end %>
+<% content_for(:title_tag) do %>
+  Articles de presse sur Ty Morta
+<% end %>
+
+ <div class="container">
+
+   <div class="row blog-page">
+    <div class="col-xs-12 blog-page-text">
+      <% if user_signed_in? && current_user.admin %>
+        <% article_typing("presse", "vertical", "markdown1", "live-text1", "input1") %>
+        <% @markdown = @markdown1 %>
+        <div class="live-text">
+          <%= render 'shared/articletyping' %>
+        </div>
+      <% else %>
+        <div class="plain-text">
+          <% article_display("presse", "vertical") %>
+          <%= @markdown.html_safe %>
+        </div>
+      <% end %>
+    </div>
+  </div>
+</div>

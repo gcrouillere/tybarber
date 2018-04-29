@@ -1,13 +1,10 @@
 Bonjour <%= @lesson.user.first_name %> <%= @lesson.user.last_name %>,
 
 <% if @lesson.confirmed %>
-<%= "Votre stage est annulé suite à un problème de capacité. Veuillez nous en excuser."%>
+<%= "Votre visite le #{@lesson.start.day} #{@lesson.start.strftime("%B")} #{@lesson.start.year}, à l'atelier Ty Morta est annulée suite à une indisponibilité. Veuillez nous en excuser."%>
 
-<%= "Si vous aviez déjà payé les arrhes, ils vous seront remboursés."%>
 <% else %>
-<%= "Nous sommes désolés, mais nous ne pouvons accepter votre demande de stage, pour des raisons de capacité."%>
-
-<%= "Vous pourriez commencer votre stage à cette (ces) date(s) : #{@closest_start}. Veuillez effectuer une nouvelle demande sur le site : https://#{ENV['APPNAME']}.herokuapp.com/lessons/new"%>
+<%= "Nous sommes désolés, mais nous ne pouvons accepter votre demande de visite à l'atelier Ty Morta, pour le #{@lesson.start.day} #{@lesson.start.strftime("%B")} #{@lesson.start.year}. Suite à une indisponibilité, l'atelier est fermé ce jour."%>
 
 <% end %>
 

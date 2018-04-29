@@ -16,7 +16,7 @@
     }
     .morta-card-text {
       padding: 10px 20px;
-      h2 {
+      h2, h1 {
         font-size: 20px;
         margin-top: 11px;
       }
@@ -48,6 +48,9 @@
   .card-link-line.transparent-line {
     background: transparent;
   }
+  .card-link-line.last-line {
+    width: 290px;
+  }
 }
 
 .middle-row {
@@ -78,8 +81,11 @@
 @media all and (max-width: 800px) and (min-width: 600px) {
   .line-container {
     .card-link-line {
-      width: 60px;
+      width: 50px;
     }
+    .card-link-line.last-line {
+      width: 90px;
+   }
   }
   .vertical-card-link-line {
     height: 60px !important;

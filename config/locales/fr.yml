@@ -62,6 +62,7 @@ fr:
         category: "Catégorie"
         price_cents: "Prix en cents d'€"
         weight: "Poids"
+        support_price_cents: "Prix du support en cents d'€"
       category:
         name: "Nom"
       lesson:

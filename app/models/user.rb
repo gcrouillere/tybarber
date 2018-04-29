@@ -16,6 +16,8 @@ class User < ApplicationRecord
   attr_accessor :consented
 
   has_attachment :productphoto
+  has_attachment :product2photo
+  has_attachment :product3photo
   has_attachment :productphotomobile
   has_attachment :lessonphoto
   has_attachment :avatarphoto

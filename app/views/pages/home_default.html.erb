@@ -15,7 +15,7 @@
       <div class="image-1">
         <style>
           .image-1 {
-            background-image: linear-gradient(135deg, rgba(0,0,0,0.2) 0%, rgba(0,0,0,0.3) 50%), url(<%= image_path "arbreh.jpg" %>);
+            background-image: linear-gradient(135deg, rgba(0,0,0,0.2) 0%, rgba(0,0,0,0.3) 50%), url(<%= @homepicpath %>);
             background-size: cover;
             background-position-y: center;
             background-position-x: center;
@@ -25,7 +25,7 @@
       <div class="image-2">
         <style>
           .image-2 {
-            background-image: linear-gradient(135deg, rgba(0,0,0,0.2) 0%, rgba(0,0,0,0.3) 50%), url(<%= image_path "maraish.jpg" %>);
+            background-image: linear-gradient(135deg, rgba(0,0,0,0.2) 0%, rgba(0,0,0,0.3) 50%), url(<%= @homepicpath2 %>);
             background-size: cover;
             background-position-y: center;
             background-position-x: center;
@@ -35,7 +35,7 @@
       <div class="image-3">
         <style>
           .image-3 {
-            background-image: linear-gradient(135deg, rgba(0,0,0,0.2) 0%, rgba(0,0,0,0.3) 50%), url(<%= image_path "bois.jpg" %>);
+            background-image: linear-gradient(135deg, rgba(0,0,0,0.2) 0%, rgba(0,0,0,0.3) 50%), url(<%= @homepicpath3 %>);
             background-size: cover;
             background-position-y: center;
             background-position-x: center;
@@ -49,22 +49,23 @@
         </div>
         <div class="home-links col-xs-12">
           <div class="link-i">
-            <%= link_to "SOIN", ceramiques_path(categories: ["rasoir", "blaireau"]) %>
+            <%= link_to "SOIN", ceramiques_path(categories: ["rasoir", "blaireau"]), title: "Rasoirs, blaireaux, bols et pinceaux de maquillage en Morta" %>
             <div class="line line2"></div>
           </div>
           <div class="link-i">
-            <%= link_to "DECORATION", ceramiques_path(categories: ["pendule", "horloge", "boite"]) %>
+            <%= link_to "DECORATION", ceramiques_path(categories: ["pendule", "horloge", "boite"]), title: "Lampes, pendules, horloges et boîtes en Morta" %>
             <div class="line line1"></div>
           </div>
           <div class="link-i">
-            <%= link_to "AUTOUR DU VIN", ceramiques_path(categories: ["tire bouchon", "tire-bouchon"]) %>
+            <%= link_to "AUTOUR DU VIN", ceramiques_path(categories: ["tire bouchon", "tire-bouchon"]), title: "Tire-bouchons et couteaux en Morta" %>
             <div class="line line3"></div>
           </div>
         </div>
       </div>
-        <%= photo_update('productphoto', 30, '', '', 30, '.homepic', "Mise à jour photo d'accueil")%>
-        <%= photo_update('productphotomobile', 30, '', '', 412, '.homepicmobile', "Mise à jour photo d'accueil pour mobiles")%>
-        <%= photo_update('logophoto', 30, '', '', 785, '.logopic', "Mise à jour logo")%>
+        <%= photo_update('productphoto', 30, '', '', 30, '.homepic', "Mise à jour photo d'accueil 1")%>
+        <%= photo_update('product2photo', 30, '', '', 385, '.homepic2', "Mise à jour photo d'accueil 2")%>
+        <%= photo_update('product3photo', 30, '', '', 730, '.homepic3', "Mise à jour photo d'accueil 3")%>
+        <%= photo_update('logophoto', 260, '', '', 30, '.logopic', "Mise à jour logo")%>
     </div>
   </div>
 
@@ -73,7 +74,7 @@
     <div class="banner-xs">
       <style>
         .banner-xs {
-          background-image: linear-gradient(135deg, rgba(0,0,0,0.2) 0%, rgba(0,0,0,0.3) 50%), url(<%= image_path "home-base-mobile.jpg" %>);
+          background-image: linear-gradient(135deg, rgba(0,0,0,0.2) 0%, rgba(0,0,0,0.3) 50%), url(<%= @homepicpath %>);
         }
       </style>
       <div class="banner-content-xs">
@@ -89,15 +90,24 @@
 <div class="container">
   <div class="home-info-bloc row">
     <div class="home-info-text col-xs-12 col-sm-5 col-lg-4">
-      <h2>Une essence rare </h2>
-      <p>Philippe Nerriere à partir de son atelier situé à Guérande produit l'ensemble des objets de soin, de décoration et les accessoires pour le vin. Il travaille uniquement le Morta, cette richesse locale que l'on appelle aussi L'or noir de Brière.</p>
-      <p>Après avoir extrait du marais ce bois en cours de fossilisation, de nombreuses étapes sont nécessaires afin d'obtenir un résultat digne de cette matière brut et naturelle. Parmi celles-ci 2 sont capitales : le séchage de ce bois et sa finition afin de lui redonner vie.</p>
+      <% if user_signed_in? && current_user.admin %>
+        <% article_typing("accueil", "vertical", "markdown1", "live-text1", "input1") %>
+        <% @markdown = @markdown1 %>
+        <div class="live-text">
+          <%= render 'shared/articletyping' %>
+        </div>
+      <% else %>
+        <div class="plain-text">
+          <% article_display("accueil", "vertical") %>
+          <%= @markdown.html_safe %>
+        </div>
+      <% end %>
     </div>
     <div class="home-info-images col-xs-12 col-sm-7 col-lg-8">
       <div class="inner-photos">
-        <%= image_tag "arbreh.jpg", class: "arbre", alt: "XXXX"%>
-        <%= image_tag "maraish.jpg", class: "marais", alt: "XXXX"%>
-        <%= image_tag "bois.jpg", class: "bois", alt: "XXXX"%>
+        <%= cl_image_tag @homepicpath, class: "arbre", alt: "Chêne avant sa transformation en Morta"%>
+        <%= cl_image_tag @homepicpath2, class: "marais", alt: "Marais de Brière"%>
+        <%= cl_image_tag @homepicpath3, class: "bois", alt: "Morta en cours de fossilisation"%>
       </div>
     </div>
   </div>
@@ -108,7 +118,7 @@
 
     <div class="univers-cards row">
       <div class="soin col-xs-12 col-sm-4">
-        <%= link_to (@rasoir ? ceramique_path(@rasoir) : ceramiques_path) do %>
+        <%= link_to (@rasoir ? ceramique_path(@rasoir) : ceramiques_path), title: "Rasoirs, blaireaux, bols et pinceaux de maquillage en Morta" do %>
           <div class="card-image card-image1">
             <% @rasoir ? path = cl_image_path(@rasoir.photos[0].path, :quality => "auto") : path = image_path("rasoir.jpg")%>
             <style>
@@ -128,7 +138,7 @@
         </div>
       </div>
       <div class="decoration col-xs-12 col-sm-4">
-        <%= link_to (@lampe ? ceramique_path(@lampe) : ceramiques_path), class: "decoration-link" do %>
+        <%= link_to (@lampe ? ceramique_path(@lampe) : ceramiques_path), class: "decoration-link", title: "Lampes, pendules, horloges et boîtes en Morta" do %>
         <% @lampe ? path2 = cl_image_path(@lampe.photos[0].path, :quality => "auto") : path2 = image_path("deco.jpg")%>
             <style>
               .decoration {
@@ -149,7 +159,7 @@
           <h3>AUTOUR DU VIN</h3>
           <p>Retrouvez des objets pour accompagner vos degustations de vin : tire-bouchons et couteaux à huîtres.</p>
         </div>
-        <%= link_to (@tirebouchon ? ceramique_path(@tirebouchon) : ceramiques_path) do %>
+        <%= link_to (@tirebouchon ? ceramique_path(@tirebouchon) : ceramiques_path), title: "Tire-bouchons et couteaux en Morta" do %>
           <div class="card-image card-image3">
           <% @tirebouchon ? path3 = cl_image_path(@tirebouchon.photos[0].path, :quality => "auto") : path3 = image_path("tirebouchon.jpg")%>
             <style>
@@ -173,12 +183,12 @@
   {
     "@context": "http://schema.org",
     "@type": "ArtGallery",
-    "name": "Les <%="#{ENV['MODEL']} de #{ENV['FIRSTNAME'].capitalize} #{ENV['LASTNAME'].capitalize}"%>",
+    "name": "Objets d'art en Morta par Philippe Nerriere",
     "description": "Online craft store",
     "openingHours": "Mo-Fr 09:00-18:00",
     "telephone": "<%= ENV['TELEPHONE']%>",
     "url": "<%=request.original_url%>",
-    "image": "<%=request.original_url%><%= image_path ENV['HOMEPIC']%>",
+    "image": "<%=request.original_url%><%= image_path ENV['HOMEPIC3']%>",
     "address":"<%= ENV['ADDRESS'].gsub(/[+]/, ' ')%>",
     "priceRange":"20€ à 800€"
   }

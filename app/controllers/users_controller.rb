@@ -48,6 +48,8 @@ class UsersController < ApplicationController
       :token,
       :token_expiry,
       :productphoto,
+      :product2photo,
+      :product3photo,
       :avatarphoto,
       :cityphoto,
       :productphotomobile,

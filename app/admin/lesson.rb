@@ -17,13 +17,12 @@ ActiveAdmin.register Lesson do
 
     #Paramètres pour index_as_calendar
     {
-      title: is_a_calendarupdate ? "Période bloquée" : "#{lesson.duration} jours - #{lesson.student} personnes - Confirmée: #{confirmation} - Payée: #{payment}",
+      title: is_a_calendarupdate ? "Période bloquée" : "#{lesson.student} personnes - Confirmée: #{confirmation}",
       start: lesson.start,
       end: (lesson.start + lesson.duration.day),
       url: "#{admin_lesson_path(lesson)}",
       textColor: '#2A2827',
-      color: is_a_calendarupdate ? '#3a87ad' : (is_paid ? '#8CE35E' : (lesson.confirmed ? '#FFD938' : '#FF9E6A'))
-
+      color: is_a_calendarupdate ? '#3a87ad' : (lesson.confirmed ? '#69ff6c' : '#fff769')
     }
   end
 
@@ -67,7 +66,7 @@ ActiveAdmin.register Lesson do
       if params[:lesson][:confirmed] == "1" # Si la réservation va être confirmée
         if perdiod_available_for_lesson(lesson) # Si la période est dispo
           bookings_creation(lesson)
-          create_order_for_lesson(lesson)
+          # create_order_for_lesson(lesson)
           LessonMailer.mail_user_after_confirmation(lesson).deliver_now
         else
           flash[:alert] = "Chevauchement de réservations ou capacité insuffisante, confirmation impossible. Il faut : soit supprimer cette demande, soit annuler une réservation déjà confirmée."

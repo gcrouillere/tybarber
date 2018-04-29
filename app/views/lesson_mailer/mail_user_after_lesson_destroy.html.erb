@@ -1,12 +1,13 @@
 <p>Bonjour <%= @lesson.user.first_name %> <%= @lesson.user.last_name %>,</p>
+
 <% if @lesson.confirmed %>
-  <p>Votre stage est annulé suite à un problème de capacité. Veuillez nous en excuser.</p>
-  <p>Si vous aviez déjà payé les arrhes, ils vous seront remboursés.</p>
+  <p>Votre visite le <%= "#{@lesson.start.day} #{@lesson.start.strftime("%B")} #{@lesson.start.year}" %>, à l'atelier Ty Morta est annulée suite à une indisponibilité. Veuillez nous en excuser.</p>
 <% else %>
-  <p>Nous sommes désolés, mais nous ne pouvons accepter votre demande de stage, pour des raisons de capacité.</p>
-  <p> Vous pourriez commencer votre stage à cette (ces) date(s) : <%="#{@closest_start}"%>. Veuillez effectuer une nouvelle demande sur le <%= link_to 'site', new_lesson_url %>.</p>
+  <p>Nous sommes désolés, mais nous ne pouvons accepter votre demande de visite à l'atelier Ty Morta pour le <%= "#{@lesson.start.day} #{@lesson.start.strftime("%B")} #{@lesson.start.year}" %>. Suite à une indisponibilité, l'atelier est fermé ce jour.</p>
 <% end %>
+
 <p>Cordialement</p>
+
 <p><%= "#{ENV['FIRSTNAME'].capitalize} #{ENV['LASTNAME'].capitalize}" %></p>
 <p>email : <%= "#{ENV['EMAIL']}" %></p>
 <p>téléphone : <%= "#{ENV['TELEPHONE']}" %></p>

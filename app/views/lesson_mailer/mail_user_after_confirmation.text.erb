@@ -1,8 +1,6 @@
 Bonjour <%= @lesson.user.first_name %> <%= @lesson.user.last_name %>,
 
-Votre demande de stage de poterie est confirmée. Premier jour de stage <%= "#{@lesson.start.day}/#{@lesson.start.month}/#{@lesson.start.year}" %>, pour une durée de <%= "#{@lesson.duration}" %> jours.
-
-Vous devez maintenant payer les arrhes pour qu'elle soit définitivement validée : https://<%=ENV['APPNAME']%>.herokuapp.com/lessons/<%= @lesson.id %>
+Votre demande de visite dans l'atelier Ty Morta est acceptée, pour le <%= "#{@lesson.start.day} #{@lesson.start.strftime("%B")} #{@lesson.start.year}"%>. L'atelier est ouvert de 10h à 17h. Prévenez-moi par mail où par téléphone de l'heure à laquelle vous arrivez.
 
 Cordialement
 

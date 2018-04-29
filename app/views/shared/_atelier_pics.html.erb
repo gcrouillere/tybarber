@@ -1,15 +1,15 @@
-<% @atelier1 = image_tag ENV['ATELIER1'], class: "img-avatar", alt: "#{ENV['FIRSTNAME'].capitalize} #{ENV['LASTNAME'].capitalize} créateur de #{ENV['MODEL']}" %>
-<% @atelier2 = image_tag ENV['ATELIER2'], class: "img-city", alt: "#{ENV['ADDRESS'].gsub(/[+]/, ' ')}, localisation de l'atelier de #{ENV['FIRSTNAME'].capitalize} #{ENV['LASTNAME'].capitalize}" %>
+<% @atelier1 = image_tag ENV['ATELIER1'], class: "img-avatar", alt: "Atelier de Philippe Nerriere pour le travail du Morta." %>
+<% @atelier2 = image_tag ENV['ATELIER2'], class: "img-city", alt: "Philippe Nerriere réalise toutes les pièces en morta dans son atelier à Guérande." %>
 
 <% if @admin %>
   <% if @admin.atelier1photo.present? %>
-    <% if @admin.atelier1photo.width.to_f / (@admin.avatarphoto.height) > 1.2 %>
-      <% @atelier1 = cl_image_tag @admin.atelier1photo.path, :width => 450, :height => 390, :crop => :thumb, :gravity => :face, class: "img-avatar", alt: "#{ENV['FIRSTNAME'].capitalize} #{ENV['LASTNAME'].capitalize} créateur de #{ENV['MODEL']}" %>
+    <% if @admin.atelier1photo.width.to_f / (@admin.atelier1photo.height) > 1.2 %>
+      <% @atelier1 = cl_image_tag @admin.atelier1photo.path, :width => 450, :height => 390, :crop => :thumb, :gravity => :face, class: "img-avatar", alt: "Atelier de Philippe Nerriere pour le travail du Morta." %>
     <% else %>
-      <% @atelier1 = cl_image_tag @admin.atelier1photo.path, class: "img-avatar", alt: "#{ENV['FIRSTNAME'].capitalize} #{ENV['LASTNAME'].capitalize} créateur de #{ENV['MODEL']}"%>
+      <% @atelier1 = cl_image_tag @admin.atelier1photo.path, class: "img-avatar", alt: "Philippe Nerriere réalise toutes les pièces en morta dans son atelier à Guérande."%>
     <% end %>
   <% end %>
   <% if  @admin.atelier2photo.present? %>
-    <% @atelier2 = cl_image_tag @admin.atelier2photo.path, class: "img-city", alt: "#{ENV['ADDRESS'].gsub(/[+]/, ' ')}, localisation de l'atelier de #{ENV['FIRSTNAME'].capitalize} #{ENV['LASTNAME'].capitalize}" %>
+    <% @atelier2 = cl_image_tag @admin.atelier2photo.path, class: "img-city", alt: "Philippe Nerriere réalise toutes les pièces en morta dans son atelier à Guérande." %>
   <% end %>
 <% end %>

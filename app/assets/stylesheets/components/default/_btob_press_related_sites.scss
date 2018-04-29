@@ -1,0 +1,16 @@
+.blog-page {
+  display: flex;
+  margin-top: 20px;
+  margin-bottom: 50px;
+  .blog-page-text {
+    padding: 10px;
+  }
+  p {
+    text-align: justify;
+    img {
+      display: block;
+      margin: 0 auto;
+      max-width: 95%;
+    }
+  }
+}

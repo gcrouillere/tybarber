@@ -1,7 +1,9 @@
 <p>Bonjour <%= @lesson.user.first_name %> <%= @lesson.user.last_name %>,</p>
-<p> Votre demande de stage est confirmée. Premier jour de stage <%= "#{@lesson.start.day}/#{@lesson.start.month}/#{@lesson.start.year}" %>, pour une durée de <%= "#{@lesson.duration}" %> jours.</p>
-<p>Vous devez maintenant payer les arrhes pour qu'elle soit définitivement validée : <%= link_to 'payer sur le site.', lesson_url(@lesson) %></p>
+
+<p> Votre demande de visite dans l'atelier Ty Morta est acceptée, pour le <%= "#{@lesson.start.day} #{@lesson.start.strftime("%B")} #{@lesson.start.year}" %>. L'atelier est ouvert de 10h à 17h. Prévenez-moi par mail où par téléphone de l'heure à laquelle vous arrivez.</p>
+
 <p>Cordialement</p>
+
 <p><%= "#{ENV['FIRSTNAME'].capitalize} #{ENV['LASTNAME'].capitalize}" %></p>
 <p>email : <%= "#{ENV['EMAIL']}" %></p>
 <p>téléphone : <%= "#{ENV['TELEPHONE']}" %></p>

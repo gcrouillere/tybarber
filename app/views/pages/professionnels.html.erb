@@ -1,0 +1,26 @@
+<% content_for(:description) do %>
+  Procédure de commande pour les professionnels, désirant bénéficier de tarifs sur des lots.
+<% end %>
+<% content_for(:title_tag) do %>
+  Commande d'objets d'art en Morta pour les professionnels
+<% end %>
+
+ <div class="container">
+
+   <div class="row blog-page">
+    <div class="col-xs-12 blog-page-text">
+      <% if user_signed_in? && current_user.admin %>
+        <% article_typing("btob", "vertical", "markdown1", "live-text1", "input1") %>
+        <% @markdown = @markdown1 %>
+        <div class="live-text">
+          <%= render 'shared/articletyping' %>
+        </div>
+      <% else %>
+        <div class="plain-text">
+          <% article_display("btob", "vertical") %>
+          <%= @markdown.html_safe %>
+        </div>
+      <% end %>
+    </div>
+  </div>
+</div>

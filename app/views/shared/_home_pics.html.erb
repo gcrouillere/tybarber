@@ -1,10 +1,8 @@
 <% @homepicpath = image_path ENV['HOMEPIC'] %>
-<% @homepicpathmobile = image_path ENV['HOMEPICMOBILE'] %>
+<% @homepicpath2 = image_path ENV['HOMEPIC2'] %>
+<% @homepicpath3 = image_path ENV['HOMEPIC3'] %>
 <% if @admin %>
-  <% if  @admin.productphoto.present? %>
-    <% @homepicpath = cl_image_path @admin.productphoto.path %>
-  <% end %>
-  <% if  @admin.productphotomobile.present? %>
-    <% @homepicpathmobile = cl_image_path @admin.productphotomobile.path %>
-  <% end %>
+    <% @homepicpath = cl_image_path @admin.productphoto.path if  @admin.productphoto.present? %>
+    <% @homepicpath2 = cl_image_path @admin.product2photo.path if  @admin.product2photo.present? %>
+    <% @homepicpath3 = cl_image_path @admin.product3photo.path if  @admin.product3photo.present? %>
 <% end %>

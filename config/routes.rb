@@ -24,6 +24,9 @@ Rails.application.routes.draw do
   #Pages
   get '/confirmation', to: 'pages#confirmation'
   get '/agenda', to: 'pages#agenda'
+  get '/professionnels', to: 'pages#professionnels'
+  get '/presse', to: 'pages#presse'
+  get '/sites_partenaires', to: 'pages#sites_partenaires'
   get '/cgv', to: 'pages#cgv'
   get '/atelier', to: 'pages#atelier'
   get '/morta', to: 'pages#morta'

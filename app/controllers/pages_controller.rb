@@ -1,5 +1,5 @@
 class PagesController < ApplicationController
-  skip_before_action :authenticate_user!, only: [:home, :confirmation, :atelier, :contact, :google906057532e2dbb7e, :robots, :legal, :agenda, :cgv, :atelier, :morta, :la_briere]
+  skip_before_action :authenticate_user!, only: [:home, :confirmation, :atelier, :contact, :google906057532e2dbb7e, :robots, :legal, :agenda, :cgv, :atelier, :morta, :la_briere, :professionnels, :presse, :sites_partenaires]
 
   def home
     @dev_redirection = "https://www.creermonecommerce.fr/"
@@ -19,10 +19,22 @@ class PagesController < ApplicationController
   end
 
   def la_briere
-    @dev_redirection = "https://www.creermonecommerce.fr/#anchor-info"
+    @dev_redirection = "https://www.creermonecommerce.fr/product_claim_details"
   end
 
   def morta
+    @dev_redirection = "https://www.creermonecommerce.fr/#anchor-info"
+  end
+
+  def professionnels
+    @dev_redirection = "https://www.creermonecommerce.fr/product_claim_details"
+  end
+
+  def presse
+    @dev_redirection = "https://www.creermonecommerce.fr/#anchor-info"
+  end
+
+  def sites_partenaires
     @dev_redirection = "https://www.creermonecommerce.fr/#anchor-info"
   end
 

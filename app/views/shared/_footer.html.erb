@@ -16,15 +16,30 @@
         <i class="fa fa-phone"></i>
         <h6 class="info-text"><%=ENV['TELEPHONE']%></h6>
       </div>
+      <% if user_signed_in? %>
+        <div class="icone-bloc">
+          <i class="fa fa-sign-in"></i>
+        <%= link_to destroy_user_session_path, method: :delete do %>
+          <h6 class="info-text">Se déconnecter</h6>
+        <% end %>
+        </div>
+      <% else %>
+        <div class="icone-bloc">
+          <i class="fa fa-sign-out"></i>
+        <%= link_to new_user_session_path, class: "navbar-item navbar-link" do %>
+          <h6 class="info-text">Se connecter</h6>
+        <% end %>
+        </div>
+      <% end %>
     </div>
     <div class="footer-center-infos">
       <div class="center-bloc">
         <%= link_to "Contact", contact_path , class: "first-a" %>
-        <a href="#">Presse</a>
+        <%= link_to "Presse", presse_path %>
       </div>
       <div class="center-bloc">
-        <a href="#" class="first-a">Sites Partenaires</a>
-        <a href="#">Professionnels</a>
+        <%= link_to "Sites partenaires", sites_partenaires_path , class: "first-a" %>
+        <%= link_to "Professionnels", professionnels_path %>
       </div>
       <div class="center-bloc">
         <%= link_to "CGV", cgv_path , class: "first-a" %>

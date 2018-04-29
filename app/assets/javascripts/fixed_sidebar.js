@@ -6,7 +6,7 @@ $(document).ready(function() {
         if($(document).scrollTop() + $('.navbar-laptop').height() + 40 > $(".last-ceramique").offset().top) {
           $('#ceramique-filters-content').css({
             position: 'absolute',
-            top: $(".last-ceramique").offset().top - $(".last-ceramique").height() + 40,
+            top: checkOffset(),
          });
         } else {
           $('#ceramique-filters-content').css({
@@ -34,6 +34,14 @@ $(document).ready(function() {
         });
       }
     }
+  }
+
+  function checkOffset() {
+    var offset = $('.last-ceramique').offset().top - $('.navbar-laptop').height() - 20
+    if ($('.list-header-1').size() > 0) {
+      offset -=  311
+    }
+    return offset
   }
 
     function changeButton() {

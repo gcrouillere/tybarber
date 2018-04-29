@@ -21,6 +21,20 @@ $(document).on('ready', function() {
     $('.homepic .photo-button').removeClass('hidden');
   });
 
+  $('.homepic2 .attachinary_container').on('click', function(e){
+    $('.homepic2 .photo-button').removeClass('hidden');
+  });
+  $('.homepic2 input').on('click', function(e){
+    $('.homepic2 .photo-button').removeClass('hidden');
+  });
+
+  $('.homepic3 .attachinary_container').on('click', function(e){
+    $('.homepic3 .photo-button').removeClass('hidden');
+  });
+  $('.homepic3 input').on('click', function(e){
+    $('.homepic3 .photo-button').removeClass('hidden');
+  });
+
   $('.avatarpic .attachinary_container').on('click', function(e){
     $('.avatarpic .photo-button').removeClass('hidden');
   });

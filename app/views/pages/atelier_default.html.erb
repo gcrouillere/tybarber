@@ -19,7 +19,7 @@
   <!-- LAPTOP -->
     <div class="hidden-xs hidden-sm col-sm-12">
       <div class="wrapper-1">
-        <%= photo_update('atelier1photo', 35, '', '', 15, '.avatarpic', "Mise à jour photo perso")%>
+        <%= photo_update('atelier1photo', 35, '', '', 15, '.avatarpic', "Mise à jour photo atelier 1")%>
         <%= @atelier1 %>
 
         <% if user_signed_in? && current_user.admin %>
@@ -45,7 +45,7 @@
               <%= @markdown.html_safe %>
             </div>
         <% end %>
-        <%= photo_update('atelier2photo', 15, 15, '', '', '.citypic', "Mise à jour photo ville")%>
+        <%= photo_update('atelier2photo', 15, 15, '', '', '.citypic', "Mise à jour photo atelier 2")%>
         <%= @atelier2 %>
       </div>
     </div>
