@@ -90,25 +90,53 @@
 
 //MOBILE
 .jumbotron .banner-xs {
-    background-size: cover;
-    height: 634px;
-    position: relative;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    .banner-content-xs {
-      position: absolute;
-      top: 100px;
-      text-align: center;
-      color: $home-font-color;
-      padding: 0 10px;
-      h1, h2, h3, p {
-        color: $home-font-color;
-      }
-      h1 {
-        text-shadow: 1px 1px 0px $home-text-shadow;
-      }
+  width: 100%;
+  height: 100vh;
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: $navbar;
+  .image-1 {
+    width: 30%;
+    height: 100%;
+    margin: 0 10px
+  }
+  .black-div {
+    height: 10px;
+    width: 50%;
+    background: $navbar;
+    position: absolute;
+  }
+  .right-images {
+    width: 70%;
+    margin: 0 10px 0 0px;
+    .image-2 {
+      width: 100%;
+      height: 50vh;
     }
+    .image-3 {
+      width: 100%;
+      height: 50vh;
+    }
+  }
+  .banner-content-xs {
+    position: absolute;
+    top: 100px;
+    text-align: center;
+    color: $home-font-color;
+    padding: 0 10px;
+    h1, h2, h3, p {
+      color: $home-font-color;
+    }
+    h1 {
+      font-size: 60px;
+      text-shadow: 1px 1px 0px $home-text-shadow;
+    }
+    p {
+      font-size: 18px;
+    }
+  }
 }
 
 @media all and (max-width: 600px) {
