@@ -101,10 +101,9 @@
     margin-bottom: 20px;
     margin-top: 5px;
     color: $filter-title;
-    background: $navbar;
-    border-radius: $project-border-radius;
+    border-bottom: 1px solid $primary;
+    background: white;
     padding: 10px;
-    box-shadow: 1px 1px 1px grey;
   }
 
   h3 {

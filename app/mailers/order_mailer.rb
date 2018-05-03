@@ -4,7 +4,7 @@ class OrderMailer < ApplicationMailer
     @user = user
     @order = order
     productqty = @order.basketlines.sum(:quantity)
-    mail(to: @user.email, subject: "Confirmation de commande de #{productqty > 1 ? ENV['MODEL'] : ENV['MODEL'][0...-1]}")
+    mail(to: @user.email, subject: "Confirmation de commande sur Ty Morta")
   end
 
   def mail_francoise_after_order(user, order)
