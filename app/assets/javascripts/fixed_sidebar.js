@@ -38,8 +38,8 @@ $(document).ready(function() {
 
   function checkOffset() {
     var offset = $('.last-ceramique').offset().top - $('.navbar-laptop').height() - 20
-    if ($('.list-header-1').size() > 0) {
-      offset -=  311
+    if ($('.univers-strip').size() > 0) {
+      offset -=  200
     }
     return offset
   }

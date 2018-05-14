@@ -6,6 +6,7 @@ class ApplicationController < ActionController::Base
   before_action :retrieve_admin
   before_action :check_theme
   before_action :uniq_categories
+  before_action :universes_clic
   layout :layout_by_resource
   after_action :store_location
 
@@ -14,18 +15,26 @@ class ApplicationController < ActionController::Base
   end
 
   def retrieve_admin
-    @admin = User.where(admin: true).first
+    @admin = ::User.where(admin: true).first
   end
 
   def check_theme
-    @active_theme = Theme.where(active: true).first || Theme.create(active: true, name: "default")
+    @active_theme = ::Theme.where(active: true).first || ::Theme.create(active: true, name: "default")
   end
 
   def uniq_categories
-    @uniq_categories = Ceramique.all.map do |ceramique|
+    @uniq_categories = ::Ceramique.all.map do |ceramique|
       ceramique.category.name
     end
     @uniq_categories = @uniq_categories.uniq.sort
+  end
+
+  def universes_clic
+    if params[:univers]
+      params[:categories] = ["rasoir", "blaireau", "bol", "pinceau"] if params[:univers] == "soin"
+      params[:categories] = ["pendule", "horloge", "boite", "dessous de plat", "plat"] if params[:univers] == "decoration"
+      params[:categories] = ["tire bouchon", "tire-bouchon", "couteau"] if params[:univers] == "table"
+    end
   end
 
   #DEVISE methods:

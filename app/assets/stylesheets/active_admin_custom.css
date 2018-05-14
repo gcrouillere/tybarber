@@ -1,3 +1,5 @@
+/*Short term turn over bloc*/
+
 .top-bloc {
   display: flex;
   justify-content: space-around;
@@ -48,4 +50,25 @@
 
 .inner-CA {
   display: none;
+}
+
+/*Custom lessons bloc*/
+
+.current-lessons {
+  border: 1px solid #6a7176;
+  border-radius: 5px;margin-bottom: 30px;
+}
+
+.current-lessons h2 {
+  background: linear-gradient(180deg, #6a7176, #4d5256);
+  margin: 10px;
+  padding-left: 10px;
+  color: white;
+  border-radius: 3px;
+}
+
+.lessons-list h3 {
+  margin-left: 40px;
+  display: list-item;
+  /*list-style: circle;*/
 }

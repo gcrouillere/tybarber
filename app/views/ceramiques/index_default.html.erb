@@ -15,36 +15,11 @@
   <% end %>
 <% end %>
 
+<%= render 'shared/index_strip' %>
 
 <div class="container">
   <div class="row">
-<!-- INDEX H1 :  EITHER A DISCOUNT OFFER DIV, OR A SIMPLE H1 -->
-  <% if @front_offer && params[:offer] == nil %>
 
-    <div class="hidden-xs hidden-sm col-md-12 info-top">
-      <%= render 'shared/general_info_bubble' %>
-    </div>
-    <div class="h1-index mobile hidden-md hidden-lg">
-      <h1>Les créations uniques</h1>
-      <hr>
-    </div>
-  <% elsif params[:offer].present? %>
-    <div class="h1-index hidden-xs hidden-sm">
-      <h1> <%= @front_offer.title %> : les produits</h1>
-      <hr>
-    </div>
-  <% else %>
-    <div class="h1-index hidden-xs hidden-sm">
-      <h1>Les créations uniques : <%= ENV['MODEL']%></h1>
-      <hr>
-    </div>
-    <div class="h1-index mobile hidden-md hidden-lg">
-      <h1>Les créations uniques</h1>
-      <hr>
-    </div>
-  <% end %>
-
-<!-- LAPTOP -->
     <div class="hidden-xs hidden-sm col-lg-3">
       <div id="ceramique-filters-content">
         <h2>Filtrer</h2>
@@ -137,7 +112,7 @@
     </div>
   <% end %>
 
-<!-- MOBILE -->
+<!-- DIFFERENT FILTER FOR MOBILE -->
 
 <div class="hidden-md hidden-lg">
   <div id="ceramique-filters-content-mobile">

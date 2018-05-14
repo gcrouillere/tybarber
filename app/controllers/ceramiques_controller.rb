@@ -16,6 +16,7 @@ class CeramiquesController < ApplicationController
       filter_by_price if params[:prix_max].present?
     end
     @ceramiques = Ceramique.where(id: @ceramiques.map(&:id)).order(position: :asc).order(updated_at: :desc)
+    index_strip_photos(params[:univers])
     @twitter_url = request.original_url.to_query('url')
     @facebookid = ""
     render "index_#{@active_theme.name}"
@@ -67,6 +68,13 @@ class CeramiquesController < ApplicationController
     raw_json = Ceramique.raw_search(params[:search])
     ceramiques_ids = raw_json["hits"].map {|hit| hit["objectID"].to_i}
     @ceramiques = @ceramiques.where(id: ceramiques_ids)
+  end
+
+  def index_strip_photos(params_univers)
+    if params_univers
+      @photo1 = params_univers + "1.jpg"
+      @photo2 = params_univers + "2.jpg"
+    end
   end
 end
 

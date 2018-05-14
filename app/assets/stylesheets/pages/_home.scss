@@ -11,25 +11,25 @@
   align-items: center;
   justify-content: center;
   background: $navbar;
-  .image-1 {
-    width: 20%;
-    height: 100%;
-    margin: 0 10px
-  }
+  // .image-1 {
+  //   width: 20%;
+  //   height: 100%;
+  //   margin: 0 10px
+  // }
   .image-2 {
-    width: 30%;
+    width: 40%;
     height: 100%;
   }
 
   .image-3 {
-    width: 50%;
+    width: 60%;
     height: 100%;
     margin: 0 10px
   }
   .banner-content {
     position: absolute;
     top: 120px;
-    left: calc(50% - 400px);
+    left: calc(50% - 500px);
     text-align: center;
     color: $home-font-color;
     -moz-text-size-adjust: auto;
@@ -38,20 +38,21 @@
     }
     h1 {
       text-shadow: 1px 1px 0px $home-text-shadow;
-      letter-spacing: 6px;
+      letter-spacing: 10px;
       margin-bottom: 6px;
+      font-size: 90px;
     }
     p {
       font-weight: 100;
-      font-size: 18px;
+      font-size: 24px;
     }
 
     .home-links {
-      width: 800px;
+      width: 1000px;
       margin-top: 60px;
       display: flex;
       align-items: center;
-      justify-content: space-around;
+      justify-content: space-between;
       padding: 40px 40px 20px 40px;
       .link-i {
         overflow: hidden;
@@ -63,13 +64,13 @@
           visibility: hidden;
         }
         .line1 {
-          transform: translateX(-158px);
+          transform: translateX(-333px);
         }
         .line2 {
-          transform: translateX(-59px);
+          transform: translateX(-185px);
         }
         .line3 {
-          transform: translateX(-160px);
+          transform: translateX(-300px);
         }
       }
       .link-i:hover .line {
@@ -85,6 +86,12 @@
         cursor: pointer;
       }
     }
+  }
+  .madeinfrance {
+    position: absolute;
+    bottom: 10px;
+    right: 10px;
+    width: 100px;
   }
 }
 
@@ -153,8 +160,20 @@
 }
 
 @media all and (max-width: 800px) {
-  .jumbotron .banner .banner-content .home-links.col-xs-12 {
-    width: 700px !important;
+  .jumbotron .banner .banner-content {
+    h1 {
+      font-size: 60px;
+    }
+    p {
+      font-size: 18px;
+    }
+    .home-links.col-xs-12 {
+      width: 700px !important;
+      margin-top: 40px;
+      a {
+        font-size: 19px;
+      }
+    }
   }
   .jumbotron .banner .banner-content {
     top: 80px;
@@ -280,6 +299,7 @@
     font-weight: 100;
   }
   h3 {
+    font-size: 28px;
     margin-top: 5px;
   }
   .univers-cards {

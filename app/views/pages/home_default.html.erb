@@ -12,7 +12,7 @@
 <!-- LAPTOP -->
   <div class="hidden-xs">
     <div class="banner">
-      <div class="image-1">
+<!--       <div class="image-1">
         <style>
           .image-1 {
             background-image: linear-gradient(135deg, rgba(0,0,0,0.2) 0%, rgba(0,0,0,0.3) 50%), url(<%= @homepicpath %>);
@@ -21,7 +21,7 @@
             background-position-x: center;
           }
         </style>
-      </div>
+      </div> -->
       <div class="image-2">
         <style>
           .image-2 {
@@ -49,23 +49,24 @@
         </div>
         <div class="home-links col-xs-12">
           <div class="link-i">
-            <%= link_to "SOIN", ceramiques_path(categories: ["rasoir", "blaireau"]), title: "Rasoirs, blaireaux, bols et pinceaux de maquillage en Morta" %>
-            <div class="line line2"></div>
-          </div>
-          <div class="link-i">
-            <%= link_to "DECORATION", ceramiques_path(categories: ["pendule", "horloge", "boite"]), title: "Lampes, pendules, horloges et boîtes en Morta" %>
+            <%= link_to "RASAGE & MAQUILLAGE", ceramiques_path(univers: "soin"),title: "Rasoirs, blaireaux, bols et pinceaux de maquillage en Morta" %>
             <div class="line line1"></div>
           </div>
           <div class="link-i">
-            <%= link_to "AUTOUR DU VIN", ceramiques_path(categories: ["tire bouchon", "tire-bouchon"]), title: "Tire-bouchons et couteaux en Morta" %>
+            <%= link_to "DECORATION", ceramiques_path(univers: "decoration"), title: "Lampes, pendules, horloges et boîtes en Morta" %>
+            <div class="line line2"></div>
+          </div>
+          <div class="link-i">
+            <%= link_to "AUTOUR DE LA TABLE", ceramiques_path(univers: "table"), title: "Tire-bouchons et couteaux en Morta" %>
             <div class="line line3"></div>
           </div>
         </div>
       </div>
-        <%= photo_update('productphoto', 30, '', '', 30, '.homepic', "Mise à jour photo d'accueil 1")%>
-        <%= photo_update('product2photo', 30, '', '', 385, '.homepic2', "Mise à jour photo d'accueil 2")%>
-        <%= photo_update('product3photo', 30, '', '', 730, '.homepic3', "Mise à jour photo d'accueil 3")%>
+        <%= photo_update('productphoto', 30, '', '', 30, '.homepic', "Mise à jour photo arbre")%>
+        <%= photo_update('product2photo', 30, '', '', 385, '.homepic2', "Mise à jour photo marais")%>
+        <%= photo_update('product3photo', 30, '', '', 730, '.homepic3', "Mise à jour photo bois")%>
         <%= photo_update('logophoto', 260, '', '', 30, '.logopic', "Mise à jour logo")%>
+        <%= image_tag "madeinfrance.png", class: "madeinfrance" %>
     </div>
   </div>
 
@@ -146,31 +147,29 @@
 
     <div class="univers-cards row">
       <div class="soin col-xs-12 col-sm-4">
-        <%= link_to (@rasoir ? ceramique_path(@rasoir) : ceramiques_path), title: "Rasoirs, blaireaux, bols et pinceaux de maquillage en Morta" do %>
+        <%= link_to ceramiques_path(univers: "soin"), title: "Rasoirs, blaireaux, bols et pinceaux de maquillage en Morta" do %>
           <div class="card-image card-image1">
-            <% @rasoir ? path = cl_image_path(@rasoir.photos[0].path, :quality => "auto") : path = image_path("rasoir.jpg")%>
             <style>
               .card-image1 {
-                background-image: url(<%= path %>);
+                background-image: url(<%= image_path("rasoir.jpg") %>);
                 background-size: cover;
                 background-position-y: center;
                 background-position-x: center;
               }
             </style>
-            <p>Découvrez ce produit</p>
+            <p>Découvrez ces produits</p>
           </div>
         <% end %>
         <div class="home-cards-text home-text-left">
-          <h3>SOIN</h3>
+          <h3>RASAGE & MAQUILLAGE</h3>
           <p>La gamme soin se compose de rasoirs, blaireaux et bols. Tous ces accessoires sont confectionnés artisanalement dans l'atelier Ty Morta.</p>
         </div>
       </div>
       <div class="decoration col-xs-12 col-sm-4">
-        <%= link_to (@lampe ? ceramique_path(@lampe) : ceramiques_path), class: "decoration-link", title: "Lampes, pendules, horloges et boîtes en Morta" do %>
-        <% @lampe ? path2 = cl_image_path(@lampe.photos[0].path, :quality => "auto") : path2 = image_path("deco.jpg")%>
+        <%= link_to ceramiques_path(univers: "decoration"), class: "decoration-link", title: "Lampes, pendules, horloges et boîtes en Morta" do %>
             <style>
               .decoration {
-                background-image: url(<%= path2 %>);
+                background-image: url(<%= image_path("deco.jpg") %>);
                 background-size: cover;
                 background-position-y: center;
                 background-position-x: center;
@@ -184,21 +183,20 @@
       </div>
       <div class="vin col-xs-12 col-sm-4">
         <div class="home-cards-text home-text-right">
-          <h3>AUTOUR DU VIN</h3>
+          <h3>AUTOUR DE LA TABLE</h3>
           <p>Retrouvez des objets pour accompagner vos degustations de vin : tire-bouchons et couteaux à huîtres.</p>
         </div>
-        <%= link_to (@tirebouchon ? ceramique_path(@tirebouchon) : ceramiques_path), title: "Tire-bouchons et couteaux en Morta" do %>
+        <%= link_to ceramiques_path(univers: "table"), title: "Tire-bouchons et couteaux en Morta" do %>
           <div class="card-image card-image3">
-          <% @tirebouchon ? path3 = cl_image_path(@tirebouchon.photos[0].path, :quality => "auto") : path3 = image_path("tirebouchon.jpg")%>
             <style>
               .card-image3 {
-                background-image: url(<%= path3 %>);
+                background-image: url(<%= image_path("tirebouchon.jpg") %>);
                 background-size: cover;
                 background-position-y: center;
                 background-position-x: center;
               }
             </style>
-            <p>Découvrez ce produit</p>
+            <p>Découvrez ces produits</p>
           </div>
         <% end %>
       </div>

@@ -27,4 +27,15 @@ $(document).ready(function() {
     html = converter.makeHtml(text);
       $('#live-text4').html(html);
   });
+
+  $('#article_content').keyup(function() {
+    var converter = new showdown.Converter(),
+    text = $(this).val(),
+    html = converter.makeHtml(text);
+    $('#live-text-temoignages').html(html);
+  });
+  $('#article_name').keyup(function() {
+    text = $(this).val(),
+    $('#live-name-temoignages').html('<h2>' + text + '</h2>');
+  });
 });

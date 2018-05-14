@@ -1,0 +1,118 @@
+.blog-page {
+  display: flex;
+  margin-top: 20px;
+  margin-bottom: 50px;
+  .blog-page-text {
+    padding: 10px;
+  }
+  p {
+    text-align: justify;
+    img {
+      display: block;
+      margin: 0 auto;
+      max-width: 95%;
+    }
+  }
+}
+
+.sur-mesure-container {
+  width: 100%;
+}
+@media all and (max-width: 700px) {
+  .sur-mesure {
+    padding: 0px !important;
+  }
+}
+.sur-mesure {
+  width: 100%;
+  position: relative;
+  z-index: 0;
+  padding: 0 70px;
+  .background-image-sur-mesure {
+    z-index: -1;
+    position: absolute;
+    opacity: 0.15;
+    top: -145px;
+    bottom: 0;
+    right: 0;
+    left: 0;
+  }
+  @media all and (max-width: 700px) {
+    .sur-mesure-details {
+      padding: 10px;
+      .top-text {
+        color: black !important;
+      }
+    }
+  }
+  .sur-mesure-details {
+    color: black;
+    h1 {
+      color: white;
+      text-align: center;
+      margin-bottom: 40px;
+    }
+    h2 {
+      margin-top: 60px;
+    }
+    p {
+      text-align: justify;
+      font-weight: 100;
+    }
+    .top-text {
+      color: white;
+    }
+    .rasoir-elements {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      .rasoir-img-1 {
+        width: 150px;
+        height: 100%;
+        border-radius: 50%;
+        margin: 0 80px;
+        border: 5px solid white;
+        box-shadow: 1px 1px 1px grey;
+      }
+      #rasoir-img-2 {
+        width: 250px;
+        height: 100%;
+        border-radius: 50%;
+        border: 5px solid white;
+        box-shadow: 1px 1px 1px grey;
+      }
+    }
+    @media all and (max-width: 700px) {
+      .rasoir-elements {
+        display: block;
+        text-align: center;
+        .rasoir-img-1, #rasoir-img-2 {
+          margin-bottom: 30px;
+        }
+      }
+      .sur-mesure-coord {
+        flex-direction: column;
+        .icone-bloc {
+          margin: 20px !important;
+        }
+      }
+    }
+    .sur-mesure-coord {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      .icone-bloc {
+        display: flex;
+        margin: 30px 30px 70px 30px;
+        align-items: center;
+        i {
+          color: $primary;
+          margin-right: 20px;
+        }
+        i, h6 {
+          font-size: 20px;
+        }
+      }
+    }
+  }
+}

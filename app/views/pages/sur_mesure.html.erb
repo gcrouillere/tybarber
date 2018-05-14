@@ -1,0 +1,62 @@
+<% content_for(:description) do %>
+ Découvrez les possibilités de personnalisations ou imaginez intégralement votre objet en Morta.
+<% end %>
+<% content_for(:title_tag) do %>
+  Commandez un objet en Morta sur mesure
+<% end %>
+<% content_for(:meta_image) do %>
+  <%= image_path "fossilisation.jpg" %>
+<% end %>
+
+<div class="orange-div"></div>
+<div class="orange-div-left"></div>
+<div class="orange-div-right"></div>
+<div class="orange-div-bottom"></div>
+
+<div class="container sur-mesure-container">
+  <div class="row">
+    <div class="col-xs-12">
+
+      <div class="sur-mesure">
+        <div class="background-image-sur-mesure">
+          <style>
+          .background-image-sur-mesure {
+            background-image: url(<%= image_path "sur_mesure_2.jpg"%>);
+            background-position-y: center;
+            background-position-x: center;
+            background-size: cover;
+          }
+        </style>
+        </div>
+        <div class="sur-mesure-details">
+          <h1>Imaginez votre objet unique en Morta</h1>
+          <h2 class="top-text">Inspirez vous des modèles présents dans la boutique</h2>
+          <p class="top-text">Par exemple pour un rasoir, vous pourriez combiner des embouts, la forme d'un manche et un type de lame provenant de rasoirs différents.</p>
+          <p class="top-text">Les combinaisons sont nombreuses. La variété des formes et des matières présentes dans la boutique devraient vous permettre de créer un objet en Morta exactement comme vous l'imaginiez.</p>
+          <div class="rasoir-elements">
+            <%= image_tag "embout.jpg", class: "rasoir-img-1", alt: "élement configurable de rasoir en Morta"%>
+            <%= image_tag "manche.jpg", id: "rasoir-img-2", alt: "élement configurable de rasoir en Morta"%>
+            <%= image_tag "tete.jpg", class: "rasoir-img-1", alt: "élement configurable de rasoir en Morta"%>
+          </div>
+          <h2>Ou laissez parler votre imagination</h2>
+          <p>Par sa nature imputrescible et son esthétique unique, le Morta peut être utilisé dans de nombreuses applications. Les possibilités sont grandes, que vous ayez des envies de décoration, d'objets artistiques ou d'objets utilitaires.</p>
+          <p>Voici des exemples de réalisations en Morta qui pourraient vous inspirer.</p>
+          <h2>Comment procéder ?</h2>
+          <p>Si vous choisissez des éléments existants à partir d'objets présents dans la boutique, vous pouvez me communiquer ces éléments en précisant le nom de chaque produit duquel ils proviennent. Vous pouvez me les communiquer en utilisant le <%= link_to "formulaire de contact présent sur ce site", contact_path %>, par mail ou par téléphone.</p>
+          <p>Si vous cherchez à créer un objet complètement nouveau, nous pouvons discuter de la faisabilité par téléphone. Si votre projet est déjà mature, vous pouvez m'envoyer des croquis ou des plans par mail.</p>
+          <div class="sur-mesure-coord">
+            <div class="icone-bloc">
+              <i class="fa fa-envelope-o"></i>
+              <h6 class="info-text middle-text"><%=ENV['EMAIL']%></h6>
+            </div>
+            <div class="icone-bloc">
+              <i class="fa fa-phone"></i>
+              <h6 class="info-text"><%=ENV['TELEPHONE']%></h6>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</div>

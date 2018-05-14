@@ -5,15 +5,24 @@ ActiveAdmin.register Lesson do
   menu priority: 5
   config.filters = false
 
-  index_as_calendar ({:ajax => false}) do |lesson|
+  index do
+    render 'current_week_lessons'
+    column "Début" do |lesson|
+       "#{lesson.start.day} #{lesson.start.strftime("%B")} #{lesson.start.year}"
+    end
+    column :student
+    column "Client" do |lesson|
+      lesson.user.email
+    end
+    column :confirmed
+  end
 
+  index_as_calendar ({:ajax => false}) do |lesson|
     #Caractéristiques des évènements à afficher
     confirmation = ""
     lesson.confirmed ? confirmation = "oui" : confirmation = "non"
     Calendarupdate.where(lesson: lesson).present? ? is_a_calendarupdate = true : is_a_calendarupdate = false
     order = Order.where(lesson: lesson).first
-    order.present? ? (order.state == "paid" ? payment = "oui" : payment = "non") : payment = "non"
-    order.present? ? (order.state == "paid" ? is_paid = true : is_paid = false) : is_paid = false
 
     #Paramètres pour index_as_calendar
     {
@@ -34,12 +43,8 @@ ActiveAdmin.register Lesson do
       row :duration
       row :user
       row :confirmed
-      if Calendarupdate.where(lesson: lesson).blank?
-        row :student
-        row "Paiement" do |lesson|
-          Order.where(lesson: lesson).present? ? (Order.where(lesson: lesson).first.state == "pending" ? "Non payé" : "Payé") : "Non payé"
-        end
-      else
+      row :student
+      unless Calendarupdate.where(lesson: lesson).blank?
         row "Type" do |lesson|
           "Période bloquée"
         end
@@ -51,6 +56,8 @@ ActiveAdmin.register Lesson do
 
     def index
       super do |format|
+        @current_week_lessons_a = Lesson.where("confirmed = ? AND start >= ?", true, Time.now - 20 * 3600 * 24).order(start: :asc)
+        @pending_lessons = Lesson.where("confirmed = ? AND start >= ?", false, Time.now)
         Lesson.all.each do |lesson|
           if !lesson.confirmed? && lesson.start < Time.now
             lesson.destroy

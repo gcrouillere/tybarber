@@ -1,5 +1,5 @@
 class PagesController < ApplicationController
-  skip_before_action :authenticate_user!, only: [:home, :confirmation, :atelier, :contact, :google906057532e2dbb7e, :robots, :legal, :agenda, :cgv, :atelier, :morta, :la_briere, :professionnels, :presse, :sites_partenaires]
+  skip_before_action :authenticate_user!, only: [:home, :confirmation, :atelier, :contact, :google906057532e2dbb7e, :robots, :legal, :agenda, :cgv, :atelier, :morta, :la_briere, :professionnels, :presse, :sites_partenaires, :sur_mesure, :temoignages]
 
   def home
     @dev_redirection = "https://www.creermonecommerce.fr/"
@@ -20,6 +20,16 @@ class PagesController < ApplicationController
 
   def la_briere
     @dev_redirection = "https://www.creermonecommerce.fr/product_claim_details"
+  end
+
+  def sur_mesure
+    @dev_redirection = "https://www.creermonecommerce.fr/product_claim_details"
+  end
+
+  def temoignages
+    @article = Article.new
+    @articles = Article.where(page: "temoignages").order(created_at: :desc)
+    @dev_redirection = "https://www.creermonecommerce.fr/produits"
   end
 
   def morta

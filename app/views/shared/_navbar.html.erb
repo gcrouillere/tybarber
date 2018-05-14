@@ -1,10 +1,10 @@
 <!-- Right Navigation LAPTOP -->
-<div class="navbar-laptop hidden-xs hidden-sm">
+<div class="navbar-laptop hidden-xs">
   <div class="main-nav">
     <!-- Logo -->
     <%= link_to root_path, class: "navbar-brand", title: "Retour à l'accueil de la boutique en ligne Ty Morta" do %>
       <%= render 'shared/logo_pic' %>
-      <%= @logositepictag %>
+      <%= @logositepictag %> <span>Accueil</span>
     <% end %>
 
       <div class="navbar-item">
@@ -21,6 +21,9 @@
           <%= link_to ceramiques_path, title: "Liste des objets d'art en Morta en vente sur le site" do %>
             <span>Boutique</span>
           <% end %>
+          <%= link_to morta_path, title: "Découvrez les origines de la formation du Morta" do %>
+            <span>Le Morta</span>
+          <% end %>
 
           <div class="dropdown">
             <a class="dropdown-toggle" type="button" data-toggle="dropdown">
@@ -28,19 +31,24 @@
               <span class="caret"></span>
             </a>
             <ul class="dropdown-menu">
-              <li><%= link_to "Le Morta", morta_path, title: "Découvrez les origines de la formation du Morta" %></li>
+              <li><%= link_to "Visitez l'atelier", new_lesson_path, title: "Visitez l'atelier de Philippe Nerriere pour découvrir la confection d'objets en Morta" %></li>
               <li><%= link_to "La Brière", la_briere_path, title: "Présentation de la Brière, le territoire du Morta" %></li>
               <li><%= link_to "L'Atelier", atelier_path, title: "Présentation de l'atelier où Philippe Nerriere travaille le Morta" %></li>
-              <li><%= link_to "Agenda", agenda_path, title: "Agenda des expositions et lieu de vente pour retrouver Ty Morta" %></li>
+              <li><%= link_to "Où me trouver", agenda_path, title: "Agenda des expositions et lieu de vente pour retrouver Ty Morta" %></li>
               <li><%= link_to "Presse", presse_path, title: "Articles de presse parus sur Ty Morta" %></li>
               <li><%= link_to "Sites partenaires", sites_partenaires_path, title: "Découvrez l'univers de Ty Morta avec ses sites partenaires" %></li>
+               <li><%= link_to "Professionnels", professionnels_path, title: "Procédure pour les commandes par les professionnels" %></li>
               <li><%= link_to "Contact", contact_path, title: "Contactez Ty Morta, Philippe Nerriere vous répond personnellement."%></li>
             </ul>
           </div>
-
-          <%= link_to new_lesson_path, title: "Visitez l'atelier de Philippe Nerriere pour découvrir la confection d'objets en Morta" do %>
-            <span>Visiter l'atelier</span>
+          <%= link_to temoignages_path, title: "Témoignages des clients de Ty Morta" do %>
+            <span>Témoignages</span>
           <% end %>
+          <%= link_to sur_mesure_path, title: "Créez votre objet unique en Morta" do %>
+            <span>Sur mesure</span>
+          <% end %>
+
+
 
           <% if session[:order].present? %>
             <% if Order.where(id: session[:order]).present? %>
@@ -62,17 +70,17 @@
       }
     </style>
       <div class="nav-categories">
-        <%= link_to "AUTOUR DU VIN", ceramiques_path(categories: ["tire bouchon", "tire-bouchon"]), title: "Tire-bouchons et couteaux en Morta"  %>
+        <%= link_to "AUTOUR DE LA TABLE", ceramiques_path(univers: "table"), title: "Tire-bouchons et couteaux en Morta"  %>
         <hr>
-        <%= link_to "SOIN", ceramiques_path(categories: ["rasoir", "blaireau", "bol"]), title: "Rasoirs, blaireaux, bols et pinceaux de maquillage en Morta" %>
+        <%= link_to "DECORATION", ceramiques_path(univers: "decoration"), title: "Lampes, pendules, horloges et boîtes en Morta" %>
         <hr>
-        <%= link_to "DECORATION", ceramiques_path(categories: ["pendule", "horloge", "boite"]), title: "Lampes, pendules, horloges et boîtes en Morta" %>
+        <%= link_to "RASAGE & MAQUILLAGE", ceramiques_path(univers: "soin"), title: "Rasoirs, blaireaux, bols et pinceaux de maquillage en Morta" %>
       </div>
     <% end %>
   </div>
 
 <!-- Right Navigation MOBILE -->
-<div class="navbar-mobile hidden-md hidden-lg">
+<div class="navbar-mobile  hidden-sm hidden-md hidden-lg">
   <div class="main-nav-mobile">
    <!-- Logo -->
     <%= link_to root_path, class: "navbar-brand-mobile", title: "Retour à l'accueil de la boutique en ligne Ty Morta" do %>
@@ -92,18 +100,21 @@
             <span class="caret"></span>
           </a>
           <ul class="dropdown-menu">
-            <li><%= link_to "Le Morta", morta_path, title: "Découvrez les origines de la formation du Morta" %></li>
+            <li><%= link_to "Visite", new_lesson_path, title: "Visitez l'atelier de Philippe Nerriere pour découvrir la confection d'objets en Morta" %></li>
             <li><%= link_to "La Brière", la_briere_path, title: "Présentation de la Brière, le territoire du Morta" %></li>
             <li><%= link_to "L'Atelier", atelier_path, title: "Présentation de l'atelier où Philippe Nerriere travaille le Morta" %></li>
-            <li><%= link_to "Agenda", agenda_path, title: "Agenda des expositions et lieu de vente pour retrouver Ty Morta" %></li>
+            <li><%= link_to "Sur mesure", sur_mesure_path, title: "Créez votre objet unique en Morta"%></li>
+            <li><%= link_to "Où me trouver ?", agenda_path, title: "Agenda des expositions et lieu de vente pour retrouver Ty Morta" %></li>
+            <li><%= link_to "Témoignages", temoignages_path, title: "Témoignages des clients de Ty Morta" %></li>
             <li><%= link_to "Presse", presse_path, title: "Articles de presse parus sur Ty Morta" %></li>
             <li><%= link_to "Sites partenaires", sites_partenaires_path, title: "Découvrez l'univers de Ty Morta avec ses sites partenaires" %></li>
+            <li><%= link_to "Professionnels", professionnels_path, title: "Procédure pour les commandes par les professionnels" %></li>
             <li><%= link_to "Contact", contact_path, title: "Contactez Ty Morta, Philippe Nerriere vous répond personnellement."%></li>
           </ul>
         </div>
 
-        <%= link_to new_lesson_path, title: "Visitez l'atelier de Philippe Nerriere pour découvrir la confection d'objets en Morta" do %>
-          <span>Visite</span>
+        <%= link_to morta_path, title: "Découvrez les origines de la formation du Morta" do %>
+          <span>Le Morta</span>
         <% end %>
 
         <% if session[:order].present? %>
@@ -127,11 +138,11 @@
       }
     </style>
     <div class="nav-categories-mobile">
-      <%= link_to "TABLE", ceramiques_path(categories: ["tire bouchon", "tire-bouchon"]), title: "Tire-bouchons et couteaux en Morta"  %>
+      <%= link_to "TABLE", ceramiques_path(univers: "table"), title: "Tire-bouchons et couteaux en Morta"  %>
       <hr>
-      <%= link_to "SOIN", ceramiques_path(categories: ["rasoir", "blaireau", "bol"]), title: "Rasoirs, blaireaux, bols et pinceaux de maquillage en Morta" %>
+      <%= link_to "SOIN", ceramiques_path(univers: "soins"), title: "Rasoirs, blaireaux, bols et pinceaux de maquillage en Morta" %>
       <hr>
-      <%= link_to "DECORATION", ceramiques_path(categories: ["pendule", "horloge", "boite"]), title: "Lampes, pendules, horloges et boîtes en Morta" %>
+      <%= link_to "DECORATION", ceramiques_path(univers: "decoration"), title: "Lampes, pendules, horloges et boîtes en Morta" %>
     </div>
   <% end %>
 </div>

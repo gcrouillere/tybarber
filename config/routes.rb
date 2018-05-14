@@ -15,7 +15,7 @@ Rails.application.routes.draw do
 
   resources :users, only: [:update, :create]
 
-  resources :articles, only: [:update, :create]
+  resources :articles, only: [:update, :create, :destroy]
 
   #Stages
   get '/stage_confirmation', to: 'lessons#stage_confirmation'
@@ -31,6 +31,8 @@ Rails.application.routes.draw do
   get '/atelier', to: 'pages#atelier'
   get '/morta', to: 'pages#morta'
   get '/la_briere', to: 'pages#la_briere'
+  get '/temoignages', to: 'pages#temoignages'
+  get '/sur_mesure', to: 'pages#sur_mesure'
   get '/contact', to: 'pages#contact'
   get '/legal', to: 'pages#legal'
   get '/google906057532e2dbb7e', to: 'pages#google906057532e2dbb7e'
