@@ -14,10 +14,10 @@ ActiveAdmin.register Order do
       order.user.email
     end
     column "Total HT" do |order|
-      "#{order.amount * 0.8} €"
+      "#{order.amount * (1 - ENV['TVA'].to_f)} €"
     end
     column "TVA" do |order|
-      "#{order.amount * 0.2} €"
+      "#{order.amount * ENV['TVA'].to_f} €"
     end
     column "Frais de port" do |order|
       "#{order.port} €"
@@ -66,7 +66,9 @@ ActiveAdmin.register Order do
           ceramique.offer ? discount = ceramique.offer.discount : discount = 0
           sum += ceramique.basketlines.where("updated_at >= ?", Time.now - duration * 3600 * 24).sum(:quantity) * ceramique.price * (1 - discount)
         end
-        category_sorted << [sum, id]
+        if sum > 0
+          category_sorted << [sum, id]
+        end
       end
       category_sorted.sort.reverse
     end
