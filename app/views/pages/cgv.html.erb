@@ -5,6 +5,36 @@ Conditions générales de vente
   Conditions générales de vente
 <% end %>
 
+<div class="wallpaper">
+  <style>
+  .wallpaper {
+      width: 100%;
+      position: fixed;
+    }
+  </style>
+  <% 3.times do %>
+    <div class="row-1">
+      <style>
+        .row-1 {
+          display: flex;
+          justify-content: space-around;
+          width: 100%;
+        }
+        .wallpaper-img {
+          width: 30px;
+        }
+      </style>
+      <%= image_tag "hat.svg", class: "wallpaper-img"%>
+      <%= image_tag "hat2.svg", class: "wallpaper-img"%>
+      <%= image_tag "hat3.svg", class: "wallpaper-img"%>
+      <%= image_tag "hat4.svg", class: "wallpaper-img"%>
+      <%= image_tag "hat5.svg", class: "wallpaper-img"%>
+      <%= image_tag "hat6.svg", class: "wallpaper-img"%>
+      <%= image_tag "hat7.svg", class: "wallpaper-img"%>
+    </div>
+  <% end %>
+</div>
+
  <div class="container">
 
    <div class="row CGV">
