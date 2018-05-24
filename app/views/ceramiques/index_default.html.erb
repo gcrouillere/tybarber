@@ -1,5 +1,5 @@
 <% content_for(:description) do %>
-  Tous les objets sont confectionnés à la main dans mon atelier de Guérande. Vous retrouverez dans la boutique des objets dans les univers du soin, de la décoration ou de la table.
+  Tous les objets sont confectionnés à la main dans mon atelier de Guérande. Vous retrouverez dans la boutique des objets dans les univers du rasage, du maquillage, de la décoration ou de la table.
 <% end %>
 <% content_for(:title_tag) do %>
   Les objets en Morta à vendre dans la boutique Ty Morta
@@ -46,7 +46,7 @@
       </div>
     </div>
 
-    <% if  @ceramiques.present? %>
+    <% if @ceramiques.present? %>
       <div class="col-xs-12 col-lg-9 ceramique-list">
         <% @ceramiques.each do |ceramique| %>
           <div class="col-xs-12 col-sm-6">
