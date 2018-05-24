@@ -14,10 +14,10 @@ ActiveAdmin.register Order do
       order.user.email
     end
     column "Total HT" do |order|
-      "#{order.amount * 0.8} €"
+      "#{order.amount * (1 - ENV['TVA'].to_f)} €"
     end
     column "TVA" do |order|
-      "#{order.amount * 0.2} €"
+      "#{order.amount * ENV['TVA'].to_f} €"
     end
     column "Frais de port" do |order|
       "#{order.port} €"
@@ -50,28 +50,38 @@ ActiveAdmin.register Order do
     def index
       super do |format|
         @orders = Order.where(state: "paid").order(updated_at: :desc).page(params[:page]).per(20)
-        @last_month_orders = Order.where("state LIKE ? AND updated_at >= ?", "paid", Time.now - 30 * 3600 * 24)
-        @last_six_month_orders = Order.where("state LIKE ? AND updated_at >= ?", "paid", Time.now - 180 * 3600 * 24)
-        @six_month_categories = sort_category_by_turn_over(180)
-        @one_month_categories = sort_category_by_turn_over(30)
+        @last_month_orders = Order.where("state LIKE ? AND updated_at >= ?", "paid", Time.now - 30 * 3600 * 24).count
+        @last_six_month_orders = Order.where("state LIKE ? AND updated_at >= ?", "paid", Time.now - 180 * 3600 * 24).count
+        @basketlines_from_orders_lost = Order.where.not(state: "paid").map {|order| order.basketlines}.flatten
+        @categories_sales_data_six = categories_data(180, @basketlines_from_orders_lost)
+        @categories_sales_data_one = categories_data(30, @basketlines_from_orders_lost)
       end
     end
 
-    def sort_category_by_turn_over(duration)
-      category_sorted = []
+    def categories_data(duration, basketlines_lost)
+      categories_sales_data = {}
       Category.all.each do |category|
         sum = 0
-        id = category.id
+        categories_sales_data[category.id.to_s.to_sym] = {}
         category.ceramiques.each do |ceramique|
           ceramique.offer ? discount = ceramique.offer.discount : discount = 0
-          sum += ceramique.basketlines.where("updated_at >= ?", Time.now - duration * 3600 * 24).sum(:quantity) * ceramique.price * (1 - discount)
+
+          addition = ((ceramique.basketlines.where("updated_at >= ?", Time.now - duration * 3600 * 24) - basketlines_lost)
+          .map {|basketline| basketline.quantity}
+          .reduce(:+) || 0) * ceramique.price * (1 - discount)
+
+          categories_sales_data[category.id.to_s.to_sym][ceramique.id.to_s.to_sym] = {}
+          categories_sales_data[category.id.to_s.to_sym][ceramique.id.to_s.to_sym][:"ceramique_sum"] = addition
+          categories_sales_data[category.id.to_s.to_sym][ceramique.id.to_s.to_sym][:"ceramique_name"] = ceramique.name
+          categories_sales_data[category.id.to_s.to_sym][ceramique.id.to_s.to_sym][:"ceramique_id"] = ceramique.id
+
+          sum += addition
         end
-        if sum > 0
-          category_sorted << [sum, id]
-        end
+        categories_sales_data[category.id.to_s.to_sym][:"sum"] = sum
       end
-      category_sorted.sort.reverse
+      categories_sales_data
     end
+
   end
 
 end

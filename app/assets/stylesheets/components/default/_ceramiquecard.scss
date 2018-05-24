@@ -278,6 +278,17 @@
   }
 }
 
+
+.container-lighttheme {
+  .no-ceramique-list {
+    margin-top: 100px;
+    margin-bottom: 100px;
+    .no-ceramique {
+      text-align: center;
+    }
+  }
+}
+
 @media all and (max-width: 800px) {
   .no-ceramique-list {
     margin-top: 50px;
