@@ -7,7 +7,7 @@ ActiveAdmin.register Lesson do
 
   index do
     render 'current_week_lessons'
-    column "Début" do |lesson|
+    column "Jour de la visite" do |lesson|
        "#{lesson.start.day} #{lesson.start.strftime("%B")} #{lesson.start.year}"
     end
     column :student

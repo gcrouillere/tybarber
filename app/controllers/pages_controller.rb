@@ -65,6 +65,10 @@ class PagesController < ApplicationController
     @dev_redirection = "https://www.creermonecommerce.fr/produits"
   end
 
+  def cgv
+    @dev_redirection = "https://www.creermonecommerce.fr/produits"
+  end
+
   def google906057532e2dbb7e
   end
 
