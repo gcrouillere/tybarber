@@ -76,7 +76,7 @@
 
 <% content_for(:after_js) do %>
   <script>
-    $(document).on('ready', function() {
+    $(document).ready(function() {
       total = <%= @amount.to_f %>
       port = <%= @port.to_f %>
       $('.payment-form input').on('click', function(event) {
@@ -100,5 +100,10 @@
         }
       });
     });
+
+    $.get("https://api.ipdata.co", function (response) {
+      var country = response["country_code"]
+    }, "jsonp")
+
   </script>
 <% end %>
