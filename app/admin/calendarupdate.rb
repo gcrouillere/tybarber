@@ -68,7 +68,6 @@ ActiveAdmin.register Calendarupdate do
           confirmed: true,
           )
         last_lesson.save
-        binding.pry
         last_calendar.update(lesson: last_lesson)
         redirect_to admin_lessons_path and return
       end

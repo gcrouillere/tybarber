@@ -40,7 +40,7 @@ class User < ApplicationRecord
     user_params[:token_expiry] = Time.at(auth.credentials.expires_at)
     user_params[:adress] = "------ à mettre à jour ------"
     user_params[:city] = "------ à mettre à jour ------"
-    user_params[:country] = "------ à mettre à jour ------"
+    user_params[:country] = "FR"
     user_params = user_params.to_h
 
     user = User.find_by(provider: auth.provider, uid: auth.uid)
