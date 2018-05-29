@@ -5,17 +5,19 @@
       var weight = <%= @weight %>;
       var urlRoot = "<%= root_url %>";
 
-      $('.payment-form input').on('click', function(event) {
+      $('.payment-form input, .payment-form-mobile input').on('click', function(event) {
         if ($('h3.total_amount').hasClass('take_away-checked')) {
           $('.shipping-cost').css({'visibility':'visible'});
           $('.total_amount').removeClass('take_away-checked')
 
-          var country = $('#user_country').val();
+          if ($(this).parent().parent().attr('class').includes('mobile')) {
+            var country = $('#user_country_mobile').val();
+          } else {
+            var country = $('#user_country').val();
+          }
+
           var url_params = "?country=" + country + "&weight=" + weight
-          fetch(urlRoot + "/api/v1/shipping_categories/show" + url_params).then(response_api =>response_api.json()).then((data_api) => {
-            value = (total * 100 + data_api.price_cents) / 100
-            $('.total_amount').text('Montant total: '+ String(value).replace(".", ",") + " €")
-          });
+          updateDOMWithShippingData(urlRoot, url_params, false)
 
         } else {
           $('.shipping-cost').css({'visibility':'hidden'});
@@ -24,16 +26,25 @@
         }
       });
 
-    $('#user_country').on('change', function(event) {
-      var country = $('#user_country').val();
+    $('#user_country, #user_country_mobile').on('change', function(event) {
+      var country = $(this).val();
       var url_params = "?country=" + country + "&weight=" + weight
-
-      fetch(urlRoot + "/api/v1/shipping_categories/show" + url_params).then(response_api =>response_api.json()).then((data_api) => {
-          $('.port-cost').text(String(data_api.price_cents / 100).replace(".", ",")+ " €")
-          value = (total * 100 + data_api.price_cents) / 100
-          $('.total_amount').text('Montant total: '+ String(value).replace(".", ",") + " €")
-      });
+      updateDOMWithShippingData(urlRoot, url_params, true)
     });
+
+    function updateDOMWithShippingData(urlRoot, url_params, port_cost_exsits) {
+      fetch(urlRoot + "api/v1/shipping_categories/show" + url_params).then(response_api =>response_api.json()).then((data_api) => {
+          if (port_cost_exsits) {
+            $('.port-cost').each(function() {
+              $(this).text(String(data_api.price_cents / 100).replace(".", ",")+ " €")
+            })
+          }
+          value = (total * 100 + data_api.price_cents) / 100
+          $('.total_amount').each(function() {
+            $(this).text('Montant total: '+ String(value).replace(".", ",") + " €")
+          })
+      });
+    }
 
     });
   </script>
