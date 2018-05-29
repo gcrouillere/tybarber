@@ -56,7 +56,7 @@ ActiveAdmin.register Lesson do
 
     def index
       super do |format|
-        @current_week_lessons_a = Lesson.where("confirmed = ? AND start >= ?", true, Time.now - 20 * 3600 * 24).order(start: :asc)
+        @current_week_lessons_a = Lesson.where("confirmed = ? AND start >= ?", true, Time.now - 20 * 3600 * 24).joins(:order).order(start: :asc).where("lesson_id IS NOT NULL")
         @pending_lessons = Lesson.where("confirmed = ? AND start >= ?", false, Time.now)
         Lesson.all.each do |lesson|
           if !lesson.confirmed? && lesson.start < Time.now
