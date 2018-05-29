@@ -3,6 +3,7 @@
     $(document).ready(function() {
       var total = <%= @amount.to_f %>;
       var weight = <%= @weight %>;
+      var urlRoot = "<%= root_url %>";
 
       $('.payment-form input').on('click', function(event) {
         if ($('h3.total_amount').hasClass('take_away-checked')) {
@@ -11,7 +12,7 @@
 
           var country = $('#user_country').val();
           var url_params = "?country=" + country + "&weight=" + weight
-          fetch("http://localhost:3000/api/v1/shipping_categories/show" + url_params).then(response_api =>response_api.json()).then((data_api) => {
+          fetch(urlRoot + "/api/v1/shipping_categories/show" + url_params).then(response_api =>response_api.json()).then((data_api) => {
             value = (total * 100 + data_api.price_cents) / 100
             $('.total_amount').text('Montant total: '+ String(value).replace(".", ",") + " €")
           });
@@ -27,7 +28,7 @@
       var country = $('#user_country').val();
       var url_params = "?country=" + country + "&weight=" + weight
 
-      fetch("http://localhost:3000/api/v1/shipping_categories/show" + url_params).then(response_api =>response_api.json()).then((data_api) => {
+      fetch(urlRoot + "/api/v1/shipping_categories/show" + url_params).then(response_api =>response_api.json()).then((data_api) => {
           $('.port-cost').text(String(data_api.price_cents / 100).replace(".", ",")+ " €")
           value = (total * 100 + data_api.price_cents) / 100
           $('.total_amount').text('Montant total: '+ String(value).replace(".", ",") + " €")
