@@ -64,8 +64,7 @@ class ApplicationController < ActionController::Base
     session[:previous_url] || root_path
   end
 
-
-  # 3 - Permitted parameters for sign_in/up
+  # 2 - Permitted parameters for sign_in/up
   def configure_permitted_parameters
     # For additional fields in app/views/devise/registrations/new.html.erb
     devise_parameter_sanitizer.permit(:sign_up, keys: [
@@ -74,6 +73,7 @@ class ApplicationController < ActionController::Base
       :adress,
       :zip_code,
       :city,
+      :country,
       :provider,
       :uid,
       :facebook_picture_url,
@@ -89,6 +89,7 @@ class ApplicationController < ActionController::Base
       :adress,
       :zip_code,
       :city,
+      :country,
       ])
   end
 

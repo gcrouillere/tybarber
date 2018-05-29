@@ -61,6 +61,7 @@ class UsersController < ApplicationController
       :darktheme4photo,
       :atelier1photo,
       :atelier2photo,
+      :country,
       homerightphotos: []
     )
   end
