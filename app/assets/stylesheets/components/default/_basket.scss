@@ -50,6 +50,16 @@
   .empty{
     width: 300px;
   }
+  .cost-details {
+    width: 400px;
+  }
+  .shipping-cost {
+    display: flex;
+    select {
+      width: 150px;
+      margin: 0 10px;
+    }
+  }
   .hidden-sm {
     margin: 11px 0px 20px 0px;
     h3 {

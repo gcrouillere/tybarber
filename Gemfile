@@ -21,9 +21,9 @@ gem 'uglifier'
 
 # pictures
 gem 'cloudinary', '1.1.7'
-gem 'attachinary', github: 'assembler/attachinary'
-gem 'jquery-fileupload-rails'
-gem 'coffee-rails'
+gem "attachinary"
+gem "jquery-fileupload-rails"
+gem "coffee-rails"
 
 # seed
 gem 'faker'
