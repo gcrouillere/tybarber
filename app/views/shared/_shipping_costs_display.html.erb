@@ -3,7 +3,7 @@
     $(document).ready(function() {
       var total = <%= @amount.to_f %>;
       var weight = <%= @weight %>;
-      var urlRoot = "<%= root_url %>";
+      var urlRoot = window.location.origin;
 
       $('.payment-form input, .payment-form-mobile input').on('click', function(event) {
         if ($('h3.total_amount').hasClass('take_away-checked')) {
@@ -33,7 +33,7 @@
     });
 
     function updateDOMWithShippingData(urlRoot, url_params, port_cost_exsits) {
-      fetch(urlRoot + "api/v1/shipping_categories/show" + url_params).then(response_api =>response_api.json()).then((data_api) => {
+      fetch(urlRoot + "/api/v1/shipping_categories/show" + url_params).then(response_api =>response_api.json()).then((data_api) => {
           if (port_cost_exsits) {
             $('.port-cost').each(function() {
               $(this).text(String(data_api.price_cents / 100).replace(".", ",")+ " €")
