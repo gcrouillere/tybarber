@@ -121,16 +121,20 @@ Module de prise de réservations. Offrez la possibilité à vos clients d'effect
         });
     });
   </script>
-  <script type="application/ld+json">
+<script type="application/ld+json">
   {
     "@context": "http://schema.org",
-    "@type": "TouristAttraction",
+    "@type": "Course",
     "name": "Stage de poterie",
-    "description": "Fabriquez vos poteries",
-    "url": "<%=request.original_url%>",
+    "description": "Fabriquez vous-même vos poteries au cours d'un stage",
+    "provider": {
+      "@type": "Organization",
+      "name": "<%= "#{ENV['FIRSTNAME'].capitalize} #{ENV['LASTNAME'].capitalize}"%>,
+      "sameAs": "<%=request.original_url%>"
+    }
   }
-  </script>
-    <script
+</script>
+<script
   type="text/javascript"
   async defer
   src="//assets.pinterest.com/js/pinit.js"

@@ -72,3 +72,24 @@ Site de e-commerce configurable. Créez votre compte et visualisez votre futur s
 </div>
 
 <%= render 'shared/subscribe' %>
+
+<% content_for(:after_js) do %>
+  <script type="application/ld+json">
+  {
+    "@context": "http://schema.org/",
+    "@type": "Product",
+    "name": "Les <%="#{ENV['MODEL']} de #{ENV['FIRSTNAME'].capitalize} #{ENV['LASTNAME'].capitalize}"%>",
+    "image": <%= raw @ceramiques.map {|ceramique| cl_image_path ceramique.photos[0].path}.to_json %>,
+    "brand": {
+      "@type": "Thing",
+      "name": "<%="#{ENV['LASTNAME'].capitalize}"%>"
+    },
+    "offers": {
+      "@type": "AggregateOffer",
+      "lowPrice": "<%= humanized_money(@ceramiques.minimum(:price_cents) / 100) %>",
+      "highPrice": "<%= humanized_money(@ceramiques.maximum(:price_cents) / 100) %>",
+      "priceCurrency": "EUR"
+    }
+  }
+  </script>
+<% end %>
