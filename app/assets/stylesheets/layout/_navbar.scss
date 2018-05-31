@@ -194,6 +194,11 @@
   .list-mobile {
     display: flex;
     list-style: none;
+    .lightcart {
+      width: 23px;
+      top: -1px;
+      position: relative;
+    }
     .dropdown .dropdown-menu{
       a {
         color: black;
