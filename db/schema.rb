@@ -154,7 +154,7 @@ ActiveRecord::Schema.define(version: 2018_05_29_071624) do
   create_table "shipping_categories", force: :cascade do |t|
     t.string "name", null: false
     t.string "alpha2", null: false
-    t.float "weight", null: false
+    t.integer "weight", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.integer "price_cents", default: 0, null: false
@@ -192,7 +192,7 @@ ActiveRecord::Schema.define(version: 2018_05_29_071624) do
     t.string "token"
     t.datetime "token_expiry"
     t.string "tracking"
-    t.string "country", default: "A mettre à jour", null: false
+    t.string "country", default: "FR", null: false
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end

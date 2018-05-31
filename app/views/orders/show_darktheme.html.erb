@@ -24,7 +24,6 @@
       <% end %>
 
       <div class="total-darktheme">
-        <div class="empty"></div>
         <div class="cost-details">
           <%= render 'shared/shipping_cost_bloc' %>
           <h3 class="hidden-sm total_amount">Montant total: <%= humanized_money(@amount + @port) %> <%= currency_symbol %></h3>

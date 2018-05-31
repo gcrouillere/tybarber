@@ -68,8 +68,10 @@ class PaymentsController < ApplicationController
   end
 
   def final_order_amount
-    costs = Amountcalculation.new(@order).calculate_amount(@order, current_user)
-    @order.update(amount: costs[:total], port: costs[:port], weight: costs[:weight])
+    unless @order.lesson.present?
+      costs = Amountcalculation.new(@order).calculate_amount(@order, current_user)
+      @order.update(amount: costs[:total], port: costs[:port], weight: costs[:weight])
+    end
   end
 
 end
