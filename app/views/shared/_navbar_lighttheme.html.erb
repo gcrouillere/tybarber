@@ -1,5 +1,12 @@
 <!-- Right Navigation LAPTOP -->
-<div class="navbar-laptop-lighttheme hidden-xs hidden-sm opacity-on-laptop">
+<% opacity_addition = "" %>
+<% nav_bar_mobility = "nav-mobile" %>
+<% if  params[:controller] == "lessons" %>
+  <% opacity_addition = "opacity-on-laptop" %>
+  <% nav_bar_mobility = "nav-fixe" %>
+<% end %>
+<!-- Right Navigation LAPTOP -->
+<div class="navbar-laptop-lighttheme hidden-xs hidden-sm <%= opacity_addition %> nav-mobile">
   <!-- Logo -->
   <%= link_to root_path, class: "navbar-brand", title: "Retour à l'accueil de notre offre de boutique ligne" do %>
     <%= render 'shared/logo_pic' %>
