@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_05_29_071624) do
+ActiveRecord::Schema.define(version: 2018_06_11_100921) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -35,7 +35,7 @@ ActiveRecord::Schema.define(version: 2018_05_29_071624) do
     t.integer "user_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.string "page"
+    t.string "title"
     t.index ["user_id"], name: "index_articles_on_user_id"
   end
 
@@ -89,11 +89,6 @@ ActiveRecord::Schema.define(version: 2018_05_29_071624) do
     t.datetime "updated_at", null: false
   end
 
-  create_table "category_connections", id: false, force: :cascade do |t|
-    t.integer "category_a_id", null: false
-    t.integer "category_b_id", null: false
-  end
-
   create_table "ceramiques", id: :serial, force: :cascade do |t|
     t.string "name", null: false
     t.text "description", null: false
@@ -105,7 +100,6 @@ ActiveRecord::Schema.define(version: 2018_05_29_071624) do
     t.string "slug"
     t.integer "weight"
     t.integer "offer_id"
-    t.integer "position"
     t.index ["category_id"], name: "index_ceramiques_on_category_id"
     t.index ["offer_id"], name: "index_ceramiques_on_offer_id"
   end

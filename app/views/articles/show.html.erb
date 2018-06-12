@@ -1,0 +1,69 @@
+<div class="container">
+  <div class="row">
+    <div class="col-xs-12">
+
+      <% if user_signed_in? && current_user.admin %>
+        <div class="article-edit">
+          <% @markdown = Redcarpet::Markdown.new(Redcarpet::Render::HTML, extensions = {}) %>
+          <% @markdown = @markdown.render(@article.content || "") %>
+          <%= render 'shared/articletyping' %>
+        </div>
+        <div class="article-comments-list">
+          <% @comments.each do |comment| %>
+              <%= render 'articles/comment_show', comment: comment %>
+          <% end %>
+        </div>
+      <% else %>
+
+        <div id="article-show">
+          <div class="article-top-bloc">
+            <h1><%= @article.title %></h1>
+            <% if @article.article_main_photo %>
+              <style>
+                .article-top-bloc {
+                  background-image: linear-gradient(135deg, rgba(0,0,0,0.2) 0%, rgba(0,0,0,0.2) 50%), url(<%= cl_image_path @article.article_main_photo.path %>);
+                  background-size: cover;
+                  background-position-y: center;
+                  background-position-x: center;
+                }
+              </style>
+              <% else %>
+              <style>
+                .article-top-bloc {
+                  background: #171717;
+                }
+                </style>
+              <% end %>
+          </div>
+          <% article_display("article", "horizontal") %>
+          <div class="article-content">
+            <%= @markdown.html_safe %>
+          </div>
+        </div>
+        <hr>
+
+        <div class="commentsbloc">
+          <% if user_signed_in? %>
+            <div class="article-comments">
+              <h2>Ecrivez un commentaire sur cet article : </h2>
+              <%= render 'articles/form' %>
+            </div>
+          <% else %>
+            <%= link_to new_user_session_path, class: "connection-temoignage" do %>
+              <i class="fa fa-arrow-right"></i> Connectez-vous pour écrire un commentaire
+            <% end %>
+          <% end %>
+
+          <div class="article-comments-list">
+            <h2>Commentaires : </h2>
+            <% @comments.each do |comment| %>
+                <%= render 'articles/comment_show', comment: comment %>
+            <% end %>
+          </div>
+        </div>
+
+      <% end %>
+
+    </div>
+  </div>
+</div>
