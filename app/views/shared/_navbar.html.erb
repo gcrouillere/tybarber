@@ -23,6 +23,9 @@
         <%= link_to info_path do %>
           <span><i class="fa fa-female"></i> Infos</span>
         <% end %>
+        <%= link_to articles_path do %>
+          <span><i class="fas fa-pen-square"></i> Blog</span>
+        <% end %>
         <%= link_to new_lesson_path do %>
           <span><i class="far fa-calendar-alt"></i> Réserver un stage</span>
         <% end %>
@@ -46,6 +49,9 @@
         <% end %>
         <%= link_to info_path do %>
             <span><i class="fa fa-female"></i> Infos</span>
+        <% end %>
+        <%= link_to articles_path do %>
+          <span><i class="fas fa-pen-square"></i> Blog</span>
         <% end %>
         <%= link_to new_lesson_path do %>
           <span><i class="far fa-calendar-alt"></i> Réserver un stage</span>
@@ -78,7 +84,10 @@
           <span>Shop</span>
         <% end %>
       <%= link_to info_path do %>
-        <li><span>Infos</span></li>
+        <span>Infos</span>
+      <% end %>
+      <%= link_to articles_path do %>
+        <i class="fas fa-pen-square"></i>
       <% end %>
       <%= link_to new_lesson_path do %>
         <span>Stage</span>

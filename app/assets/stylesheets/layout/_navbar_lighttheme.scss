@@ -97,7 +97,7 @@
       display: flex;
       flex: 1 0 auto;
       margin-left: 15px;
-      height: 58px;
+      height: 23px;
     }
   }
   .lightcart {
@@ -107,6 +107,11 @@
   }
   .infoimg {
     width: 20px;
+    top: -1px;
+    position: relative;
+  }
+  .blogimg {
+    width: 25px;
     top: -1px;
     position: relative;
   }
