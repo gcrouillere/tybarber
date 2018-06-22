@@ -50,6 +50,23 @@
     align-items: flex-end;
     display: flex;
     padding: 10px 20px;
+    position: relative;
+    .social-buttons {
+      position: absolute;
+      top: 10px;
+      right: 10px;
+      font-size: 20px;
+      .fa-facebook-square {
+        color: white;
+      }
+      .fa-pinterest-square {
+        color: white;
+        cursor: pointer;
+      }
+      .fa-twitter-square{
+        color: white;
+      }
+    }
   }
   h1 {
     font-size: 50px;
