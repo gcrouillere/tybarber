@@ -60,6 +60,9 @@
   align-items: center;
   margin-top: 35px;
   margin-bottom: 50px;
+  label {
+    color: white;
+  }
   .cost-details {
     width: 400px;
      margin-right: 20px;
@@ -118,12 +121,13 @@
 }
 
 .content-darktheme {
-  .payment-form .input-label-take-away label {
+  .payment-form label {
     color: white;
   }
 }
 
 .total.mobile {
+  justify-content: center;
   margin-bottom: 30px;
   margin-top: 30px;
 }

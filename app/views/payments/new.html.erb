@@ -42,7 +42,8 @@
               <h4>Stage de poterie pour <%= @order.lesson.duration%> jours, <%= @order.lesson.student%> personnes.</h4>
               <h4>Début du stage le <%= @order.lesson.start.day%>/<%= @order.lesson.start.month%>/<%= @order.lesson.start.year%></h4>
             <% else %>
-              <h3>Total à payer: <%= @order.take_away ? humanized_money(@order.amount) : humanized_money(@order.amount + @order.port) %> <%= currency_symbol %></h3>
+              <% @order.promo ? discount = @order.promo.percentage : discount = 0 %>
+              <h3>Total à payer: <%= @order.take_away ? humanized_money(@order.amount) : humanized_money((@order.amount + @order.port)) %> <%= currency_symbol %></h3>
               <h4>Total article(s) : <%= humanized_money(@order.amount) %> €</h4>
               <% unless @order.take_away %>
                 <h4>Frais de port : <%= humanized_money(@order.port) %> €</h4>

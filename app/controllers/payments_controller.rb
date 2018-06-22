@@ -71,6 +71,10 @@ class PaymentsController < ApplicationController
     unless @order.lesson.present?
       costs = Amountcalculation.new(@order).calculate_amount(@order, current_user)
       @order.update(amount: costs[:total], port: costs[:port], weight: costs[:weight])
+      @promo = Promo.where(code: params[:order][:promo]).first
+      if @promo
+        @order.update(amount: @order.amount * (1 - @promo.percentage), port: @order.port * (1 - @promo.percentage), promo: @promo)
+      end
     end
   end
 
