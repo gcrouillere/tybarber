@@ -30,7 +30,9 @@
 <% else %>
     <% if params[:controller] == "articles" %>
       <div id="live_article_title">
-        <div id="h1-live_article_title"></div>
+        <div id="h1-live_article_title">
+          <h1><%= @article.title %></h1>
+        </div>
       </div>
     <% end %>
     <div id="<%=@live_id || "live-text1"%>"><%= @markdown.html_safe %></div>
