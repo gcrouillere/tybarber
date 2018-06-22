@@ -35,6 +35,7 @@
                 </style>
               <% end %>
           </div>
+          <%= facebook_share_id("facebookshare") %>
           <% article_display("article", "horizontal") %>
           <div class="article-content">
             <%= @markdown.html_safe %>
@@ -67,3 +68,4 @@
     </div>
   </div>
 </div>
+<%= render 'shared/facebookshare' %>
