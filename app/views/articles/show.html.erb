@@ -66,9 +66,11 @@
           <% end %>
 
           <div class="article-comments-list">
-            <h2>Commentaires : </h2>
-            <% @comments.each do |comment| %>
-                <%= render 'articles/comment_show', comment: comment %>
+            <% if @comments.any? %>
+              <h2>Commentaires : </h2>
+              <% @comments.each do |comment| %>
+                  <%= render 'articles/comment_show', comment: comment %>
+              <% end %>
             <% end %>
           </div>
         </div>
