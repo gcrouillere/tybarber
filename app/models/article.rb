@@ -4,5 +4,7 @@ class Article < ApplicationRecord
   validates :name, presence: :true
 
   has_attachment :article_main_photo
-
+  def to_param
+    [id, title.parameterize].join("-")
+  end
 end
