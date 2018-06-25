@@ -6,7 +6,7 @@ class Article < ApplicationRecord
   has_attachment :article_main_photo
 
   def to_param
-    param_title = title.parameterize || ""
+    title.present? ? param_title = title.parameterize : param_title = ""
     [id, param_title.parameterize].join("-")
   end
 end
