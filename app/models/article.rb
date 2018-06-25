@@ -7,6 +7,6 @@ class Article < ApplicationRecord
 
   def to_param
     param_title = title.parameterize || ""
-    [id, title.parameterize].join("-")
+    [id, param_title.parameterize].join("-")
   end
 end
