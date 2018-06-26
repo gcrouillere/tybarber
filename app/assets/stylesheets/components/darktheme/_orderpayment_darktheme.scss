@@ -61,6 +61,15 @@
     color: black;
     transition: 0.1s background-color linear, 0.1s color linear;
   }
+  span {
+    color: white;
+  }
+  .payments-separator {
+    border-left: 1px solid $primary-opacified;
+  }
+  hr {
+    border-top: 1px solid $primary-opacified;
+  }
 }
 
 // MOBILE

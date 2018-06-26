@@ -9,6 +9,8 @@ class PaymentsController < ApplicationController
       flash[:notice] = "Votre panier a expiré"
       redirect_to ceramiques_path and return
     end
+    @order.take_away ? @order_in_js = @order.amount_cents : @order_in_js = @order.amount_cents + @order.port_cents
+    gon.order_in_js = @order_in_js.to_f / 100
   end
 
   def create
@@ -17,21 +19,27 @@ class PaymentsController < ApplicationController
       flash[:error] = "Votre panier a expiré, la commande est annulée. Votre CB n'a pas été débitée."
       redirect_to ceramiques_path and return
     end
-    customer = Stripe::Customer.create(
-      source: params[:stripeToken],
-      email:  params[:stripeEmail]
-    )
 
     @order.take_away ? @final_amount = @order.amount_cents : @final_amount = @order.amount_cents + @order.port_cents
 
-    charge = Stripe::Charge.create(
-      customer:     customer.id,   # You should store this customer id and re-use it.
-      amount:       @final_amount, # or amount_pennies
-      description:  "Payment for #{@order.ceramique || "lesson"}, for order #{@order.id}",
-      currency:     @order.amount.currency
-    )
+    if params[:method] == "stripe"
+      customer = Stripe::Customer.create(
+        source: params[:stripeToken],
+        email:  params[:stripeEmail]
+      )
+      charge = Stripe::Charge.create(
+        customer:     customer.id,   # You should store this customer id and re-use it.
+        amount:       @final_amount, # or amount_pennies
+        description:  "Payment for #{@order.ceramique || "lesson"}, for order #{@order.id}",
+        currency:     @order.amount.currency
+      )
+      @order.update(payment: charge.to_json, state: 'paid', method: "stripe")
+    elsif params[:method] == "paypal"
+      if params[:status] == "success"
+        @order.update(state: 'paid', method: "paypal")
+      end
+    end
 
-    @order.update(payment: charge.to_json, state: 'paid')
     @lesson =  @order.lesson
     unless @lesson.present?
       # SEND EMAILS
