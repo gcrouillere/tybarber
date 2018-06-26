@@ -20,7 +20,7 @@ ActiveAdmin.register Order do
       "#{order.amount * ENV['TVA'].to_f} €"
     end
     column "Frais de port" do |order|
-      "#{order.port} €"
+      order.take_away ? "0 € (à retirer en magasin)" : "#{order.port} €"
     end
     column "Total TTC + port" do |order|
       "#{order.amount + order.port} €"
