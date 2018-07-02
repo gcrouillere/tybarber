@@ -2,6 +2,10 @@ class Ceramique < ApplicationRecord
   include AlgoliaSearch
   # extend FriendlyId
 
+  extend Mobility
+  translates :name, type: :string
+  translates :description, type: :text
+
   algoliasearch do
     attribute :name, :description, :category
   end

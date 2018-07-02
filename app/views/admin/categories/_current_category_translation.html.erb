@@ -1,0 +1,5 @@
+<h1>Vous en entrain de créer la version <%= I18n.locale.upcase %> </h1>
+
+<% ["fr", "en"].each do |lang| %>
+  <h2>Version <%= lang.upcase %> : <%= resource.send("name_#{lang}") %></h2>
+<% end %>

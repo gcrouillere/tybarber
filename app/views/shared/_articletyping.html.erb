@@ -4,11 +4,11 @@
     <%= simple_form_for @article do |f| %>
       <%= f.error_notification %>
       <% if params[:controller] == "articles" %>
-        <%= f.input :title, label: "Titre: " %>
+        <%= f.input :title %>
       <% end %>
-      <%= f.input :content, label: "Contenu: ", :input_html => { :id => (@input_id || "input1") } %>
+      <%= f.input :content, :input_html => { :id => (@input_id || "input1") } %>
       <% if params[:controller] == "articles" %>
-        <%= f.input :article_main_photo, as: :attachinary, label: "Photo article" %>
+        <%= f.input :article_main_photo, as: :attachinary %>
       <% end %>
       <%= f.input :user_id, :as => :hidden, :input_html => { :value => current_user.id } %>
       <%= f.input :id, :as => :hidden, :input_html => { :value => @article.id } %>
@@ -39,11 +39,11 @@
     <%= simple_form_for @article do |f| %>
       <%= f.error_notification %>
       <% if params[:controller] == "articles" %>
-        <%= f.input :title, label: "Titre: " %>
+        <%= f.input :title %>
       <% end %>
-      <%= f.input :content, label: "Contenu: ", :input_html => { :id => (@input_id || "input1") } %>
+      <%= f.input :content, :input_html => { :id => (@input_id || "input1") } %>
       <% if params[:controller] == "articles" %>
-        <%= f.input :article_main_photo, as: :attachinary, label: "Photo article" %>
+        <%= f.input :article_main_photo, as: :attachinary %>
       <% end %>
       <%= f.input :user_id, :as => :hidden, :input_html => { :value => current_user.id } %>
       <%= f.input :id, :as => :hidden, :input_html => { :value => @article.id } %>

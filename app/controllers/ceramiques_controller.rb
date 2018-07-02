@@ -51,6 +51,7 @@ class CeramiquesController < ApplicationController
 
   def filter_by_category
     categories = params[:categories].map {|category| "%#{category}%" }
+    binding.pry
     @ceramiques = @ceramiques.joins(:category).where('categories.name ILIKE ANY ( array[?] )', categories)
   end
 

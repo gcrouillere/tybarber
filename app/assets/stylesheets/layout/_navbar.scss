@@ -116,6 +116,24 @@
       margin-right: 15px;
     }
   }
+  .flag {
+    width: 20px;
+  }
+}
+
+.dropdown-menu.dropdown-menu-langages {
+  padding: 0;
+  min-width: 0px;
+  right: 12px;
+  left: unset;
+  a {
+    margin-right: 0px;
+    border-bottom: none;
+    padding: 2px 20px;
+  }
+  a:hover {
+    border-bottom: none;
+  }
 }
 
 /* Optional class to fix the navbar on top */

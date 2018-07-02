@@ -6,7 +6,7 @@ class PaymentsController < ApplicationController
     @payment_theme = @active_theme.name
     final_order_amount
     if @order.state == "lost"
-      flash[:notice] = "Votre panier a expiré"
+      flash[:notice] = t(:expired_basket)
       redirect_to ceramiques_path and return
     end
     @order.take_away ? @order_in_js = @order.amount_cents : @order_in_js = @order.amount_cents + @order.port_cents
@@ -16,7 +16,7 @@ class PaymentsController < ApplicationController
   def create
     # STRIPE
     if @order.state == "lost"
-      flash[:error] = "Votre panier a expiré, la commande est annulée. Votre CB n'a pas été débitée."
+      flash[:error] = t(:expired_no_payment)
       redirect_to ceramiques_path and return
     end
 
