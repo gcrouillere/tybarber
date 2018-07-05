@@ -63,6 +63,7 @@
                     <input type="number" name="quantity" min="1" max="<%=@ceramique.stock%>" value="1">
                   </div>
                   <input type="hidden" name="ceramique" value="<%= @ceramique.id%>">
+                  <input type="hidden" name="locale" value="<%= I18n.locale%>">
                   <button type="submit" class="btn btn-primary lighttheme"><%= t(:add_to_basket).upcase %></button>
                 </form>
               <% else %>
@@ -165,6 +166,7 @@
                   </select>
                 </div>
                 <input type="hidden" name="ceramique" value="<%= @ceramique.id%>">
+                <input type="hidden" name="locale" value="<%= I18n.locale%>">
                 <button type="submit" class="pull-right btn btn-primary lighttheme">
                   <i class="fa fa-plus""></i> <i class="fa fa-shopping-cart"></i>
                 </button>

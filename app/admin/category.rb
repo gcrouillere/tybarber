@@ -10,7 +10,6 @@ ActiveAdmin.register Category do
   end
 
   form do |f|
-    render 'current_category_translation'
     f.inputs "" do
       f.input :name
     end

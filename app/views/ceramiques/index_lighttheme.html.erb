@@ -6,7 +6,7 @@
     <%= cl_image_path @front_offer.ceramiques.first.photos[0].path %>
   <% end %>
   <% content_for(:description) do %>
-    <% @front_offer.discount > 0 ? discount = t(:discount_percentage, amount: "#{(@front_offer.discount * 100).to_i})" : discount = "" %>
+    <% @front_offer.discount > 0 ? discount = t(:discount_percentage, amount: "#{(@front_offer.discount * 100).to_i}") : discount = "" %>
     <%= "#{@front_offer.title} - #{discount} - #{@front_offer.description}".squish %>
   <% end %>
 <% else %>

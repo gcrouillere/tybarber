@@ -81,6 +81,7 @@
   </div>
 </div>
 <% content_for(:after_js) do %>
+<% article_image_path = @article.article_main_photo ? @article.article_main_photo.path : "" %>
 <script type="application/ld+json">
 {
   "@context": "http://schema.org",
@@ -90,7 +91,7 @@
     "@id": "<%=request.original_url%>"
   },
   "headline": "<%= @article.title %>",
-  "image": ["<%= cl_image_path @article.article_main_photo.path %>"],
+  "image": ["<%= cl_image_path article_image_path %>"],
   "datePublished": "<%= @article.created_at %>",
   "dateModified": "<%= @article.updated_at %>",
   "author": {

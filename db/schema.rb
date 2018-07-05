@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_06_30_125545) do
+ActiveRecord::Schema.define(version: 2018_07_05_114940) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -31,7 +31,7 @@ ActiveRecord::Schema.define(version: 2018_06_30_125545) do
 
   create_table "articles", id: :serial, force: :cascade do |t|
     t.string "name", null: false
-    t.text "content", null: false
+    t.text "content"
     t.integer "user_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
@@ -90,8 +90,8 @@ ActiveRecord::Schema.define(version: 2018_06_30_125545) do
   end
 
   create_table "ceramiques", id: :serial, force: :cascade do |t|
-    t.string "name", null: false
-    t.text "description", null: false
+    t.string "name"
+    t.text "description"
     t.integer "stock", null: false
     t.integer "category_id"
     t.datetime "created_at", null: false

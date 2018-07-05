@@ -47,6 +47,7 @@ fr:
   home_h1: "Les produits"
   home_teaser: "Mme Toutlemonde"
   home_button: "Voir les produits"
+  home_page: "Accueil"
   discount_percentage: " - Réduction de  %{amount} % "
   main_index_h1: "Céramiques: les pièces uniques en vente sur le site"
   offer_products: ": les produits"
@@ -128,6 +129,7 @@ fr:
   email_adress: "Adresse email"
   first_last_name: "Prénom Nom"
   send_your_message: "Entrez votre message"
+
   send: "ENVOYER"
   day:
     one: "Jour"

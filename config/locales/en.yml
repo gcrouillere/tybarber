@@ -42,6 +42,7 @@ en:
   new_lesson_title: "Book a course"
   home_description: "Blala to update"
   home_title: "Vente de produits en ligne"
+  home_page: "Homepage"
   info_description: "Blala to update."
   info_title: "Some infos"
   index_description: "Blala to update."
@@ -80,7 +81,7 @@ en:
   course: "Course for"
   lesson_start: "Course start"
   proceed_to_payment: "Proceed to payment"
-  stage_confirmation: "Your request has been sent, you will receive a confirmation emailas soons as it has been processed."
+  stage_confirmation: "Your request has been sent, you will receive a confirmation email as soons as it has been processed."
   thanks_lesson: "Thanks for your payment. Your course is validated."
   mail_sent: "A confirmation email has been sent. Check your spam emails."
   basket: "Basket"
@@ -148,8 +149,8 @@ en:
         one: "Product"
         other: "Products"
       category:
-        one: "Catégory"
-        other: "Catégories"
+        one: "Category"
+        other: "Categories"
       calendarupdate: "Calendar update"
       lesson:
         one: "Lesson"

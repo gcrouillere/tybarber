@@ -33,7 +33,7 @@
           <% if Order.where(id: session[:order]).present? %>
             <% if Order.where(id: session[:order]).first.state != "lost" %>
               <%= link_to order_path(Order.find(session[:order])) do %>
-                <span><i class="fa fa-shopping-cart"></i></span>
+                <span><%= image_tag "cart.svg", class: "lightcart"%></span>
               <% end %>
             <% end %>
           <% end %>
@@ -78,7 +78,7 @@
           <% if Order.where(id: session[:order]).present? %>
             <% if Order.where(id: session[:order]).first.state != "lost" %>
               <%= link_to order_path(Order.find(session[:order])) do %>
-                <span><i class="fa fa-shopping-cart"></i></span>
+                <span><%= image_tag "cart.svg", class: "lightcart"%></span>
               <% end %>
             <% end %>
           <% end %>
@@ -119,10 +119,11 @@
           <span><%= t(:shop_link_mobile) %></span>
         <% end %>
       <%= link_to info_path do %>
-        <span><%= t(:info_link) %></span>
+        <%= image_tag "info.svg", class: "infoimg"%>
       <% end %>
       <%= link_to articles_path do %>
-        <i class="fas fa-pen-square"></i>
+        <!-- <i class="fas fa-pen-square"></i> -->
+        <%= image_tag "blog.svg", class: "blogimg"%>
       <% end %>
       <%= link_to new_lesson_path do %>
         <span><%= t(:lesson_link_mobile) %></span>
@@ -132,11 +133,28 @@
         <% if Order.where(id: session[:order]).present? %>
           <% if Order.where(id: session[:order]).first.state != "lost" %>
             <%= link_to order_path(Order.find(session[:order])) do %>
-              <span><i class="fa fa-shopping-cart"></i></span>
+              <span><%= image_tag "cart.svg", class: "lightcart"%></span>
             <% end %>
           <% end %>
         <% end %>
       <% end %>
+
+      <div class="dropdown">
+        <a class="dropdown-toggle" type="button" data-toggle="dropdown">
+            <%= image_tag "#{I18n.locale.upcase}.svg", class: "flag"%>
+          <span class="caret"></span>
+        </a>
+        <ul class="dropdown-menu dropdown-menu-langages">
+          <li><%= link_to params.merge(locale: "en", change: true).permit(:locale, :change) do %>
+                <%= image_tag "EN.svg", class: "flag"%>
+              <% end %>
+          </li>
+          <li><%= link_to params.merge(locale: "fr", change: true).permit(:locale, :change) do %>
+                <%= image_tag "FR.svg", class: "flag"%>
+              <% end %>
+          </li>
+        </ul>
+      </div>
     </div>
   </div>
 

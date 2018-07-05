@@ -6,7 +6,7 @@
     <%= cl_image_path @front_offer.ceramiques.first.photos[0].path %>
   <% end %>
   <% content_for(:description) do %>
-    <% @front_offer.discount > 0 ? discount = t(:discount_percentage, amount: "#{(@front_offer.discount * 100).to_i})" : discount = "" %>
+    <% @front_offer.discount > 0 ? discount = t(:discount_percentage, amount: "#{(@front_offer.discount * 100).to_i}") : discount = "" %>
     <%= "#{@front_offer.title} - #{discount} - #{@front_offer.description}".squish %>
   <% end %>
 <% else %>
@@ -65,6 +65,7 @@
             <% if  params[:categories].present? || params[:prix_max].present? || params[:offer].present? || params[:search].present?%>
               <label class="label-search all"><input type="checkbox" name="all[]" value="all"><%=t(:display_all)%></label>
             <% end %>
+            <input type="hidden" name="locale" value="<%= I18n.locale%>">
             <input type="submit" id="recherche" class="btn btn-primary recherche" value="<%=t(:display)%>">
           </div>
         </form>
@@ -161,6 +162,7 @@
         <% end %>
       </div>
       <div class="mobile-submit">
+        <input type="hidden" name="locale" value="<%= I18n.locale%>">
         <input type="submit" id="recherche" class="btn btn-primary recherche" value="<%=t(:display_mobile)%>">
       </div>
     </form>
@@ -201,31 +203,5 @@
   data-pin-tall="15px"
 ></script>
 <%= render 'shared/facebookshare' %>
-
-<!-- Include AlgoliaSearch JS Client and autocomplete.js library -->
-<script src="https://cdn.jsdelivr.net/algoliasearch/3/algoliasearch.min.js"></script>
-<script src="https://cdn.jsdelivr.net/autocomplete.js/0/autocomplete.min.js"></script>
-<!-- Initialize autocomplete menu -->
-<script>
-var algoliaAPPID = String('<%=ENV['ALGOLIAPPID']%>')
-var algoliasearchKey = String('<%=ENV['ALGOLISEARCHKEY']%>')
-var client = algoliasearch(algoliaAPPID, algoliasearchKey);
-var index = client.initIndex('Ceramique');
-//initialize autocomplete on search input (ID selector must match)
-autocomplete('#aa-search-input, #aa-search-input2',
-{ hint: false }, {
-    source: autocomplete.sources.hits(index, {hitsPerPage: 5}),
-    //value to be displayed in input control after user's suggestion selection
-    displayKey: 'name',
-    //hash of templates used when rendering dataset
-    templates: {
-        //'suggestion' templating function used to render a single suggestion
-        suggestion: function(suggestion) {
-          return '<span>' + suggestion._highlightResult.name.value + '</span>'
-          + '<span>' + suggestion._highlightResult.description.value + '</span>'
-          +'<span>' + suggestion._highlightResult.category.name.value + '</span>';
-        }
-    }
-});
-</script>
+<%= render 'shared/algolia_search' %>
 <% end %>

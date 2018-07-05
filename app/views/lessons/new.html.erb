@@ -34,6 +34,7 @@
             <%= f.hidden_field :user_id, value: current_user.id %>
           <% end %>
           <div class="submit-div-stage">
+            <input type="hidden" name="locale" value="<%= I18n.locale%>">
             <%= f.submit t(:course_request), class: "btn btn-primary stage-btn" %>
           </div>
         <% end %>
@@ -57,7 +58,7 @@
       <div class="stage-mobile">
         <%= facebook_share_id("facebooksharemobile") %>
         <%= simple_form_for @lesson do |f| %>
-          <%= f.input :student, collection: ENV['MINBOOKING'].to_i..ENV['CAPACITY'].to_i, label: "Nombre de participants", selected: ENV['MINBOOKING'].to_i %>
+          <%= f.input :student, collection: ENV['MINBOOKING'].to_i..ENV['CAPACITY'].to_i, selected: ENV['MINBOOKING'].to_i %>
           <label class="control-label select required" for="lesson_student"><abbr title="required">*</abbr> <%=t(:first_day)%></label>
           <div class="form-group">
             <div class='input-group date' id='datetimepicker2'>
@@ -72,7 +73,8 @@
             <%= f.hidden_field :user_id, value: current_user.id %>
           <% end %>
           <div class="submit-div-stage">
-            <%= f.submit "demander une réservation", class: "btn btn-primary stage-btn" %>
+            <input type="hidden" name="locale" value="<%= I18n.locale%>">
+            <%= f.submit t(:course_request), class: "btn btn-primary stage-btn" %>
           </div>
         <% end %>
         <div class="wrapper">
