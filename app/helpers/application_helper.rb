@@ -20,7 +20,7 @@ module ApplicationHelper
     @orientation = orientation
     if params[:controller] == "articles" && params[:action] == "new"
       @article = Article.new
-    else
+    elsif params[:action] != "create"
       @article = retrieve_article(article_name) || Article.new
     end
     instance_variable_set "@#{variable}".to_sym, Redcarpet::Markdown.new(Redcarpet::Render::HTML, extensions = {}).render(@article.content || "")

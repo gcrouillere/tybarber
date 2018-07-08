@@ -15,8 +15,12 @@ class ArticlesController < ApplicationController
   end
 
   def create
-    @article = Article.create(article_params)
-    redirection_for_comment_and_articles
+    @article = Article.new(article_params)
+    if @article.save
+      redirection_for_comment_and_articles
+    else
+      render :new
+    end
   end
 
   def update
