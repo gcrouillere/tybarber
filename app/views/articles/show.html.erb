@@ -2,7 +2,7 @@
   <%= sanitize(truncate(@article.content.gsub("\r","").gsub("\n","").gsub("#",""), length: 200)) %>
 <% end %>
 <% content_for(:title_tag) do %>
-  Le blog de Mme Toutlemonde. <%= @article.title %>
+  <%= t(:blog_main_title, name: "#{ENV['FIRSTNAME'].upcase} #{ENV['LASTNAME'].upcase}")%>. <%= @article.title %>
 <% end %>
 <% content_for(:meta_image) do %>
   <%= cl_image_path @article.article_main_photo.path if  @article.article_main_photo %>
@@ -56,18 +56,18 @@
         <div class="commentsbloc">
           <% if user_signed_in? %>
             <div class="article-comments">
-              <h2>Ecrivez un commentaire sur cet article : </h2>
+              <h2><%= t(:comment_article)%></h2>
               <%= render 'articles/form' %>
             </div>
           <% else %>
             <%= link_to new_user_session_path, class: "connection-temoignage" do %>
-              <i class="fa fa-arrow-right"></i> Connectez-vous pour écrire un commentaire
+              <i class="fa fa-arrow-right"></i> <%=t(:connect_to_comment)%>
             <% end %>
           <% end %>
 
           <div class="article-comments-list">
             <% if @comments.any? %>
-              <h2>Commentaires : </h2>
+              <h2><%=t(:comment, count:@comments.size ) %> : </h2>
               <% @comments.each do |comment| %>
                   <%= render 'articles/comment_show', comment: comment %>
               <% end %>
@@ -81,6 +81,7 @@
   </div>
 </div>
 <% content_for(:after_js) do %>
+<% article_image_path = @article.article_main_photo ? @article.article_main_photo.path : "" %>
 <script type="application/ld+json">
 {
   "@context": "http://schema.org",
@@ -90,7 +91,7 @@
     "@id": "<%=request.original_url%>"
   },
   "headline": "<%= @article.title %>",
-  "image": ["<%= cl_image_path @article.article_main_photo.path %>"],
+  "image": ["<%= cl_image_path article_image_path %>"],
   "datePublished": "<%= @article.created_at %>",
   "dateModified": "<%= @article.updated_at %>",
   "author": {

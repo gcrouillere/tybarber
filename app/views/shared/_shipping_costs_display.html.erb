@@ -29,7 +29,7 @@
           value = total * (1 - parseFloat(discount))
           value = (Math.round(value * 100)/100).toFixed(2)
           $('.cost-details, .cost-details-mobile').attr("port-cost", 0)
-          $('.total_amount').text('Montant total: '+ String(value).replace(".", ",") + " €")
+          $('.total_amount').text(totalAmountPerLocale() + String(value).replace(".", ",") + " €")
         }
       });
 
@@ -47,6 +47,22 @@
       updatePriceWithPromoCode(urlRoot, url_params)
     });
 
+    function totalAmountPerLocale() {
+      if (window.location.href.includes("=en")) {
+        return "Total amount: "
+      } else {
+        return "Montant total : "
+      }
+    }
+
+    function savingPerLocale() {
+      if (window.location.href.includes("=en")) {
+        return " % on total amount"
+      } else {
+        return " % sur le montant total"
+      }
+    }
+
     function updateDOMWithShippingData(urlRoot, url_params, port_cost_exsits) {
       fetch(urlRoot + "/api/v1/shipping_categories/show" + url_params).then(response_api => response_api.json()).then((data_api) => {
           if (port_cost_exsits) {
@@ -59,7 +75,7 @@
           value = (total * 100 + data_api.price_cents) / 100 * (1 - parseFloat(discount))
           value = (Math.round(value * 100)/100).toFixed(2)
           $('.total_amount').each(function() {
-            $(this).text('Montant total: '+ String(value).replace(".", ",") + " €")
+            $(this).text(totalAmountPerLocale() + String(value).replace(".", ",") + " €")
           })
       });
     }
@@ -70,12 +86,12 @@
         if (data_api.code != "unkown") {
           value = (total + port) * (1 - data_api.percentage)
           value = (Math.round(value * 100)/100).toFixed(2)
-          $('.total_amount').text('Montant total: '+ String(value).replace(".", ",") + " €")
-          $('.promo-detail').html((data_api.percentage * 100) + " % sur le montant total")
+          $('.total_amount').text(totalAmountPerLocale() + String(value).replace(".", ",") + " €")
+          $('.promo-detail').html((data_api.percentage * 100) + savingPerLocale())
           $('.cost-details, .cost-details-mobile').attr("code-check", data_api.percentage)
         } else {
           value = (total + port)
-          $('.total_amount').text('Montant total: '+ String(value).replace(".", ",") + " €")
+          $('.total_amount').text(totalAmountPerLocale() + String(value).replace(".", ",") + " €")
           $('.promo-detail').html("")
           $('.cost-details, .cost-details-mobile').attr("code-check", 0)
         }

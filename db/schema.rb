@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_06_25_132006) do
+ActiveRecord::Schema.define(version: 2018_07_05_114940) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -31,11 +31,10 @@ ActiveRecord::Schema.define(version: 2018_06_25_132006) do
 
   create_table "articles", id: :serial, force: :cascade do |t|
     t.string "name", null: false
-    t.text "content", null: false
+    t.text "content"
     t.integer "user_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.string "page"
     t.string "title"
     t.index ["user_id"], name: "index_articles_on_user_id"
   end
@@ -85,19 +84,14 @@ ActiveRecord::Schema.define(version: 2018_06_25_132006) do
   end
 
   create_table "categories", id: :serial, force: :cascade do |t|
-    t.string "name", null: false
+    t.string "name"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
 
-  create_table "category_connections", id: false, force: :cascade do |t|
-    t.integer "category_a_id", null: false
-    t.integer "category_b_id", null: false
-  end
-
   create_table "ceramiques", id: :serial, force: :cascade do |t|
-    t.string "name", null: false
-    t.text "description", null: false
+    t.string "name"
+    t.text "description"
     t.integer "stock", null: false
     t.integer "category_id"
     t.datetime "created_at", null: false
@@ -106,7 +100,6 @@ ActiveRecord::Schema.define(version: 2018_06_25_132006) do
     t.string "slug"
     t.integer "weight"
     t.integer "offer_id"
-    t.integer "position"
     t.index ["category_id"], name: "index_ceramiques_on_category_id"
     t.index ["offer_id"], name: "index_ceramiques_on_offer_id"
   end
@@ -132,6 +125,31 @@ ActiveRecord::Schema.define(version: 2018_06_25_132006) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["user_id"], name: "index_lessons_on_user_id"
+  end
+
+  create_table "mobility_string_translations", force: :cascade do |t|
+    t.string "locale", null: false
+    t.string "key", null: false
+    t.string "value"
+    t.integer "translatable_id", null: false
+    t.string "translatable_type", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["translatable_id", "translatable_type", "key"], name: "index_mobility_string_translations_on_translatable_attribute"
+    t.index ["translatable_id", "translatable_type", "locale", "key"], name: "index_mobility_string_translations_on_keys", unique: true
+    t.index ["translatable_type", "key", "value", "locale"], name: "index_mobility_string_translations_on_query_keys"
+  end
+
+  create_table "mobility_text_translations", force: :cascade do |t|
+    t.string "locale", null: false
+    t.string "key", null: false
+    t.text "value"
+    t.integer "translatable_id", null: false
+    t.string "translatable_type", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["translatable_id", "translatable_type", "key"], name: "index_mobility_text_translations_on_translatable_attribute"
+    t.index ["translatable_id", "translatable_type", "locale", "key"], name: "index_mobility_text_translations_on_keys", unique: true
   end
 
   create_table "offers", id: :serial, force: :cascade do |t|

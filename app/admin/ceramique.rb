@@ -20,17 +20,17 @@ ActiveAdmin.register Ceramique, as: 'Produits' do
   end
 
   form do |f|
-  f.inputs "" do
-    f.input :name
-    f.input :description
-    f.input :stock
-    f.input :weight, :hint => "Poids en grammes"
-    f.input :category
-    f.input :price_cents, :hint => "Prix en centimes d'euros. Ex: entrez 1200 pour un prix de 12 €"
-    f.input :photos, :as => :formtastic_attachinary, :hint => "Sélectionnez les photos du produit. Maintenez Ctrl appuyé pour en sélectionner plusieurs."
+    f.inputs "" do
+      f.input :name
+      f.input :description
+      f.input :stock
+      f.input :weight, :hint => "Poids en grammes"
+      f.input :category
+      f.input :price_cents, :hint => "Prix en centimes d'euros. Ex: entrez 1200 pour un prix de 12 €"
+      f.input :photos, :as => :formtastic_attachinary, :hint => "Sélectionnez les photos du produit. Maintenez Ctrl appuyé pour en sélectionner plusieurs."
+    end
+    f.actions
   end
-  f.actions
- end
 
 show do |ceramique|
   attributes_table do

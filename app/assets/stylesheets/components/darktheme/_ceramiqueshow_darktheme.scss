@@ -186,39 +186,6 @@
   }
 
 // MOBILE
-  .head {
-    .image-xs-sm {
-      margin-left: 10px;
-      margin-right: 10px;
-      position: relative;
-      img {
-        border-radius: $project-border-radius;
-        width: 100%;
-      }
-      .social-buttons {
-        position: absolute;
-        top: 4px;
-        right: 9px;
-        font-size: 20px;
-        .fa-facebook-square {
-          color: white;
-        }
-        .fa-pinterest-square {
-          color: white;
-          cursor: pointer;
-        }
-        .fa-twitter-square{
-          color: white;
-        }
-      }
-    }
-    h1 {
-      color: white;
-      margin-left: 15px;
-      font-size:$font-size-h3;
-      margin: 10px 0px 20px 15px;
-    }
-  }
   .other-imgs.other-mobile-darktheme {
     margin-top: 10px;
     margin-bottom: 40px;
@@ -287,7 +254,7 @@
           color: white;
           select {
             border: 1px solid white;
-            background: black;
+            background: #171717;
           }
         }
       }

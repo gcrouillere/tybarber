@@ -1,8 +1,8 @@
 <% content_for(:description) do %>
-  Vendez vos produits en ligne ! Site de e-commerce configurable. Créez votre compte et visualisez votre futur site de vente en ligne de vos produits.
+  <%=t(:home_description)%>
 <% end %>
 <% content_for(:title_tag) do %>
-  Vente de <%=ENV['MODEL']%> - <%=ENV['FIRSTNAME']%> <%=ENV['LASTNAME'] %>
+  <%=t(:home_title)%>
 <% end %>
 
 <%= render 'shared/home_pics' %>
@@ -21,9 +21,9 @@
   <div class="hidden-xs">
     <div class="banner">
       <div class="banner-content">
-        <h1><%= ENV['MODEL'].capitalize%></h1>
-        <p><%= "#{ENV['FIRSTNAME'].capitalize} #{ENV['LASTNAME'].capitalize}" %></p>
-        <%= link_to "Voir les #{ENV['MODEL']}", ceramiques_path, class: "btn btn-primary btn-lg btn-home" %>
+        <h1><%= t(:home_h1)%></h1>
+        <p><%= t(:home_teaser)%></p>
+        <%= link_to t(:home_button), ceramiques_path, class: "btn btn-primary btn-lg btn-home" %>
       </div>
         <%= photo_update('productphoto', 30, '', '', 30, '.homepic', "Mise à jour photo d'accueil")%>
         <%= photo_update('productphotomobile', 30, '', '', 412, '.homepicmobile', "Mise à jour photo d'accueil pour mobiles")%>
@@ -35,9 +35,9 @@
   <div class="hidden-sm hidden-md hidden-lg">
     <div class="banner-xs">
       <div class="banner-content-xs">
-        <h1><%= ENV['MODEL'].capitalize%></h1>
-        <p><%= "#{ENV['FIRSTNAME'].capitalize} #{ENV['LASTNAME'].capitalize}" %></p>
-        <%= link_to "Voir les #{ENV['MODEL']}", ceramiques_path, class: "btn btn-primary btn-home" %>
+        <h1><%= t(:home_h1)%></h1>
+        <p><%= t(:home_teaser)%></p>
+        <%= link_to t(:home_button), ceramiques_path, class: "btn btn-primary btn-home" %>
       </div>
     </div>
   </div>
@@ -84,7 +84,7 @@
     "@type": "ArtGallery",
     "image": ["<%=request.original_url%><%= image_path ENV['HOMEPIC']%>"],
     "@id": "<%=request.original_url%>",
-    "name": "Les <%="#{ENV['MODEL']} de #{ENV['FIRSTNAME'].capitalize} #{ENV['LASTNAME'].capitalize}"%>",
+    "name": "<%=t(:les_produits_de_machin, product:"#{ENV['MODEL']}", name: "#{ENV['FIRSTNAME'].capitalize} #{ENV['LASTNAME'].capitalize}")%>",
     "address": {
       "@type": "PostalAddress",
       "streetAddress": "12 rue de la paix",

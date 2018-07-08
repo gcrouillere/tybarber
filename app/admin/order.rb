@@ -23,7 +23,7 @@ ActiveAdmin.register Order do
       order.take_away ? "0 € (à retirer en magasin)" : "#{order.port} €"
     end
     column "Total TTC + port" do |order|
-      "#{order.amount + order.port} €"
+      order.take_away ? "#{order.amount} €" : "#{order.amount + order.port} €"
     end
     actions do |order|
       item "Facture PDF", admin_order_path(order, :format => 'pdf'), class: "member_link"
