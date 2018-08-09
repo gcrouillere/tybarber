@@ -19,7 +19,7 @@ class Ceramique < ApplicationRecord
   belongs_to :category
   belongs_to :offer, required: false
   has_attachments :photos, maximum: 4, dependent: :destroy
-  has_many :basketlines, dependent: :destroy
+  has_many :basketlines
 
   monetize :price_cents
 

@@ -34,9 +34,11 @@ class PaymentsController < ApplicationController
         currency:     @order.amount.currency
       )
       @order.update(payment: charge.to_json, state: 'paid', method: "stripe")
+      document_order_basketlines
     elsif params[:method] == "paypal"
       if params[:status] == "success"
         @order.update(state: 'paid', method: "paypal")
+        document_order_basketlines
       end
     end
 
@@ -82,6 +84,19 @@ class PaymentsController < ApplicationController
       params[:order] ? @promo = Promo.where(code: params[:order][:promo]).first : @promo = nil
       if @promo
         @order.update(amount: @order.amount * (1 - @promo.percentage), port: @order.port * (1 - @promo.percentage), promo: @promo)
+      end
+    end
+  end
+
+  def document_order_basketlines
+    @order.basketlines.each do |basketline|
+      if basketline.ceramique
+        basketline.ceramique.offer ? ceramique_discount = basketline.ceramique.offer.discount : ceramique_discount = 0
+        basketline.update(
+          ceramique_name: basketline.ceramique.name,
+          ceramique_qty: basketline.quantity,
+          basketline_price: ((basketline.ceramique.price * (1 - ceramique_discount)) * basketline.quantity)
+          )
       end
     end
   end

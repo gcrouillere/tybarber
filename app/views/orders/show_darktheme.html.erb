@@ -13,7 +13,8 @@
       <% @order.basketlines.each do |basketline| %>
         <div class="basket-item-darktheme">
           <%= cl_image_tag basketline.ceramique.photos[0].path, class: "basket-article-img" %>
-          <h4><%= basketline.ceramique.name.capitalize %></h4>
+          <% basketline.ceramique.name.size > 38 ? etc = " ..." : etc = "" %>
+          <h4><%= basketline.ceramique.name[0..37].capitalize + etc %></h4>
           <h5><%=t(:quantity)%>: <%= basketline.quantity %></h5>
           <% basketline.ceramique.offer ? discount =  basketline.ceramique.offer.discount : discount = 0 %>
           <h5><%=t(:price)%>: <%= humanized_money(basketline.ceramique.price * (1 - discount) * basketline.quantity) %> <%= currency_symbol %></h5>
@@ -59,7 +60,8 @@
         <div class="basket-item mobile-darktheme">
           <%= cl_image_tag basketline.ceramique.photos[0].path, class: "basket-article-img" %>
           <div class="order-detail">
-            <h4><%= basketline.ceramique.name.capitalize %></h4>
+            <% basketline.ceramique.name.size > 38 ? etc = " ..." : etc = "" %>
+            <h4><%= basketline.ceramique.name[0..37].capitalize + etc %></h4>
             <div class="detail-text">
               <h5><%=t(:quantity)%>: <%= basketline.quantity %></h5>
               <% basketline.ceramique.offer ? discount =  basketline.ceramique.offer.discount : discount = 0 %>

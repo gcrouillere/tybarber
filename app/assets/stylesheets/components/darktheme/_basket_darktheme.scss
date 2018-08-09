@@ -13,7 +13,7 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
-  background: #171717;
+  background: #242424;
   padding: $padding-small;
   border-radius: $project-border-radius;
   border-bottom: 1px solid $primary-opacified;
@@ -103,7 +103,7 @@
 .basket-item.mobile-darktheme {
   margin: 0px 10px 10px 10px;
   justify-content: space-around;
-  background: #171717;
+  background: #242424;
   border-bottom: 1px solid $primary-opacified;
     &:nth-child(1) {
     border-top: 1px solid $primary-opacified;

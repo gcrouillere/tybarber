@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_07_05_114940) do
+ActiveRecord::Schema.define(version: 2018_08_08_121232) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -60,6 +60,9 @@ ActiveRecord::Schema.define(version: 2018_07_05_114940) do
     t.integer "order_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string "ceramique_name"
+    t.integer "ceramique_qty"
+    t.integer "basketline_price_cents", default: 0, null: false
     t.index ["ceramique_id"], name: "index_basketlines_on_ceramique_id"
     t.index ["order_id"], name: "index_basketlines_on_order_id"
   end
@@ -100,6 +103,7 @@ ActiveRecord::Schema.define(version: 2018_07_05_114940) do
     t.string "slug"
     t.integer "weight"
     t.integer "offer_id"
+    t.integer "position"
     t.index ["category_id"], name: "index_ceramiques_on_category_id"
     t.index ["offer_id"], name: "index_ceramiques_on_offer_id"
   end
