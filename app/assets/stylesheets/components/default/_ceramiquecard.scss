@@ -178,6 +178,8 @@
     margin: 0;
     box-shadow: 1px 1px 1px $primary, 1px 1px 7px rgba(0, 0, 0, 0.1);
     .prix-index-mobile {
+      position: relative;
+      top: -2px;
       font-size: $font-size-h4;
       text-shadow: 1px 1px $primary;
       margin: 0;
