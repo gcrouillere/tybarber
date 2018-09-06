@@ -147,11 +147,10 @@
     text-align: center;
     border-radius: 27px;
     margin: 0;
-    box-shadow: 1px 1px 1px $primary, 1px 1px 7px rgba(0, 0, 0, 0.1);
+    box-shadow: 1px 1px 0px $primary, 2px 2px 5px rgba(0, 0, 0, 0.2);
     .prix-index-mobile {
       color: black;
       font-size: $font-size-h4;
-      text-shadow: 1px 1px $primary;
       margin: 0;
     }
     .previous-price-mobile {
@@ -176,12 +175,11 @@
     text-align: center;
     border-radius: 27px;
     margin: 0;
-    box-shadow: 1px 1px 1px $primary, 1px 1px 7px rgba(0, 0, 0, 0.1);
+    box-shadow: 1px 1px 0px $primary, 2px 2px 5px rgba(0, 0, 0, 0.2);
     .prix-index-mobile {
       position: relative;
       top: -2px;
       font-size: $font-size-h4;
-      text-shadow: 1px 1px $primary;
       margin: 0;
       color: black;
     }
@@ -243,9 +241,13 @@
 }
 
 .no-ceramique-list {
-  margin-top: 200px;
+  min-height: calc(100vh - 300px);
+  display: flex;
+  justify-content: center;
+  align-items: center;
   .no-ceramique {
     text-align: center;
+    margin: auto
   }
 }
 

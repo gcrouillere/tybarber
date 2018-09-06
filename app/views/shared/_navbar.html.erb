@@ -17,6 +17,9 @@
             <span><i class="fa fa-unlock-alt"></i> Administration</span>
           <% end %>
         <% end %>
+        <%= link_to root_path do %>
+          <span><%=t(:home_page)%></span>
+        <% end %>
         <%= link_to ceramiques_path do %>
           <span><i class="fa fa-bars"></i> <%= t(:shop_link) %></span>
         <% end %>
@@ -62,6 +65,9 @@
   <% else %>
     <div class="navbar-item">
       <div class="nav-bar-list">
+        <%= link_to root_path do %>
+          <span><%=t(:home_page)%></span>
+        <% end %>
         <%= link_to ceramiques_path do %>
           <span><i class="fa fa-bars"></i> <%= t(:shop_link) %></span>
         <% end %>
