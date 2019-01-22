@@ -15,7 +15,8 @@ class Amountcalculation
     end
     if user
       if user.country == "FR" && total_weight > 0
-        fr_shipping_cost(amount_ceramique, total_weight)
+        shipping_cost = ShippingCategory.where(alpha2: "FR").where("weight >= ?", total_weight).min.price_cents.to_f / 100
+        {total: amount_ceramique, port: shipping_cost.to_money, weight: total_weight}
       elsif total_weight > 0
         shipping_cost = ShippingCategory.where(alpha2: user.country).where("weight >= ?", total_weight).min.price_cents.to_f / 100
         {total: amount_ceramique, port: shipping_cost.to_money, weight: total_weight}
@@ -24,13 +25,15 @@ class Amountcalculation
       end
     else
       if total_weight > 0
-        fr_shipping_cost(amount_ceramique, total_weight)
+        shipping_cost = ShippingCategory.where(alpha2: "FR").where("weight >= ?", total_weight).min.price_cents.to_f / 100
+        {total: amount_ceramique, port: shipping_cost.to_money, weight: total_weight}
       else
         {total: 0, port: 0, weight: 0}
       end
     end
   end
 
+  # API Deprecated by La Poste
   def fr_shipping_cost(amount_ceramique, total_weight)
     tarif_colis = HTTParty.get(
       "https://api.laposte.fr/tarifenvoi/v1?type=colis&poids=#{total_weight}",
@@ -41,3 +44,5 @@ class Amountcalculation
   end
 
 end
+
+
