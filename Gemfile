@@ -1,5 +1,5 @@
 source 'https://rubygems.org'
-ruby '2.3.5'
+ruby '2.4.4'
 
 gem 'devise'
 gem 'figaro'
@@ -46,7 +46,7 @@ gem 'elevatezoom-rails'
 gem "letter_opener", group: :development
 
 #admin
-gem 'activeadmin', '~> 1.3'
+gem 'activeadmin', '~> 1.3.1'
 gem 'inherited_resources', github: 'activeadmin/inherited_resources'
 gem 'activeadmin-index_as_calendar', github: 'bys-control/activeadmin-index_as_calendar'
 
