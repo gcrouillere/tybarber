@@ -31,6 +31,14 @@ class CeramiquesController < ApplicationController
     render "show_#{@active_theme.name}"
   end
 
+  def update_positions_after_swap_in_admin
+    params[:finalPositions].gsub("]","").gsub("[", "").split(",").map(&:to_i).each_with_index do |position, index|
+      Ceramique.find(position).update(position: index + params[:startingPosition].to_i)
+    end
+    @ceramiques = Ceramique.all.order(position: :asc).order(updated_at: :desc)
+    render json: @ceramiques
+  end
+
   private
 
   def clean_orders

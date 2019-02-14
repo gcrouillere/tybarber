@@ -51,4 +51,7 @@ Rails.application.routes.draw do
     end
   end
 
+  #Position management through JS
+  get '/ceramiques/update_positions_after_swap_in_admin', to: "ceramiques#update_positions_after_swap_in_admin"
+
 end

@@ -2,6 +2,7 @@ ActiveAdmin.register Ceramique, as: 'Produits' do
   permit_params :name, :description, :stock, :weight, :position, :price_cents, :category_id, photos: []
   menu priority: 1
   config.filters = false
+  config.sort_order = 'position_asc'
 
   index do
     column :id
@@ -121,6 +122,8 @@ show do |ceramique|
       if params[:ceramique][:position].present?
         products_to_manage = Ceramique.where("position IS NOT NULL AND position >= ?", params[:ceramique][:position]).where.not(id: resource.id)
         products_to_manage.each {|product| product.update(position: product.position + 1)}
+        new_ceramiques_order = Ceramique.all.order(position: :asc).order(updated_at: :desc)
+        Ceramique.all.order(position: :asc).order(updated_at: :desc).each{|ceramique| ceramique.update(position: new_ceramiques_order.index(ceramique) + 1)}
       end
     end
 
