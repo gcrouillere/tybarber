@@ -36,3 +36,32 @@ a.fc-day-grid-event {
     text-align: center;
   }
 }
+
+// DRAG END ANIMATION
+.even.drag-end-animation td {
+  animation: popeven 2s;
+}
+
+.odd.drag-end-animation td {
+  animation: popodd 2s;
+}
+
+@keyframes popeven {
+  from {
+    background: linear-gradient(180deg, #dce9dd, #ccdfcd);
+  }
+
+  to {
+    background: #f4f5f5;
+  }
+}
+
+@keyframes popodd {
+  from {
+    background: linear-gradient(180deg, #dce9dd, #ccdfcd);
+  }
+
+  to {
+    background: #fff;
+  }
+}

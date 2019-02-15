@@ -38,6 +38,7 @@ $(document).ready(function() {
     product_row.addEventListener('dragstart', onDragStart, false);
     product_row.addEventListener('dragover', onDragOver, false);
     product_row.addEventListener('drop', onDrop, false);
+    product_row.addEventListener('drop', onDragEnd, false);
   });
 });
 
@@ -80,7 +81,6 @@ $(document).ready(function() {
       document.querySelectorAll('#index_table_produits tbody tr td.col-position').forEach((x, index) => {
        x.innerHTML = index + parseInt(initialPositions[0])
       });
-
       updatePositionsInDB(initialPositions[0]);
     }
     return false;
@@ -91,6 +91,7 @@ $(document).ready(function() {
     productRows = Array.from(document.querySelectorAll('#index_table_produits tbody tr'));
     draggedProduct = event.srcElement;
     draggedIndex = initialIDSorder.indexOf(draggedProduct.querySelector('td.col-id').innerHTML);
+    document.querySelectorAll('#index_table_produits tbody tr').forEach(x => x.classList.remove("drag-end-animation"));
     event.dataTransfer.setData('text', draggedProduct);
   }
 
@@ -107,6 +108,10 @@ $(document).ready(function() {
     }).fail((data) => {
       console.log("fail")
     })
+  }
+
+  onDragEnd = (event) => {
+    event.currentTarget.classList.add("drag-end-animation");
   }
 
   function checkPositionUpdateReference() {
