@@ -8,16 +8,16 @@ ActiveAdmin.register Ceramique, as: 'Produits' do
     column :id
     column :position
     column :name
-    column :description
+    column "Description" do |ceramique|
+      ceramique.description.size > 200 ? etc = " ..." : etc = ""
+      ceramique.description[0..200] + etc
+    end
     column :stock
     column :weight
     column "Catégorie" do |ceramique|
       ceramique.category.name
     end
     column :price_cents
-    column "Nb de ventes - CA", :sortable => 'ceramique.basketlines.sum(:quantity)* ceramique.price' do |ceramique|
-      "#{ceramique.basketlines.joins(:order).where.not("orders.state = ?", "lost").sum(:quantity)} - #{ceramique.basketlines.joins(:order).where.not("orders.state = ?", "lost").sum(:quantity) * ceramique.price} €"
-    end
     actions
   end
 
