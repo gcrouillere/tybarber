@@ -107,6 +107,8 @@ updatePositionsInDB = (startingPosition) => {
 
 onDragEnd = (event) => {
   event.currentTarget.classList.add("drag-end-animation");
+  clearAnimations("fail-update");
+  clearAnimations("sucess-update");
 }
 
 function checkPositionUpdateReference() {
@@ -126,6 +128,7 @@ clickOnEditableCell = (event) => {
   cell.parentElement.setAttribute('draggable', 'false');
   clearAnimations("fail-update");
   clearAnimations("sucess-update");
+  clearAnimations("drag-end-animation");
   var urlRoot = window.location.origin;
 
   if (Array.from(cell.classList).indexOf("editing") == -1 && cell.nodeName == "TD") {
@@ -135,7 +138,7 @@ clickOnEditableCell = (event) => {
     fullDescriptionOfCorrespondingRow = cell.parentElement.querySelector('.hidden-desc').innerHTML
     trimedDescription = fullDescriptionOfCorrespondingRow.substr(fullDescriptionOfCorrespondingRow.match(/\S/).index, fullDescriptionOfCorrespondingRow.length)
     updatingField = cell.classList[1].split("-")[1];
-    productID = cell.parentElement.id.split("_")[1]
+    productID = cell.parentElement.querySelector('.col-id').innerText
     value = updatingField.match(/description/) ? trimedDescription : cell.innerText;
 
     //Build input
@@ -166,7 +169,10 @@ clickOnEditableCell = (event) => {
           dataType: "JSON",
           data: {ceramique: {[updatingField]: newValue}}
         }).done((data) => {
-          relatedCell.classList.add("sucess-update")
+          console.log("done");
+          relatedCell.classList.remove("sucess-update");
+          void relatedCell.offsetWidth; // reading the property requires a recalc
+          relatedCell.classList.add("sucess-update");
           if (updatingField == "description") relatedRow.querySelector(".hidden-desc").innerHTML = newValue
           OnloadFunction();
         }).fail((data) => {
