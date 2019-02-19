@@ -33,10 +33,11 @@ class CeramiquesController < ApplicationController
 
   def update
     @ceramique = Ceramique.find(params[:id])
+    @fieldvalue =  @ceramique.send(get_editing_field)
     if @ceramique.update(ceramique_params)
       render json: @ceramique
     else
-      render json: {id: @ceramique.id, fieldvalue: params, errors: @ceramique.errors}, status: :unprocessable_entity
+      render json: {id: @ceramique.id, fieldvalue: @fieldvalue, errors: @ceramique.errors}, status: :unprocessable_entity
     end
   end
 
@@ -88,6 +89,10 @@ class CeramiquesController < ApplicationController
 
   def ceramique_params
     params.require(:ceramique).permit(:name, :stock, :weight, :price_cents, :description)
+  end
+
+  def get_editing_field
+    params.require(:ceramique).permit(:name, :stock, :weight, :price_cents, :description).to_h.map {|k, v| k }.join
   end
 end
 

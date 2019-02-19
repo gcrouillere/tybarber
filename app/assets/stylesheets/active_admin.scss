@@ -38,30 +38,32 @@ a.fc-day-grid-event {
 }
 
 // DRAG END ANIMATION
-.even.drag-end-animation td {
-  animation: popeven 2s;
+.drag-end-animation td {
+  animation: pop 2s;
 }
 
-.odd.drag-end-animation td {
-  animation: popodd 2s;
+.sucess-update {
+  animation: sucessupdate 3s;
 }
 
-@keyframes popeven {
+.fail-update {
+  animation: failupdate 3s;
+}
+
+@keyframes pop {
   from {
     background: linear-gradient(180deg, #dce9dd, #ccdfcd);
   }
+}
 
-  to {
-    background: #f4f5f5;
+@keyframes failupdate {
+  from {
+    background: linear-gradient(180deg, #e9dcdc, #dfcccc);
   }
 }
 
-@keyframes popodd {
+@keyframes sucessupdate {
   from {
     background: linear-gradient(180deg, #dce9dd, #ccdfcd);
-  }
-
-  to {
-    background: #fff;
   }
 }

@@ -18,6 +18,9 @@ ActiveAdmin.register Ceramique, as: 'Produits' do
       ceramique.category.name
     end
     column :price_cents
+    column "HIDDEN DESCRIPTION", class: "hidden-desc" do |ceramique|
+      ceramique.description
+    end
     actions
   end
 

@@ -124,33 +124,39 @@ function checkPositionUpdateReference() {
 clickOnEditableCell = (event) => {
   cell = event.target
   cell.parentElement.setAttribute('draggable', 'false');
-  initialValue = cell.innerText
-  updatingField = cell.classList[1].split("-")[1];
-  productID = cell.parentElement.id.split("_")[1]
+  clearAnimations("fail-update");
+  clearAnimations("sucess-update");
   var urlRoot = window.location.origin;
 
-  // Get value with input
-  if (Array.from(cell.classList).indexOf("editing") === -1) {
-    cell.classList.add("editing");
-    value = cell.innerText;
-    cell.innerHTML = `<input type=${updatingField.match(/name|description/) ? "text" : "number"} name="${updatingField}" value="${value}" class="editingInput"/>`;
+  if (Array.from(cell.classList).indexOf("editing") == -1 && cell.nodeName == "TD") {
 
-    // Submit on blur
+    // Get data to build input
+    initialValue = cell.innerText
+    fullDescriptionOfCorrespondingRow = cell.parentElement.querySelector('.hidden-desc').innerHTML
+    trimedDescription = fullDescriptionOfCorrespondingRow.substr(fullDescriptionOfCorrespondingRow.match(/\S/).index, fullDescriptionOfCorrespondingRow.length)
+    updatingField = cell.classList[1].split("-")[1];
+    productID = cell.parentElement.id.split("_")[1]
+    value = updatingField.match(/description/) ? trimedDescription : cell.innerText;
+
+    //Build input
+    cell.classList.add("editing");
+    cell.innerHTML = inputConstruction(updatingField, value)
     input = document.querySelector(".editingInput")
     input.focus();
-    input.addEventListener('blur', function( event ) {
-    inputType = input.getAttribute('type')
 
-    relatedCell = this.parentElement;
-    relatedRow = this.parentElement.parentElement;
-    relatedCell.classList.remove('editing');
-    newValue = this.value;
+    // Submit on blur
+    input.addEventListener('blur', function(event) {
+
+      inputType = input.getAttribute('type')
+      relatedCell = this.parentElement;
+      relatedRow = this.parentElement.parentElement;
+      relatedCell.classList.remove('editing');
+      newValue = this.value;
 
       //VALIDATION
-      if (validateField(newValue, updatingField, inputType)) {
-
+      if (validateField(newValue, inputType)) {
         //DOM UPDATE
-        relatedCell.innerHTML = newValue;
+        relatedCell.innerHTML = newValue.length > 200 ? `${newValue.substr(0, 200)} ...` : newValue;
         relatedRow.setAttribute('draggable', 'true')
 
         // UPDATE DB
@@ -160,20 +166,33 @@ clickOnEditableCell = (event) => {
           dataType: "JSON",
           data: {ceramique: {[updatingField]: newValue}}
         }).done((data) => {
-          console.log("done");
+          relatedCell.classList.add("sucess-update")
+          if (updatingField == "description") relatedRow.querySelector(".hidden-desc").innerHTML = newValue
           OnloadFunction();
         }).fail((data) => {
-          console.log("fail")
-          debugger
+          relatedCell.classList.add("fail-update")
+          relatedCell.innerHTML = data.responseJSON.fieldvalue;
         })
       } else {
-        console.log('NOK')
-        relatedCell.innerHTML = initialValue;
+        // HIGHLIGHT ERROR
+        relatedCell.classList.add("fail-update")
+        relatedCell.innerHTML = initialValue
       }
     })
   }
 }
 
-validateField = (fieldValue, updatingField, inputType) => {
-  return updatingField !== "" && (inputType == "number" ? (fieldValue > 0 && fieldValue.isInteger) : true)
+validateField = (fieldValue, inputType) => {
+  return fieldValue !== "" && (inputType == "number" ? (fieldValue >= 0 && Number.isInteger(parseInt(fieldValue))) : true)
+}
+
+inputConstruction = (updatingField, value) => {
+  htmlTag = updatingField.match(/description/) ? "textarea" : "input";
+  type = updatingField.match(/name|description/) ? "text" : "number";
+  htmlTagClosure = updatingField.match(/description/) ? `${value}</textarea>` : "";
+  return `<${htmlTag} type=${type} name="${updatingField}" value="${value}" class="editingInput ${updatingField}"/>${htmlTagClosure}`
+}
+
+clearAnimations = (givenClass) => {
+  document.querySelectorAll(`.${givenClass}`).forEach(x => x.classList.remove(givenClass))
 }
