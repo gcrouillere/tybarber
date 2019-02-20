@@ -92,7 +92,7 @@
 }
 
 /*PRODUCT INDEX */
-.hidden-desc {
+.hidden-desc, .hidden-categories {
   visibility: hidden;
   position: absolute;
 }
