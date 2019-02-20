@@ -154,7 +154,7 @@ clickOnEditableCell = (event) => {
       relatedCell = this.parentElement;
       relatedRow = this.parentElement.parentElement;
       relatedCell.classList.remove('editing');
-      newValue = this.value;
+      newValue = updatingField == 'category' ? this.options[this.selectedIndex].innerHTML : this.value;
 
       //VALIDATION
       if (validateField(newValue, inputType)) {
