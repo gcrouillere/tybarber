@@ -139,7 +139,7 @@ clickOnEditableCell = (event) => {
     trimedDescription = fullDescriptionOfCorrespondingRow.substr(fullDescriptionOfCorrespondingRow.match(/\S/).index, fullDescriptionOfCorrespondingRow.length)
     updatingField = cell.classList[1].split("-")[1];
     productID = cell.parentElement.querySelector('.col-id').innerText
-    value = updatingField.match(/description/) ? trimedDescription : cell.innerText;
+    value = updatingField.match(/description/) ? trimedDescription.replace(/"/g, '&quot;') : cell.innerText.replace(/"/g, '&quot;');
 
     //Build input
     cell.classList.add("editing");
