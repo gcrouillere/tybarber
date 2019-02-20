@@ -50,6 +50,9 @@ onDragOver = (event) => {
 }
 
 onDrop = (event) => {
+  if(event.preventDefault) { event.preventDefault(); }
+  if(event.stopPropagation) { event.stopPropagation(); }
+
   if (checkPositionUpdateReference().bool) {
     window.alert(`Vous ne pouvez pas ordonner les produits par rapport au ${checkPositionUpdateReference().paramName}. Veuillez cliquer sur l'en tête de colonne "Position" 2 fois, de manière à afficher les produits dans l'ordre croissant.`)
     return;
