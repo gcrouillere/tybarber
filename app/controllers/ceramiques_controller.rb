@@ -88,11 +88,15 @@ class CeramiquesController < ApplicationController
   end
 
   def ceramique_params
-    params.require(:ceramique).permit(:name, :stock, :weight, :price_cents, :description)
+    if params[:ceramique][:category].present?
+      params.require(:ceramique).permit(:name, :stock, :weight, :price_cents, :description).merge(category_id: Category.i18n.where(name: params[:ceramique][:category]).first.id)
+    else
+      params.require(:ceramique).permit(:name, :stock, :weight, :price_cents, :description)
+    end
   end
 
   def get_editing_field
-    params.require(:ceramique).permit(:name, :stock, :weight, :price_cents, :description).to_h.map {|k, v| k }.join
+    params.require(:ceramique).permit(:name, :stock, :weight, :price_cents, :description, :category).to_h.map {|k, v| k }.join
   end
 end
 

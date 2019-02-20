@@ -28,7 +28,7 @@ function OnloadFunction() {
   });
 
   // PRODUCT FIELD UPDATE ON BLUR
-   var editableCells = Array.from(document.querySelectorAll("td.col.col-name, td.col.col-description, td.col.col-stock, td.col.col-weight,td.col.col-price_cents"));
+   var editableCells = Array.from(document.querySelectorAll("td.col.col-name, td.col.col-description, td.col.col-stock, td.col.col-weight,td.col.col-price_cents, td.col.col-category"));
 
   [].forEach.call(editableCells, function(editableCell){
     editableCell.addEventListener('click', clickOnEditableCell, false);
@@ -170,8 +170,6 @@ clickOnEditableCell = (event) => {
           data: {ceramique: {[updatingField]: newValue}}
         }).done((data) => {
           console.log("done");
-          relatedCell.classList.remove("sucess-update");
-          void relatedCell.offsetWidth; // reading the property requires a recalc
           relatedCell.classList.add("sucess-update");
           if (updatingField == "description") relatedRow.querySelector(".hidden-desc").innerHTML = newValue
           OnloadFunction();
@@ -193,10 +191,17 @@ validateField = (fieldValue, inputType) => {
 }
 
 inputConstruction = (updatingField, value) => {
-  htmlTag = updatingField.match(/description/) ? "textarea" : "input";
-  type = updatingField.match(/name|description/) ? "text" : "number";
-  htmlTagClosure = updatingField.match(/description/) ? `${value}</textarea>` : "";
-  return `<${htmlTag} type=${type} name="${updatingField}" value="${value}" class="editingInput ${updatingField}"/>${htmlTagClosure}`
+  if (updatingField != 'category') {
+    htmlTag = updatingField.match(/description/) ? "textarea" : "input";
+    type = updatingField.match(/name|description/) ? "text" : "number";
+    htmlTagClosure = updatingField.match(/description/) ? `${value}</textarea>` : "";
+    return `<${htmlTag} type=${type} name="${updatingField}" value="${value}" class="editingInput ${updatingField}"/>${htmlTagClosure}`
+  } else {
+    categories = document.querySelector(".hidden-categories").innerHTML.split('#')
+    return `<select class="editingInput ${updatingField}">${
+      categories.map(categorie =>  `<option value=${categorie}>${categorie}</option>`).join("")
+      }</select>`
+  }
 }
 
 clearAnimations = (givenClass) => {

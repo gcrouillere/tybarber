@@ -5,6 +5,7 @@ ActiveAdmin.register Ceramique, as: 'Produits' do
   config.sort_order = 'position_asc'
 
   index do
+    span Category.all.map{|c| c.name}.join("#"), class: "hidden-categories"
     column :id
     column :position
     column :name
@@ -14,7 +15,7 @@ ActiveAdmin.register Ceramique, as: 'Produits' do
     end
     column :stock
     column :weight
-    column "Catégorie" do |ceramique|
+    column "Catégorie", class: "col-category" do |ceramique|
       ceramique.category.name
     end
     column :price_cents
