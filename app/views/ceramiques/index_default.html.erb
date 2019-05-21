@@ -62,7 +62,7 @@
               <h3><%=t(:max_price)%></h3>
               <section class="range-slider">
                 <span class="rangeValues"></span>
-                <% max = (Ceramique.maximum(:price_cents) + 1 || 0)/ 100 %>
+                <% max = (Ceramique.maximum(:price_cents) || 0)/ 100 + 1 %>
                 <% min = (Ceramique.minimum(:price_cents) || 0)/ 100 %>
                 <input name="prix_min" value="<%= min %>" min="<%= min %>" max="<%= max %>" step="1" type="range">
                 <input name="prix_max" value="<%= max %>" min="<%= min %>" max="<%= max %>" step="1" type="range">
@@ -113,7 +113,7 @@
           <h3><%=t(:max_price)%></h3>
           <section class="range-slider">
             <span class="rangeValues"></span>
-            <% max = (Ceramique.maximum(:price_cents) + 1 || 0)/ 100 %>
+            <% max = (Ceramique.maximum(:price_cents) || 0)/ 100 + 1 %>
             <% min = (Ceramique.minimum(:price_cents) || 0)/ 100 %>
             <input name="prix_min" value="<%= min %>" min="<%= min %>" max="<%= max %>" step="1" type="range">
             <input name="prix_max" value="<%= max %>" min="<%= min %>" max="<%= max %>" step="1" type="range">
