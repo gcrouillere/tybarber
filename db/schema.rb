@@ -35,11 +35,8 @@ ActiveRecord::Schema.define(version: 2018_11_30_205624) do
     t.integer "user_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-<<<<<<< HEAD
     t.string "page"
-=======
     t.string "title"
->>>>>>> 30a87a19a3d831ce60d6aead3ba016c8051cfe20
     t.index ["user_id"], name: "index_articles_on_user_id"
   end
 
@@ -64,14 +61,11 @@ ActiveRecord::Schema.define(version: 2018_11_30_205624) do
     t.integer "order_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-<<<<<<< HEAD
     t.boolean "with_support"
-=======
     t.string "ceramique_name"
     t.integer "ceramique_qty"
     t.integer "basketline_price_cents", default: 0, null: false
     t.integer "ceramique_id_on_order"
->>>>>>> 30a87a19a3d831ce60d6aead3ba016c8051cfe20
     t.index ["ceramique_id"], name: "index_basketlines_on_ceramique_id"
     t.index ["order_id"], name: "index_basketlines_on_order_id"
   end
@@ -113,10 +107,7 @@ ActiveRecord::Schema.define(version: 2018_11_30_205624) do
     t.integer "weight"
     t.integer "offer_id"
     t.integer "position"
-<<<<<<< HEAD
     t.integer "support_price_cents", default: 0, null: false
-=======
->>>>>>> 30a87a19a3d831ce60d6aead3ba016c8051cfe20
     t.index ["category_id"], name: "index_ceramiques_on_category_id"
     t.index ["offer_id"], name: "index_ceramiques_on_offer_id"
   end
@@ -245,7 +236,7 @@ ActiveRecord::Schema.define(version: 2018_11_30_205624) do
     t.string "token"
     t.datetime "token_expiry"
     t.string "tracking"
-    t.string "country", default: "FR", null: false
+    t.string "country", default: "A mettre à jour", null: false
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end

@@ -34,7 +34,6 @@ ActiveAdmin.register Ceramique, as: 'Produits' do
       f.input :weight, :hint => "Poids en grammes"
       f.input :category
       f.input :price_cents, :hint => "Prix en centimes d'euros. Ex: entrez 1200 pour un prix de 12 €"
-      f.input :support_price_cents, :hint => "Prix du support en centimes d'euros. Entrez 0 si le support n'existe pas."
     end
     f.inputs "Images", class: 'product_images' do
       f.object.photos.each {|photo| img(src: cl_image_path(photo.path, :width=>250, :crop=>"scale"))} unless f.object.new_record?

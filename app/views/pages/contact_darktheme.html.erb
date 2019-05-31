@@ -109,22 +109,5 @@
         handler.getMap().setZoom(6);
       });
     });
-<<<<<<< HEAD
-   </script>
-  <script type="application/ld+json">
-  {
-    "@context": "http://schema.org",
-    "@type": "ArtGallery",
-    "name": "Objets d'art en Morta par Philippe Nerriere",
-    "description": "Online craft store",
-    "openingHours": "Mo-Fr 09:00-18:00",
-    "telephone": "<%= ENV['TELEPHONE']%>",
-    "url": "<%=request.original_url%>",
-    "image": "<%=request.original_url%><%= image_path ENV['HOMEPIC3']%>",
-    "address":"<%= ENV['ADDRESS'].gsub(/[+]/, ' ')%>",
-    "priceRange":"20€ à 800€"
-  }
-=======
->>>>>>> 30a87a19a3d831ce60d6aead3ba016c8051cfe20
   </script>
  <% end %>
