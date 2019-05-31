@@ -28,6 +28,10 @@
   border-radius: $project-border-radius;
   border: $card-border;
 
+  h4 {
+    font-size: 19px;
+  }
+
   .basket-article-img {
     width: 10%;
     height: 10%;
@@ -48,22 +52,65 @@
   margin-top: 35px;
   margin-bottom: 50px;
   .cost-details {
-    margin-right: 30px;
-  }
-  .shipping-cost {
-    display: flex;
-    select {
-      width: 150px;
-      margin: 0 10px;
-    }
+    width: 400px;
+    margin-right: 20px;
   }
   .hidden-sm {
-    margin: 5px 0px 20px 0px;
+    margin: 11px 0px 20px 0px;
     text-align: center;
+    h3 {
+      margin: 20px 0px 0px 0px
+    }
+    h5 {
+      margin: 10px 0px 0px 0px
+    }
   }
   .hidden-md {
     min-width: 250px;
     text-align: center;
+  }
+  .total_amount {
+    text-align: center;
+  }
+}
+
+.payment-form {
+  display: flex;
+  flex-direction: column;
+  #order_promo, #order_promo_mobile {
+    border : 1px solid rgba(0, 0, 0, 0.1);
+  }
+  .input-label-take-away {
+    display: flex;
+    align-items: center;
+    margin-bottom: 20px;
+    label {
+      font-weight: 100;
+      font-size: 14px;
+      margin: 0px 0px 0px 5px;
+    }
+    input {
+      margin: 0px;
+    }
+  }
+  .promo-with-percentage {
+    margin-bottom: 20px;
+    text-align: center;
+    position: relative;
+    .promo-detail {
+      color: $primary;
+      font-weight: 100;
+      position: absolute;
+      right: 15px;
+      bottom: -17px;
+      font-size: 13px;
+    }
+    .promo-bloc {
+      label {
+        font-weight: 100;
+        margin: 0;
+      }
+    }
   }
 }
 
@@ -97,6 +144,7 @@
 }
 
 .total.mobile {
+  justify-content: center;
   margin-bottom: 30px;
   form {
     margin: 0 auto;

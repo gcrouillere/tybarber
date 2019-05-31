@@ -22,15 +22,15 @@
 
   }
   h2 {
+    font-weight: 400;
+    letter-spacing: 2px;
     text-align: center;
-    font-weight: $font-weight-h4-search;
-    font-size: $font-size-h4;
+    font-size: 30px;
     margin-bottom: 20px;
-    margin-top: 0px;
-    color: $filter-title;
-    background: white;
+    margin-top: 5px;
+    color: black;
+    padding: 0 0 10px 0;
     border-bottom: 1px solid $primary;
-    padding: 10px;
   }
 
   h3 {

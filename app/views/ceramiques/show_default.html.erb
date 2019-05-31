@@ -2,7 +2,7 @@
   <%= ("#{@ceramique.description}").squish %>
 <% end %>
 <% content_for(:title_tag) do %>
-  Objet d'art en Morta. <%= @ceramique.name.capitalize %>. Prix : <%= humanized_money(@ceramique.price)%> €. Livraison sous <%= @admin.tracking%>.
+  <%= t(:les_produits_de_machin) %>. <%= @ceramique.name.capitalize %>. <%= t(:price)%> : <%= humanized_money(@ceramique.price)%> €. <%=t(:delivery)%> <%= @admin.tracking%>.
 <% end %>
 <% content_for(:meta_image) do %>
   <%= cl_image_path @ceramique.photos[0].path %>
@@ -52,6 +52,7 @@
               <div class="prix-form">
                 <form action="/orders" method="post" authenticity_token="true" class="form">
                   <%= hidden_field_tag :authenticity_token, form_authenticity_token %>
+<<<<<<< HEAD
                   <div class="form-top-section">
                     <% @ceramique.offer ? discount =  @ceramique.offer.discount : discount = 0 %>
 
@@ -61,6 +62,13 @@
                         <% if @ceramique.offer.discount > 0 %>
                           <h3 class="previous-price"><%= humanized_money(@ceramique.price)%> <%= currency_symbol %></h3>
                         <% end %>
+=======
+                  <div class="qte">
+                    <label for="quantity"><%= t(:quantity)%> </label>
+                    <select name="quantity">
+                      <% for i in 1..@ceramique.stock %>
+                        <option value="<%= i %>"><%= i %></option>
+>>>>>>> 30a87a19a3d831ce60d6aead3ba016c8051cfe20
                       <% end %>
                       </div>
 
@@ -89,9 +97,21 @@
                      <h2 class="stock0">Stock épuisé</h2>
                     <% end %>
                   </div>
+<<<<<<< HEAD
                 </form>
               </div>
 
+=======
+                  <input type="hidden" name="ceramique" value="<%= @ceramique.id%>">
+                  <input type="hidden" name="locale" value="<%= I18n.locale%>">
+                  <button type="submit" class="pull-right btn btn-primary order">
+                    <i class="fa fa-plus""></i> <%= t(:add_to_basket) %>
+                  </button>
+                </form>
+              <% else %>
+                  <h2 class="stock0"><%= t(:out_of_stock) %></h2>
+              <% end %>
+>>>>>>> 30a87a19a3d831ce60d6aead3ba016c8051cfe20
             </div>
           </div>
 
@@ -105,7 +125,7 @@
 
     <div class="row">
       <div class="col-sm-12 same-category-products">
-          <h2>Retrouvez d'autres produits dans la même catégorie: </h2>
+          <h2><%= t(:same_category_products)%></h2>
           <div class="same-category-products-cards">
             <% @same_category_products.each_with_index do |ceramique, index|%>
               <% if index == 0 || (index)%3 == 0 %>
@@ -178,7 +198,7 @@
                 <form action="/orders" method="post" authenticity_token="true" class="form">
                   <%= hidden_field_tag :authenticity_token, form_authenticity_token %>
                   <div class="qte">
-                    <label for="quantity">Qté </label>
+                    <label for="quantity"><%= t(:qte)%> </label>
                     <select name="quantity">
                       <% for i in 1..@ceramique.stock %>
                         <option value="<%= i %>"><%= i %></option>
@@ -186,12 +206,13 @@
                     </select>
                   </div>
                   <input type="hidden" name="ceramique" value="<%= @ceramique.id%>">
+                  <input type="hidden" name="locale" value="<%= I18n.locale%>">
                   <button type="submit" class="pull-right btn btn-primary order">
                     <i class="fa fa-plus""></i> <i class="fa fa-shopping-cart"></i>
                   </button>
                 </form>
               <% else %>
-                  <h2 class="stock0">Stock épuisé</h2>
+                  <h2 class="stock0"><%= t(:out_of_stock) %></h2>
               <% end %>
             </div>
           </div>
@@ -204,21 +225,6 @@
 </div>
 
 <% content_for(:after_js) do %>
-  <script type="application/ld+json">
-  {
-    "@context": "http://schema.org",
-    "@type": "Product",
-    "name": "<%=@ceramique.name.capitalize%>",
-    "description": "<%=@ceramique.description%>",
-    "offers": {
-      "@type": "Offer",
-      "price": "<%= humanized_money(@ceramique.price)%>",
-      "priceCurrency": "€"
-    },
-    "url": "<%=request.original_url%>",
-    "image": "<%=cl_image_path @ceramique.photos[0].path%>"
-  }
-  </script>
   <script
     type="text/javascript"
     async defer
@@ -246,3 +252,4 @@
 </script>
 <%= render 'shared/facebookshare' %>
 <% end %>
+<%= render 'shared/schema_org_jsons/ceramique_show_json' %>

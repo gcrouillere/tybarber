@@ -28,7 +28,7 @@ class PagesController < ApplicationController
 
   def temoignages
     @article = Article.new
-    @articles = Article.where(page: "temoignages").order(created_at: :desc)
+    @articles = Article.where(name: "temoignage").order(created_at: :desc)
     @dev_redirection = "https://www.creermonecommerce.fr/produits"
   end
 

@@ -1,8 +1,8 @@
 <% content_for(:description) do %>
-  Vendez vos produits en ligne ! Site de e-commerce configurable. Affichez sur cette page des informations vous concernant : biographie, techniques utilisées.
+  <%=t(:contact_description)%>
 <% end %>
 <% content_for(:title_tag) do %>
-  Page bio de votre site de e-commerce
+  <%=t(:contact_title)%>
 <% end %>
 
 <%= render 'shared/info_pics' %>
@@ -109,6 +109,7 @@
         handler.getMap().setZoom(6);
       });
     });
+<<<<<<< HEAD
    </script>
   <script type="application/ld+json">
   {
@@ -123,5 +124,7 @@
     "address":"<%= ENV['ADDRESS'].gsub(/[+]/, ' ')%>",
     "priceRange":"20€ à 800€"
   }
+=======
+>>>>>>> 30a87a19a3d831ce60d6aead3ba016c8051cfe20
   </script>
  <% end %>

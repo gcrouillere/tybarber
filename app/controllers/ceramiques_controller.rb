@@ -32,6 +32,24 @@ class CeramiquesController < ApplicationController
     render "show_#{@active_theme.name}"
   end
 
+  def update
+    @ceramique = Ceramique.find(params[:id])
+    @fieldvalue =  @ceramique.send(get_editing_field)
+    if @ceramique.update(ceramique_params)
+      render json: @ceramique
+    else
+      render json: {id: @ceramique.id, fieldvalue: @fieldvalue, errors: @ceramique.errors}, status: :unprocessable_entity
+    end
+  end
+
+  def update_positions_after_swap_in_admin
+    params[:finalPositions].gsub("]","").gsub("[", "").split(",").map(&:to_i).each_with_index do |position, index|
+      Ceramique.find(position).update(position: index + params[:startingPosition].to_i)
+    end
+    @ceramiques = Ceramique.all.order(position: :asc).order(updated_at: :desc)
+    render json: @ceramiques
+  end
+
   private
 
   def clean_orders
@@ -52,12 +70,12 @@ class CeramiquesController < ApplicationController
 
   def filter_by_category
     categories = params[:categories].map {|category| "%#{category}%" }
-    @ceramiques = @ceramiques.joins(:category).where('categories.name ILIKE ANY ( array[?] )', categories)
+    @ceramiques = @ceramiques.joins(:category).merge(Category.i18n {name.matches_any(categories)})
   end
 
   def filter_by_price
-    @ceramiques = @ceramiques.joins(:offer).where("price_cents * (1 - discount) <= ?", params[:prix_max].to_i * 100) +
-                  @ceramiques.where('offer_id IS NULL').where("price_cents <= ?", params[:prix_max].to_i * 100)
+    @ceramiques = @ceramiques.joins(:offer).where("price_cents * (1 - discount) <= ? AND price_cents * (1 - discount) >= ? ", params[:prix_max].to_i * 100, params[:prix_min].to_i * 100) +
+                  @ceramiques.where('offer_id IS NULL').where("price_cents <= ? AND price_cents >= ?", params[:prix_max].to_i * 100, params[:prix_min].to_i * 100)
   end
 
   def filter_by_offer
@@ -75,6 +93,18 @@ class CeramiquesController < ApplicationController
       @photo1 = params_univers + "1.jpg"
       @photo2 = params_univers + "2.jpg"
     end
+  end
+
+  def ceramique_params
+    if params[:ceramique][:category].present?
+      params.require(:ceramique).permit(:name, :stock, :weight, :price_cents, :description).merge(category_id: Category.i18n.where(name: params[:ceramique][:category]).first.id)
+    else
+      params.require(:ceramique).permit(:name, :stock, :weight, :price_cents, :description)
+    end
+  end
+
+  def get_editing_field
+    params.require(:ceramique).permit(:name, :stock, :weight, :price_cents, :description, :category).to_h.map {|k, v| k }.join
   end
 end
 

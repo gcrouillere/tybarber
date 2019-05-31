@@ -1,8 +1,8 @@
 <% content_for(:description) do %>
-  Réservez une date pour visiter l'atelier de PHilippe Nerriere. Vous pourrez assister à la réalisation d'objets en Morta.
+  <%= t(:new_lesson_description)%>
 <% end %>
 <% content_for(:title_tag) do %>
-  Visiter l'atelier Ty Morta à Guérande.
+  <%= t(:new_lesson_title)%>
 <% end %>
 <% content_for(:meta_image) do %>
   <%= render 'shared/stage_pic'%>
@@ -19,14 +19,14 @@
       <div class="stage">
         <%= facebook_share_id("facebookshare") %>
         <%= simple_form_for @lesson do |f| %>
-          <%= f.input :student, collection: ENV['MINBOOKING'].to_i..ENV['CAPACITY'].to_i, label: "Nombre de personnes", selected: ENV['MINBOOKING'].to_i %>
-          <label class="control-label select required" for="lesson_student"><abbr title="required">*</abbr>Jour de visite</label>
+          <%= f.input :student, collection: ENV['MINBOOKING'].to_i..ENV['CAPACITY'].to_i, selected: ENV['MINBOOKING'].to_i %>
+          <label class="control-label select required" for="lesson_student"><abbr title="required">*</abbr> <%=t(:first_day)%></label>
           <div class="form-group">
             <div class='input-group date' id='datetimepicker1'>
               <span class="input-group-addon">
                 <i class="far fa-calendar-alt"></i>
               </span>
-              <input type='text' class="form-control" name="lesson[start]" placeholder="Cliquez sur l'icône calendrier pour sélectionner une date"/>
+              <input type='text' class="form-control" name="lesson[start]" placeholder="<%=t(:clic_on_calendar)%>"/>
             </div>
           </div>
           <%= f.hidden_field :duration, value: 1 %>
@@ -34,7 +34,8 @@
             <%= f.hidden_field :user_id, value: current_user.id %>
           <% end %>
           <div class="submit-div-stage">
-            <%= f.submit "Réserver une visite", class: "btn btn-primary stage-btn" %>
+            <input type="hidden" name="locale" value="<%= I18n.locale%>">
+            <%= f.submit t(:course_request), class: "btn btn-primary stage-btn" %>
           </div>
         <% end %>
         <div class="text-container">
@@ -57,14 +58,14 @@
       <div class="stage-mobile">
         <%= facebook_share_id("facebooksharemobile") %>
         <%= simple_form_for @lesson do |f| %>
-          <%= f.input :student, collection: ENV['MINBOOKING'].to_i..ENV['CAPACITY'].to_i, label: "Nombre de personnes", selected: ENV['MINBOOKING'].to_i %>
-          <label class="control-label select required" for="lesson_student"><abbr title="required">*</abbr>Jour de visite</label>
+          <%= f.input :student, collection: ENV['MINBOOKING'].to_i..ENV['CAPACITY'].to_i, selected: ENV['MINBOOKING'].to_i %>
+          <label class="control-label select required" for="lesson_student"><abbr title="required">*</abbr> <%=t(:first_day)%></label>
           <div class="form-group">
             <div class='input-group date' id='datetimepicker2'>
               <span class="input-group-addon">
                 <i class="far fa-calendar-alt"></i>
               </span>
-              <input type='text' class="form-control" name="lesson[start]" placeholder="JJ.MM.AAAA"/>
+              <input type='text' class="form-control" name="lesson[start]" placeholder="<%=t(:clic_on_calendar_mobile)%>"/>
             </div>
           </div>
           <%= f.hidden_field :duration, value: 1 %>
@@ -72,7 +73,8 @@
             <%= f.hidden_field :user_id, value: current_user.id %>
           <% end %>
           <div class="submit-div-stage">
-            <%= f.submit "Réserver une visite", class: "btn btn-primary stage-btn" %>
+            <input type="hidden" name="locale" value="<%= I18n.locale%>">
+            <%= f.submit t(:course_request), class: "btn btn-primary stage-btn" %>
           </div>
         <% end %>
         <div class="wrapper">
@@ -121,16 +123,20 @@
         });
     });
   </script>
-  <script type="application/ld+json">
+<script type="application/ld+json">
   {
     "@context": "http://schema.org",
-    "@type": "TouristAttraction",
-    "name": "Visite d'atelier de fabrication d'objets en Morta",
-    "description": "Assistez à la réalisation d'objets d'art en Morta.",
-    "url": "<%=request.original_url%>",
+    "@type": "Course",
+    "name": "<%=t(:json_course_name)%>",
+    "description": "<%=t(:json_course_description)%>",
+    "provider": {
+      "@type": "Organization",
+      "name": "<%= "#{ENV['FIRSTNAME'].capitalize} #{ENV['LASTNAME'].capitalize}"%>,
+      "sameAs": "<%=request.original_url%>"
+    }
   }
-  </script>
-    <script
+</script>
+<script
   type="text/javascript"
   async defer
   src="//assets.pinterest.com/js/pinit.js"

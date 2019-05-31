@@ -142,14 +142,14 @@ ActiveAdmin.setup do |config|
   #
   # Enable and disable Batch Actions
   #
-  config.batch_actions = true
+  config.batch_actions = false
 
   # == Controller Filters
   #
   # You can add before, after and around filters to all of your
   # Active Admin resources and pages from here.
   #
-  # config.before_action :do_something_awesome
+  config.before_action :set_locale
 
   # == Localize Date/Time Format
   #
@@ -219,6 +219,20 @@ ActiveAdmin.setup do |config|
   #
   # To change the default utility navigation to show a link to your website & a logout btn
   #
+     config.namespace :admin do |admin|
+        admin.build_menu :utility_navigation do |menu|
+          menu.add :label => "Languages" do |lang|
+            lang.add :label => "English",:url => proc { url_for(:locale => 'en', change: true) }, id: 'i18n-en', :priority => 1
+            lang.add :label => "Français",:url => proc { url_for(:locale => 'fr', change: true) }, id: 'i18n-fr', :priority => 2
+          end
+          menu.add :label => proc { display_name current_active_admin_user },
+                    :url => '#',
+                    :id => 'current_user',
+                    :if => proc { current_active_admin_user? }
+          admin.add_logout_button_to_menu menu
+        end
+      end
+
   #   config.namespace :admin do |admin|
   #     admin.build_menu :utility_navigation do |menu|
   #       menu.add label: "My Great Website", url: "http://www.mygreatwebsite.com", html_options: { target: :blank }
@@ -260,7 +274,7 @@ ActiveAdmin.setup do |config|
   # Pagination is enabled by default for all resources.
   # You can control the default per page count for all resources here.
   #
-  # config.default_per_page = 30
+  # config.default_per_page = 3
   #
   # You can control the max per page count too.
   #

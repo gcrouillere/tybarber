@@ -1,8 +1,8 @@
 <% content_for(:description) do %>
-  Vendez vos produits en ligne ! Site de e-commerce configurable. Créez votre compte et visualisez votre futur site de vente en ligne de vos produits.
+  <%=t(:home_description)%>
 <% end %>
 <% content_for(:title_tag) do %>
-  Vente de <%=ENV['MODEL']%> - <%=ENV['FIRSTNAME']%> <%=ENV['LASTNAME'] %>
+  <%=t(:home_title)%>
 <% end %>
 
 <%= render 'shared/home_pics' %>
@@ -58,20 +58,4 @@
   </div>
 
   <%= render 'shared/subscribe' %>
-
-<% content_for(:after_js) do %>
-  <script type="application/ld+json">
-  {
-    "@context": "http://schema.org",
-    "@type": "ArtGallery",
-    "name": "Les <%="#{ENV['MODEL']} de #{ENV['FIRSTNAME'].capitalize} #{ENV['LASTNAME'].capitalize}"%>",
-    "description": "Online craft store",
-    "openingHours": "Mo-Fr 09:00-18:00",
-    "telephone": "<%= ENV['TELEPHONE']%>",
-    "url": "<%=request.original_url%>",
-    "image": "<%=request.original_url%><%= image_path ENV['HOMEPIC']%>",
-    "address":"<%= ENV['ADDRESS'].gsub(/[+]/, ' ')%>",
-    "priceRange":"20€ à 800€"
-  }
-  </script>
-<% end %>
+  <%= render 'shared/schema_org_jsons/home_page_json' %>
