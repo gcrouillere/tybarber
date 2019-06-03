@@ -59,12 +59,6 @@
                 <% if  @ceramique.stock > 0 %>
                   <form action="/orders" method="post" authenticity_token="true" class="form">
                     <%= hidden_field_tag :authenticity_token, form_authenticity_token %>
-<!--                     if  @ceramique.support_price_cents > 0%>
-                      <div class="input-support">
-                        <input id="support-checkbox" type="checkbox" name="support">
-                        <label for="support-checkbox">Ajouter le support</label>
-                      </div>
-                    end %> -->
                     <div class="qte">
                       <label for="quantity"><%= t(:quantity)%> </label>
                       <select name="quantity">
@@ -168,12 +162,6 @@
               <% if  @ceramique.stock > 0 %>
                 <form action="/orders" method="post" authenticity_token="true" class="form">
                   <%= hidden_field_tag :authenticity_token, form_authenticity_token %>
-<!--                   if  @ceramique.support_price_cents > 0%>
-                    <div class="input-support">
-                      <input id="support-checkbox" type="checkbox" name="support">
-                      <label for="support-checkbox">Ajouter le support</label>
-                    </div>
-                  end %> -->
                   <div class="qte">
                     <label for="quantity"><%= t(:qte)%> </label>
                     <select name="quantity">

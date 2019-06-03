@@ -96,7 +96,7 @@
   </div>
 
 <!-- Right Navigation MOBILE -->
-<div class="navbar-mobile  hidden-sm hidden-md hidden-lg">
+<div class="navbar-mobile hidden-md hidden-lg">
   <div class="main-nav-mobile">
    <!-- Logo -->
     <%= link_to root_path, class: "navbar-brand-mobile", title: t(:navbar_home_link) do %>
@@ -170,11 +170,11 @@
       }
     </style>
     <div class="nav-categories-mobile">
-      <%= link_to t(:table), ceramiques_path(univers: "table"), title: t(:table_link) %>
+      <%= link_to t(:table_mobile), ceramiques_path(univers: "table"), title: t(:table_link) %>
       <hr>
-      <%= link_to t(:decoration), ceramiques_path(univers: "decoration"), title: t(:decoration_link) %>
+      <%= link_to t(:decoration_mobile), ceramiques_path(univers: "decoration"), title: t(:decoration_link) %>
       <hr>
-      <%= link_to t(:shaving), ceramiques_path(univers: "soin"), title: t(:shaving_link) %>
+      <%= link_to t(:shaving_mobile), ceramiques_path(univers: "art"), title: t(:shaving_link) %>
     </div>
   <% end %>
 </div>
