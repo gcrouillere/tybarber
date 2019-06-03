@@ -1,10 +1,11 @@
 Rails.application.routes.draw do
+
   ActiveAdmin.routes(self)
   devise_for :users, :controllers => {:registrations => "app_specific_registration/registrations", omniauth_callbacks: 'users/omniauth_callbacks'}
   mount Attachinary::Engine => "/attachinary"
 
   scope do
-    resources :ceramiques, path: ENV['MODEL'], only: [:create, :index, :destroy, :show]
+    resources :ceramiques, path: ENV['MODEL'], only: [:create, :index, :destroy, :show, :update]
   end
 
   resources :orders, only: [:show, :create, :destroy] do
@@ -15,7 +16,7 @@ Rails.application.routes.draw do
 
   resources :users, only: [:update, :create]
 
-  resources :articles, only: [:update, :create, :destroy]
+  resources :articles, only: [:new, :index, :show, :update, :create, :destroy]
 
   #Stages
   get '/stage_confirmation', to: 'lessons#stage_confirmation'
@@ -55,7 +56,11 @@ Rails.application.routes.draw do
   namespace :api, defaults: { format: :json } do
     namespace :v1 do
       resources :shipping_categories, only: [:show]
+      resources :promos, only: [:show]
     end
   end
+
+  #Position management through JS
+  get '/ceramiques/update_positions_after_swap_in_admin', to: "ceramiques#update_positions_after_swap_in_admin"
 
 end

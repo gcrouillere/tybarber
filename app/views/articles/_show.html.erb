@@ -5,7 +5,7 @@
     <% end %>
   <% end %>
   <div class="left-block-temoignage">
-    <h2><%= article.name %></h2>
+    <h2><%= "#{article.user.last_name article.user.first_name}" %></h2>
   </div>
   <div class="right-block-temoignage">
     <% markdown = Redcarpet::Markdown.new(Redcarpet::Render::HTML, extensions = {}) %>
@@ -16,7 +16,7 @@
 
 <div class="article-block-mobile hidden-sm hidden-md hidden-lg">
   <div class="left-block-temoignage-mobile">
-    <h2><%= article.name %></h2>
+    <h2><%= "#{article.user.last_name article.user.first_name}" %></h2>
   </div>
   <div class="right-block-temoignage-mobile">
     <% markdown = Redcarpet::Markdown.new(Redcarpet::Render::HTML, extensions = {}) %>

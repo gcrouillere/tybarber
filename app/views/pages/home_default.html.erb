@@ -1,8 +1,8 @@
 <% content_for(:description) do %>
-  Philippe Nerriere façonne des objets d'art en Morta : rasoirs, blaireaux, lampes, couteaux ...
+  <%=t(:home_description)%>
 <% end %>
 <% content_for(:title_tag) do %>
-  Objets d'art en Morta, le bois noble de la Brière.
+  <%=t(:home_title)%>
 <% end %>
 
 <%= render 'shared/home_pics' %>
@@ -44,20 +44,20 @@
       </div>
       <div class="banner-content">
         <div class="banner-text">
-          <h1>Ty Morta</h1>
-          <p>Offrez-vous 5000 ans d’émotions avec l'or noir de Brière, le MORTA</p>
+          <h1><%= t(:home_h1)%></h1>
+          <p><%= t(:home_teaser)%></p>
         </div>
         <div class="home-links col-xs-12">
           <div class="link-i">
-            <%= link_to "RASAGE & MAQUILLAGE", ceramiques_path(univers: "soin"),title: "Rasoirs, blaireaux, bols et pinceaux de maquillage en Morta" %>
+            <%= link_to t(:home_button_shave), ceramiques_path(univers: "soin"),title: t(:home_button_shave_link) %>
             <div class="line line1"></div>
           </div>
           <div class="link-i">
-            <%= link_to "DECORATION", ceramiques_path(univers: "decoration"), title: "Lampes, pendules, horloges et boîtes en Morta" %>
+            <%= link_to t(:home_button_deco), ceramiques_path(univers: "decoration"), title: t(:home_button_deco_link) %>
             <div class="line line2"></div>
           </div>
           <div class="link-i">
-            <%= link_to "AUTOUR DE LA TABLE", ceramiques_path(univers: "table"), title: "Tire-bouchons et couteaux en Morta" %>
+            <%= link_to t(:home_button_table), ceramiques_path(univers: "table"), title: t(:home_button_table_link) %>
             <div class="line line3"></div>
           </div>
         </div>
@@ -107,9 +107,9 @@
       </div>
       </div>
       <div class="banner-content-xs">
-        <h1>Ty Morta</h1>
-        <p>Offrez-vous 5000 ans d’émotions avec l'or noir de Brière, le MORTA</p>
-        <%= link_to "VOIR LES CREATIONS", ceramiques_path, class: "btn btn-primary btn-home" %>
+        <h1><%= t(:home_h1)%></h1>
+        <p><%= t(:home_teaser)%></p>
+        <%= link_to t(:home_button_mobile), ceramiques_path, class: "btn btn-primary btn-home" %>
       </div>
     </div>
   </div>
@@ -143,11 +143,11 @@
 </div>
 
 <div class="home-products-bloc">
-  <h2>DECOUVREZ TOUTE LA GAMME TY MORTA</h2>
+  <h2><%= t(:home_h2)%></h2>
 
     <div class="univers-cards row">
       <div class="soin col-xs-12 col-sm-4">
-        <%= link_to ceramiques_path(univers: "soin"), title: "Rasoirs, blaireaux, bols et pinceaux de maquillage en Morta" do %>
+        <%= link_to ceramiques_path(univers: "soin"), title: t(:shaving_link) do %>
           <div class="card-image card-image1">
             <style>
               .card-image1 {
@@ -157,16 +157,16 @@
                 background-position-x: center;
               }
             </style>
-            <p>Découvrez ces produits</p>
+            <p><%=t(:home_discover)%></p>
           </div>
         <% end %>
         <div class="home-cards-text home-text-left">
-          <h3>RASAGE & MAQUILLAGE</h3>
-          <p>La gamme soin se compose de rasoirs, blaireaux et bols. Tous ces accessoires sont confectionnés artisanalement dans l'atelier Ty Morta.</p>
+          <h3></h3>
+          <p><%=t(:home_shave_block)%></p>
         </div>
       </div>
       <div class="decoration col-xs-12 col-sm-4">
-        <%= link_to ceramiques_path(univers: "decoration"), class: "decoration-link", title: "Lampes, pendules, horloges et boîtes en Morta" do %>
+        <%= link_to ceramiques_path(univers: "decoration"), class: "decoration-link", title: t(:decoration_link) do %>
             <style>
               .decoration {
                 background-image: url(<%= image_path("deco.jpg") %>);
@@ -176,17 +176,17 @@
               }
             </style>
             <div class="home-text-center">
-              <h3>DECORATION</h3>
-              <p>Habillez vos pièces avec de superbes objets en Morta : horloges, pendules et lampes.</p>
+              <h3><%=t(:home_button_deco)%></h3>
+              <p><%=t(:home_deco_block)%></p>
             </div>
         <% end %>
       </div>
       <div class="vin col-xs-12 col-sm-4">
         <div class="home-cards-text home-text-right">
-          <h3>AUTOUR DE LA TABLE</h3>
-          <p>Retrouvez des objets pour accompagner vos degustations de vin : tire-bouchons et couteaux à huîtres.</p>
+          <h3><%=t(:home_button_table)%></h3>
+          <p><%=t(:home_table_block)%></p>
         </div>
-        <%= link_to ceramiques_path(univers: "table"), title: "Tire-bouchons et couteaux en Morta" do %>
+        <%= link_to ceramiques_path(univers: "table"), title: t(:table_link) do %>
           <div class="card-image card-image3">
             <style>
               .card-image3 {
@@ -196,7 +196,7 @@
                 background-position-x: center;
               }
             </style>
-            <p>Découvrez ces produits</p>
+            <p><%=t(:home_discover)%></p>
           </div>
         <% end %>
       </div>
@@ -204,19 +204,16 @@
 
 </div>
 
-<% content_for(:after_js) do %>
-  <script type="application/ld+json">
-  {
-    "@context": "http://schema.org",
-    "@type": "ArtGallery",
-    "name": "Objets d'art en Morta par Philippe Nerriere",
-    "description": "Online craft store",
-    "openingHours": "Mo-Fr 09:00-18:00",
-    "telephone": "<%= ENV['TELEPHONE']%>",
-    "url": "<%=request.original_url%>",
-    "image": "<%=request.original_url%><%= image_path ENV['HOMEPIC3']%>",
-    "address":"<%= ENV['ADDRESS'].gsub(/[+]/, ' ')%>",
-    "priceRange":"20€ à 800€"
-  }
-  </script>
-<% end %>
+
+<!--   "@context": "http://schema.org",
+  "@type": "ArtGallery",
+  "name": "Objets d'art en Morta par Philippe Nerriere",
+  "description": "Online craft store",
+  "openingHours": "Mo-Fr 09:00-18:00",
+  "telephone": "<%= ENV['TELEPHONE']%>",
+  "url": "<%=request.original_url%>",
+  "image": "<%=request.original_url%><%= image_path ENV['HOMEPIC3']%>",
+  "address":"<%= ENV['ADDRESS'].gsub(/[+]/, ' ')%>",
+  "priceRange":"20€ à 800€" -->
+
+<%= render 'shared/schema_org_jsons/home_page_json' %>

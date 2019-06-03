@@ -1,6 +1,9 @@
 #footer {
   background-color: $footer;
   display: flex;
+  @media all and (max-width: 768px) {
+    margin-top: 0px !important;
+  }
   .contact-default {
     width: 25%;
     padding: 10px 0;
