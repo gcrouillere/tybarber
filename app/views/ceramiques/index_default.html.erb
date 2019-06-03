@@ -138,18 +138,6 @@
 </div>
 
 <% content_for(:after_js) do %>
-
-<!--     "@context": "http://schema.org",
-    "@type": "ArtGallery",
-    "name": "Objets d'art en Morta par Philippe Nerriere",
-    "description": "Online craft store",
-    "openingHours": "Mo-Fr 09:00-18:00",
-    "telephone": "<%= ENV['TELEPHONE']%>",
-    "url": "<%=request.original_url%>",
-    "image": "<%=request.original_url%><%= image_path ENV['HOMEPIC3']%>",
-    "address":"<%= ENV['ADDRESS'].gsub(/[+]/, ' ')%>",
-    "priceRange":"20€ à 800€" -->
-
   <script
   type="text/javascript"
   async defer
@@ -157,7 +145,7 @@
   data-pin-round="true"
   data-pin-tall="15px"
 ></script>
-<%= render 'shared/facebookshare' %>
-<%= render 'shared/algolia_search' %>
+  <%= render 'shared/facebookshare' %>
+  <%= render 'shared/algolia_search' %>
 <% end %>
 <%= render 'shared/schema_org_jsons/ceramiques_index_json' %>

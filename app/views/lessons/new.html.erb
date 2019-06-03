@@ -126,13 +126,21 @@
 <script type="application/ld+json">
   {
     "@context": "http://schema.org",
-    "@type": "Course",
+    "@type": "TouristAttraction",
     "name": "<%=t(:json_course_name)%>",
     "description": "<%=t(:json_course_description)%>",
     "provider": {
       "@type": "Organization",
-      "name": "<%= "#{ENV['FIRSTNAME'].capitalize} #{ENV['LASTNAME'].capitalize}"%>,
+      "name": "<%= "#{ENV['FIRSTNAME'].capitalize} #{ENV['LASTNAME'].capitalize}"%>",
       "sameAs": "<%=request.original_url%>"
+    },
+    "address": {
+      "@type": "PostalAddress",
+      "streetAddress": "32 rue de Pradel",
+      "addressLocality": "Guérande",
+      "addressRegion": "Pays de la Loire",
+      "postalCode": "44350",
+      "addressCountry": "FR"
     }
   }
 </script>

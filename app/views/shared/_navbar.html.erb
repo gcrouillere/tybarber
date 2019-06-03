@@ -38,7 +38,7 @@
               <li><%= link_to t(:press), presse_path, title: t(:press_link) %></li>
               <li><%= link_to t(:partners), sites_partenaires_path, title: t(:partners_link) %></li>
                <li><%= link_to t(:pros), professionnels_path, title: t(:pros_link) %></li>
-              <li><%= link_to t(:contact), contact_path, title: %></li>
+              <li><%= link_to t(:contact), contact_path, title: t(:contact_link)%></li>
             </ul>
           </div>
           <%= link_to temoignages_path, title: t(:testimonials_link) do %>
@@ -47,8 +47,6 @@
           <%= link_to sur_mesure_path, title: t(:sur_mesure_link) do %>
             <span><%= t(:sur_mesure)%></span>
           <% end %>
-
-
 
           <% if session[:order].present? %>
             <% if Order.where(id: session[:order]).present? %>
@@ -59,10 +57,6 @@
               <% end %>
             <% end %>
           <% end %>
-
-        </div>
-
-
 
         <div class="dropdown">
           <a class="dropdown-toggle" type="button" data-toggle="dropdown">
@@ -79,6 +73,8 @@
                 <% end %>
             </li>
           </ul>
+        </div>
+
         </div>
 
       </div>
@@ -128,7 +124,7 @@
             <li><%= link_to t(:press), presse_path, title: t(:press_link) %></li>
             <li><%= link_to t(:partners), sites_partenaires_path, title: t(:partners_link) %></li>
             <li><%= link_to t(:pros), professionnels_path, title: t(:pros_link) %></li>
-            <li><%= link_to t(:contact), contact_path, title: %></li>
+            <li><%= link_to t(:contact), contact_path, title: t(:contact_link)%></li>
           </ul>
         </div>
 

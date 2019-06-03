@@ -1,8 +1,8 @@
 <% content_for(:description) do %>
- Découvrez les origines de la formation de ce bois noble qu'est le Morta, à travers 5000 ans d'histoire.
+ <%= t(:morta_description)%>
 <% end %>
 <% content_for(:title_tag) do %>
-  Les origines de la formation du Morta.
+  <%= t(:morta_title)%>
 <% end %>
 <% content_for(:meta_image) do %>
   <%= image_path "fossilisation.jpg" %>
@@ -22,7 +22,7 @@
       <div class="col-xs-12 col-sm-4 col-lg-3 morta-card">
         <div class="history-mark">
           <div class="history-text">
-            <p>Il y a 8000 ans, les 1ers agriculteurs Européens</p>
+            <p><%= t(:morta_bullet_1)%></p>
           </div>
         </div>
         <div class="morta-card-image image-1">
@@ -36,8 +36,8 @@
           </style>
         </div>
         <div class="morta-card-text text-history-mark">
-          <h1>A l'origine du Morta, une forêt</h1>
-          <p>Il y a 8000 ans, la Brière est en grande partie recouverte d’une forêt de chênes. Elle est parcourue par les hommes du Mésolithique. Au devant du coteau de Guérande, il existe une baie. La mer est déjà proche.</p>
+          <h1><%= t(:morta_title_1)%></h1>
+          <p><%=t(:morta_card_text_1)%></p>
         </div>
       </div>
 
@@ -49,7 +49,7 @@
       <div class="col-xs-12 col-sm-4 col-lg-3 morta-card">
         <div class="history-mark">
           <div class="history-text">
-            <p>Il y a 7000 ans, premiers alignements de mégalithes</p>
+            <p><%= t(:morta_bullet_2)%></p>
           </div>
         </div>
         <div class="morta-card-image image-2">
@@ -63,8 +63,8 @@
           </style>
         </div>
         <div class="morta-card-text text-history-mark">
-          <h2>Ouverture sur la mer</h2>
-          <p>Il y a 7000 ans, le niveau de la mer s’élève petit à petit. La Brière et innondée et se transforme progressivement en un golfe. Elle est partiellement découverte à marée basse. Dans les zones hors d'eau, l’agriculture et l’élevage se développent. Des mégalithes, probablement lié à l’exploitation du sel, témoignent de cette présence.</p>
+          <h2><%= t(:morta_title_2)%></h2>
+          <p><%=t(:morta_card_text_2)%></p>
         </div>
       </div>
 
@@ -76,7 +76,7 @@
       <div class="col-xs-12 col-sm-4 col-lg-3 morta-card">
         <div class="history-mark">
           <div class="history-text">
-            <p>Il y a 5000 ans, les pyramides d'Egypte</p>
+            <p><%= t(:morta_bullet_3)%></p>
           </div>
         </div>
         <div class="morta-card-image image-3">
@@ -90,8 +90,10 @@
           </style>
         </div>
         <div class="morta-card-text text-history-mark">
-          <h2>Formation du marais</h2>
-          <p>Il y a 5000 ans le niveau de la mer s’abaisse. Une bande de vase se forme sur la rive nord de la Loire. Dans la Brière, désormais isolée de la mer, une nouvelle forêt de chênes se développe. Puis les eaux douces envahissent progressivement cette zone basse.</p>
+          <h2><%= t(:morta_title_3)%></h2>
+          <p><%=t(:morta_card_text_3)%></p>
+          <h2></h2>
+          <p></p>
         </div>
       </div>
     </div>
@@ -128,8 +130,8 @@
           </style>
         </div>
         <div class="morta-card-text">
-          <h2>Résurrection</h2>
-          <p>Ce bois, devenu imputrescible, est très esthétique une fois poli. Il peut présenter l'aspect de l'ébène pour le morta noir. Autrefois, il a servi de bois de charpente en Brière. Aujourd'hui, il est utilisé pour produire des objets d'artisanat art. Seulement 20 % du matériau brut peut être exploité car au cours du séchage, des craquelures se forment. Ty Morta extrait et travaille ce bois unique à travers ses créations de rasoirs, blaireaux, pinceaux de maquillages, lampes, tire-bouchons ...</p>
+          <h2><%= t(:morta_title_4)%></h2>
+          <p><%=t(:morta_card_text_4)%></p>
         </div>
       </div>
 
@@ -150,8 +152,8 @@
           </style>
         </div>
         <div class="morta-card-text">
-          <h2>Fossilisation</h2>
-          <p>Les chênes disparaissent dans ces marais. Depuis 5000 ans, à l’abri de l’air, en milieu saturé en eau, ils sont dans un processus de lente fossilisation en Morta. En Brière, la tourbe noire débute également sa formation.</p>
+          <h2><%= t(:morta_title_5)%></h2>
+          <p><%=t(:morta_card_text_5)%></p>
         </div>
       </div>
 
@@ -167,8 +169,8 @@
           </style>
         </div>
         <div class="morta-card-text">
-          <h2>Résurection</h2>
-          <p>Ce bois, devenu imputrescible, est très esthétique une fois poli. Il peut présenter l'aspect de l'ébène pour le morta noir. Autrefois, il a servi de bois de charpente en Brière. Aujourd'hui, il est utilisé pour produire des objets d'artisanat art. Seulement 20 % du matériau brut peut être exploité car au cours du séchage, des craquelures se forment.</p>
+          <h2><%= t(:morta_title_6)%></h2>
+          <p><%=t(:morta_card_text_6)%></p>
         </div>
       </div>
 
@@ -177,20 +179,3 @@
 
   </div>
 </div>
-
-<% content_for(:after_js) do %>
-  <script type="application/ld+json">
-    {
-      "@context": "http://schema.org",
-      "@type": "ArtGallery",
-      "name": "Les <%="#{ENV['MODEL']} de #{ENV['FIRSTNAME'].capitalize} #{ENV['LASTNAME'].capitalize}"%>",
-      "description": "Online craft store",
-      "openingHours": "Mo-Fr 09:00-18:00",
-      "telephone": "<%= ENV['TELEPHONE']%>",
-      "url": "<%=request.original_url%>",
-      "image":"<%=request.original_url%><%= image_path ENV['HOMEPIC']%>"
-      "address":"<%= ENV['ADDRESS'].gsub(/[+]/, ' ') %>",
-      "priceRange":"20€ à 800€"
-    }
-  </script>
-<% end %>
