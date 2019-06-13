@@ -5,11 +5,19 @@
     color: black;
     margin-bottom: 10px;
   }
+  .ql-snow a {
+    color: black
+  }
 }
 
 
-.text-editor-form .dark {
-  .ql-container {
-    color: white;
+.text-editor-form.dark {
+  .ql-toolbar.ql-snow {
+    background: white;
+  }
+  .ql-editor {
+    a {
+      color: white
+    }
   }
 }

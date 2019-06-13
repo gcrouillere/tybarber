@@ -20,32 +20,6 @@ module ApplicationHelper
     return @article
   end
 
-  def article_typing(article_name, orientation, variable, live_id, input_id)
-    @name = article_name
-    @orientation = orientation
-    if params[:controller] == "articles" && params[:action] == "new"
-      @article = Article.new
-    elsif params[:action] != "create"
-      @article = retrieve_article(article_name) || Article.new
-    end
-    instance_variable_set "@#{variable}".to_sym, Redcarpet::Markdown.new(Redcarpet::Render::HTML, extensions = {}).render(@article.content || "")
-    @live_id = live_id
-    @input_id = input_id
-  end
-
-  def article_display(article_name, orientation)
-    unless params[:controller] == "articles" && params[:action] == "show"
-      @article = retrieve_article(article_name) || Article.new
-    end
-    @markdown = Redcarpet::Markdown.new(Redcarpet::Render::HTML, extensions = {})
-    @markdown = @markdown.render(@article.content || "")
-  end
-
-  def retrieve_article(article_name)
-    user = User.where(admin: true).first
-    user ? (user.articles.where(name: article_name).present? ? user.articles.where(name: article_name).first : nil ) : nil
-  end
-
   def facebook_share_id(facebookid)
     @facebookid = facebookid
     render partial: "shared/socialbuttons"

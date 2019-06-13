@@ -2,22 +2,16 @@ const modules = {
   toolbar: [
     [{ 'header': [1, 2, 3, false] }],
     ['bold', 'italic', 'underline','strike', 'blockquote'],
-    [{'list': 'ordered'}, {'list': 'bullet'}, {'indent': '-1'}, {'indent': '+1'}]
-  ],
+    [{'list': 'ordered'}, {'list': 'bullet'}, {'indent': '-1'}, {'indent': '+1'}],
+    ['link']
+  ]
 }
-
-const formats = [
-  'header',
-  'bold', 'italic', 'underline', 'strike', 'blockquote',
-  'list', 'bullet', 'indent',
-]
 
 $(document).ready(
   document.querySelectorAll(".text-editor-form").forEach( node => {
 
     var nodeRef = parseInt(node.getAttribute("block-ref"))
-    var container = document.getElementById(`quill-editor-${nodeRef}`);
-    var editor = new Quill(container, { theme: 'snow', modules: modules, formats: formats });
+    var editor = new Quill(`#quill-editor-${nodeRef}`, { theme: 'snow', modules: modules });
     var form = document.querySelector(`.text-editor-form[block-ref="${nodeRef}"]`);
     form.addEventListener('submit', function(event) { manageArticle(event, nodeRef, editor) })
 

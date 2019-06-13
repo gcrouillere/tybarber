@@ -15,7 +15,9 @@
       <div class="wrapper-lighttheme">
         <%= photo_update('avatarphoto', 35, '', '', 15, '.avatarpic', "Mise à jour photo perso")%>
         <%= @avatarpictag %>
-        <%= render 'shared/article_display_quill', article_name: "info", id: 0, display_only: false, additional_class: "" %>
+        <div id="live-text">
+          <%= render 'shared/article_display_quill', article_name: "info", id: 0, display_only: false, additional_class: "" %>
+        </div>
       </div>
 
       <div class="localisation">
