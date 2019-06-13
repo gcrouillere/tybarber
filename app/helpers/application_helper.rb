@@ -15,6 +15,11 @@ module ApplicationHelper
     render partial: "shared/photo_update"
   end
 
+  def article_typing_quill(article_name)
+    @article = Article.find_by(name: article_name) || Article.new(id: -1, name: article_name, content: " ")
+    return @article
+  end
+
   def article_typing(article_name, orientation, variable, live_id, input_id)
     @name = article_name
     @orientation = orientation
