@@ -19,6 +19,8 @@ $(document).ready(
 )
 
 function manageArticle(event, nodeRef, editor) {
+  document.querySelector(`#quill-editor-${nodeRef} .ql-editor`).classList.remove("sucess", "failure")
+
   event.preventDefault()
   var urlRoot = window.location.origin;
   var id = parseInt(document.getElementById(`quill-article-id-${nodeRef}`).getAttribute("article_id"))
@@ -29,11 +31,11 @@ function manageArticle(event, nodeRef, editor) {
   if (id === -1) {
     createArticle(urlRoot, user_id, name, content, nodeRef)
   } else {
-    updateArticle(urlRoot, id, content)
+    updateArticle(urlRoot, id, content, nodeRef)
   }
 }
 
-function updateArticle(urlRoot, id, content) {
+function updateArticle(urlRoot, id, content, nodeRef) {
   $.ajax({
     type: "PUT",
     url: `${urlRoot}/articles/${id}`,
@@ -41,8 +43,10 @@ function updateArticle(urlRoot, id, content) {
     data: {article: { id: id, content: content }}
   }).done((data) => {
     console.log("done");
+    document.querySelector(`#quill-editor-${nodeRef} .ql-editor`).classList.add("sucess")
   }).fail((data) => {
     console.log("fail")
+    document.querySelector(`#quill-editor-${nodeRef} .ql-editor`).classList.add("failure")
   })
 }
 
@@ -55,7 +59,9 @@ function createArticle(urlRoot, user_id, name, content, nodeRef) {
   }).done((data) => {
     console.log(data)
     document.getElementById(`quill-article-id-${nodeRef}`).setAttribute("article_id", data.id)
+    document.querySelector(`#quill-editor-${nodeRef} .ql-editor`).classList.add("sucess")
   }).fail((data) => {
     console.log("fail")
+    document.querySelector(`#quill-editor-${nodeRef} .ql-editor`).classList.add("failure")
   })
 }

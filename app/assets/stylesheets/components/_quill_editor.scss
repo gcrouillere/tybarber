@@ -21,3 +21,23 @@
     }
   }
 }
+
+.ql-editor.sucess {
+  animation: sucessupdate 3s;
+}
+
+.ql-editor.failure {
+  animation: failupdate 3s;
+}
+
+@keyframes failupdate {
+  from {
+    background: linear-gradient(180deg, #f26a6a, #dfcccc);
+  }
+}
+
+@keyframes sucessupdate {
+  from {
+    background: linear-gradient(180deg, #74db7c, #7dd882);
+  }
+}
