@@ -1,0 +1,32 @@
+<div class="univers-strip hidden-xs">
+  <div class="image-box-1">
+    <div class="strip-image1">
+        <%= title.html_safe %>
+        <style>
+        .strip-image1 {
+          background-image: url(<%= image_path image_1 %>);
+          background-size: cover;
+          background-position-y: center;
+          background-position-x: center;
+          left: <%= image1_left %>;
+        }
+      </style>
+    </div>
+  </div>
+  <div class="strip-image2">
+    <style>
+      .strip-image2 {
+        background-image: url(<%= image_path image_2 %>);
+        background-size: cover;
+        background-position-y: center;
+        background-position-x: center;
+      }
+    </style>
+  </div>
+</div>
+
+<% if mobile %>
+  <div class="one-image-mobile hidden-sm hidden-md hidden-lg">
+    <%= image_tag image_2 %>
+  </div>
+<% end %>

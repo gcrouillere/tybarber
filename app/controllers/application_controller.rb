@@ -7,7 +7,6 @@ class ApplicationController < ActionController::Base
   before_action :retrieve_admin
   before_action :check_theme
   before_action :uniq_categories
-  before_action :universes_clic
   layout :layout_by_resource
   after_action :store_location
 
@@ -25,7 +24,7 @@ class ApplicationController < ActionController::Base
   end
 
   def retrieve_admin
-    @admin = ::User.where(admin: true).first
+    @admin = ::User.where(admin: true).includes(:logophoto_files).first
   end
 
   def check_theme
@@ -33,17 +32,13 @@ class ApplicationController < ActionController::Base
   end
 
   def uniq_categories
-    @uniq_categories = ::Ceramique.all.map do |ceramique|
-      ceramique.category.name
-    end
-    @uniq_categories = @uniq_categories.uniq.sort
-  end
-
-  def universes_clic
-    if params[:univers]
-      params[:categories] = ["rasoir", "blaireau", "bol", "pinceau"] if params[:univers] == "soin"
-      params[:categories] = ["pendule", "horloge", "boite", "dessous de plat", "plat"] if params[:univers] == "decoration"
-      params[:categories] = ["tire bouchon", "tire-bouchon", "couteau"] if params[:univers] == "table"
+    @top_categories = ::TopCategory.joins(:categories).distinct
+    if params[:top_category]
+      query = params[:top_category]
+      @top_category = TopCategory.i18n.find_by(name: query)
+      @uniq_categories = ::Category.joins(:top_category).merge(TopCategory.i18n { name.matches(query) })
+    else
+      @uniq_categories = ::Category.joins(:top_category)
     end
   end
 

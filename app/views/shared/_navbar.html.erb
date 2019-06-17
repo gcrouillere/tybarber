@@ -31,19 +31,13 @@
               <span class="caret"></span>
             </a>
             <ul class="dropdown-menu">
-              <li><%= link_to t(:visit_workshop), new_lesson_path, title: t(:visit_workshop_link) %></li>
               <li><%= link_to t(:briere), la_briere_path, title: t(:briere_link) %></li>
               <li><%= link_to t(:workshop), atelier_path, title: t(:workshop_link) %></li>
-              <li><%= link_to t(:where), agenda_path, title: t(:where_link)%></li>
               <li><%= link_to t(:press), presse_path, title: t(:press_link) %></li>
               <li><%= link_to t(:partners), sites_partenaires_path, title: t(:partners_link) %></li>
-               <li><%= link_to t(:pros), professionnels_path, title: t(:pros_link) %></li>
               <li><%= link_to t(:contact), contact_path, title: t(:contact_link)%></li>
             </ul>
           </div>
-          <%= link_to temoignages_path, title: t(:testimonials_link) do %>
-            <span><%= t(:testimonials)%></span>
-          <% end %>
           <%= link_to sur_mesure_path, title: t(:sur_mesure_link) do %>
             <span><%= t(:sur_mesure)%></span>
           <% end %>
@@ -86,11 +80,12 @@
       }
     </style>
       <div class="nav-categories">
-        <%= link_to t(:table), ceramiques_path(univers: "table"), title: t(:table_link) %>
-        <hr>
-        <%= link_to t(:decoration), ceramiques_path(univers: "decoration"), title: t(:decoration_link) %>
-        <hr>
-        <%= link_to t(:shaving), ceramiques_path(univers: "soin"), title: t(:shaving_link) %>
+        <% @top_categories.each_with_index do |top_category, index| %>
+          <%= link_to top_category.name, ceramiques_path(top_category: top_category.name), title: t(:top_category_link, top_category: top_category.name) %>
+          <% unless  index == @top_categories.length - 1 %>
+            <hr>
+          <% end %>
+        <% end %>
       </div>
     <% end %>
   </div>
@@ -116,14 +111,11 @@
             <span class="caret"></span>
           </a>
           <ul class="dropdown-menu">
-            <li><%= link_to t(:visit_workshop), new_lesson_path, title: t(:visit_workshop_link) %></li>
             <li><%= link_to t(:briere), la_briere_path, title: t(:briere_link) %></li>
             <li><%= link_to t(:workshop), atelier_path, title: t(:workshop_link) %></li>
             <li><%= link_to t(:sur_mesure), la_briere_path, title: t(:sur_mesure_link) %></li>
-            <li><%= link_to t(:where), agenda_path, title: t(:where_link)%></li>
             <li><%= link_to t(:press), presse_path, title: t(:press_link) %></li>
             <li><%= link_to t(:partners), sites_partenaires_path, title: t(:partners_link) %></li>
-            <li><%= link_to t(:pros), professionnels_path, title: t(:pros_link) %></li>
             <li><%= link_to t(:contact), contact_path, title: t(:contact_link)%></li>
           </ul>
         </div>
@@ -170,11 +162,12 @@
       }
     </style>
     <div class="nav-categories-mobile">
-      <%= link_to t(:table_mobile), ceramiques_path(univers: "table"), title: t(:table_link) %>
-      <hr>
-      <%= link_to t(:decoration_mobile), ceramiques_path(univers: "decoration"), title: t(:decoration_link) %>
-      <hr>
-      <%= link_to t(:shaving_mobile), ceramiques_path(univers: "art"), title: t(:shaving_link) %>
+        <% @top_categories.each_with_index do |top_category, index| %>
+          <%= link_to top_category.mobile_name, ceramiques_path(top_category: top_category.name), title: t(:top_category_link, top_category: top_category.name) %>
+          <% unless  index == @top_categories.length - 1 %>
+            <hr>
+          <% end %>
+        <% end %>
     </div>
   <% end %>
 </div>

@@ -4,18 +4,18 @@ class CeramiquesController < ApplicationController
   def index
     @dev_redirection = "https://www.creermonecommerce.fr/product_claim_details"
     @ceramiques = Ceramique.all
-    Offer.where(showcased: true).first ? (Offer.where(showcased: true).first.ceramiques.present? ? @front_offer = Offer.all.where(showcased: true).first : nil) : nil
+    Offer.where(showcased: true).first ? (Offer.where(showcased: true).first.ceramiques.present? ? @front_offer = Offer.all.where(showcased: true).includes(:ceramiques).first : nil) : nil
     @front_offer ? @ceramiques_to_display_in_offer = Ceramique.all.where(offer: @front_offer) : nil
     clean_orders
     if params[:all].present?
       @ceramiques
     else
-      filter_by_category if params[:categories].present?
+      filter_by_category if ( params[:categories].present? || params[:top_category].present? )
       filter_by_offer if params[:offer].present?
       filter_globally if params[:search].present?
       filter_by_price if params[:prix_max].present?
     end
-    @ceramiques = Ceramique.where(id: @ceramiques.map(&:id)).order(position: :asc).order(updated_at: :desc)
+    @ceramiques = Ceramique.where(id: @ceramiques.map(&:id)).order(position: :asc).order(updated_at: :desc).includes(:photo_files).includes(:offer)
     index_strip_photos(params[:univers])
     @twitter_url = request.original_url.to_query('url')
     @facebookid = ""
@@ -69,8 +69,13 @@ class CeramiquesController < ApplicationController
   end
 
   def filter_by_category
-    categories = params[:categories].map {|category| "%#{category}%" }
-    @ceramiques = @ceramiques.joins(:category).merge(Category.i18n {name.matches_any(categories)})
+    if params[:top_category]
+      query = params[:top_category]
+      @ceramiques = @ceramiques.joins(:top_category).merge(TopCategory.i18n { name.matches(query) })
+    else
+      categories = params[:categories].map {|category| "%#{category}%" }
+      @ceramiques = @ceramiques.joins(:category).merge(Category.i18n { name.matches_any(categories) })
+    end
   end
 
   def filter_by_price

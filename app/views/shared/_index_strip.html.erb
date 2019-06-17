@@ -1,32 +1,6 @@
-<% if @photo1 %>
-  <div class="univers-strip hidden-xs hidden-sm">
-    <div class="image-box-1">
-      <div class="strip-image1">
-        <h1>Les créations uniques en Morta</h1>
-          <style>
-          .strip-image1 {
-            background-image: url(<%= image_path @photo1 %>);
-            background-size: cover;
-            background-position-y: center;
-            background-position-x: center;
-          }
-        </style>
-      </div>
-    </div>
-    <div class="strip-image2">
-      <style>
-        .strip-image2 {
-          background-image: url(<%= image_path @photo2 %>);
-          background-size: cover;
-          background-position-y: center;
-          background-position-x: center;
-        }
-      </style>
-      <% if @front_offer && params[:offer] == nil %>
-        <%= link_to ceramiques_path(offer: "offer"), title: "Tire-bouchons et couteaux en Morta", class: "offer_button" do %>
-          <p>Sélection du moment</p>
-        <% end %>
-      <% end %>
-    </div>
-  </div>
-<% end %>
+<%= render  'shared/images_box_inclined',
+    image_1: cl_image_path(@top_category.photo_1.path),
+    image_2: cl_image_path(@top_category.photo_2.path),
+    mobile: false,
+    image1_left: "0px",
+    title: "<h1>Les créations uniques en Morta</h1>" %>
