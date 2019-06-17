@@ -152,7 +152,7 @@ en:
   briere_link: "Introduction to la Brière, Morta's land"
   workshop: "Workshop"
   visit_workshop_link: "Introduction to Philippe Nerriere's workshop, the place where he works Morta."
-  press: "Press"
+  press: "Media"
   press_link: "Ty Morta news articles"
   partners: "Partner sites"
   partners_link: "Check out the universe of Ty Morta with its partner sites"
@@ -162,6 +162,10 @@ en:
   testimonials_link: "Testimonials from Ty Morta's customers"
   sur_mesure: "Tailored"
   sur_mesure_link: "Create your tailored Morta piece of art"
+  sur_mesure_h1: "Imaginez votre objet unique en Morta"
+  sur_mesure_h2_1: "Inspirez vous des modèles présents dans la boutique"
+  sur_mesure_h2_2: "Ou laissez parler votre imagination"
+  top_category_link: "See all products related with %{top_category} category"
   table: "AROUND THE TABLE"
   table_mobile: "TABLE"
   table_link: "Corkscrew and knives in Morta"
@@ -192,6 +196,9 @@ en:
       category:
         one: "Category"
         other: "Categories"
+      top_category:
+        one: "Main category"
+        other: "Main categories"
       calendarupdate: "Calendar update"
       lesson:
         one: "Visit"
@@ -222,6 +229,8 @@ en:
         weight: "Weight"
       category:
         name: "Name"
+      top_category:
+        name: "Nom"
       lesson:
         start: "Lesson start"
         duration: "Duration in days"

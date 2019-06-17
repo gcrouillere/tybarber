@@ -15,7 +15,9 @@
   <% end %>
 <% end %>
 
-<%= render 'shared/index_strip' %>
+<% if params[:top_category] %>
+  <%= render 'shared/index_strip' %>
+<% end %>
 
 <div class="container">
   <div class="row">

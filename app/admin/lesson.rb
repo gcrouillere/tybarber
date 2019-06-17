@@ -2,7 +2,7 @@ ActiveAdmin.register Lesson do
   permit_params :confirmed
   actions  :index, :destroy, :update, :edit, :show
   config.sort_order = 'start_asc'
-  menu priority: 5
+  menu priority: 6
   config.filters = false
 
   index do

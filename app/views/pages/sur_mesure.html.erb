@@ -29,21 +29,19 @@
         </style>
         </div>
         <div class="sur-mesure-details">
-          <h1>Imaginez votre objet unique en Morta</h1>
-          <h2 class="top-text">Inspirez vous des modèles présents dans la boutique</h2>
-          <p class="top-text">Par exemple pour un rasoir, vous pourriez combiner des embouts, la forme d'un manche et un type de lame provenant de rasoirs différents.</p>
-          <p class="top-text">Les combinaisons sont nombreuses. La variété des formes et des matières présentes dans la boutique devraient vous permettre de créer un objet en Morta exactement comme vous l'imaginiez.</p>
-          <div class="rasoir-elements">
-            <%= image_tag "embout.jpg", class: "rasoir-img-1", alt: "élement configurable de rasoir en Morta"%>
-            <%= image_tag "manche.jpg", id: "rasoir-img-2", alt: "élement configurable de rasoir en Morta"%>
-            <%= image_tag "tete.jpg", class: "rasoir-img-1", alt: "élement configurable de rasoir en Morta"%>
+          <div class="top-text">
+            <%= render 'shared/article_display_quill', article_name: "sur_mesure_1", id: 0, display_only: false, additional_class: "dark" %>
           </div>
-          <h2>Ou laissez parler votre imagination</h2>
-          <p>Par sa nature imputrescible et son esthétique unique, le Morta peut être utilisé dans de nombreuses applications. Les possibilités sont grandes, que vous ayez des envies de décoration, d'objets artistiques ou d'objets utilitaires.</p>
-          <p>Voici des exemples de réalisations en Morta qui pourraient vous inspirer.</p>
-          <h2>Comment procéder ?</h2>
-          <p>Si vous choisissez des éléments existants à partir d'objets présents dans la boutique, vous pouvez me communiquer ces éléments en précisant le nom de chaque produit duquel ils proviennent. Vous pouvez me les communiquer en utilisant le <%= link_to "formulaire de contact présent sur ce site", contact_path %>, par mail ou par téléphone.</p>
-          <p>Si vous cherchez à créer un objet complètement nouveau, nous pouvons discuter de la faisabilité par téléphone. Si votre projet est déjà mature, vous pouvez m'envoyer des croquis ou des plans par mail.</p>
+          <div class="rasoir-elements">
+            <%= render  'shared/images_box_inclined',
+              image_1: "soin1.jpg",
+              image_2: "soin2.jpg",
+              title: "<h2>Les créations uniques en Morta</h2>",
+              mobile: true,
+              image1_left: "37px"
+            %>
+          </div>
+          <%= render 'shared/article_display_quill', article_name: "sur_mesure_2", id: 1, display_only: false, additional_class: "" %>
           <div class="sur-mesure-coord">
             <div class="icone-bloc">
               <i class="fa fa-envelope-o"></i>

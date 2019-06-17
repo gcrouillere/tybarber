@@ -10,7 +10,7 @@ class CeramiquesController < ApplicationController
     if params[:all].present?
       @ceramiques
     else
-      filter_by_category if params[:categories].present?
+      filter_by_category if ( params[:categories].present? || params[:top_category].present? )
       filter_by_offer if params[:offer].present?
       filter_globally if params[:search].present?
       filter_by_price if params[:prix_max].present?
@@ -69,8 +69,13 @@ class CeramiquesController < ApplicationController
   end
 
   def filter_by_category
-    categories = params[:categories].map {|category| "%#{category}%" }
-    @ceramiques = @ceramiques.joins(:category).merge(Category.i18n {name.matches_any(categories)})
+    if params[:top_category]
+      query = params[:top_category]
+      @ceramiques = @ceramiques.joins(:top_category).merge(TopCategory.i18n { name.matches(query) })
+    else
+      categories = params[:categories].map {|category| "%#{category}%" }
+      @ceramiques = @ceramiques.joins(:category).merge(Category.i18n { name.matches_any(categories) })
+    end
   end
 
   def filter_by_price

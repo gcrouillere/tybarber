@@ -1,5 +1,6 @@
 .text-editor-form {
   width: 100%;
+  margin: 20px 0;
   .ql-container {
     height: auto !important;
     color: black;
@@ -16,6 +17,7 @@
     background: white;
   }
   .ql-editor {
+    color: white;
     a {
       color: white
     }

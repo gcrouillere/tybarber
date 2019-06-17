@@ -1,8 +1,10 @@
 
 .contact-coord {
-
+  margin-bottom: 40px;
   display: flex;
   .coord {
+    background: rgba(255,255,255,0.8);
+    padding: 20px;
     margin-left: 15px;
     label {
       color: black;

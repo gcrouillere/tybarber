@@ -151,7 +151,7 @@ fr:
   visit_workshop_link: "Présentation de l'atelier où Philippe Nerriere travaille le Morta"
   where: "Où me trouver"
   where_link: "Agenda des expositions et lieu de vente pour retrouver Ty Morta"
-  press: "Presse"
+  press: "Média"
   press_link: "Articles de presse parus sur Ty Morta"
   partners: "Sites partenaires"
   partners_link: "Découvrez l'univers de Ty Morta avec ses sites partenaires"
@@ -163,6 +163,10 @@ fr:
   testimonials_link: "Témoignages des clients de Ty Morta"
   sur_mesure: "Sur mesure"
   sur_mesure_link: Créez votre objet unique en Morta"
+  sur_mesure_h1: "Imaginez votre objet unique en Morta"
+  sur_mesure_h2_1: "Inspirez vous des modèles présents dans la boutique"
+  sur_mesure_h2_2: "Ou laissez parler votre imagination"
+  top_category_link: "Voir tous les produits de la catégorie %{top_category}"
   table: "AUTOUR DE LA TABLE"
   table_mobile: "TABLE"
   table_link: "Tire-bouchons et couteaux en Morta"
@@ -234,6 +238,9 @@ fr:
       category:
         one: "Catégorie"
         other: "Catégories"
+      top_category:
+        one: "Catégorie principale"
+        other: "Catégories principales"
       calendarupdate: "Bloquage de période"
       lesson:
         one: "Réservation"
@@ -265,6 +272,8 @@ fr:
         weight: "Poids"
         support_price_cents: "Prix du support en cents d'€"
       category:
+        name: "Nom"
+      top_category:
         name: "Nom"
       lesson:
         start: "Début de la réservation"

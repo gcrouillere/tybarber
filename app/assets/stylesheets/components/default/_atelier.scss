@@ -29,7 +29,7 @@
    margin-left: 10px;
   }
 
-  #live-text {
+  .live-text {
     width: 100%;
     h1 {
       font-size: $font-size-h4;
@@ -51,7 +51,7 @@
     border: $card-border;
   }
 
-  #live-text1, #live-text2 {
+  .live-text1, .live-text2 {
     h1 {
       font-size: $font-size-h4;
       margin: 11px 0px 30px 0px;

@@ -1,7 +1,7 @@
 ActiveAdmin.register Calendarupdate do
   permit_params :period_start, :period_end
   actions  :index, :new, :create, :destroy, :show
-  menu priority: 4
+  menu priority: 6
   config.filters = false
 
   form do |f|
