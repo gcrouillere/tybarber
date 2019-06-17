@@ -23,30 +23,11 @@
       <div class="wrapper-1">
         <%= photo_update('atelier1photo', 35, '', '', 15, '.avatarpic', "Mise à jour photo atelier 1")%>
         <%= @atelier1 %>
-
-        <% if user_signed_in? && current_user.admin %>
-          <% article_typing("info", "horizontal", "markdown1", "live-text1", "input1") %>
-          <% @markdown = @markdown1 %>
-          <%= render 'shared/articletyping' %>
-        <% else %>
-            <div id="live-text">
-              <% article_display("info", "horizontal") %>
-              <%= @markdown.html_safe %>
-            </div>
-        <% end %>
+        <%= render 'shared/article_display_quill', article_name: "info", id: 0, display_only: false, additional_class: "" %>
       </div>
 
       <div class="wrapper-2">
-        <% if user_signed_in? && current_user.admin %>
-          <% article_typing("info-bottom", "horizontal", "markdown2", "live-text2", "input2") %>
-          <% @markdown = @markdown2 %>
-          <%= render 'shared/articletyping' %>
-        <% else %>
-            <div id="live-text">
-              <% article_display("info-bottom", "horizontal") %>
-              <%= @markdown.html_safe %>
-            </div>
-        <% end %>
+        <%= render 'shared/article_display_quill', article_name: "info-bottom", id: 1, display_only: false, additional_class: "" %>
         <%= photo_update('atelier2photo', 15, 15, '', '', '.citypic', "Mise à jour photo atelier 2")%>
         <%= @atelier2 %>
       </div>
@@ -70,20 +51,3 @@
 
   </div>
 </div>
-
-<% content_for(:after_js) do %>
-  <script type="application/ld+json">
-    {
-      "@context": "http://schema.org",
-      "@type": "ArtGallery",
-      "name": "Les <%="#{ENV['MODEL']} de #{ENV['FIRSTNAME'].capitalize} #{ENV['LASTNAME'].capitalize}"%>",
-      "description": "Online craft store",
-      "openingHours": "Mo-Fr 09:00-18:00",
-      "telephone": "<%= ENV['TELEPHONE']%>",
-      "url": "<%=request.original_url%>",
-      "image":"<%=request.original_url%><%= image_path ENV['HOMEPIC']%>"
-      "address":"<%= ENV['ADDRESS'].gsub(/[+]/, ' ') %>",
-      "priceRange":"20€ à 800€"
-    }
-  </script>
-<% end %>

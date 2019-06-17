@@ -119,18 +119,7 @@
 <div class="container">
   <div class="home-info-bloc row">
     <div class="home-info-text col-xs-12 col-sm-5 col-lg-4">
-      <% if user_signed_in? && current_user.admin %>
-        <% article_typing("accueil", "vertical", "markdown1", "live-text1", "input1") %>
-        <% @markdown = @markdown1 %>
-        <div class="live-text">
-          <%= render 'shared/articletyping' %>
-        </div>
-      <% else %>
-        <div class="plain-text">
-          <% article_display("accueil", "vertical") %>
-          <%= @markdown.html_safe %>
-        </div>
-      <% end %>
+      <%= render 'shared/article_display_quill', article_name: "accueil", id: 0, display_only: false, additional_class: "" %>
     </div>
     <div class="home-info-images col-xs-12 col-sm-7 col-lg-8">
       <div class="inner-photos">
@@ -203,17 +192,5 @@
     </div>
 
 </div>
-
-
-<!--   "@context": "http://schema.org",
-  "@type": "ArtGallery",
-  "name": "Objets d'art en Morta par Philippe Nerriere",
-  "description": "Online craft store",
-  "openingHours": "Mo-Fr 09:00-18:00",
-  "telephone": "<%= ENV['TELEPHONE']%>",
-  "url": "<%=request.original_url%>",
-  "image": "<%=request.original_url%><%= image_path ENV['HOMEPIC3']%>",
-  "address":"<%= ENV['ADDRESS'].gsub(/[+]/, ' ')%>",
-  "priceRange":"20€ à 800€" -->
 
 <%= render 'shared/schema_org_jsons/home_page_json' %>

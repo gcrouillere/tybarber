@@ -9,35 +9,13 @@
 
    <div class="row agenda">
     <div class="col-xs-12 col-sm-5 agenda-text">
-      <% if user_signed_in? && current_user.admin %>
-        <% article_typing("agenda", "vertical", "markdown1", "live-text1", "input1") %>
-        <% @markdown = @markdown1 %>
-        <div class="live-text">
-          <%= render 'shared/articletyping' %>
-        </div>
-      <% else %>
-        <div class="plain-text">
-          <% article_display("agenda", "vertical") %>
-          <%= @markdown.html_safe %>
-        </div>
-      <% end %>
+      <%= render 'shared/article_display_quill', article_name: "agenda", id: 0, display_only: false, additional_class: "" %>
     </div>
     <div class="col-xs-12 col-sm-2 agenda-separator">
       <div class="agenda-hr"></div>
     </div>
     <div class="col-xs-12 col-sm-5 agenda-text">
-      <% if user_signed_in? && current_user.admin %>
-        <% article_typing("ventes", "vertical", "markdown2", "live-text2", "input2") %>
-        <% @markdown = @markdown2 %>
-        <div class="live-text">
-          <%= render 'shared/articletyping' %>
-        </div>
-      <% else %>
-        <div class="plain-text">
-          <% article_display("ventes", "vertical") %>
-          <%= @markdown.html_safe %>
-        </div>
-      <% end %>
+      <%= render 'shared/article_display_quill', article_name: "ventes", id: 1, display_only: false, additional_class: "" %>
     </div>
   </div>
 </div>
