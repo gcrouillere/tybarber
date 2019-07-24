@@ -69,7 +69,9 @@
 }
 
 .one-image-mobile {
+  display: flex;
+  width: 100%;
   img {
-    width: 100%;
+    width: 50%;
   }
 }

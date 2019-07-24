@@ -22,7 +22,17 @@
     <div class="hidden-xs hidden-sm col-sm-12">
       <div class="wrapper-1">
         <%= photo_update('atelier1photo', 35, '', '', 15, '.avatarpic', "Mise à jour photo atelier 1")%>
-        <%= @atelier1 %>
+        <div class="photo-atelier-1 photo-atelier">
+          <style>
+            .photo-atelier-1 {
+              background-image: url(<%= @atelier1_path %>);
+              background-size: cover;
+              background-position-y: center;
+              background-position-x: center;
+              margin-right: 10px
+            }
+          </style>
+        </div>
         <div class="live-text">
           <%= render 'shared/article_display_quill', article_name: "info", id: 0, display_only: false, additional_class: "" %>
         </div>
@@ -33,7 +43,17 @@
           <%= render 'shared/article_display_quill', article_name: "info-bottom", id: 1, display_only: false, additional_class: "" %>
         </div>
         <%= photo_update('atelier2photo', 15, 15, '', '', '.citypic', "Mise à jour photo atelier 2")%>
-        <%= @atelier2 %>
+        <div class="photo-atelier-2 photo-atelier">
+          <style>
+            .photo-atelier-2 {
+              background-image: url(<%= @atelier2_path %>);
+              background-size: cover;
+              background-position-y: center;
+              background-position-x: center;
+              margin-left: 10px
+            }
+          </style>
+        </div>
       </div>
     </div>
 

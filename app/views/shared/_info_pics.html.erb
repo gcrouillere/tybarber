@@ -7,7 +7,7 @@
 <% if @admin %>
   <% if @admin.avatarphoto.present? %>
     <% if @admin.avatarphoto.width.to_f / (@admin.avatarphoto.height) > 1.2 %>
-      <% @avatarpictag = cl_image_tag @admin.avatarphoto.path, :width => 450, :height => 390, :crop => :thumb, :gravity => :face, class: "img-avatar", alt: "#{ENV['FIRSTNAME'].capitalize} #{ENV['LASTNAME'].capitalize} créateur de d'objets d'art en Morta" %>
+      <% @avatarpictag = cl_image_tag @admin.avatarphoto.path, class: "img-avatar", alt: "#{ENV['FIRSTNAME'].capitalize} #{ENV['LASTNAME'].capitalize} créateur de d'objets d'art en Morta" %>
       <% @avatarpicpath = cl_image_path @admin.avatarphoto, :width => 450, :height => 390, :crop => :thumb, :gravity => :face, alt: "#{ENV['FIRSTNAME'].capitalize} #{ENV['LASTNAME'].capitalize} créateur de d'objets d'art en Morta" %>
     <% else %>
       <% @avatarpictag = cl_image_tag @admin.avatarphoto.path, class: "img-avatar", alt: "#{ENV['FIRSTNAME'].capitalize} #{ENV['LASTNAME'].capitalize} créateur de d'objets d'art en Morta"%>
