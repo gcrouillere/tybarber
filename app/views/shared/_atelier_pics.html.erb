@@ -1,5 +1,7 @@
 <% @atelier1 = image_tag ENV['ATELIER1'], class: "img-avatar", alt: "Atelier de Philippe Nerriere pour le travail du Morta." %>
+<% @atelier1_path = image_path ENV['ATELIER1'], class: "img-avatar", alt: "Atelier de Philippe Nerriere pour le travail du Morta." %>
 <% @atelier2 = image_tag ENV['ATELIER2'], class: "img-city", alt: "Philippe Nerriere réalise toutes les pièces en morta dans son atelier à Guérande." %>
+<% @atelier2_path = image_path ENV['ATELIER2'], class: "img-city", alt: "Philippe Nerriere réalise toutes les pièces en morta dans son atelier à Guérande." %>
 
 <% if @admin %>
   <% if @admin.atelier1photo.present? %>
