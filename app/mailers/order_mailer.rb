@@ -9,7 +9,7 @@ class OrderMailer < ApplicationMailer
     model_count = productqty > 1 ? ENV['MODEL'] : ENV['MODEL'][0...-1]
     mail(
       to: @user.email,
-      subject: "Confirmation de commande sur Ty Morta"
+      subject: "Confirmation de commande sur Eden Black"
     )
   end
 

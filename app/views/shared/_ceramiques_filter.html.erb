@@ -26,7 +26,7 @@
         <input name="prix_max" value="<%= max %>" min="<%= min %>" max="<%= max %>" step="1" type="range">
       </section>
     </div>
-    <% if  params[:categories].present? || params[:prix_max].present? || params[:offer].present? || params[:search].present?%>
+    <% if  params[:categories].present? || params[:prix_max].present? || params[:offer].present? || params[:search].present? || params[:top_category].present?%>
       <label class="label-search all"><input type="checkbox" name="all[]" value="all"><%=t(:display_all)%></label>
     <% end %>
     <%if device == "mobile" %>

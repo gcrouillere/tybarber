@@ -29,7 +29,7 @@
   .banner-content {
     position: absolute;
     top: 120px;
-    left: calc(50% - 500px);
+    left: calc(50% - 330px);
     text-align: center;
     color: $home-font-color;
     -moz-text-size-adjust: auto;
@@ -39,21 +39,25 @@
     h1 {
       text-shadow: 1px 1px 0px $home-text-shadow;
       letter-spacing: 10px;
-      margin-bottom: 6px;
+      margin-bottom: 0px;
       font-size: 90px;
+    }
+    h2 {
+      margin-top: 0px;
+      font-weight: 400;
     }
     p {
       font-weight: 100;
-      font-size: 24px;
+      font-size: 22px;
     }
 
     .home-links {
-      width: 1000px;
+      // width: 1000px;
       margin-top: 60px;
       display: flex;
       align-items: center;
       justify-content: space-between;
-      padding: 40px 40px 20px 40px;
+      padding: 40px 10px 20px 10px;
       .link-i {
         overflow: hidden;
         .line {
@@ -159,16 +163,21 @@
   }
 }
 
-@media all and (max-width: 800px) {
+@media all and (max-width: 992px) {
   .jumbotron .banner .banner-content {
     h1 {
       font-size: 60px;
+      margin-bottom: 0;
+    }
+    h2 {
+      font-weight: 400;
+      margin-top: 0;
     }
     p {
       font-size: 18px;
     }
     .home-links.col-xs-12 {
-      width: 700px !important;
+      // width: 700px !important;
       margin-top: 40px;
       a {
         font-size: 19px;
@@ -177,7 +186,7 @@
   }
   .jumbotron .banner .banner-content {
     top: 80px;
-    left: calc(50% - 350px);
+    left: calc(50% - 270px);
   }
   .home-info-bloc {
       .home-info-text {
@@ -190,18 +199,18 @@
         height: 400px !important;
         left: 8px !important;
         .arbre {
-          width: 200px !important;
+          width: 50%;
           bottom: calc(25%) !important;
         }
         .marais {
-          width: 200px !important;
-          top:  calc(30%) !important;
-          right: calc(8%) !important;
+          width: 45% !important;
+          top:  calc(10%) !important;
+          right: calc(11%) !important;
         }
         .bois {
-          width: 250px !important;
+          width: 50%;
           position: absolute;
-          right: calc(12%) !important;
+          right: calc(8%) !important;
           bottom: 0px !important;
         }
       }
@@ -213,6 +222,49 @@
   }
   .decoration {
     padding: 0 !important;
+  }
+}
+@media all and (max-width: 767px) {
+  .home-info-bloc {
+    .home-info-images {
+      .inner-photos {
+        height: 450px !important;
+        left: 8px !important;
+        .arbre {
+          width: 40% !important;
+          bottom: calc(25%) !important;
+        }
+        .marais {
+          width: 55% !important;
+          top:  calc(-2%) !important;
+          right: calc(11%) !important;
+        }
+        .bois {
+          width: 50%;
+          position: absolute;
+          right: calc(8%) !important;
+          bottom: 0px !important;
+        }
+      }
+    }
+  }
+}
+@media all and (max-width: 580px) {
+    .home-info-bloc {
+    .home-info-images {
+      .inner-photos {
+        height: 350px !important;
+      }
+    }
+  }
+}
+@media all and (max-width: 375px) {
+    .home-info-bloc {
+    .home-info-images {
+      .inner-photos {
+        height: 250px !important;
+      }
+    }
   }
 }
 //HOME LAPTOP SECOND BLOC
@@ -239,7 +291,7 @@
       position: relative;
       left: 25px;
       .arbre {
-        width: 350px;
+        width: 50%;
         position: absolute;
         left: calc(11%);
         bottom: calc(15%);
@@ -247,15 +299,15 @@
         border-radius: 2px;
       }
       .marais {
-        width: 350px;
+        width: 50%;
         position: absolute;
         right: calc(15%);
-        top: 0px;
+        top: 10%;
         box-shadow: 0px 12px 50px rgba(0,0,0,0.42);
         border-radius: 2px;
       }
       .bois {
-        width: 500px;
+        width: 70%;
         position: absolute;
         right: calc(4%);
         bottom: 0px;
@@ -314,12 +366,16 @@
     display: flex;
     flex-direction: column;
   }
+  .soin.second-block {
+   flex-direction: column-reverse;
+  }
   .card-image {
     height: 280px;
     display: flex;
     align-items: flex-end;
     justify-content: flex-end;
     p {
+      text-shadow: 0px -1px 2px white, 0px 1px 2px white;
       font-weight: 400;
       margin-right: 20px;
       opacity: 0;

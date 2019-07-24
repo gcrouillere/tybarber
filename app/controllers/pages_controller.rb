@@ -3,9 +3,10 @@ class PagesController < ApplicationController
 
   def home
     @dev_redirection = "https://www.creermonecommerce.fr/"
-    @rasoir = Ceramique.joins(:category).where("categories.name ILIKE ?", "%rasoir%").order(position: :asc).order(updated_at: :desc).first
-    @lampe = Ceramique.joins(:category).where("categories.name ILIKE ?", "%lampe%").order(position: :asc).order(updated_at: :desc).first
-    @tirebouchon = Ceramique.joins(:category).where("categories.name ILIKE ?", "%tire-bouchon%").order(position: :asc).order(updated_at: :desc).first
+    @top_categories = TopCategory.all.includes(:categories)
+    # @rasoir = Ceramique.joins(:category).where("categories.name ILIKE ?", "%rasoir%").order(position: :asc).order(updated_at: :desc).first
+    # @lampe = Ceramique.joins(:category).where("categories.name ILIKE ?", "%lampe%").order(position: :asc).order(updated_at: :desc).first
+    # @tirebouchon = Ceramique.joins(:category).where("categories.name ILIKE ?", "%tire-bouchon%").order(position: :asc).order(updated_at: :desc).first
     render "home_#{@active_theme.name}"
   end
 

@@ -45,21 +45,16 @@
       <div class="banner-content">
         <div class="banner-text">
           <h1><%= t(:home_h1)%></h1>
+          <h2><%= t(:home_sub_h1)%></h2>
           <p><%= t(:home_teaser)%></p>
         </div>
         <div class="home-links col-xs-12">
-          <div class="link-i">
-            <%= link_to t(:home_button_shave), ceramiques_path(univers: "soin"),title: t(:home_button_shave_link) %>
-            <div class="line line1"></div>
-          </div>
-          <div class="link-i">
-            <%= link_to t(:home_button_deco), ceramiques_path(univers: "decoration"), title: t(:home_button_deco_link) %>
-            <div class="line line2"></div>
-          </div>
-          <div class="link-i">
-            <%= link_to t(:home_button_table), ceramiques_path(univers: "table"), title: t(:home_button_table_link) %>
-            <div class="line line3"></div>
-          </div>
+          <% @top_categories.each_with_index do |top_category, index| %>
+            <div class="link-i">
+              <%= link_to top_category.name, ceramiques_path(top_category: top_category.name), title: t(:home_button_link, top_category: top_category.name) %>
+              <div class="line line<%=index + 1%>"></div>
+            </div>
+          <% end %>
         </div>
       </div>
         <%= photo_update('productphoto', 30, '', '', 30, '.homepic', "Mise à jour photo arbre")%>
@@ -108,6 +103,7 @@
       </div>
       <div class="banner-content-xs">
         <h1><%= t(:home_h1)%></h1>
+        <h2><%= t(:home_sub_h1)%></h2>
         <p><%= t(:home_teaser)%></p>
         <%= link_to t(:home_button_mobile), ceramiques_path, class: "btn btn-primary btn-home" %>
       </div>
@@ -118,10 +114,10 @@
 
 <div class="container">
   <div class="home-info-bloc row">
-    <div class="home-info-text col-xs-12 col-sm-5 col-lg-4">
+    <div class="home-info-text col-xs-12 col-sm-4 col-lg-4">
       <%= render 'shared/article_display_quill', article_name: "accueil", id: 0, display_only: false, additional_class: "" %>
     </div>
-    <div class="home-info-images col-xs-12 col-sm-7 col-lg-8">
+    <div class="home-info-images col-xs-12 col-sm-8 col-lg-8">
       <div class="inner-photos">
         <%= cl_image_tag @homepicpath, class: "arbre", alt: "Chêne avant sa transformation en Morta"%>
         <%= cl_image_tag @homepicpath2, class: "marais", alt: "Marais de Brière"%>
@@ -135,61 +131,48 @@
   <h2><%= t(:home_h2)%></h2>
 
     <div class="univers-cards row">
-      <div class="soin col-xs-12 col-sm-4">
-        <%= link_to ceramiques_path(univers: "soin"), title: t(:shaving_link) do %>
-          <div class="card-image card-image1">
-            <style>
-              .card-image1 {
-                background-image: url(<%= image_path("rasoir.jpg") %>);
-                background-size: cover;
-                background-position-y: center;
-                background-position-x: center;
-              }
-            </style>
-            <p><%=t(:home_discover)%></p>
-          </div>
-        <% end %>
-        <div class="home-cards-text home-text-left">
-          <h3></h3>
-          <p><%=t(:home_shave_block)%></p>
-        </div>
-      </div>
-      <div class="decoration col-xs-12 col-sm-4">
-        <%= link_to ceramiques_path(univers: "decoration"), class: "decoration-link", title: t(:decoration_link) do %>
-            <style>
-              .decoration {
-                background-image: url(<%= image_path("deco.jpg") %>);
-                background-size: cover;
-                background-position-y: center;
-                background-position-x: center;
-              }
-            </style>
-            <div class="home-text-center">
-              <h3><%=t(:home_button_deco)%></h3>
-              <p><%=t(:home_deco_block)%></p>
+      <% @top_categories[0..2].each_with_index do |top_category, index| %>
+        <% if  index == 0 || index == 2 %>
+          <div class="soin col-xs-12 col-sm-4 <%= index == 0 ? "" : "second-block" %>">
+            <%= link_to ceramiques_path(top_category: top_category.name), title: t(:home_button_link, top_category: top_category.name) do %>
+              <div class="card-image card-image<%= index + 1 %>">
+                <style>
+                  .card-image<%= index + 1 %> {
+                    background-image: url(<%= cl_image_path top_category.photo_1.path, quality: "auto" %>);
+                    background-size: cover;
+                    background-position-y: center;
+                    background-position-x: center;
+                  }
+                </style>
+                <p><%=t(:home_discover)%></p>
+              </div>
+            <% end %>
+            <div class="home-cards-text home-text-<%= index == 0 ? "left" : "right" %>">
+              <h3><%= top_category.name.upcase%></h3>
+              <p><%= top_category.description %></p>
             </div>
-        <% end %>
-      </div>
-      <div class="vin col-xs-12 col-sm-4">
-        <div class="home-cards-text home-text-right">
-          <h3><%=t(:home_button_table)%></h3>
-          <p><%=t(:home_table_block)%></p>
-        </div>
-        <%= link_to ceramiques_path(univers: "table"), title: t(:table_link) do %>
-          <div class="card-image card-image3">
-            <style>
-              .card-image3 {
-                background-image: url(<%= image_path("tirebouchon.jpg") %>);
-                background-size: cover;
-                background-position-y: center;
-                background-position-x: center;
-              }
-            </style>
-            <p><%=t(:home_discover)%></p>
+          </div>
+        <% else %>
+          <div class="decoration col-xs-12 col-sm-4">
+            <%= link_to ceramiques_path(top_category: top_category.name), class: "decoration-link", title: t(:home_button_link, top_category: top_category.name) do %>
+                <style>
+                  .decoration {
+                    background-image: url(<%= cl_image_path top_category.photo_1.path, quality: "auto" %>);
+                    background-size: cover;
+                    background-position-y: center;
+                    background-position-x: center;
+                  }
+                </style>
+                <div class="home-text-center">
+                  <h3><%= top_category.name.upcase%></h3>
+                  <p><%= top_category.description %></p>
+                </div>
+            <% end %>
           </div>
         <% end %>
-      </div>
+      <% end %>
     </div>
+  </div>
 
 </div>
 

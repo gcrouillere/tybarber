@@ -4,15 +4,15 @@ class LessonMailer < ApplicationMailer
     @lesson = lesson
     @closest_start = Findcloseststart.new(@lesson).closest_start(@lesson)
     if @lesson.confirmed
-      mail(to: @lesson.user.email, subject: "Annulation de votre visite chez Ty Morta}")
+      mail(to: @lesson.user.email, subject: "Annulation de votre visite chez Eden Black}")
     else
-      mail(to: @lesson.user.email, subject: "Refus de votre demande de visite chez Ty Morta}")
+      mail(to: @lesson.user.email, subject: "Refus de votre demande de visite chez Eden Black}")
     end
   end
 
   def mail_user_after_confirmation(lesson)
     @lesson = lesson
-    mail(to: @lesson.user.email, subject: "Confirmation de votre visite chez Ty Morta")
+    mail(to: @lesson.user.email, subject: "Confirmation de votre visite chez Eden Black")
   end
 
   def mail_francoise_after_lesson_create(lesson)

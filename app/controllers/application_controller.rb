@@ -33,7 +33,7 @@ class ApplicationController < ActionController::Base
 
   def uniq_categories
     @top_categories = ::TopCategory.joins(:categories).distinct
-    if params[:top_category]
+    if params[:top_category].is_a? String
       query = params[:top_category]
       @top_category = TopCategory.i18n.find_by(name: query)
       @uniq_categories = ::Category.joins(:top_category).merge(TopCategory.i18n { name.matches(query) })

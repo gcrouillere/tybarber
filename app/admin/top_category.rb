@@ -1,5 +1,5 @@
 ActiveAdmin.register TopCategory, as: "Univers" do
-  permit_params :name, :mobile_name, :photo_1, :photo_2
+  permit_params :name, :mobile_name, :description, :photo_1, :photo_2
   config.filters = false
   actions  :index, :new, :create, :destroy, :update, :edit
   menu priority: 2
@@ -7,6 +7,7 @@ ActiveAdmin.register TopCategory, as: "Univers" do
   index do
     column :name
     column :mobile_name
+    column :description
     actions
   end
 
@@ -14,6 +15,7 @@ ActiveAdmin.register TopCategory, as: "Univers" do
     f.inputs "" do
       f.input :name
       f.input :mobile_name
+      f.input :description
     end
     f.inputs "Images", class: 'product_images' do
       img(src: cl_image_path(f.object.photo_1.path , :width=>250, :crop=>"scale")) unless f.object.new_record?

@@ -1,10 +1,10 @@
 module MetaTagsHelper
   def meta_title
-    content_for?(:title_tag) ? content_for(:title_tag) : "Ty Morta : les objets d'art en Morta de Philippe Nerriere"
+    content_for?(:title_tag) ? content_for(:title_tag) : "Eden Black : les objets d'art en Morta de Philippe Nerriere"
   end
 
   def meta_product_name
-    content_for?(:meta_product_name) ? content_for(:meta_product_name) : "Ty Morta : les objets d'art en Morta de Philippe Nerriere"
+    content_for?(:meta_product_name) ? content_for(:meta_product_name) : "Eden Black : les objets d'art en Morta de Philippe Nerriere"
   end
 
   def meta_description

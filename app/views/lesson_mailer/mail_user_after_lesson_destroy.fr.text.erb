@@ -1,10 +1,10 @@
 Bonjour <%= @lesson.user.first_name %> <%= @lesson.user.last_name %>,
 
 <% if @lesson.confirmed %>
-<%= "Votre visite le #{@lesson.start.day} #{@lesson.start.strftime("%B")} #{@lesson.start.year}, à l'atelier Ty Morta est annulée suite à une indisponibilité. Veuillez nous en excuser."%>
+<%= "Votre visite le #{@lesson.start.day} #{@lesson.start.strftime("%B")} #{@lesson.start.year}, à l'atelier Eden Black est annulée suite à une indisponibilité. Veuillez nous en excuser."%>
 
 <% else %>
-<%= "Nous sommes désolés, mais nous ne pouvons accepter votre demande de visite à l'atelier Ty Morta, pour le #{@lesson.start.day} #{@lesson.start.strftime("%B")} #{@lesson.start.year}. Suite à une indisponibilité, l'atelier est fermé ce jour."%>
+<%= "Nous sommes désolés, mais nous ne pouvons accepter votre demande de visite à l'atelier Eden Black, pour le #{@lesson.start.day} #{@lesson.start.strftime("%B")} #{@lesson.start.year}. Suite à une indisponibilité, l'atelier est fermé ce jour."%>
 
 <% end %>
 
