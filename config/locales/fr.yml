@@ -236,6 +236,9 @@ fr:
       ceramique:
         one: "Produit"
         other: "Produits"
+      top_category:
+        one: "Univers"
+        other: "Univers"
       category:
         one: "Catégorie"
         other: "Catégories"
@@ -274,8 +277,10 @@ fr:
         support_price_cents: "Prix du support en cents d'€"
       category:
         name: "Nom"
+        top_category: "Univers"
       top_category:
         name: "Nom"
+        mobile_name: "Nom sur mobiles"
       lesson:
         start: "Début de la réservation"
         duration: "Durée en jours"

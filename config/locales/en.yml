@@ -198,8 +198,8 @@ en:
         one: "Category"
         other: "Categories"
       top_category:
-        one: "Main category"
-        other: "Main categories"
+        one: "Univers"
+        other: "Univers"
       calendarupdate: "Calendar update"
       lesson:
         one: "Visit"
@@ -230,8 +230,10 @@ en:
         weight: "Weight"
       category:
         name: "Name"
+        top_category: "Univers"
       top_category:
         name: "Nom"
+        mobile_name: "Mobile name"
       lesson:
         start: "Lesson start"
         duration: "Duration in days"

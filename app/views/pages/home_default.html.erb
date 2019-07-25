@@ -61,7 +61,28 @@
         <%= photo_update('product2photo', 30, '', '', 385, '.homepic2', "Mise à jour photo marais")%>
         <%= photo_update('product3photo', 30, '', '', 730, '.homepic3', "Mise à jour photo bois")%>
         <%= photo_update('logophoto', 260, '', '', 30, '.logopic', "Mise à jour logo")%>
-        <%= image_tag "madeinfrance.png", class: "madeinfrance" %>
+        <div class="madeinfrance">
+          <%= render 'shared/logo_pic' %>
+          <div class="letters">
+            <%= @logositepictag %>
+            <span class="char1">M</span>
+            <span class="char2">A</span>
+            <span class="char3">D</span>
+            <span class="char4">E</span>
+            <span class="char15"> </span>
+            <span class="char5">I</span>
+            <span class="char6">N</span>
+            <span class="char16"> </span>
+            <span class="char7">G</span>
+            <span class="char8">U</span>
+            <span class="char9">E</span>
+            <span class="char10">R</span>
+            <span class="char11">A</span>
+            <span class="char12">N</span>
+            <span class="char13">D</span>
+            <span class="char14">E</span>
+          </div>
+        </div>
     </div>
   </div>
 

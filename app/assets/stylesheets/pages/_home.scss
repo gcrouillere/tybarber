@@ -93,9 +93,44 @@
   }
   .madeinfrance {
     position: absolute;
-    bottom: 10px;
+    bottom: 100px;
     right: 10px;
     width: 100px;
+    .letters {
+      transform: rotate(3deg);
+    }
+    .letters img {
+      position: absolute;
+      width: 65px;
+      top: 24px;
+      left: -27px;
+    }
+    .letters span {
+      height: 110px;
+      position: absolute;
+      width: 20px;
+      left: 0;
+      top: 0;
+      transform-origin: bottom center;
+      color: white;
+      font-size: 10px
+    }
+    .char1 { transform: rotate(-52deg); }
+    .char2 { transform: rotate(-45deg); }
+    .char3 { transform: rotate(-38deg); }
+    .char4 { transform: rotate(-31deg); }
+    .char15 { transform: rotate(-21deg); }
+    .char5 { transform: rotate(-12deg); }
+    .char6 { transform: rotate(-5deg); }
+    .char16 { transform: rotate(4deg); }
+    .char7 { transform: rotate(14deg); }
+    .char8 { transform: rotate(21deg); }
+    .char9 { transform: rotate(28deg); }
+    .char10 { transform: rotate(35deg); }
+    .char11 { transform: rotate(42deg); }
+    .char12 { transform: rotate(49deg); }
+    .char13 { transform: rotate(55deg); }
+    .char14 { transform: rotate(62deg); }
   }
 }
 
@@ -143,6 +178,10 @@
     h1 {
       font-size: 60px;
       text-shadow: 1px 1px 0px $home-text-shadow;
+      margin-bottom: 0;
+    }
+    h2 {
+      margin-top: 0;
     }
     p {
       font-size: 18px;
