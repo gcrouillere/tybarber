@@ -212,6 +212,8 @@ fr:
   morta_card_text_5: "Les chênes disparaissent dans ces marais. Depuis 5000 ans, à l’abri de l’air, en milieu saturé en eau, ils sont dans un processus de lente fossilisation en Morta. En Brière, la tourbe noire débute également sa formation."
   morta_title_6: "Résurection"
   morta_card_text_6: "Ce bois, devenu imputrescible, est très esthétique une fois poli. Il peut présenter l'aspect de l'ébène pour le morta noir. Autrefois, il a servi de bois de charpente en Brière. Aujourd'hui, il est utilisé pour produire des objets d'artisanat art. Seulement 20 % du matériau brut peut être exploité car au cours du séchage, des craquelures se forment."
+  pay_by_card: "Payer par carte"
+  payment_failure: "Erreur lors du paiement, votre carte n'a pas été débitée. Veuillez réessayer."
   day:
     one: "Jour"
     other: "Jours"

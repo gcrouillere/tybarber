@@ -180,6 +180,8 @@ en:
   agenda_title: "Exhibitions and sales locations to find Eden Black."
   atelier_description: "Philippe Nerriere shapes all objects in Morta in his workshop in Guérande."
   atelier_title: "Philippe Nerriere's Workshop in Guérande - Work of the Morta"
+  pay_by_card: "Pay by card"
+  payment_failure: "Payment failure, your card was not charged. Please retry."
   activerecord:
     errors:
       messages:
